@@ -6,87 +6,6 @@
 <br>
 <br>
 
-### ☝️How to use
-<h3>Install</h3>
-
-~~~
-git clone https://github.com/ewha-cse-HACK/HACK_Server.git
-~~~
-
-<h3>API</h3>
-<table>
-  <thead>
-    <tr>
-        <th align=center>기능</td>
-        <th align=center>Method</td>
-        <th align=center>URL</td>
-        <th align=center>Request Body</td>
-    </tr>
-  </thead>
-    <tr>
-        <td align=center>글 작성</td>
-        <td align=center>POST</td>
-        <td align=center>/posts/</td>
-        <td align=center>{
-          "title": string,
-          "content": string,
-          "author": string
-          }</td>
-    </tr>
-    <tr>
-        <td align=center>글 수정</td>
-        <td align=center>PATCH</td>
-        <td align=center>/posts/{id}</td>
-        <td align=center>{
-                "title": string,
-                "content": string,
-                "author": string
-                }</td>
-    </tr>
-    <tr>
-        <td align=center>글 삭제</td>
-        <td align=center>DELETE</td>
-        <td align=center>/posts/{id}</td>
-        <td align=center></td>
-    </tr>
-    <tr>
-        <td align=center>특정 글 불러오기</td>
-        <td align=center>GET</td>
-        <td align=center>/posts/{id}</td>
-        <td align=center></td>
-    </tr>
-    <tr>
-        <td align=center>전체 글 불러오기</td>
-        <td align=center>GET</td>
-        <td align=center>/posts/</td>
-        <td align=center></td>
-    </tr>
-    <tr>
-        <td align=center>좋아요</td>
-        <td align=center>GET</td>
-        <td align=center>/posts/{id}/dolike</td>
-        <td align=center></td>
-    </tr>
-    <tr>
-        <td align=center>좋아요 취소</td>
-        <td align=center>GET</td>
-        <td align=center>/posts/{id}/undolike</td>
-        <td align=center></td>
-    </tr>
-    <tr>
-        <td align=center>댓글 작성</td>
-        <td align=center>POST</td>
-        <td align=center>/posts/{id}/comment</td>
-        <td align=center>{
-”comment”: string
-}</td>
-    </tr>
-    
-</table>
-<br>
-
-
-<img src = "https://github.com/ewha-cse-HACK/server_dev/assets/67634926/4ab5ee50-fc68-4f65-9fcd-7cd9c11aab10" width = 400 height = 300>
 
 ### 🛠️Project Architecture
 <img src = "https://github.com/ewha-cse-HACK/server_dev/assets/67634926/e9c95b0d-8170-428d-90e8-a281188d8c74" width = 500 height = 400>
@@ -108,7 +27,11 @@ backend <br>
 <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/spring_boot-6DB33F?style=for-the-badge&logo=spring_boot&logoColor=white"> <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"> <img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> <img src="https://img.shields.io/badge/aws-232F3E?style=for-the-badge&logo=aws&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 
 frontend <br>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/></a> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=AmazonEC2&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/></a> 
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"/> 
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&amp;logo=JavaScript&amp;logoColor=white" alt=""/> 
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white" alt=""/> 
+<img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=AmazonEC2&logoColor=white"/></a>
 <br>
 <br>
 
