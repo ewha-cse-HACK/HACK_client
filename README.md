@@ -22,15 +22,15 @@
 <br>
 <br>
 
-### 💪Teck stack
+### 💪Tech stack
 backend <br>
 <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/spring_boot-6DB33F?style=for-the-badge&logo=spring_boot&logoColor=white"> <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"> <img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> <img src="https://img.shields.io/badge/aws-232F3E?style=for-the-badge&logo=aws&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 
 frontend <br>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/></a> 
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"/> 
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&amp;logo=JavaScript&amp;logoColor=white" alt=""/> 
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white" alt=""/> 
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&amp;logoColor=white" alt=""/> 
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&amp;logoColor=white" alt=""/> 
 <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=AmazonEC2&logoColor=white"/></a>
 <br>
 <br>
