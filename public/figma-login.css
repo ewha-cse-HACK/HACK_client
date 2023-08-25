@@ -1,0 +1,428 @@
+/* 2. 회원가입 */
+
+position: relative;
+width: 1185px;
+height: 714px;
+
+background: #FFFFFF;
+
+
+/* Email */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 87px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 87px;
+
+background: #ECECEC;
+border-radius: 8px;
+
+
+/* 이름 */
+
+position: absolute;
+width: 23px;
+height: 16px;
+left: 339px;
+top: 95px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 135.5%;
+/* or 16px */
+
+/* Black */
+color: #2F2F2F;
+
+
+
+/* 홍길동 */
+
+position: absolute;
+width: 45px;
+height: 22px;
+left: 339px;
+top: 117px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 135.5%;
+/* identical to box height, or 22px */
+
+/* Black */
+color: #2F2F2F;
+
+
+
+/* Email */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 212px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 212px;
+
+background: #ECECEC;
+border-radius: 8px;
+
+
+/* Vector */
+
+position: absolute;
+left: 23.63%;
+right: 73.84%;
+top: 33.19%;
+bottom: 63.45%;
+
+background: #000000;
+
+
+/* 이메일 */
+
+position: absolute;
+width: 34px;
+height: 16px;
+left: 339px;
+top: 223px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 135.5%;
+/* or 16px */
+
+/* Black */
+color: #2F2F2F;
+
+
+
+/* example@gmail.com */
+
+position: absolute;
+width: 180px;
+height: 22px;
+left: 339px;
+top: 245px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 135.5%;
+/* identical to box height, or 22px */
+
+/* Black */
+color: #2F2F2F;
+
+
+
+/* Email */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 455px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 455px;
+
+background: #ECECEC;
+border-radius: 8px;
+
+
+/* 전화번호 */
+
+position: absolute;
+width: 45px;
+height: 16px;
+left: 339px;
+top: 466px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 135.5%;
+/* or 16px */
+
+/* Black */
+color: #2F2F2F;
+
+
+
+/* 010-1234-1234 */
+
+position: absolute;
+width: 117px;
+height: 22px;
+left: 339px;
+top: 487px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 135.5%;
+/* identical to box height, or 22px */
+
+/* Black */
+color: #2F2F2F;
+
+
+
+/* Password */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 331px;
+
+
+
+/* Rectangle 5 */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 331px;
+
+background: #ECECEC;
+border-radius: 8px;
+
+
+/* Group */
+
+position: absolute;
+left: 23.88%;
+right: 73.84%;
+top: 50.14%;
+bottom: 46.08%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 23.88%;
+right: 73.84%;
+top: 50.14%;
+bottom: 46.08%;
+
+background: #000000;
+
+
+/* 비밀번호 */
+
+position: absolute;
+width: 45px;
+height: 16px;
+left: 339px;
+top: 346px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 135.5%;
+/* or 16px */
+
+/* Black */
+color: #2F2F2F;
+
+
+
+/* *********** */
+
+position: absolute;
+width: 95px;
+height: 22px;
+left: 339px;
+top: 374px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 135.5%;
+/* identical to box height, or 22px */
+
+/* Black */
+color: #2F2F2F;
+
+
+
+/* bi:eye-fill */
+
+position: absolute;
+width: 22px;
+height: 22px;
+left: 885px;
+top: 363px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 15.62%;
+bottom: 15.62%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 34.38%;
+right: 34.38%;
+top: 34.38%;
+bottom: 34.38%;
+
+/* Black */
+background: #2F2F2F;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 15.62%;
+bottom: 15.62%;
+
+/* Black */
+background: #2F2F2F;
+
+
+/* button */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 580px;
+
+
+
+/* Rectangle 6 */
+
+position: absolute;
+width: 671px;
+height: 77px;
+left: 257px;
+top: 580px;
+
+background: #4C5182;
+border-radius: 8px;
+
+
+/* 가입하기 */
+
+position: absolute;
+width: 89px;
+height: 33px;
+left: 552px;
+top: 603px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 135.5%;
+/* identical to box height, or 33px */
+
+color: #FFFFFF;
+
+
+
+/* User_alt_fill */
+
+position: absolute;
+width: 49px;
+height: 47px;
+left: 271px;
+top: 102px;
+
+
+
+/* Ellipse 46 */
+
+position: absolute;
+left: 33.33%;
+right: 33.33%;
+top: 16.67%;
+bottom: 50%;
+
+/* fill_icon */
+background: #222222;
+
+
+/* Rectangle 4160 */
+
+position: absolute;
+left: 20.83%;
+right: 20.83%;
+top: 54.17%;
+bottom: 16.67%;
+
+/* fill_icon */
+background: #222222;
+
+
+/* Phone_fill */
+
+position: absolute;
+width: 47px;
+height: 44px;
+left: 272px;
+top: 475px;
+
+
+
+/* Vector 189 */
+
+position: absolute;
+left: 20.51%;
+right: 10.06%;
+top: 10.06%;
+bottom: 20.51%;
+
+/* fill_icon */
+background: #222222;
