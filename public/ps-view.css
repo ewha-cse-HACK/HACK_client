@@ -1,0 +1,261 @@
+@font-face {
+    font-family: 'tvNJoyful';
+    src: url('ttf/tvNJoyfulBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'tvNJoyful';
+    src: url('ttf/tvNJoyfulMedium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'tvNJoyful';
+    src: url('ttf/tvNJoyfulLight.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'DMSans';
+    src: url('ttf/DMSans.ttf') format('truetype');
+  }
+  
+  * {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  a {
+    text-decoration: none;
+  }
+  ul{
+    list-style: none;
+  }
+  
+  header{
+    margin: auto;
+    display: flex;
+    width: 1200px;
+    height: 152px;
+    padding: 20px 128px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  #menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 1100px;
+    height: 72px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 18px;
+    flex-shrink: 0;
+  }
+  
+  #logo{
+    display: flex;
+    /*width: 250px;*/
+    height: 46px;
+    flex-direction: row;
+  }
+  #logo h1 {
+    font-family: tvNJoyful;
+    font-weight:bold;
+    font-size:50px;
+    color: black;
+  }
+  #topMenu {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  #topMenu > li {
+    margin-right: 30px
+  }
+  #topMenu > li:last-child {
+    margin-right: 0;
+  }
+  #topMenu > li > a{
+    display:block;
+    color: var(--neutral-500, #64748B);
+    font-family: DMSans;
+    font-size: 17px;
+    font-style: normal;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  #topMenu > li > a:hover {
+    color:#000;
+    font-weight: 450;
+  }
+  /*
+  #login {
+    display: none;
+  }
+  */
+  #logout {
+    font-weight: 600;
+    color: #4C5182 !important;
+  }
+  #logout:hover{
+    color: #868dc9 !important;
+    font-weight: 650 !important;
+  }
+  
+  .seperator {
+    width: 1185px;
+    height: 1px;
+    background-color: #E7EAEE;
+    margin: auto 0;
+  }
+  
+  #container {
+    margin: 70px auto;
+    width: 1000px;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    align-items: center;
+  }
+  
+.ps-card {
+  width: 270px;
+  height: 436px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 3px 4px black;
+}
+
+.ps-img { /*페르소나 이미지 컨테이너*/
+  width: 270px;
+  height: 270px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ps-img img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.ps-info {
+  height: 166px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ps-info h3 {
+  font-family: DMSans;
+  font-size: 22px;
+  font-style: normal;
+  color: #333;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.edit-btn {
+  margin-left: 30px;
+  margin-top: 0;
+  font-family: DMSans;
+  color: black;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#ps-btn {
+  margin-top: 10px;
+  margin-left: 25px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+}
+#ps-chat {
+  margin-right: 20px;
+}
+#ps-chat, #ps-diary {
+    width: 100px;
+    height: 35px;
+    font-size: 15px;
+    text-align: center;
+    color: #000;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+#ps-chat:hover, #ps-diary:hover {
+    background-color: aliceblue;
+}
+.add-btn {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  background-color: white;
+  fill: #FFF;
+  stroke-width: 0.5px;
+  stroke: #D9D9D9;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#ps-add {
+  color: #64748B;
+  text-align: center;
+  font-size: 60px;
+  font-weight: 100;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+  footer{
+    width: 1185px;
+    margin: auto;
+    margin-top: 50px;
+    border-top:1px solid #E7EAEE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 0;
+  }
+  #bottomMenu{
+    width:100%;
+    height:auto;
+    position:relative;
+  }
+  #bottomMenu ul li{
+    font-family: tvNJoyful;
+    font-weight:bold;
+    font-size:20px;
+    float:left;
+    padding: 10px 20px;
+    border-right:1px solid #ddd;
+  }
+  #address{
+    width: 100%;
+    margin-top:30px;
+    margin-left: 35px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-family: tvNJoyful;
+    font-weight:bold;
+    font-size:25px;
+    color:#4C5182;
+  }

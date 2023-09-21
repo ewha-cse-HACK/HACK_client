@@ -1,0 +1,194 @@
+@font-face {
+    font-family: 'tvNJoyful';
+    src: url('ttf/tvNJoyfulBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'tvNJoyful';
+    src: url('ttf/tvNJoyfulMedium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'tvNJoyful';
+    src: url('ttf/tvNJoyfulLight.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'DMSans';
+    src: url('ttf/DMSans.ttf') format('truetype');
+  }  
+  
+  * {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  a {
+    text-decoration: none;
+  }
+  ul{
+    list-style: none;
+  }
+  
+  header{
+    margin: auto;
+    display: flex;
+    width: 1200px;
+    height: 152px;
+    padding: 20px 128px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  #menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 1100px;
+    height: 72px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 18px;
+    flex-shrink: 0;
+  }
+  
+  #logo{
+    display: flex;
+    /*width: 250px;*/
+    height: 46px;
+    flex-direction: row;
+  }
+  #logo h1 {
+    font-family: tvNJoyful;
+    font-weight:bold;
+    font-size:50px;
+    color: black;
+  }
+  #topMenu {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  #topMenu > li {
+    margin-right: 30px
+  }
+  #topMenu > li:last-child {
+    margin-right: 0;
+  }
+  #topMenu > li > a{
+    display:block;
+    color: var(--neutral-500, #64748B);
+    font-family: DMSans;
+    font-size: 17px;
+    font-style: normal;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  #topMenu > li:last-child a {
+    color: #000;
+    font-style: normal;
+    font-weight: 600;
+    padding: 10px 25px; /*나중에 삭제*/
+  }
+  #topMenu > li > a:hover {
+    color:#000;
+  }
+  #topMenu > li:last-child a:hover{
+    color: gray; /*나중에 효과 바꿀 것 - 그림자 혹은 색 변경 */
+  }
+  #login {
+    display: block;
+  }
+  
+  #logout{
+    display: none;
+  }
+  #icon{
+    display: none;
+  }
+  
+  .seperator {
+    width: 1185px;
+    height: 1px;
+    background-color: #E7EAEE;
+    margin: auto 0;
+  }
+
+  #container {
+    margin:0 auto;
+    width:1185px;
+    height:auto;
+  }
+  
+  .board_wrap {
+    width:95%;
+    height: auto;
+    margin: auto;
+    margin-top: 50px;
+
+  }
+
+  #board_title img{
+    width: 45px;
+    height: auto;
+    float: left;
+  }
+  #board_title h1 {
+    font-family: tvNJoyful;
+    font-weight: bold;
+    float: left;
+  }
+  #board_title p {
+    font-family: tvNJoyful;
+    font-weight: medium;
+    color: gray;
+    float: left;
+  }
+  
+
+
+  .board_list {
+    
+  }
+
+
+  
+  footer{
+    width: 1185px;
+    margin: auto;
+    margin-top: 50px;
+    border-top:1px solid #E7EAEE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 0;
+  }
+  #bottomMenu{
+    width:100%;
+    height:auto;
+    position:relative;
+  }
+  #bottomMenu ul li{
+    font-family: tvNJoyful;
+    font-weight:bold;
+    font-size:20px;
+    float:left;
+    padding: 10px 20px;
+    border-right:1px solid #ddd;
+  }
+  #address{
+    width: 100%;
+    margin-top:30px;
+    margin-left: 35px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-family: tvNJoyful;
+    font-weight:bold;
+    font-size:25px;
+    color:#4C5182;
+  }

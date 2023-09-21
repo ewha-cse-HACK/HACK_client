@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/purple.ico">
+    <link rel="apple-touch-icon" href="images/purple.ico"> 
+    <title>Rainbow Letter</title>
+    <link rel="stylesheet" href="ps-view.css">
+</head>
+<body>
+    <header>
+        <div id="menu">
+            <div id="logo">
+                <a href="index.html"><h1>Rainbow Letter</h1></a>
+            </div>
+            <nav>
+                <ul id="topMenu">
+                    <li><a href="index.html">Our Story</a></li>
+                    <li><a href="persona.html">Persona</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <!--<li><a id="loginBtn" href="login.html">Login</a></li>-->
+                    <li><a id="logout" href="#">Logout</a></li>
+                    <li><a id="icon" href="my-page.html"><img src="images/icon.png" alt="프로필"></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="seperator"></div>
+    </header>
+
+    <div id="container">
+        <div class="ps-card">
+            <div class="ps-img">
+                <img src="images/momo.jpeg">
+            </div>
+
+            <div class="ps-info">
+                <h3>모모</h3>
+                <a class="edit-btn" href="ps-edit.html">페르소나 편집 ></a>
+                <div id="ps-btn">
+                    <button id="ps-chat" type="button" onclick="location.href='chat.html'">chat</button>
+                    <button id="ps-diary" type="button" onclick="location.href='diary.html'">diary</button>
+                </div>
+            </div>
+        </div>
+        <div class="add-btn">
+            <a href="ps-create.html">
+                <button id="ps-add" type="button">+</button>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div id="bottomMenu">
+            <ul>
+                <li><a href="https://github.com/ewha-cse-HACK">Github</a></li>
+                <li><a href="https://www.notion.so/HACK-4af07ba7630a4a4895472163585a872c?pvs=4">Notion</a></li>
+                <li><a href="#">Info</a></li>
+                <li><a href="#">E-mail</a></li>
+            </ul>
+        </div>
+        <div id="address">
+            <p>이화여자대학교 컴퓨터공학과</p>
+        </div>
+    </footer>
+    
+    <script src="our-story.js"></script>
+
+</body>
+</html>

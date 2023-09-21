@@ -1,0 +1,349 @@
+@font-face {
+    font-family: 'tvNJoyful';
+    src: url('ttf/tvNJoyfulBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'tvNJoyful';
+    src: url('ttf/tvNJoyfulMedium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'tvNJoyful';
+    src: url('ttf/tvNJoyfulLight.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'DMSans';
+    src: url('ttf/DMSans.ttf') format('truetype');
+  }
+  
+  * {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  a {
+    text-decoration: none;
+  }
+  ul{
+    list-style: none;
+  }
+  
+  header{
+    margin: auto;
+    display: flex;
+    width: 1200px;
+    height: 152px;
+    padding: 20px 128px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  #menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 1100px;
+    height: 72px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 18px;
+    flex-shrink: 0;
+  }
+  
+  #logo{
+    display: flex;
+    /*width: 250px;*/
+    height: 46px;
+    flex-direction: row;
+  }
+  #logo h1 {
+    font-family: tvNJoyful;
+    font-weight:bold;
+    font-size:50px;
+    color: black;
+  }
+  #topMenu {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  #topMenu > li {
+    margin-right: 30px
+  }
+  #topMenu > li:last-child {
+    margin-right: 0;
+  }
+  #topMenu > li > a{
+    display:block;
+    color: var(--neutral-500, #64748B);
+    font-family: DMSans;
+    font-size: 17px;
+    font-style: normal;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  #topMenu > li > a:hover {
+    color:#000;
+    font-weight: 450;
+  }
+  /*
+  #login {
+    display: none;
+  }
+  */
+  #logout {
+    font-weight: 600;
+    color: #4C5182 !important;
+  }
+  #logout:hover{
+    color: #868dc9 !important;
+    font-weight: 650 !important;
+  }
+  
+  .seperator {
+    width: 1185px;
+    height: 1px;
+    background-color: #E7EAEE;
+    margin: auto 0;
+  }
+  
+  #container {
+    margin:0 auto;
+    width:1185px;
+    height:auto;
+  }
+  
+  #species {
+    width: 680px;
+    margin: auto;
+    margin-top: 70px;
+    text-align: center;
+  }
+  #species h1 {
+    font-family: tvNJoyful;
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 20px;
+  }
+  #species h4 {
+    font-family: tvNJoyful;
+    font-weight: bold;
+    font-size: 38px;
+    color: #4C5182;
+    margin-bottom: 40px;
+  }
+  .btn-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  .btn-grid {
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  .button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #E4ECFD;
+  }
+  .button img {
+    width: 180px;
+    height: auto;
+    margin-bottom: 8px;
+  }
+  .db-btn {
+    display: flex;
+    margin: auto;
+  }
+  .db-btn img {
+    width: 188px;
+    height: auto;
+    margin-bottom: 6px;
+  }
+
+
+  #name {
+    width: 680px;
+    margin: auto;
+    margin-top: 150px;
+    text-align: center;
+  }
+  #name h1 {
+    font-family: tvNJoyful;
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 10px;
+  }
+  #name h4 {
+    font-family: tvNJoyful;
+    font-weight: bold;
+    font-size: 38px;
+    color: #4C5182;
+    margin-bottom: 40px;
+  }
+  .input-box {
+    width: 250px;
+    height: 60px;
+    background-color: rgba(151, 171, 190, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    margin-bottom: 30px;
+}
+
+.input-box input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 20px;
+    text-align: center;
+    outline: none;
+}
+
+  #detail {
+    width: 900px;
+    margin: auto;
+    margin-top: 150px;
+    text-align: center;
+  }
+  #detail h4 {
+    font-family: tvNJoyful;
+    font-weight: 550;
+    font-size: 38px;
+    color: black;
+    margin-bottom: 5px;
+  }
+.button-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+.selectable-button {
+    padding: 10px 20px;
+    width: 170px;
+    height: 50px;
+    background-color: rgb(241, 241, 241);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 2px 3px 3px #64748B;
+    font-family: DMSans;
+    font-size: 18px;
+}
+.selectable-button.selected {
+    background-color: skyblue;
+    color: white;
+}
+.selectable-button:focus {
+    outline: none;
+}
+
+
+  #receiver {
+    margin: auto;
+    margin-top: 150px;
+    text-align: center;
+  }
+  #receiver h1 {
+    font-family: tvNJoyful;
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 20px;
+  }
+  #receiver h4 {
+    font-family: tvNJoyful;
+    font-weight: bold;
+    font-size: 38px;
+    color: #4C5182;
+    margin-bottom: 10px;
+  }
+  .input-box {
+    margin-top: 40px;
+  }
+
+
+  #more {
+    width: 900px;
+    margin: auto;
+    margin-top: 150px;
+    text-align: center;
+  }
+  #more h4 {
+    font-family: tvNJoyful;
+    font-weight: 550;
+    font-size: 38px;
+    color: black;
+    margin-bottom: 5px;
+  }
+  .button-grid-low {
+    margin-top: 40px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+  #picture {
+    margin: auto;
+    margin-top: 150px;
+    text-align: center;
+  }
+  #picture h1{
+    font-family: tvNJoyful;
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 20px;
+  }
+
+
+  
+  footer{
+    width: 1185px;
+    margin: auto;
+    margin-top: 50px;
+    border-top:1px solid #E7EAEE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 0;
+  }
+  #bottomMenu{
+    width:100%;
+    height:auto;
+    position:relative;
+  }
+  #bottomMenu ul li{
+    font-family: tvNJoyful;
+    font-weight:bold;
+    font-size:20px;
+    float:left;
+    padding: 10px 20px;
+    border-right:1px solid #ddd;
+  }
+  #address{
+    width: 100%;
+    margin-top:30px;
+    margin-left: 35px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-family: tvNJoyful;
+    font-weight:bold;
+    font-size:25px;
+    color:#4C5182;
+  }
