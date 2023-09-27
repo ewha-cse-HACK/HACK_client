@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import "./style.css";
@@ -12,6 +12,13 @@ function SignUp() {
   const [passwordsMatch, setPasswordsMatch] = useState(true); // 비밀번호 확인 일치 여부
   const [isRegistered, setIsRegistered] = useState(false);
 
+  const navigate = useNavigate();
+
+  const handleSignUpSuccess = () => {
+    // 사용자를 홈 페이지로 리다이렉트
+    navigate("/");
+  };
+
   // 가입하기 버튼 클릭 시 실행되는 함수
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,14 +26,11 @@ function SignUp() {
     // 비밀번호와 비밀번호 확인이 일치하는지 확인
     if (password === confirmPassword) {
       try {
-        const response = await axios.post(
-          "http://13.209.173.241:8080/api/join",
-          {
-            email,
-            password,
-            nickname,
-          }
-        );
+        const response = await axios.post("/api/join", {
+          email,
+          password,
+          nickname,
+        });
 
         // 회원가입 성공 시 서버 응답 출력
         console.log(response.data);
