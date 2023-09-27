@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'tvnEnjoy';
+    src: url('../../assets/fonts/tvNJoyfulBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DMSans';
+    src: url('../../assets/fonts/DMSans.ttf') format('truetype');
+}
+
+#bottomMenu {
+    width: 100%;
+    height: auto; 
+    position: relative;
+    margin: 20px;
+}
+#bottomMenu ul li {
+    margin: auto;
+    font-family: DMSans;
+    font-weight: Medium;
+    font-size: 15px;
+    text-align: center;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.address {
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 35px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 25px;
+    color: #FFF;
+}

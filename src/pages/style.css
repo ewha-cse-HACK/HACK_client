@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'tvnEnjoy';
+    src: url('../assets/fonts/tvNJoyfulBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DMSans';
+    src: url('../assets/fonts/DMSans.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+
+/*  SignUp  */
+#SignupWrapper {
+    margin: auto;
+    padding: 50px;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#SignupWrapper h1 {
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 50px;
+    /*margin-top: 5%;
+    margin-bottom: 10px;*/
+}
+#SignupWrapper h3 {
+    font-family: DMSans;
+    color: #111B4F;
+    /*margin-bottom: 50px;*/
+}
+#SignButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    margin: 15px auto 0;
+    border-radius: 8px;
+    background: #4C5182;
+    color: white;
+    font-family: DMSans;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+#SignButton:hover {
+    background: #283064;
+}
+
+
+/*  Login  */
+#LoginWrapper {
+    margin: auto;
+    padding: 50px;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#LoginWrapper h2 {
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 50px;
+    /*margin-top: 5%;
+    margin-bottom: 10px;*/
+}
+#LoginSubmit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    margin: 15px auto 0;
+    border-radius: 8px;
+    background: #4C5182;
+    color: white;
+    font-family: DMSans;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+#LoginSubmit:hover {
+    background: #283064;
+}

@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'tvnEnjoy';
+    src: url('../../assets/fonts/tvNJoyfulBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DMSans';
+    src: url('../../assets/fonts/DMSans.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 1100px;
+    height: 72px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 18px;
+    flex-shrink: 0;
+}
+
+#logo {
+    display: flex; 
+    height: 46px;
+    flex-direction: row;
+}
+#logo h1 {
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 50px;
+    color: black;
+}
+
+#topMenu {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-family: DMSans;
+}
+#topMenu > li {
+    margin-right: 30px;
+}
+#topMenu > li:last-child {
+    margin-right: 0;
+}
+
+/*
+ * a > Link 변경사항 및 버튼 함수 처리 예정
+#topMenu > li > a{
+    display:block;
+    color: var(--neutral-500, #64748B);
+    font-family: DMSans;
+    font-size: 17px;
+    font-style: normal;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  #topMenu > li:last-child a {
+    color: #000;
+    font-style: normal;
+    font-weight: 600;
+    padding: 10px 25px; -나중에 삭제
+  }
+  #topMenu > li > a:hover {
+    color:#000;
+  }
+  #topMenu > li:last-child a:hover{
+    color: gray; 나중에 효과 바꿀 것 - 그림자 혹은 색 변경
+  }
+  #login {
+    display: block;
+  }
+  #logout {
+    font-weight: 600;
+    color: #4C5182 !important;
+  }
+  #logout:hover{
+    color: #868dc9 !important;
+    font-weight: 650 !important;
+  }*/
