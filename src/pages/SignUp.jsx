@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import "./style.css";
 
@@ -11,13 +13,7 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true); // 비밀번호 확인 일치 여부
   const [isRegistered, setIsRegistered] = useState(false);
-
   const navigate = useNavigate();
-
-  const handleSignUpSuccess = () => {
-    // 사용자를 홈 페이지로 리다이렉트
-    navigate("/");
-  };
 
   // 가입하기 버튼 클릭 시 실행되는 함수
   const handleSubmit = async (e) => {
@@ -37,9 +33,14 @@ function SignUp() {
 
         // 회원가입 성공 메세지를 표시
         setIsRegistered(true);
+
+        //알림 표시 및 리다이렉트
+        toast.success("회원가입에 성공하였습니다");
+        navigate("/pages/Login");
       } catch (error) {
         // 서버 요청 실패 시 오류 처리
         console.error("회원가입 오류:", error);
+        // **추가 - 회원가입 실패 이유 리포트?
       }
     } else {
       setPasswordsMatch(false); // 비밀번호 불일치 시 상태 업데이트

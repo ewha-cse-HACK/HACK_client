@@ -5,16 +5,10 @@ import axios from "axios";
 import "./style.css";
 
 function Login() {
-  const navigate = useNavigate();
-
-  const handleLoginSuccess = () => {
-    // 사용자를 홈 페이지로 리다이렉트
-    navigate("/");
-  };
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
