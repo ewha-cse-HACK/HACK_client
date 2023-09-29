@@ -8,6 +8,8 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Persona from './pages/Persona';
+import PersonaView from './pages/PersonaView';
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/SignUp" element={<SignUp />} />
+          <Route path="/pages/Persona" element={<Persona />} />
         </Routes>
         <Footer />
     </Router>
