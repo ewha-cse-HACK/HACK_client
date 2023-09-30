@@ -65,7 +65,8 @@ function PersonaSetting() {
 export default PersonaSetting;
 
 const SettingWrapper = styled.div`
-  margin: 30px;
+  margin: auto;
+  padding: 30px;
   width: 1000px;
   display: flex;
   justify-content: center;

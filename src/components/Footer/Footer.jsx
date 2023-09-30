@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 import "./Footer.css";
 
@@ -8,18 +7,10 @@ function Footer() {
     <FooterWrapper>
       <div id="bottomMenu">
         <ul>
-          <li>
-            <Link to="https://github.com/ewha-cse-HACK">Github</Link>
-          </li>
-          <li>
-            <Link to="/">Info</Link>
-          </li>
-          <li>
-            <Link to="/">Explore</Link>
-          </li>
-          <li>
-            <Link to="/">Pet Loss</Link>
-          </li>
+          <li>Github</li>
+          <li>Info</li>
+          <li>Explore</li>
+          <li>Pet Loss</li>
         </ul>
       </div>
       <div className="address">
@@ -40,7 +31,29 @@ const FooterWrapper = styled.footer`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  background-color: #000;
+  background-color: #283064;
+
+  #bottomMenu {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  #bottomMenu ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+  }
+  #bottomMenu ul li {
+    font-family: DMSans;
+    font-weight: Medium;
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    padding-bottom: 0px;
+    color: #b0b2cd;
+  }
 `;
 
 export default Footer;
