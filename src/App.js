@@ -6,10 +6,17 @@ import './App.css';
 import Home from './pages/Home';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import Profile from './components/Profile';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Persona from './pages/Persona';
 import PersonaView from './pages/PersonaView';
+import PersonaSetting from './pages/PersonaSetting';
+import PersonaEdit from './pages/PersonaEdit';
+import Chat from './pages/Chat';
+import Diary from './pages/Diary';
+import Community from './pages/Community';
+import MyPage from './pages/MyPage';
 
 
 function App() {
@@ -34,6 +41,12 @@ function App() {
           <Route path="/pages/SignUp" element={<SignUp />} />
           <Route path="/pages/Persona" element={<Persona />} />
           <Route path="/pages/PersonaView" element={<PersonaView />} />
+          <Route path="/pages/PersonaSetting" element={<PersonaSetting />} />
+          <Route path="/pages/PersonaEdit" element={<PersonaEdit />} />
+          <Route path="/pages/Chat" element={<Chat />} />
+          <Route path="/pages/Diary" element={<Diary />} />
+          <Route path="/pages/Commnunity" element={<Community />} />
+          <Route path="/pages/MyPage" element={<MyPage />} />
         </Routes>
         <Footer />
     </Router>

@@ -1,5 +1,4 @@
-import React, { Component, useState } from "react";
-import axios from "axios";
+import React, { Component } from "react";
 import styled from "styled-components";
 
 class Home extends Component {
