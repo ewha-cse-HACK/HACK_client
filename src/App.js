@@ -33,6 +33,7 @@ function App() {
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/SignUp" element={<SignUp />} />
           <Route path="/pages/Persona" element={<Persona />} />
+          <Route path="/pages/PersonaView" element={<PersonaView />} />
         </Routes>
         <Footer />
     </Router>
