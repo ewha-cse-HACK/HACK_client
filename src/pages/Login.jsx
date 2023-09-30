@@ -44,39 +44,61 @@ function Login() {
       <ImageStyled src="/images/astronaut.jpg" />
       <h2>무지개 편지</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">이메일:</label>
-          <input
+        <LoginInput>
+          <Input
             type="email"
             id="email"
+            placeholder="이메일을 입력해주세요"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </div>
-        <div>
-          <label htmlFor="password">비밀번호:</label>
-          <input
+        </LoginInput>
+        <LoginInput>
+          <Input
             type="password"
             id="password"
+            placeholder="비밀번호를 입력해주세요"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </div>
+        </LoginInput>
         {loginError && <p style={{ color: "red" }}>{loginError}</p>}
         <button id="LoginSubmit" type="submit">
           로그인
         </button>
       </form>
-      <Link to="/pages/SignUp">무지개 편지 회원이 아니신가요?</Link>
+      <StyledLink to="/pages/SignUp">무지개 편지 회원이 아니신가요?</StyledLink>
     </div>
   );
 }
 
+const Input = styled.input`
+  padding: 20px;
+  width: 300px;
+  height: 50px;
+  font-size: 15px;
+  border: 1px solid #d2d3e6;
+  border-radius: 8px;
+  margin-bottom: 10px;
+`;
+const LoginInput = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const ImageStyled = styled.img`
-  width: 150px;
+  width: 140px;
   height: auto;
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #343b6e;
+  &:hover {
+    color: black;
+    font-weight: 500;
+  }
 `;
 
 export default Login;

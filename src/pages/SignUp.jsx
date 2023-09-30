@@ -53,41 +53,41 @@ function SignUp() {
       <h3>무지개 편지에 오신 걸 환영합니다!</h3>
       <form onSubmit={handleSubmit}>
         <SignInput>
-          <label htmlFor="nickname">닉네임:</label>
-          <input
+          <Input
             type="text"
             id="nickname"
             value={nickname}
+            placeholder="닉네임"
             onChange={(e) => setNickname(e.target.value)}
             required
           />
         </SignInput>
         <SignInput>
-          <label htmlFor="email">이메일:</label>
-          <input
+          <Input
             type="email"
             id="email"
             value={email}
+            placeholder="이메일"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </SignInput>
         <SignInput>
-          <label htmlFor="password">비밀번호:</label>
-          <input
+          <Input
             type="password"
             id="password"
             value={password}
+            placeholder="비밀번호"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </SignInput>
         <SignInput>
-          <label htmlFor="confirmPassword">비밀번호 확인:</label>
-          <input
+          <Input
             type="password"
             id="confirmPassword"
             value={confirmPassword}
+            placeholder="비밀번호 확인"
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
@@ -112,10 +112,22 @@ const StyledLink = styled(Link)`
     font-weight: 500;
   }
 `;
-
+const Input = styled.input`
+  padding: 20px;
+  width: 300px;
+  height: 50px;
+  font-size: 15px;
+  border: 1px solid #d2d3e6;
+  border-radius: 0px;
+`;
+const LoginInput = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const SignInput = styled.div`
   display: flex;
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
 `;
 
 export default SignUp;

@@ -92,11 +92,19 @@ ul {
     color: white;
     font-family: DMSans;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 17px;
     cursor: pointer;
 }
 #LoginSubmit:hover {
     background: #283064;
+}
+#nickname {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+#confirmPassword {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 /*  Persona  */
@@ -118,38 +126,29 @@ ul {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4)
 }
 
+
 /*  PersonaView  */
 #addContainer {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: white;
+    fill: white;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
 }
 #addPersona {
-
-}
-/*
-.add-btn {
-  border-radius: 50%;
-  width: 90px;
-  height: 90px;
-  background-color: white;
-  fill: #FFF;
-  stroke-width: 0.5px;
-  stroke: #D9D9D9;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-#ps-add {
-  color: #64748B;
-  text-align: center;
-  font-size: 60px;
-  font-weight: 100;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+    color: gray;
+    font-size: 50px;
+    font-weight: lighter;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-*/
 
 /*  Profile  */
