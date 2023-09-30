@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-// import "./style.css";
+import "./style.css";
 
 function PersonaSetting() {
   const [petName, setPetName] = useState("");
@@ -40,7 +40,7 @@ function PersonaSetting() {
 
   return (
     <SettingWrapper>
-      <div id="send-letter">
+      <div id="startPersona">
         <h1>지금부터 무지개 다리 너머로 편지를 보내볼까요?</h1>
         <ImageStyled src="/images/letter1.png" />
         <h2>편지를 받을 당신의 동물에 대해 알려주세요.</h2>
@@ -48,11 +48,7 @@ function PersonaSetting() {
           앞으로 몇 가지 질문을 통해 누구에게 편지를 보낼지 알아볼 거예요,
         </h5>
         <h5>당신의 편지를 기다리고 있을 가족을 위해 힘내서 만들어 보아요!</h5>
-        <button
-          id="go-create"
-          type="button"
-          onclick="location.href='ps-create.html'"
-        >
+        <button id="goToCreate" type="submit">
           페르소나 설정 시작!
         </button>
       </div>
@@ -66,15 +62,15 @@ export default PersonaSetting;
 
 const SettingWrapper = styled.div`
   margin: auto;
-  padding: 30px;
-  width: 1000px;
+  padding: 20px;
+  width: 1185px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 `;
 const ImageStyled = styled.img`
-  margin: 20px;
-  max-width: 40%;
+  margin: auto;
+  width: 50%;
   height: auto;
 `;
