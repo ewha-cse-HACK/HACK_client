@@ -13,6 +13,9 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("이메일: ", email);
+    console.log("비밀번호: ", password);
+
     try {
       const response = await axios.post(
         "http://13.209.173.241:8080/api/login",
