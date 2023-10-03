@@ -22,11 +22,14 @@ function SignUp() {
     // 비밀번호와 비밀번호 확인이 일치하는지 확인
     if (password === confirmPassword) {
       try {
-        const response = await axios.post("/api/join", {
-          email,
-          password,
-          nickname,
-        });
+        const response = await axios.post(
+          "http://13.209.173.241:8080/api/join",
+          {
+            email,
+            password,
+            nickname,
+          }
+        );
 
         // 회원가입 성공 시 서버 응답 출력
         console.log(response.data);

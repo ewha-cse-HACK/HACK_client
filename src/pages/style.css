@@ -167,13 +167,15 @@ ul {
     margin: 40px 0;
 }
 #startPersona h2{
+    font-family: DMSans;
     font-weight: bold;
-    font-size: 45px;
+    font-size: 30px;
     margin: 30px 0;
 }
 #startPersona h5{
+    font-family: DMSans;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 20px;
     margin: 5px 0;
     color: #B05454;
 }
@@ -194,7 +196,12 @@ ul {
     background: #805475;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4)
   }
-
+  
+  #targetElement {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
 
   #species {
     width: 680px;
@@ -203,21 +210,22 @@ ul {
     text-align: center;
   }
   #species h1 {
-    font-family: tvNJoyful;
+    font-family: tvnEnjoy;
     font-weight: bold;
     font-size: 55px;
     margin-bottom: 20px;
   }
   #species h4 {
-    font-family: tvNJoyful;
+    font-family: DMSans;
     font-weight: bold;
-    font-size: 38px;
+    font-size: 30px;
     color: #4C5182;
     margin-bottom: 40px;
   }
   .btn-container {
     display: flex;
     align-items: flex-start;
+    margin-bottom: 100px;
   }
   .btn-grid {
     margin: auto;
@@ -225,27 +233,176 @@ ul {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
-  .button {
+  .speciesButton {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     border: 2px solid #E4ECFD;
+    cursor: pointer;
   }
-  .button img {
-    width: 180px;
+  .speciesButton img {
+    width: 160px;
     height: auto;
     margin-bottom: 8px;
   }
-  .db-btn {
+  .speciesButton:hover {
+    box-shadow: 3px 0 5px #8f92b4, 0 3px 5px #8f92b4;
+  }
+  .notHereBtn {
     display: flex;
     margin: auto;
+    cursor: pointer;
   }
-  .db-btn img {
-    width: 188px;
+  .notHereBtn img {
+    width: 168px;
     height: auto;
     margin-bottom: 6px;
   }
+  .notHereBtn:hover {
+    box-shadow: 3px 0 5px #8f92b4, 0 3px 5px #8f92b4;
+  }
+
+
+#name h1 {
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+#name input {
+    padding: 10px;
+    font-size: 15px;
+    width: 200px;
+    height: 40px;
+    margin-bottom: 100px;
+}
+
+#character {
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 100px;
+}
+#character p {
+    font-family: DMSans;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+#character select {
+    margin: 20px;
+    width: 150px;
+    padding: 10px;
+    font-family: DMSans;
+    font-size: 15px;
+}
+
+#ownerName h1 {
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+#ownerName p {
+    font-family: DMSans;
+    font-weight: bold;
+    font-size: 18px;
+    color: #4C5182;
+    margin-bottom: 30px;
+}
+#ownerName input {
+    padding: 10px;
+    font-size: 15px;
+    width: 200px;
+    height: 40px;
+    margin-bottom: 100px;
+}
+
+#textBox h4 {
+    display: block;
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+#textBox h5 {
+    font-family: DMSans;
+    font-size: 20px;
+    color: #4C5182;
+    margin-bottom: 30px;
+}
+#more {
+    display: flex;
+    justify-content: center;
+}
+#selectGroup {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 100px;
+}
+#selectGroup select{
+    margin: 20px;
+    width: 170px;
+    padding: 10px;
+    font-family: DMSans;
+    font-size: 15px;
+}
+
+#petImage h1{
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 30px;
+}
+#petImage input {
+    margin: auto 0; 
+    font-size: 15px;
+    margin-bottom: 100px;
+}
+
+#passedDate h1 {
+    font-family: tvnEnjoy;
+    font-weight: bold;
+    font-size: 55px;
+    margin-bottom: 30px;
+}
+#passedDate input{
+    font-size: 15px;
+    margin-bottom: 100px;
+}
+
+
+#backBtn {
+    margin: 10px;
+    width: 140px;
+    height: 55px;
+    font-family: DMSans;
+    font-weight: bold;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 56px;
+    border: 2px solid var(--Dark-Blue, #0A2640);
+    background: white;
+    margin-bottom: 80px;
+}
+#doneBtn {
+    margin: 10px;
+    width: 140px;
+    height: 55px;
+    font-family: DMSans;
+    font-weight: bold;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 56px;
+    color: white;
+    background: rgba(0, 0, 0, 0.83);
+}
+
 
 /* Top Button */
 .scroll-buttons {

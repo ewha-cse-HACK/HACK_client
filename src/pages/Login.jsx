@@ -14,17 +14,20 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("/api/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://13.209.173.241:8080/api/login",
+        {
+          email,
+          password,
+        }
+      );
 
       if (response.data === "로그인 성공") {
-        // 로그인 성공 시 JWT 토큰을 저장
-        localStorage.setItem("token", response.data.token);
-
         // 로그인 성공 메시지 등의 작업을 수행
         console.log("로그인 성공!");
+
+        // 로그인 성공 시 JWT 토큰을 저장
+        localStorage.setItem("token", response.data.token);
 
         // 홈 화면으로 리다이렉트
         navigate("/");
