@@ -20,7 +20,7 @@ import MyPage from './pages/MyPage';
 
 function App() {
   //앱 로드될 때 토큰이 있는 경우 Axios 기본 헤더에 토큰 추가, 이후 HTTP 요청에서 토큰 함께 전송 
-  useEffect(() => {
+  /*useEffect(() => {
     const token = localStorage.getItem('token');
 
     if (token) {
@@ -29,7 +29,7 @@ function App() {
       // 토큰이 없을 경우에 대한 처리 - 로그인이 필요합니다 넣자 
       // 여기 입력해라 꼭 봐라 
     }
-  }, []);
+  }, []);*/
 
   return (
     <Router>
@@ -43,6 +43,7 @@ function App() {
           <Route path="/pages/PersonaSetting" element={<PersonaSetting />} />
           <Route path="/pages/PersonaEdit" element={<PersonaEdit />} />
           <Route path="/pages/Chat" element={<Chat />} />
+          <Route path="/rainbow-letter/chat/:pet_id" component={Chat} />
           <Route path="/pages/Diary" element={<Diary />} />
           <Route path="/pages/Commnunity" element={<Community />} />
           <Route path="/pages/MyPage" element={<MyPage />} />

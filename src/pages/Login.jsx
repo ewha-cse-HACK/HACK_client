@@ -7,10 +7,11 @@ import "./style.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
   const [loginError, setLoginError] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     console.log("이메일: ", email);
@@ -25,17 +26,16 @@ function Login() {
         }
       );
 
-      if (response.data === "로그인 성공") {
-        // 로그인 성공 메시지 등의 작업을 수행
-        console.log("로그인 성공!");
-
-        // 로그인 성공 시 JWT 토큰을 저장
+      if (response.data.token) {
+        // 로그인 성공이면
+        setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
 
-        // 홈 화면으로 리다이렉트
+        console.log("로그인 성공!");
         navigate("/");
       } else {
         // 로그인 실패 시 에러 처리
+        console.log("로그인 실패입니다.");
         setLoginError("로그인 실패: 이메일 또는 비밀번호가 올바르지 않습니다.");
       }
     } catch (error) {
@@ -49,7 +49,7 @@ function Login() {
     <div id="LoginWrapper">
       <ImageStyled src="/images/astronaut.jpg" />
       <h2>무지개 편지</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <LoginInput>
           <Input
             type="email"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { useParams, Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import "./style.css";
@@ -7,6 +7,7 @@ import "./style.css";
 function Chat() {
   const [messages, setMessages] = useState([]); // 대화 내용을 저장하는 상태
   const [userInput, setUserInput] = useState(""); // 유저의 입력을 저장하는 상태
+  const { pet_id } = useParams();
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value); // 입력 값 업데이트

@@ -33,6 +33,9 @@ function SignUp() {
 
         // 회원가입 성공 시 서버 응답 출력
         console.log(response.data);
+        console.log("nickname: ", nickname);
+        console.log("email: ", email);
+        console.log("password: ", password);
 
         // 회원가입 성공 메세지를 표시
         setIsRegistered(true);
