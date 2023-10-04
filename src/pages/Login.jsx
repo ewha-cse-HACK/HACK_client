@@ -26,9 +26,10 @@ function Login() {
         }
       );
 
+      console.log("백엔드 응답:", response);
+
       if (response.data === "로그인 실패") {
         console.log(response.data);
-        console.log("로그인 실패입니다.");
         setLoginError("로그인 실패: 이메일 또는 비밀번호가 올바르지 않습니다.");
       } else {
         setToken(response.data.token);
@@ -41,26 +42,6 @@ function Login() {
       console.error("로그인 오류:", error);
       setLoginError("로그인 중 오류가 발생했습니다.");
     }
-
-    /*
-      if (response.data.token) {
-        // 로그인 성공이면
-        setToken(response.data.token);
-        localStorage.setItem("token", response.data.token);
-
-        console.log("로그인 성공!");
-        navigate("/");
-      } else {
-        // 로그인 실패 시 에러 처리
-        console.log("로그인 실패입니다.");
-        setLoginError("로그인 실패: 이메일 또는 비밀번호가 올바르지 않습니다.");
-      }
-    } catch (error) {
-      // 네트워크 오류 또는 기타 오류 처리
-      console.error("로그인 오류:", error);
-      setLoginError("로그인 중 오류가 발생했습니다.");
-    }
-    */
   };
 
   return (

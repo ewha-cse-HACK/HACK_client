@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./Header.css";
 
 function Header() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태를 추적하는 상태 변수
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []); // 컴포넌트가 마운트될 때 로컬 스토리지에서 토큰을 읽어옴
+
+  const handleLogout = () => {
+    // 로그아웃 API 호출?
+    setIsLoggedIn(false); // 로그아웃 상태로 변경
+    localStorage.removeItem("token"); // 로컬 스토리지에서 토큰 제거
+  };
+
   return (
     <HeaderWrapper>
       <div id="menu">
@@ -23,9 +38,24 @@ function Header() {
             <li>
               <StyledLink to="/pages/Commnunity">Community</StyledLink>
             </li>
-            <li>
-              <StyledLink to="/pages/Login">Login</StyledLink>
-            </li>
+            {isLoggedIn ? (
+              <>
+                <li>
+                  <button onClick={handleLogout}>Logout</button>
+                </li>
+                <li>
+                  <button id="goMyPage">
+                    <Link to="/pages/MyPage">
+                      <img src="/images/myPage.png" />
+                    </Link>
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <StyledLink to="/pages/Login">Login</StyledLink>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
@@ -54,7 +84,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Seperator = styled.div`
-  width: 1185px;
+  width: 1800px;
   height: 1px;
   background-color: #e7eaee;
   margin: auto 0;

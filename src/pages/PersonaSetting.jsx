@@ -107,7 +107,7 @@ function PersonaSetting() {
       navigate("/pages/PersonaView");
 
       const response = await axios.post(
-        "http://13.209.173.241:8080/species",
+        "http://13.209.173.241:8080/rainbow-letter/persona/save",
         formData,
         {
           headers: {
