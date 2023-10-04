@@ -134,7 +134,7 @@ ul {
     transition: box-shadow 0.3s;
 }
 #PersonaBtn:hover {
-    background-color: #bee497;
+    background-color: #6d719b;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4)
 }
 

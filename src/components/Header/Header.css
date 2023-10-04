@@ -9,7 +9,7 @@
     src: url('../../assets/fonts/DMSans.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Pretendard-Regular';
+  font-family: 'Pretendard';
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
@@ -51,8 +51,8 @@ ul {
 }
 #logo h1 {
     font-family: UhBeeSe_hyun;
-    font-weight: 600;
-    font-size: 40px;
+    font-weight: 500;
+    font-size: 36px;
     color: black;
 }
 
@@ -60,7 +60,7 @@ ul {
     display: flex;
     align-items: center;
     margin-top: 10px;
-    font-family: DMSans;
+    font-family: Pretendard;
 }
 #topMenu > li {
     margin-right: 30px;
