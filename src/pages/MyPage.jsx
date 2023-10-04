@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 // import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-// import axios from "axios";
-// import "./style.css";
+import axios from "axios";
+import "./style.css";
 
 function MyPage() {
   return (
     <Wrapper>
       <h1>마이페이지</h1>
+      <div id="imgContainer">
+        <img src="/images/myIcon.png" />
+      </div>
     </Wrapper>
   );
 }

@@ -88,6 +88,12 @@ const LogoutBtn = styled.button`
   outline: none;
   background-color: transparent;
   cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+  color: #343b6e;
+  &:hover {
+    color: #6d719b;
+  }
 `;
 
 const Seperator = styled.div`

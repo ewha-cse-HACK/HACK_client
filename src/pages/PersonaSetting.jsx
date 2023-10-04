@@ -109,7 +109,7 @@ function PersonaSetting() {
       console.log(jsonData);
 
       alert("페르소나 생성이 완료되었습니다!");
-      navigate("/pages/PersonaView");
+      navigate("/pages/Persona");
 
       const response = await axios.post(
         "http://13.209.173.241:8080/rainbow-letter/persona/save",

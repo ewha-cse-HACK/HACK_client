@@ -9,7 +9,7 @@ function Chat() {
   const [messages, setMessages] = useState([]); // 대화 내용을 저장하는 상태
   const [userInput, setUserInput] = useState(""); // 유저의 입력을 저장하는 상태
   const [loading, setLoading] = useState(false);
-  const { pet_id } = useParams();
+  const { petId } = useParams();
   const navigate = useNavigate();
 
   const handleGoBack = () => {
@@ -23,26 +23,26 @@ function Chat() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    try {
-      const response = await axios.post(
-        "http://13.209.173.241:8080/rainbow-letter/chat/${pet_id}",
-        {
-          question: userInput,
-        }
-      );
-      console.log(response);
-      setMessages([...messages, { text: userInput, type: "user" }]);
-      setMessages([...messages, { text: response.data, type: "bot" }]);
-      setUserInput(""); // 입력 창 비우기
-    } catch (error) {
-      console.error("API 요청 실패:", error);
-      // 오류 처리 로직 추가
-    } finally {
-      setLoading(false);
-    }
+    const fetchPetData = async (petId) => {
+      try {
+        const response = await axios.post(
+          "http://13.209.173.241:8080/rainbow-letter/chat/${pet_id}",
+          {
+            question: userInput,
+          }
+        );
+        console.log(response);
+        setMessages([...messages, { text: userInput, type: "user" }]);
+        setMessages([...messages, { text: response.data, type: "bot" }]);
+        setUserInput(""); // 입력 창 비우기
+      } catch (error) {
+        console.error("API 요청 실패:", error);
+        // 오류 처리 로직 추가
+      } finally {
+        setLoading(false);
+      }
+    };
   };
-
   const handleKeyDown = (e) => {
     if (e && e.key === "Enter") {
       e.preventDefault();

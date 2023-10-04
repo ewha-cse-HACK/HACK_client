@@ -16,6 +16,7 @@ import Chat from './pages/Chat';
 import Diary from './pages/Diary';
 import Community from './pages/Community';
 import MyPage from './pages/MyPage';
+import Loading from './pages/Loading'
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           <Route path="/pages/Diary" element={<Diary />} />
           <Route path="/pages/Commnunity" element={<Community />} />
           <Route path="/pages/MyPage" element={<MyPage />} />
+          <Route path="/pages/Loading" element={<Loading />} />
         </Routes>
         <Footer />
     </Router>

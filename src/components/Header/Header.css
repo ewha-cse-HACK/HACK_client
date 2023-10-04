@@ -56,12 +56,6 @@ ul {
 #topMenu > li:last-child {
     margin-right: 0;
 }
-#logout {
-  width: 100px;
-  font-weight: 600;
-  color: #4C5182;
-  border: none;
-}
 #goMyPage {
   border: none;
   outline: none;
@@ -69,7 +63,7 @@ ul {
   cursor: pointer;
 }
 #goMyPage:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: black;
 }
 
 /*
