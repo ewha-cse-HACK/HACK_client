@@ -32,6 +32,12 @@ function Chat() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   return (
     <ChatWrapper>
       <ChatContainer>
@@ -51,6 +57,7 @@ function Chat() {
           id="inputField"
           value={userInput}
           onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
           placeholder="메세지를 입력하세요"
         />
         <button id="sendBtn" onClick={handleSubmit}>
