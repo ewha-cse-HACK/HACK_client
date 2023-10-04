@@ -7,20 +7,21 @@ import "./style.css";
 function PersonaSetting() {
   const [speciesName, setSpeciesName] = useState("");
   const [name, setName] = useState("");
-  const [charOne, setCharOne] = useState("");
-  const [charTwo, setCharTwo] = useState("");
+  const [charOne, setCharOne] = useState(null);
+  const [charTwo, setCharTwo] = useState(null);
   const [ownerName, setOwnerName] = useState("");
-  const [favoritePlay, setFavoritePlay] = useState("");
-  const [customPlay, setCustomPlay] = useState("");
-  const [favoriteSnack, setFavoriteSnack] = useState("");
-  const [favoriteTime, setFavoriteTime] = useState("");
-  const [habit, setHabit] = useState("");
-  const [favoritePlace, setFavoritePlace] = useState("");
-  const [routine, setRoutine] = useState("");
+  const [favoritePlay, setFavoritePlay] = useState(null);
+  const [customPlay, setCustomPlay] = useState(null);
+  const [favoriteSnack, setFavoriteSnack] = useState(null);
+  const [favoriteTime, setFavoriteTime] = useState(null);
+  const [habit, setHabit] = useState(null);
+  const [favoritePlace, setFavoritePlace] = useState(null);
+  const [routine, setRoutine] = useState(null);
   const [petImage, setPetImage] = useState(null);
   const [passed_date, setPassedDate] = useState(null);
   const navigate = useNavigate();
   const [showTopButton, setShowTopButton] = useState(false);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,18 +101,24 @@ function PersonaSetting() {
       /*const formattedDate = passed_date.toISOString(); // Date 객체를 ISO 형식의 문자열로 변환
         formData.append("passed_date", formattedDate);*/
 
+      const formDataObject = {};
       formData.forEach((value, key) => {
-        console.log(key, value);
+        formDataObject[key] = value;
       });
+      const jsonData = JSON.stringify(formDataObject);
+      console.log("JSON 확인");
+      console.log(jsonData);
+
       alert("페르소나 생성이 완료되었습니다!");
       navigate("/pages/PersonaView");
 
       const response = await axios.post(
         "http://13.209.173.241:8080/rainbow-letter/persona/save",
-        formData,
+        jsonData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );
@@ -145,35 +152,35 @@ function PersonaSetting() {
                 <div
                   className="speciesButton"
                   id="bt1"
-                  onClick={() => setSpeciesName("dog")}
+                  onClick={() => setSpeciesName("강아지")}
                 >
                   <img src="/images/dog.png" alt="강아지" />
                 </div>
                 <div
                   className="speciesButton"
                   id="bt2"
-                  onClick={() => setSpeciesName("cat")}
+                  onClick={() => setSpeciesName("고양이")}
                 >
                   <img src="/images/cat.png" alt="고양이" />
                 </div>
                 <div
                   className="speciesButton"
                   id="bt3"
-                  onClick={() => setSpeciesName("bird")}
+                  onClick={() => setSpeciesName("새")}
                 >
                   <img src="/images/bird.png" alt="새" />
                 </div>
                 <div
                   className="speciesButton"
                   id="bt4"
-                  onClick={() => setSpeciesName("hamster")}
+                  onClick={() => setSpeciesName("")}
                 >
                   <img src="/images/mouse.png" alt="햄스터" />
                 </div>
               </div>
               <div
                 className="notHereBtn"
-                onClick={() => setSpeciesName("others")}
+                onClick={() => setSpeciesName("기타")}
               >
                 <img src="/images/not_here.png" alt="앗! 여기 없어요" />
               </div>
@@ -198,16 +205,16 @@ function PersonaSetting() {
               onChange={(e) => setCharOne(e.target.value)}
             >
               <option value="null">--선택안함--</option>
-              <option value="calm">차분함</option>
-              <option value="active">활발함</option>
-              <option value="chatter">수다스러움</option>
-              <option value="quiet">과묵함</option>
-              <option value="charming">애교스러움</option>
-              <option value="timid">소심함</option>
-              <option value="social">사교적</option>
-              <option value="independent">독립적</option>
-              <option value="odd">엉뚱함</option>
-              <option value="distracted">산만함</option>
+              <option value="차분함">차분함</option>
+              <option value="활발함">활발함</option>
+              <option value="수다스러움">수다스러움</option>
+              <option value="과묵함">과묵함</option>
+              <option value="애교스러움">애교스러움</option>
+              <option value="소심함">소심함</option>
+              <option value="사교적">사교적</option>
+              <option value="독립적">독립적</option>
+              <option value="엉뚱함">엉뚱함</option>
+              <option value="산만함">산만함</option>
             </select>
             <select
               id="charTwo"
@@ -215,16 +222,16 @@ function PersonaSetting() {
               onChange={(e) => setCharTwo(e.target.value)}
             >
               <option value="null">--선택안함--</option>
-              <option value="calm">차분함</option>
-              <option value="active">활발함</option>
-              <option value="chatter">수다스러움</option>
-              <option value="quiet">과묵함</option>
-              <option value="charming">애교스러움</option>
-              <option value="timid">소심함</option>
-              <option value="social">사교적</option>
-              <option value="independent">독립적</option>
-              <option value="odd">엉뚱함</option>
-              <option value="distracted">산만함</option>
+              <option value="차분함">차분함</option>
+              <option value="활발함">활발함</option>
+              <option value="수다스러움">수다스러움</option>
+              <option value="과묵함">과묵함</option>
+              <option value="애교스러움">애교스러움</option>
+              <option value="소심함">소심함</option>
+              <option value="사교적">사교적</option>
+              <option value="독립적">독립적</option>
+              <option value="엉뚱함">엉뚱함</option>
+              <option value="산만함">산만함</option>
             </select>
           </div>
           <div id="ownerName">

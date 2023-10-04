@@ -17,12 +17,19 @@ function Login() {
     console.log("이메일: ", email);
     console.log("비밀번호: ", password);
 
+    const data = {
+      email: email,
+      password: password,
+    };
+
     try {
       const response = await axios.post(
         "http://13.209.173.241:8080/api/login",
+        JSON.stringify(data),
         {
-          email,
-          password,
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
@@ -32,8 +39,8 @@ function Login() {
         console.log(response.data);
         setLoginError("로그인 실패: 이메일 또는 비밀번호가 올바르지 않습니다.");
       } else {
-        setToken(response.data.token);
-        localStorage.setItem("token", response.data.token);
+        setToken(response.data);
+        localStorage.setItem("token", response.data);
 
         console.log("로그인 성공!");
         navigate("/");
