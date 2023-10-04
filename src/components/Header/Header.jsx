@@ -41,7 +41,7 @@ function Header() {
             {isLoggedIn ? (
               <>
                 <li>
-                  <button onClick={handleLogout}>Logout</button>
+                  <LogoutBtn onClick={handleLogout}>Logout</LogoutBtn>
                 </li>
                 <li>
                   <button id="goMyPage">
@@ -81,6 +81,13 @@ const StyledLink = styled(Link)`
   &:hover {
     color: gray;
   }
+`;
+
+const LogoutBtn = styled.button`
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
 `;
 
 const Seperator = styled.div`

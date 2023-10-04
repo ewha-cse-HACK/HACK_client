@@ -35,7 +35,7 @@ const HomeWrapper = styled.div`
 `;
 
 const ImageStyled = styled.img`
-  max-width: 20%;
+  max-width: 40%;
   height: auto;
 `;
 

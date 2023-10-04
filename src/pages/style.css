@@ -491,6 +491,9 @@ ul {
 
 
 /*  Chat  */
+.chat-messages {
+    margin: 20px;
+}
 #inputField {
     margin: 5px;
     padding-left: 16px;

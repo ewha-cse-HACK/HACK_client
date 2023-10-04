@@ -56,6 +56,21 @@ ul {
 #topMenu > li:last-child {
     margin-right: 0;
 }
+#logout {
+  width: 100px;
+  font-weight: 600;
+  color: #4C5182;
+  border: none;
+}
+#goMyPage {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+#goMyPage:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 /*
  * a > Link 변경사항 및 버튼 함수 처리 예정
