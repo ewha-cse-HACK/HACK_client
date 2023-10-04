@@ -106,7 +106,6 @@ function PersonaSetting() {
         formDataObject[key] = value;
       });
       const jsonData = JSON.stringify(formDataObject);
-      console.log("JSON 확인");
       console.log(jsonData);
 
       alert("페르소나 생성이 완료되었습니다!");
