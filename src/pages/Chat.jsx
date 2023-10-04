@@ -84,11 +84,15 @@ const ChatContainer = styled.div`
 const MessageBubble = styled.div`
   margin: 10px;
   padding: 10px;
-  max-width: 80%; /* 최대 너비 설정 */
-  border-radius: 8px; /* 모서리 둥글게 만들기 */
-  color: white; /* 글자 색상 */
+  max-width: 70%; /* 최대 너비 설정 */
   font-size: 14px; /* 글자 크기 */
   word-wrap: break-word; /* 긴 단어 자동 줄바꿈 */
+  background-color: ${(props) =>
+    props.type === "user" ? "#4CAF50" : "#008CBA"};
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  align-self: ${(props) => (props.type === "user" ? "flex-end" : "flex-start")};
 `;
 const InputContainer = styled.div`
   margin: auto;
