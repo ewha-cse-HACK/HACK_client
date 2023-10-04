@@ -11,7 +11,6 @@ function PersonaView() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // Axios를 사용하여 백엔드 API를 호출합니다.
     axios
       .get("http://13.209.173.241:8080/rainbow-letter/persona/list", {
         headers: {

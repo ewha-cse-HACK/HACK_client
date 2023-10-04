@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -15,19 +15,17 @@ function Chat() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // 유저의 입력을 대화 내용에 추가
-    setMessages([...messages, { text: userInput, type: "user" }]);
-    setUserInput(""); // 입력 창 비우기
 
     try {
       const response = await axios.post(
-        "http://13.209.173.241:8080/rainbow-letter/chat/{pet_id}",
+        "http://13.209.173.241:8080/rainbow-letter/chat/${pet_id}",
         {
           question: userInput,
         }
       );
-
-      setMessages([...messages, { text: response.data.answer, type: "bot" }]);
+      setMessages([...messages, { text: userInput, type: "user" }]);
+      setMessages([...messages, { text: response.data, type: "bot" }]);
+      setUserInput(""); // 입력 창 비우기
     } catch (error) {
       console.error("API 요청 실패:", error);
       // 오류 처리 로직 추가
@@ -37,19 +35,16 @@ function Chat() {
   return (
     <ChatWrapper>
       <ChatContainer>
+        <div className="profile-image">
+          {/* 여기에 프로필 이미지를 넣는 코드를 추가하세요 */}
+        </div>
         <div className="chat-messages">
           {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`message-bubble ${
-                message.type === "user" ? "user" : "bot"
-              }`}
-            >
+            <MessageBubble key={index} className={message.type}>
               {message.text}
-            </div>
+            </MessageBubble>
           ))}
         </div>
-        <div id="sender"></div>
       </ChatContainer>
       <InputContainer>
         <input
@@ -86,12 +81,26 @@ const ChatContainer = styled.div`
   border-radius: 6px;
   background-color: #d2d3e6;
 `;
+const MessageBubble = styled.div`
+  margin: 10px;
+  padding: 10px;
+  max-width: 80%; /* 최대 너비 설정 */
+  border-radius: 8px; /* 모서리 둥글게 만들기 */
+  color: white; /* 글자 색상 */
+  font-size: 14px; /* 글자 크기 */
+  word-wrap: break-word; /* 긴 단어 자동 줄바꿈 */
+`;
 const InputContainer = styled.div`
   margin: auto;
   width: 800px;
+  height: 60px;
   margin-top: 30px;
   border-radius: 6px;
   background-color: #d2d3e6;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 const ProfileImage = styled.img`
   width: 80px;

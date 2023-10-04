@@ -491,8 +491,30 @@ ul {
 
 
 /*  Chat  */
-
-
+#inputField {
+    margin: 5px;
+    padding-left: 16px;
+    border: none;
+    width: 660px;
+    height: 50px;
+    font-size: 17px;
+    outline: none;
+}
+#sendBtn {
+    margin: 5px;
+    font-family: DMSans;
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #979CD2;
+}
+#sendBtn:hover {
+    background-color: #5961b6;
+}
 
 
 
