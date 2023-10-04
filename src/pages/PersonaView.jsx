@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -6,14 +6,53 @@ import "./style.css";
 import Profile from "../components/Profile";
 
 function PersonaView() {
+  const [personaList, setPersonaList] = useState([]);
+  const [listSize, setListSize] = useState(0);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    // Axios를 사용하여 백엔드 API를 호출합니다.
+    axios
+      .get("http://13.209.173.241:8080/rainbow-letter/persona/list", {
+        headers: {
+          "X-ACCESS-TOKEN": `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        // API에서 받아온 데이터를 상태에 저장합니다.
+        setPersonaList(response.data.personaList);
+        setListSize(response.data.listSize);
+      })
+      .catch((error) => {
+        // 에러 핸들링 로직을 추가할 수 있습니다.
+        console.error("Error fetching persona data: ", error);
+      });
+  }, []); // 빈 배열을 넣어 한 번만 실행되게 합니다.
+
   return (
     <ViewWrapper>
+      <Profile />
       <div id="addContainer">
         <Link to="/pages/PersonaSetting">
           <button id="addPersona" type="submit">
             +
           </button>
         </Link>
+      </div>
+
+      <div id="outputTest">
+        <h2>페르소나 리스트</h2>
+        <p>페르소나 개수: {listSize}</p>
+        <ul>
+          {personaList.map((persona) => (
+            <li key={persona.petId}>
+              <strong>이름:</strong> {persona.name} <br />
+              <strong>프로필:</strong> {persona.petProfile} <br />
+              <strong>ID:</strong> {persona.petId}
+            </li>
+          ))}
+        </ul>
       </div>
     </ViewWrapper>
     /* 로그인 id체크하고 거기서 페르소나 생성된 거 있는지 체크, 
@@ -29,7 +68,7 @@ export default PersonaView;
 const ViewWrapper = styled.div`
   margin: 70px auto;
   width: 1000px;
-  height: 300px;
+  height: 400px;
   display: flex;
   justify-content: center;
   gap: 120px;

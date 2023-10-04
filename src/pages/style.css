@@ -151,9 +151,6 @@ ul {
 }
 
 
-/*  Profile  */
-
-
 /*  PersonaSetting  */
 #startPersona{
     width: 80%;
@@ -428,8 +425,75 @@ ul {
   }
   
 
-/*  PersonaEdit  */
-
+/*  Profile(Persona)  */
+#profileCard {
+    width: 270px;
+    height: 436px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 3px 4px black;
+}
+#profileImage {
+    width: 270px;
+    height: 270px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#profileImage img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+#profileInfo {
+    height: 166px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#profileInfo h3 {
+    font-family: DMSans;
+    font-size: 22px;
+    font-style: normal;
+    color: #333;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+#buttonContainer {
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+}
+#chat {
+    margin-right: 20px;
+}
+#chat, #diary {
+    width: 100px;
+    height: 35px;
+    font-size: 15px;
+    text-align: center;
+    color: #000;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+#chat:hover, #diary:hover {
+    background-color: aliceblue;
+}
 
 
 /*  Chat  */
+
+
+
+
+
+/*  PersonaEdit  */

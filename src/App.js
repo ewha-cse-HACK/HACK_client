@@ -26,8 +26,7 @@ function App() {
     if (token) {
       axios.defaults.headers.common['X-ACCESS-TOKEN'] = `Bearer ${token}`;
     } else {
-      // 토큰이 없을 경우에 대한 처리 - 로그인이 필요합니다 넣자 
-      // 여기 입력해라 꼭 봐라 
+      console.log("로그인이 필요합니다.");
     }
   }, []);
 
