@@ -172,7 +172,7 @@ function PersonaSetting() {
                 <div
                   className="speciesButton"
                   id="bt4"
-                  onClick={() => setSpeciesName("")}
+                  onClick={() => setSpeciesName("햄스터")}
                 >
                   <img src="/images/mouse.png" alt="햄스터" />
                 </div>

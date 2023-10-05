@@ -1,26 +1,27 @@
 import React, { useState } from "react";
-// import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-// import axios from "axios";
-// import "./style.css";
 import { DotLoader } from "react-spinners";
 
-function Loading() {
+const Loading = ({ loading }) => {
   return (
-    <Wrapper>
+    <LoadingOverlay loading={loading.toString()}>
       <DotLoader color="#343B6E" size={15} />
       <h1>Now Loading . . .</h1>
-    </Wrapper>
+    </LoadingOverlay>
   );
-}
+};
+
+const LoadingOverlay = styled.div`
+  display: ${(props) => (props.loading ? "flex" : "none")};
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+`;
 
 export default Loading;
-
-const Wrapper = styled.div`
-  margin: auto;
-  width: 1000px;
-  height: 800px;
-  font-family: DMSans;
-  font-weight: medium;
-  font-size: 20px;
-`;

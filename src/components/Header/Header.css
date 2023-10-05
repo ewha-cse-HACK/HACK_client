@@ -61,6 +61,7 @@ ul {
     align-items: center;
     margin-top: 10px;
     font-family: Pretendard;
+    font-size: 18px;
 }
 #topMenu > li {
     margin-right: 30px;
@@ -77,37 +78,3 @@ ul {
 #goMyPage:hover {
   color: black;
 }
-
-/*
- * a > Link 변경사항 및 버튼 함수 처리 예정
-#topMenu > li > a{
-    display:block;
-    color: var(--neutral-500, #64748B);
-    font-family: DMSans;
-    font-size: 17px;
-    font-style: normal;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  #topMenu > li:last-child a {
-    color: #000;
-    font-style: normal;
-    font-weight: 600;
-    padding: 10px 25px; -나중에 삭제
-  }
-  #topMenu > li > a:hover {
-    color:#000;
-  }
-  #topMenu > li:last-child a:hover{
-    color: gray; 나중에 효과 바꿀 것 - 그림자 혹은 색 변경
-  }
-  #login {
-    display: block;
-  }
-  #logout {
-    font-weight: 600;
-    color: #4C5182 !important;
-  }
-  #logout:hover{
-    color: #868dc9 !important;
-    font-weight: 650 !important;
-  }*/

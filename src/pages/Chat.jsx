@@ -9,7 +9,8 @@ function Chat() {
   const [messages, setMessages] = useState([]); // 대화 내용을 저장하는 상태
   const [userInput, setUserInput] = useState(""); // 유저의 입력을 저장하는 상태
   const [loading, setLoading] = useState(false);
-  const { petId } = useParams();
+  const token = localStorage.getItem("token");
+  const { petIdString } = useParams();
   const navigate = useNavigate();
 
   const handleGoBack = () => {
@@ -23,25 +24,34 @@ function Chat() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const fetchPetData = async (petId) => {
-      try {
-        const response = await axios.post(
-          "http://13.209.173.241:8080/rainbow-letter/chat/${pet_id}",
-          {
+
+    const pet_id = parseInt(petIdString, 10);
+
+    try {
+      const response = await axios.post(
+        `http://13.209.173.241:8080/rainbow-letter/chat/${pet_id}`,
+        {
+          data: {
             question: userInput,
-          }
-        );
-        console.log(response);
-        setMessages([...messages, { text: userInput, type: "user" }]);
-        setMessages([...messages, { text: response.data, type: "bot" }]);
-        setUserInput(""); // 입력 창 비우기
-      } catch (error) {
-        console.error("API 요청 실패:", error);
-        // 오류 처리 로직 추가
-      } finally {
-        setLoading(false);
-      }
-    };
+          },
+        },
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response);
+      setMessages([...messages, { text: userInput, type: "user" }]);
+      setMessages([...messages, { text: response.data, type: "bot" }]);
+      setUserInput(""); // 입력 창 비우기
+    } catch (error) {
+      console.error("API 요청 실패:", error);
+      // 오류 처리 로직 추가
+    } finally {
+      setLoading(false);
+    }
   };
   const handleKeyDown = (e) => {
     if (e && e.key === "Enter") {
@@ -90,7 +100,7 @@ export default Chat;
 const ChatWrapper = styled.div`
   margin: auto;
   width: 1000px;
-  height: 800px;
+  max-height: 800px;
   font-family: DMSans;
   font-weight: medium;
   font-size: 15px;

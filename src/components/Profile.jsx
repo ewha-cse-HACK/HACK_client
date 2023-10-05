@@ -1,34 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import axios from "axios";
 import "../pages/style.css";
 
-function Profile() {
-  const [name, setName] = useState("");
-  const [personaList, setPersonaList] = useState([]);
-  const [listSize, setListSize] = useState(0);
+function Profile({ name, petProfile, petId }) {
   const token = localStorage.getItem("token");
   /* 이미지 불러오기 */
-
-  useEffect(() => {
-    axios
-      .get("http://13.209.173.241:8080/rainbow-letter/persona/list", {
-        headers: {
-          "X-ACCESS-TOKEN": `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        // API에서 받아온 데이터를 상태에 저장합니다.
-        setPersonaList(response.data.personaList);
-        setListSize(response.data.listSize);
-      })
-      .catch((error) => {
-        // 에러 핸들링 로직을 추가할 수 있습니다.
-        console.error("Error fetching persona data: ", error);
-      });
-  }, []); // 빈 배열을 넣어 한 번만 실행되게 합니다.
 
   return (
     <div id="profileCard">
@@ -37,9 +16,10 @@ function Profile() {
       </div>
       <div id="profileInfo">
         <h3>{name}</h3>
+        <p>{petProfile}</p>
         <StyledLink to="/pages/PersonaEdit">페르소나 편집</StyledLink>
         <div id="buttonContainer">
-          <Link to="/pages/Chat">
+          <Link to={`/pages/Chat/${petId}`}>
             <button id="chat" type="submit">
               chat
             </button>
@@ -54,6 +34,12 @@ function Profile() {
     </div>
   );
 }
+
+Profile.propTypes = {
+  name: PropTypes.string.isRequired,
+  petProfile: PropTypes.string.isRequired,
+  petId: PropTypes.number.isRequired, // petId가 숫자형이라고 가정합니다.
+};
 
 export default Profile;
 
