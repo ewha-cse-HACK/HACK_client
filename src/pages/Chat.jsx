@@ -11,6 +11,8 @@ function Chat() {
   const [loading, setLoading] = useState(false);
   const token = localStorage.getItem("token");
   const { petIdString } = useParams();
+  const pet_id = parseInt(petIdString, 10);
+
   const navigate = useNavigate();
 
   const handleGoBack = () => {
@@ -24,8 +26,6 @@ function Chat() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    const pet_id = parseInt(petIdString, 10);
 
     try {
       const response = await axios.post(
@@ -43,9 +43,14 @@ function Chat() {
         }
       );
       console.log(response);
-      setMessages([...messages, { text: userInput, type: "user" }]);
-      setMessages([...messages, { text: response.data, type: "bot" }]);
-      setUserInput(""); // 입력 창 비우기
+      console.log(response.data);
+      setMessages([
+        ...messages,
+        { text: userInput, type: "user" },
+        { text: response.data, type: "bot" },
+      ]);
+
+      setUserInput("");
     } catch (error) {
       console.error("API 요청 실패:", error);
       // 오류 처리 로직 추가
@@ -53,12 +58,14 @@ function Chat() {
       setLoading(false);
     }
   };
-  const handleKeyDown = (e) => {
+  /*  const handleKeyDown = (e) => {
     if (e && e.key === "Enter") {
       e.preventDefault();
       handleSubmit();
     }
   };
+  onKeyDown={handleKeyDown}
+  */
 
   return (
     <ChatWrapper>
@@ -84,7 +91,6 @@ function Chat() {
           id="inputField"
           value={userInput}
           onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
           placeholder="메세지를 입력하세요"
         />
         <button id="sendBtn" onClick={handleSubmit}>
@@ -94,8 +100,6 @@ function Chat() {
     </ChatWrapper>
   );
 }
-
-export default Chat;
 
 const ChatWrapper = styled.div`
   margin: auto;
@@ -160,3 +164,5 @@ const GoBackBtn = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+export default Chat;

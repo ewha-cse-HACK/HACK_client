@@ -41,8 +41,6 @@ Profile.propTypes = {
   petId: PropTypes.number.isRequired, // petId가 숫자형이라고 가정합니다.
 };
 
-export default Profile;
-
 const StyledLink = styled(Link)`
   margin-left: 30px;
   margin-top: 0;
@@ -65,3 +63,5 @@ const ImageStyled = styled.img`
   overflow: hidden;
 `;
 */
+
+export default Profile;

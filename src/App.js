@@ -43,6 +43,7 @@ function App() {
           <Route path="/pages/PersonaSetting" element={<PersonaSetting />} />
           <Route path="/pages/PersonaEdit" element={<PersonaEdit />} />
           <Route path="/pages/Chat" element={<Chat />} />
+          <Route path="/pages/Chat/:petIdString" element={<Chat />} />
           <Route path="/rainbow-letter/chat/:pet_id" component={Chat} />
           <Route path="/pages/Diary" element={<Diary />} />
           <Route path="/pages/Commnunity" element={<Community />} />
