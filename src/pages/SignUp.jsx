@@ -40,7 +40,7 @@ function SignUp() {
         // 회원가입 성공 메세지를 표시
         setIsRegistered(true);
 
-        //알림 표시 및 리다이렉트
+        //알림 표시 및 리다이렉트 - 여기도 이미지 추가?
         toast.success("회원가입에 성공하였습니다");
         navigate("/pages/Login");
       } catch (error) {
@@ -55,6 +55,7 @@ function SignUp() {
 
   return (
     <div id="SignupWrapper">
+      <img src="/images/signup.png" />
       <h1>회원가입</h1>
       <h3>무지개 편지에 오신 걸 환영합니다!</h3>
       <form onSubmit={handleSubmit}>

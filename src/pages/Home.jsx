@@ -1,26 +1,24 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-class Home extends Component {
-  render() {
-    return (
-      <HomeWrapper>
-        <br />
-        <ImageStyled
-          src="/images/letter2.jpg"
-          alt="무지개 편지를 소개합니다!"
-        />
-        <br />
-        <h1>무지개 편지</h1>
-        <br />
-        <h3>
-          세상을 떠난 그리운 가족-나의 친구, 나의 동생, 나의 자식인 반려동물에게
-          보내는 편지
-        </h3>
-        <br />
-      </HomeWrapper>
-    );
-  }
+function Home() {
+  const [speciesName, setSpeciesName] = useState("");
+  const [base64String, setBaseString] = useState("");
+
+  return (
+    <HomeWrapper>
+      <br />
+      <ImageStyled src="/images/letter2.jpg" alt="무지개 편지를 소개합니다!" />
+      <br />
+      <h1>무지개 편지</h1>
+      <br />
+      <h3>
+        세상을 떠난 그리운 가족-나의 친구, 나의 동생, 나의 자식인 반려동물에게
+        보내는 편지
+      </h3>
+      <br />
+    </HomeWrapper>
+  );
 }
 
 const HomeWrapper = styled.div`

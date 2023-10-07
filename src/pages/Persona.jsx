@@ -8,6 +8,8 @@ function Persona() {
   return (
     <PersonaWrapper>
       <Container>
+        //각각 링크 투 걸어주고 버튼 만들어주기. //컨테이너에 넣고 옆으로 정렬
+        //Others는 그 아래? 아님 옆에.
         <ImageStyled src="/images/FindMomo.jpg" alt="반려동물 페르소나 보기" />
         <Link to="/pages/PersonaView">
           <button id="PersonaBtn" type="submit">

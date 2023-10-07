@@ -53,7 +53,7 @@ function Login() {
 
   return (
     <div id="LoginWrapper">
-      <ImageStyled src="/images/astronaut.jpg" />
+      <ImageStyled src="/images/login.png" />
       <h2>무지개 편지</h2>
       <form onSubmit={handleLogin}>
         <LoginInput>

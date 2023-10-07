@@ -27,14 +27,17 @@ function Chat() {
     e.preventDefault();
     setLoading(true);
 
+    const inputObj = {
+      question: userInput,
+    };
+    const jsonData = JSON.stringify(inputObj);
+    console.log(userInput);
+    console.log(jsonData);
+
     try {
       const response = await axios.post(
         `http://13.209.173.241:8080/rainbow-letter/chat/${pet_id}`,
-        {
-          data: {
-            question: userInput,
-          },
-        },
+        jsonData,
         {
           headers: {
             "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -44,10 +47,13 @@ function Chat() {
       );
       console.log(response);
       console.log(response.data);
+
+      const botResponse = JSON.stringify(response.data.answer);
+
       setMessages([
         ...messages,
         { text: userInput, type: "user" },
-        { text: response.data, type: "bot" },
+        { text: botResponse, type: "bot" },
       ]);
 
       setUserInput("");
@@ -70,6 +76,7 @@ function Chat() {
   return (
     <ChatWrapper>
       <GoBackBtn onClick={handleGoBack}>&lt;</GoBackBtn>
+      <img src="/images/chatCat.jpg" />
       <ChatContainer>
         <div className="profile-image">
           {/* 여기에 프로필 이미지를 넣는 코드를 추가하세요 */}
@@ -104,7 +111,8 @@ function Chat() {
 const ChatWrapper = styled.div`
   margin: auto;
   width: 1000px;
-  max-height: 800px;
+  height: 800px;
+  /*max-height 설정 */
   font-family: DMSans;
   font-weight: medium;
   font-size: 15px;
