@@ -33,7 +33,7 @@ function Header() {
               <StyledLink to="/pages/OurStory">Our Story</StyledLink>
             </li>
             <li>
-              <StyledLink to="/pages/PersonaView">Persona</StyledLink>
+              <StyledLink to="/pages/persona/PersonaView">Persona</StyledLink>
             </li>
             <li>
               <StyledLink to="/pages/Commnunity">Community</StyledLink>

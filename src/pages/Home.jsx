@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 function Home() {
-  const [speciesName, setSpeciesName] = useState("");
-  const [base64String, setBaseString] = useState("");
-
   return (
     <HomeWrapper>
       <br />
