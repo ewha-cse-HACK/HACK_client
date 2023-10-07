@@ -1,20 +1,8 @@
-@font-face {
-    font-family: 'tvnEnjoy';
-    src: url('../../assets/fonts/tvNJoyfulBold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'DMSans';
-    src: url('../../assets/fonts/DMSans.ttf') format('truetype');
-}
-
 .address {
     width: 100%;
     margin: 30px;
     text-align: center;
-    font-family: tvnEnjoy;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     color: #FFF;
 }

@@ -8,10 +8,16 @@ import Footer from './components/Footer/Footer';
 import Profile from './components/Profile';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Persona from './pages/Persona';
-import PersonaView from './pages/PersonaView';
-import PersonaSetting from './pages/PersonaSetting';
-import PersonaEdit from './pages/PersonaEdit';
+import OurStory from './pages/OurStory';
+import Persona from './pages/persona/Persona';
+import PersonaDog from './pages/persona/PersonaDog';
+import PersonaCat from './pages/persona/PersonaCat';
+import PersonaBird from './pages/persona/PersonaBird';
+import PersonaHam from './pages/persona/PersonaHam';
+import PersonaOthers from './pages/persona/PersonaOthers';
+import PersonaView from './pages/persona/PersonaView';
+import PersonaSetting from './pages/persona/PersonaSetting';
+import PersonaEdit from './pages/persona/PersonaEdit';
 import Chat from './pages/Chat';
 import Diary from './pages/Diary';
 import Community from './pages/Community';
@@ -38,10 +44,16 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/SignUp" element={<SignUp />} />
-          <Route path="/pages/Persona" element={<Persona />} />
-          <Route path="/pages/PersonaView" element={<PersonaView />} />
-          <Route path="/pages/PersonaSetting" element={<PersonaSetting />} />
-          <Route path="/pages/PersonaEdit" element={<PersonaEdit />} />
+          <Route path="/pages/OurStory" element={<OurStory />} />
+          <Route path="/pages/persona/PersonaView" element={<PersonaView />} />
+          <Route path="/pages/persona/Persona" element={<Persona />} />
+          <Route path="/pages/persona/PersonaDog" element={<PersonaDog />} />
+          <Route path="/pages/persona/PersonaCat" element={<PersonaCat />} />
+          <Route path="/pages/persona/PersonaBird" element={<PersonaBird />} />
+          <Route path="/pages/persona/PersonaHam" element={<PersonaHam />} />
+          <Route path="/pages/persona/PersonaOthers" element={<PersonaOthers />} />
+          <Route path="/pages/persona/PersonaSetting" element={<PersonaSetting />} />
+          <Route path="/pages/persona/PersonaEdit" element={<PersonaEdit />} />
           <Route path="/pages/Chat" element={<Chat />} />
           <Route path="/pages/Chat/:petIdString" element={<Chat />} />
           <Route path="/rainbow-letter/chat/:pet_id" component={Chat} />
