@@ -31,7 +31,7 @@ const FooterWrapper = styled.footer`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  background-color: #283064;
+  background-color: #001b1e;
 
   #bottomMenu {
     margin: 20px;
@@ -45,14 +45,21 @@ const FooterWrapper = styled.footer`
     justify-content: center;
   }
   #bottomMenu ul li {
-    font-family: DMSans;
     font-weight: Medium;
     font-size: 16px;
     text-align: center;
     margin: auto;
     padding: 20px;
     padding-bottom: 0px;
-    color: #b0b2cd;
+    color: #e9f5ff;
+  }
+  .address {
+    width: 100%;
+    margin: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #e9f5ff;
   }
 `;
 

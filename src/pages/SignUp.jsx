@@ -113,7 +113,7 @@ function SignUp() {
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #343b6e;
+  color: #0f2f36;
   &:hover {
     color: black;
     font-weight: 500;
@@ -124,13 +124,8 @@ const Input = styled.input`
   width: 300px;
   height: 50px;
   font-size: 15px;
-  border: 1px solid #d2d3e6;
+  border: 1px solid #dde7ef;
   border-radius: 0px;
-`;
-const LoginInput = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 const SignInput = styled.div`
   display: flex;

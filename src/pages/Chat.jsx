@@ -74,58 +74,72 @@ function Chat() {
   */
 
   return (
-    <ChatWrapper>
+    <Wrapper>
       <GoBackBtn onClick={handleGoBack}>&lt;</GoBackBtn>
-      <img src="/images/chatCat.jpg" />
-      <ChatContainer>
-        <div className="profile-image">
-          {/* 여기에 프로필 이미지를 넣는 코드를 추가하세요 */}
-        </div>
-        <div className="chat-messages">
-          {loading ? (
-            <BeatLoader color="#343B6E" size={15} />
-          ) : (
-            messages.map((message, index) => (
-              <MessageBubble key={index} className={message.type}>
-                {message.text}
-              </MessageBubble>
-            ))
-          )}
-        </div>
-      </ChatContainer>
-      <InputContainer>
-        <input
-          id="inputField"
-          value={userInput}
-          onChange={handleInputChange}
-          placeholder="메세지를 입력하세요"
-        />
-        <button id="sendBtn" onClick={handleSubmit}>
-          Send
-        </button>
-      </InputContainer>
-    </ChatWrapper>
+      <Space>
+        {/* 여기에 넣을 채팅창 목록 등의 공간을 미리 잡아놓았으니 업데이트할 것 */}
+        <img src="/images/chatCat.jpg" />
+      </Space>
+      <ChatWrapper>
+        <ChatContainer>
+          <div className="profile-image">
+            {/* 여기에 프로필 이미지를 넣는 코드를 추가하세요 */}
+          </div>
+          <div className="chat-messages">
+            {loading ? (
+              <BeatLoader color="#343B6E" size={15} />
+            ) : (
+              messages.map((message, index) => (
+                <MessageBubble key={index} className={message.type}>
+                  {message.text}
+                </MessageBubble>
+              ))
+            )}
+          </div>
+        </ChatContainer>
+        <InputContainer>
+          <input
+            id="inputField"
+            value={userInput}
+            onChange={handleInputChange}
+            placeholder="메세지를 입력하세요"
+          />
+          <button id="sendBtn" onClick={handleSubmit}>
+            Send
+          </button>
+        </InputContainer>
+      </ChatWrapper>
+    </Wrapper>
   );
 }
 
-const ChatWrapper = styled.div`
+const Wrapper = styled.div`
   margin: auto;
   width: 1000px;
+  display: flex;
+  flex-direction: row;
+`;
+const Space = styled.div`
   height: 800px;
-  /*max-height 설정 */
-  font-family: DMSans;
-  font-weight: medium;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 180px;
+  }
+`;
+
+const ChatWrapper = styled.div`
+  width: 400px;
+  height: 600px;
   font-size: 15px;
+  background-color: #e9f5ff;
 `;
 const ChatContainer = styled.div`
-  margin: auto;
-  padding: 16px;
-  width: 800px;
   height: 70%;
   display: flex;
   flex-direction: column;
   border-radius: 6px;
-  background-color: #d2d3e6;
 `;
 const MessageBubble = styled.div`
   margin: 10px;
@@ -141,10 +155,6 @@ const MessageBubble = styled.div`
   align-self: ${(props) => (props.type === "user" ? "flex-end" : "flex-start")};
 `;
 const InputContainer = styled.div`
-  margin: auto;
-  width: 800px;
-  height: 60px;
-  margin-top: 30px;
   border-radius: 6px;
   background-color: #d2d3e6;
   display: flex;

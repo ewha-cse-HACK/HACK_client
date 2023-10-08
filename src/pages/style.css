@@ -43,16 +43,18 @@ ul {
     align-items: center;
     gap: 20px;
 }
+#SignupWrapper img {
+    width: 180px;
+}
 #SignupWrapper h1 {
-    font-family: tvnEnjoy;
-    font-weight: bold;
-    font-size: 50px;
+    font-family: UhBeeSe_hyun;
+    font-weight: normal;
+    font-size: 35px;
     /*margin-top: 5%;
     margin-bottom: 10px;*/
 }
 #SignupWrapper h3 {
-    font-family: DMSans;
-    color: #111B4F;
+    color: #1F434E;
     /*margin-bottom: 50px;*/
 }
 #SignButton {
@@ -62,16 +64,16 @@ ul {
     width: 300px;
     height: 50px;
     margin: 15px auto 0;
+    border: none;
     border-radius: 8px;
-    background: #4C5182;
+    background: #8BCEF4;
     color: white;
-    font-family: DMSans;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 18px;
     cursor: pointer;
 }
 #SignButton:hover {
-    background: #283064;
+    background: #BAE2FA;
 }
 
 
@@ -87,9 +89,9 @@ ul {
     gap: 20px;
 }
 #LoginWrapper h2 {
-    font-family: tvnEnjoy;
-    font-weight: bold;
-    font-size: 50px;
+    font-family: UhBeeSe_hyun;
+    font-weight: normal;
+    font-size: 35px;
     /*margin-top: 5%;
     margin-bottom: 10px;*/
 }
@@ -100,16 +102,16 @@ ul {
     width: 300px;
     height: 50px;
     margin: 15px auto 0;
+    border: none;
     border-radius: 8px;
-    background: #4C5182;
+    background: #8BCEF4;
     color: white;
-    font-family: DMSans;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 18px;
     cursor: pointer;
 }
 #LoginSubmit:hover {
-    background: #283064;
+    background: #BAE2FA;
 }
 #nickname {
     border-top-right-radius: 8px;
@@ -120,27 +122,14 @@ ul {
     border-bottom-right-radius: 8px;
 }
 
-/*  Persona  */
-#PersonaBtn {
-    width: 240px;
-    height: 57px;
-    border-radius: 8px;
-    background: black;
-    color: white;
-    font-family: DMSans;
-    font-weight: 550;
-    font-size: 17.5px;
-    border: none;
-    cursor: pointer;
-    transition: box-shadow 0.3s;
-}
-#PersonaBtn:hover {
-    background-color: #6d719b;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4)
-}
 
-
-/*  PersonaView  */
+/*  Persona(View)  */
+body {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
+  }  
 #addContainer {
     display: flex;
     justify-content: center;
@@ -440,66 +429,60 @@ ul {
 
 /*  Profile(Persona)  */
 #profileCard {
-    width: 270px;
+    width: 250px;
     height: 436px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 3px 3px 4px black;
+    border: 1px solid #000;
+    border-radius: 3px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.178);
 }
 #profileImage {
-    width: 270px;
-    height: 270px;
-    background-color: black;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 #profileImage img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     object-fit: cover;
-    border-radius: 8px;
 }
 #profileInfo {
-    height: 166px;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 #profileInfo h3 {
-    font-family: DMSans;
+    margin: 30px;
     font-size: 22px;
     font-style: normal;
     color: #333;
-    margin-left: 30px;
-    margin-top: 20px;
 }
 #buttonContainer {
     margin-top: 10px;
-    margin-left: 25px;
     margin-bottom: 30px;
     display: flex;
-    flex-direction: row;
-}
-#chat {
-    margin-right: 20px;
+    flex-direction: column;
 }
 #chat, #diary {
-    width: 100px;
-    height: 35px;
-    font-size: 15px;
+    margin: 10px;
+    width: 160px;
+    height: 40px;
+    font-size: 19px;
     text-align: center;
-    color: #000;
-    background-color: white;
+    color: #FFF;
+    background-color: #000;
     border-radius: 5px;
-    border: 1px solid #000;
+    border: none;
     cursor: pointer;
     transition: box-shadow 0.3s;
 }
 #chat:hover, #diary:hover {
-    background-color: aliceblue;
+    background-color: #BAE2FA;
 }
 
 

@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "./Header.css";
 
 function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태를 추적하는 상태 변수
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
     }
-  }, []); // 컴포넌트가 마운트될 때 로컬 스토리지에서 토큰을 읽어옴
+  });
 
   const handleLogout = () => {
     // 로그아웃 API 호출?
@@ -33,7 +34,7 @@ function Header() {
               <StyledLink to="/pages/OurStory">Our Story</StyledLink>
             </li>
             <li>
-              <StyledLink to="/pages/persona/PersonaView">Persona</StyledLink>
+              <StyledLink to="/pages/Persona">Persona</StyledLink>
             </li>
             <li>
               <StyledLink to="/pages/Commnunity">Community</StyledLink>

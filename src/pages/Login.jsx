@@ -78,6 +78,7 @@ function Login() {
         </LoginInput>
         {loginError && <p style={{ color: "red" }}>{loginError}</p>}
         <button id="LoginSubmit" type="submit">
+          <Link to="/pages/Home"></Link>
           로그인
         </button>
       </form>
@@ -91,7 +92,7 @@ const Input = styled.input`
   width: 300px;
   height: 50px;
   font-size: 15px;
-  border: 1px solid #d2d3e6;
+  border: 1px solid #dde7ef;
   border-radius: 8px;
   margin-bottom: 10px;
 `;
@@ -101,12 +102,13 @@ const LoginInput = styled.div`
   align-items: center;
 `;
 const ImageStyled = styled.img`
-  width: 140px;
+  margin-left: 40px;
+  width: 180px;
   height: auto;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #343b6e;
+  color: #0f2f36;
   &:hover {
     color: black;
     font-weight: 500;

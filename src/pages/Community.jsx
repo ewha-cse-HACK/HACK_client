@@ -7,7 +7,9 @@ import styled from "styled-components";
 function Community() {
   return (
     <Wrapper>
+      <img src="/images/writing.png" alt="글을 적고 있는 고양이" />
       <h1>무지개 커뮤니티</h1>
+      <p>자유롭게 글을 쓰고, 사진을 올리고, 공감을 표시해주세요!</p>
     </Wrapper>
   );
 }
@@ -15,10 +17,17 @@ function Community() {
 export default Community;
 
 const Wrapper = styled.div`
-  margin: auto;
   width: 1000px;
-  height: 800px;
-  font-family: DMSans;
-  font-weight: medium;
-  font-size: 15px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: auto 0;
+
+  img {
+    width: 100px;
+  }
 `;

@@ -9,13 +9,12 @@ import Profile from './components/Profile';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import OurStory from './pages/OurStory';
-import Persona from './pages/persona/Persona';
+import Persona from './pages/Persona';
 import PersonaDog from './pages/persona/PersonaDog';
 import PersonaCat from './pages/persona/PersonaCat';
 import PersonaBird from './pages/persona/PersonaBird';
 import PersonaHam from './pages/persona/PersonaHam';
 import PersonaOthers from './pages/persona/PersonaOthers';
-import PersonaView from './pages/persona/PersonaView';
 import PersonaSetting from './pages/persona/PersonaSetting';
 import PersonaEdit from './pages/persona/PersonaEdit';
 import Chat from './pages/Chat';
@@ -45,8 +44,7 @@ function App() {
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/SignUp" element={<SignUp />} />
           <Route path="/pages/OurStory" element={<OurStory />} />
-          <Route path="/pages/persona/PersonaView" element={<PersonaView />} />
-          <Route path="/pages/persona/Persona" element={<Persona />} />
+          <Route path="/pages/Persona" element={<Persona />} />
           <Route path="/pages/persona/PersonaDog" element={<PersonaDog />} />
           <Route path="/pages/persona/PersonaCat" element={<PersonaCat />} />
           <Route path="/pages/persona/PersonaBird" element={<PersonaBird />} />

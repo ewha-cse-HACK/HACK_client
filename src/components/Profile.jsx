@@ -12,12 +12,12 @@ function Profile({ name, petProfile, petId }) {
   return (
     <div id="profileCard">
       <div id="profileImage">
-        <img src="/images/momo.jpeg" />
+        <img src="/images/IMG_9655.png" />
       </div>
       <div id="profileInfo">
         <h3>{name}</h3>
         <p>{petProfile}</p>
-        <StyledLink to="/pages/PersonaEdit">페르소나 편집</StyledLink>
+        <StyledLink to="/pages/PersonaEdit">페르소나 편집 &gt;</StyledLink>
         <div id="buttonContainer">
           <Link to={`/pages/Chat/${petId}`}>
             <button id="chat" type="submit">
@@ -38,14 +38,13 @@ function Profile({ name, petProfile, petId }) {
 Profile.propTypes = {
   name: PropTypes.string.isRequired,
   petProfile: PropTypes.string.isRequired,
-  petId: PropTypes.number.isRequired, // petId가 숫자형이라고 가정합니다.
+  petId: PropTypes.number.isRequired,
 };
 
 const StyledLink = styled(Link)`
-  margin-left: 30px;
-  margin-top: 0;
+  margin: 10px;
   text-decoration: none;
-  color: #343b6e;
+  color: #0f2f36;
   border: none;
   font-size: 16px;
   font-weight: bold;

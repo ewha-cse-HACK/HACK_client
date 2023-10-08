@@ -5,7 +5,10 @@ function Home() {
   return (
     <HomeWrapper>
       <br />
-      <ImageStyled src="/images/letter2.jpg" alt="무지개 편지를 소개합니다!" />
+      <ImageStyled
+        src="/images/cathometemp.png"
+        alt="무지개 편지를 소개합니다!"
+      />
       <br />
       <br />
       <h1>무지개 편지</h1>
