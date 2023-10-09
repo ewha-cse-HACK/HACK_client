@@ -9,11 +9,15 @@ function Diary() {
     <Wrapper>
       <h1>일기 훔쳐보기</h1>
       <img src="/images/writing.PNG" />
+      <PictureContainer>
+        <p>사진이 올 자리</p>
+      </PictureContainer>
+      <TextContainer>
+        <p>일기 텍스트가 올 자리</p>
+      </TextContainer>
     </Wrapper>
   );
 }
-
-export default Diary;
 
 const Wrapper = styled.div`
   margin: auto;
@@ -25,3 +29,17 @@ const Wrapper = styled.div`
     width: 100px;
   }
 `;
+
+const PictureContainer = styled.div`
+  margin: auto;
+  width: 400px;
+  height: 400px;
+`;
+
+const TextContainer = styled.div`
+  margin: auto;
+  width: 400px;
+  height: 400px;
+`;
+
+export default Diary;
