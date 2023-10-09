@@ -1,14 +1,4 @@
 @font-face {
-    font-family: 'tvnEnjoy';
-    src: url('../assets/fonts/tvNJoyfulBold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'DMSans';
-    src: url('../assets/fonts/DMSans.ttf') format('truetype');
-}
-@font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
@@ -139,7 +129,97 @@ ul {
 } */
 
 
+/*  Profile(Persona)  */
+#profileCard {
+    width: 250px;
+    height: 436px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    border-radius: 3px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.178);
+}
+#profileImage {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#profileImage img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+#profileInfo {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#profileInfo h3 {
+    margin: 30px;
+    font-size: 22px;
+    font-style: normal;
+    color: #333;
+}
+#buttonContainer {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+#chat, #diary {
+    margin: 10px;
+    width: 160px;
+    height: 40px;
+    font-size: 19px;
+    text-align: center;
+    color: #FFF;
+    background-color: #000;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+#chat:hover, #diary:hover {
+    background-color: #BAE2FA;
+}
+
+
 /*  PersonaSetting  */
+#personaStart h1 {
+    margin: auto;
+    margin-top: 30px;
+    font-family: UhBeeSe_hyun;
+    font-weight: 400;
+    font-size: 40px;
+}
+#personaStart p {
+    margin: auto;
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+/* 이미지 styledcomponent로 바꿔주기. (나중에) */
+#cardContainer {
+    margin: 100px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+#cardContainer img {
+    width: 200px;
+    height: auto;
+}
+
+
+/*  Persona + { Animal }  */
 #startPersona{
     width: 80%;
     margin: auto;
@@ -411,65 +491,6 @@ ul {
   .top-button:hover {
     background-color: #404678;
   }
-  
-
-/*  Profile(Persona)  */
-#profileCard {
-    width: 250px;
-    height: 436px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #000;
-    border-radius: 3px;
-    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.178);
-}
-#profileImage {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#profileImage img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-#profileInfo {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-#profileInfo h3 {
-    margin: 30px;
-    font-size: 22px;
-    font-style: normal;
-    color: #333;
-}
-#buttonContainer {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-}
-#chat, #diary {
-    margin: 10px;
-    width: 160px;
-    height: 40px;
-    font-size: 19px;
-    text-align: center;
-    color: #FFF;
-    background-color: #000;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: box-shadow 0.3s;
-}
-#chat:hover, #diary:hover {
-    background-color: #BAE2FA;
-}
 
 
 /*  Chat  */
