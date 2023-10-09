@@ -216,6 +216,10 @@ ul {
 #cardContainer img {
     width: 200px;
     height: auto;
+    cursor: pointer;
+}
+#cardContainer img:hover {
+    filter: brightness(0.9);
 }
 
 
