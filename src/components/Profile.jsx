@@ -12,7 +12,7 @@ function Profile({ name, petProfile, petId }) {
   return (
     <div id="profileCard">
       <div id="profileImage">
-        <img src="/images/IMG_9655.png" />
+        <img src="/images/hamsik.jpg" />
       </div>
       <div id="profileInfo">
         <h3>{name}</h3>
