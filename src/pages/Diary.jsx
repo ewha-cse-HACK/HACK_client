@@ -21,4 +21,7 @@ const Wrapper = styled.div`
   height: 800px;
   font-weight: medium;
   font-size: 15px;
+  img {
+    width: 100px;
+  }
 `;
