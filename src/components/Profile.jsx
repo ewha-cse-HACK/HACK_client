@@ -24,7 +24,7 @@ function Profile({ name, petProfile, petId }) {
               chat
             </button>
           </Link>
-          <Link to="/pages/Diary">
+          <Link to={`/pages/Diary/${petId}`}>
             <button id="diary" type="submit">
               diary
             </button>

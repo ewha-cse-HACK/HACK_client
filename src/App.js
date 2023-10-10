@@ -56,6 +56,7 @@ function App() {
           <Route path="/pages/Chat/:petIdString" element={<Chat />} />
           <Route path="/rainbow-letter/chat/:pet_id" component={Chat} />
           <Route path="/pages/Diary" element={<Diary />} />
+          <Route path="/pages/Diary/:petIdString" element={<Diary />} />
           <Route path="/pages/Commnunity" element={<Community />} />
           <Route path="/pages/MyPage" element={<MyPage />} />
           <Route path="/pages/Loading" element={<Loading />} />

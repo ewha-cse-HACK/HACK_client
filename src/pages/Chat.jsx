@@ -89,7 +89,7 @@ function Chat() {
           </div>
           <div className="chat-messages">
             {loading ? (
-              <BeatLoader color="#343B6E" size={15} />
+              <BeatLoader color="#7CBADC" size={15} />
             ) : (
               messages.map((message, index) => (
                 <MessageBubble key={index} className={message.type}>
