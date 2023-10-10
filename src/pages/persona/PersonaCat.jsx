@@ -41,6 +41,86 @@ function PersonaCat() {
     setSelectValue(event.target.value);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]; // 선택한 파일
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      // 파일을 읽고 이미지 URL을 상태에 저장
+      setPetPhoto(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file); // 파일을 data URL로 읽기
+    }
+  };
+
+  // 이전 화면으로 이동
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // 필수 항목이 입력되지 않았을 때 알림 띄우기
+    if (!speciesName || !name || !ownerName) {
+      alert("모든 항목을 입력해주세요.");
+      return;
+    }
+
+    try {
+      const formData = new FormData();
+      formData.append("speciesName", speciesName);
+      formData.append("name", name);
+      formData.append("charOne", charOne);
+      formData.append("charTwo", charTwo);
+      formData.append("ownerName", ownerName);
+      formData.append("favoritePlay", favoritePlay);
+      formData.append("favoriteSnack", favoriteSnack);
+      formData.append("favoriteTime", favoriteTime);
+      formData.append("habit", habit);
+      formData.append("favoritePlace", favoritePlace);
+      formData.append("routine", routine);
+      if (petPhoto) {
+        formData.append("petPhoto", petPhoto);
+      }
+      formData.append("passed_date", passed_date);
+      /*const formattedDate = passed_date.toISOString(); // Date 객체를 ISO 형식의 문자열로 변환
+        formData.append("passed_date", formattedDate);*/
+
+      const formDataObject = {};
+      formData.forEach((value, key) => {
+        formDataObject[key] = value;
+      });
+      const jsonData = JSON.stringify(formDataObject);
+      console.log(jsonData);
+
+      alert("페르소나 생성이 완료되었습니다!");
+      navigate("/pages/Persona");
+
+      const response = await axios.post(
+        "http://13.209.173.241:8080/rainbow-letter/persona/save",
+        jsonData,
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      console.error("서버 요청 실패:", error);
+      // 오류 처리 로직 추가
+    }
+  };
+
   return (
     <Wrapper>
       <ImgContainer>

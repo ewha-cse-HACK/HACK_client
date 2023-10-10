@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { useParams, Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import "./style.css";
@@ -7,10 +7,12 @@ import { BeatLoader } from "react-spinners";
 
 function Diary() {
   const [loading, setLoading] = useState(false);
+  const [userInput, setUserInput] = useState(""); // 유저의 입력을 저장하는 상태
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const { petIdString } = useParams();
   const pet_id = parseInt(petIdString, 10);
+  const [journalId, setJournalId] = useState(null);
 
   const handleGoBack = () => {
     navigate(-1);
@@ -24,19 +26,47 @@ function Diary() {
     e.preventDefault();
     setLoading(true);
 
-    const response = await axios.post(
-      `http://13.209.173.241:8080/journal/${pet_id}/image`,
-      {
-        headers: {
-          "X-ACCESS-TOKEN": `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    try {
+      const response = await axios.post(
+        `http://13.209.173.241:8080/journal/${pet_id}/image`,
+        null, // Request body is null
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      console.log("journal_id 타입:", typeof response.data);
+      setJournalId(response.data);
+    } catch (error) {
+      console.error("API 요청 실패:", error);
+      // 오류 처리 로직 추가
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleGet = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-    console.log(response.data);
-
-    navigate(-1);
+    try {
+      const response = await axios.get(
+        `http://13.209.173.241:8080/journal/${journalId}`,
+        null,
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error("API Get 요청 실패:", error);
+      // 오류 처리 로직 추가
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,6 +85,12 @@ function Diary() {
       <TextContainer>
         <p>일기 텍스트가 올 자리</p>
       </TextContainer>
+      <button id="DiaryBtn" onClick={handleSubmit}>
+        Send
+      </button>
+      <button id="DiaryBtn" onClick={handleGet}>
+        view
+      </button>
     </Wrapper>
   );
 }
