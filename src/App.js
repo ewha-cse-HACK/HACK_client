@@ -1,14 +1,13 @@
 import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom';
 import axios from 'axios';
-import styled from "styled-components";
 import './App.css';
 import Home from './pages/Home';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import OurStory from './pages/OurStory';
+import Brand from './pages/Brand';
 import Persona from './pages/Persona';
 import PersonaDog from './pages/persona/PersonaDog';
 import PersonaCat from './pages/persona/PersonaCat';
@@ -38,13 +37,12 @@ function App() {
 
   return (
     <Router>
-      <Background>
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/SignUp" element={<SignUp />} />
-          <Route path="/pages/OurStory" element={<OurStory />} />
+          <Route path="/pages/Brand" element={<Brand />} />
           <Route path="/pages/Persona" element={<Persona />} />
           <Route path="/pages/persona/PersonaDog" element={<PersonaDog />} />
           <Route path="/pages/persona/PersonaCat" element={<PersonaCat />} />
@@ -57,28 +55,16 @@ function App() {
           <Route path="/pages/Chat/:petIdString" element={<Chat />} />
           <Route path="/rainbow-letter/chat/:pet_id" component={Chat} />
           <Route path="/pages/Diary" element={<Diary />} />
+          <Route path="/rainbow-letter/diary/:pet_id" component={Diary} />
           <Route path="/pages/Diary/:petIdString" element={<Diary />} />
           <Route path="/pages/Commnunity" element={<Community />} />
           <Route path="/pages/MyPage" element={<MyPage />} />
           <Route path="/pages/Loading" element={<Loading />} />
         </Routes>
         <Footer />
-        </Background>
     </Router>
   );
 }
-
-const Background = styled.div`
-  width: 100vw;
-  height: 4833px;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #890048 0%,
-    #3a0088 48.44%,
-    #3a0088 48.45%,
-    #000027 100%
-  );
-`;
 
 export default App;
 

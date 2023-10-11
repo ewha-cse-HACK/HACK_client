@@ -26,6 +26,9 @@ function PersonaCat() {
   const [routine, setRoutine] = useState(null);
   const [petPhoto, setPetPhoto] = useState(null);
   const [passed_date, setPassedDate] = useState(null);
+  const [furColor, setFurColor] = useState(null);
+  const [kind, setKind] = useState(null);
+
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -51,12 +54,10 @@ function PersonaCat() {
   const handleImageChange = (e) => {
     const file = e.target.files[0]; // 선택한 파일
     const reader = new FileReader();
-
     reader.onloadend = () => {
       // 파일을 읽고 이미지 URL을 상태에 저장
       setPetPhoto(reader.result);
     };
-
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
     }
@@ -94,6 +95,8 @@ function PersonaCat() {
       formData.append("passed_date", passed_date);
       /*const formattedDate = passed_date.toISOString(); // Date 객체를 ISO 형식의 문자열로 변환
         formData.append("passed_date", formattedDate);*/
+      formData.append("furColor", furColor);
+      formData.append("kind", kind);
 
       const formDataObject = {};
       formData.forEach((value, key) => {

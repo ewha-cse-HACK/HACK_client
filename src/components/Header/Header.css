@@ -1,14 +1,4 @@
 @font-face {
-    font-family: 'tvnEnjoy';
-    src: url('../../assets/fonts/tvNJoyfulBold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'DMSans';
-    src: url('../../assets/fonts/DMSans.ttf') format('truetype');
-}
-@font-face {
   font-family: 'Pretendard';
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 400;

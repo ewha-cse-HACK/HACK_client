@@ -31,7 +31,7 @@ function Header() {
         <nav>
           <ul id="topMenu">
             <li>
-              <StyledLink to="/pages/OurStory">Our Story</StyledLink>
+              <StyledLink to="/pages/Brand">Brand</StyledLink>
             </li>
             <li>
               <StyledLink to="/pages/Persona">Persona</StyledLink>
