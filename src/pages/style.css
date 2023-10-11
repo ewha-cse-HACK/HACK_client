@@ -22,6 +22,42 @@ ul {
     list-style: none;
 }
 
+/*  Brand  */
+#first img {
+    margin-left: 40px;
+    width: 350px;
+}
+#second img {
+    margin-right: 30px;
+    width:400px;
+}
+#third img {
+    margin-left: 30px;
+    width: 350px;
+}
+#fourth img {
+    margin-right: 40px;
+    height: 350px;
+}
+#fifth img {
+    height: 350px;
+}
+#startBrand {
+    margin: 30px auto;
+    display: flex;
+    width: 169px;
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    gap: 8px;
+    border-radius: 56px;
+    border: none;
+    color: #fff;
+    background: #4d74ff;
+    cursor: pointer;
+}
+
 /*  SignUp  */
 #SignupWrapper {
     margin: auto;

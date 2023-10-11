@@ -7,8 +7,14 @@ import styled from "styled-components";
 function Finished() {
   return (
     <Wrapper>
-      <h1>일기 훔쳐보기</h1>
-      <img src="/images/writing.PNG" />
+      <img src="/images/finished.png" />
+      <h1>반려동물 페르소나 생성 완료!</h1>
+      <p>
+        당신의 마음이 무지개 별에 닿았어요!
+        <br />
+        이제부터 반려동물과 대화하고 일기를 볼 수 있어요.
+      </p>
+      <button>프로필 보기</button>
     </Wrapper>
   );
 }

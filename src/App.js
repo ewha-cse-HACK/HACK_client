@@ -24,6 +24,7 @@ import Loading from './pages/Loading'
 
 
 function App() {
+  const isBrandPage = window.location.pathname === '/pages/Brand';
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <Router>
-        <Header />
+        {isBrandPage ? null : <Header />}
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/pages/Login" element={<Login />} />
@@ -61,7 +62,7 @@ function App() {
           <Route path="/pages/MyPage" element={<MyPage />} />
           <Route path="/pages/Loading" element={<Loading />} />
         </Routes>
-        <Footer />
+        {isBrandPage ? null : <Footer />}
     </Router>
   );
 }

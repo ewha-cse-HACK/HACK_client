@@ -191,11 +191,56 @@ function PersonaCat() {
           <MenuItem value="option3">산만함</MenuItem>
         </Select>
         <h1>고양이는 어떤 캐릭터인가요?</h1>
-
-        <h1>고양이가 어떻게 생겼나요?</h1>
-
+        <Select
+          label="좋아하는 놀이"
+          variant="outlined"
+          value={selectValue}
+          onChange={handleSelectChange}
+        >
+          <MenuItem value="option1">차분함</MenuItem>
+          <MenuItem value="option2">활발함</MenuItem>
+          <MenuItem value="option3">수다스러움</MenuItem>
+          <MenuItem value="option3">과묵함</MenuItem>
+          <MenuItem value="option3">애교스러움</MenuItem>
+          <MenuItem value="option3">소심함</MenuItem>
+          <MenuItem value="option3">사교적</MenuItem>
+          <MenuItem value="option3">독립적</MenuItem>
+          <MenuItem value="option3">엉뚱함</MenuItem>
+          <MenuItem value="option3">산만함</MenuItem>
+        </Select>
+        <Select
+          label="좋아하는 간식"
+          variant="outlined"
+          value={selectValue}
+          onChange={handleSelectChange}
+        ></Select>
+        <Select
+          label="좋아하는 시간"
+          variant="outlined"
+          value={selectValue}
+          onChange={handleSelectChange}
+        ></Select>
+        <Select
+          label="좋아하는 장소"
+          variant="outlined"
+          value={selectValue}
+          onChange={handleSelectChange}
+        ></Select>
+        <Select
+          label="자주 하던 행동"
+          variant="outlined"
+          value={selectValue}
+          onChange={handleSelectChange}
+        ></Select>
+        <Select
+          label="일상적인 루틴"
+          variant="outlined"
+          value={selectValue}
+          onChange={handleSelectChange}
+        ></Select>
         <h1>고양이가 무지개 다리를 건넌 날을 알려주세요.</h1>
 
+        <p>고양이는 000년 0월 0일에 무지개별로 떠났어요</p>
         <h1>고양이의 사진을 올려주세요.</h1>
 
         <h2>반려동물 페르소나 생성 완료!</h2>
