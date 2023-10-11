@@ -38,7 +38,7 @@ function App() {
 
   return (
     <Router>
-        {isBrandPage ? null : <Header />}
+        <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/pages/Login" element={<Login />} />
@@ -62,7 +62,7 @@ function App() {
           <Route path="/pages/MyPage" element={<MyPage />} />
           <Route path="/pages/Loading" element={<Loading />} />
         </Routes>
-        {isBrandPage ? null : <Footer />}
+        <Footer />
     </Router>
   );
 }
