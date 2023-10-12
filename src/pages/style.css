@@ -24,7 +24,10 @@ ul {
 
 /*  Brand  */
 #first {
-    margin-top: 220px;
+    margin-top: 100px;
+}
+#fifth {
+    margin-bottom: 300px;
 }
 #first img {
     margin-left: 40px;
@@ -42,11 +45,15 @@ ul {
     margin-right: 50px;
     height: 380px;
 }
+#lastBrand {
+    margin-right: -70px;
+    margin-bottom: 70px;
+}
 #fifth img {
     height: 350px;
 }
 #startBrand {
-    margin-top: 50px;
+    margin-top: 80px;
     display: flex;
     width: 169px;
     height: 55px;
