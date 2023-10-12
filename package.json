@@ -27,8 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "lint": "next lint",
     "vercel-deploy": "next build && next export"
   },

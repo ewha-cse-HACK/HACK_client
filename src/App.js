@@ -24,8 +24,6 @@ import Loading from './pages/Loading'
 
 
 function App() {
-  const isBrandPage = window.location.pathname === '/pages/Brand';
-
   useEffect(() => {
     const token = localStorage.getItem('token');
 
