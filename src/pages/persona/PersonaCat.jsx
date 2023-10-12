@@ -127,167 +127,206 @@ function PersonaCat() {
 
   return (
     <Wrapper>
-      <ImgContainer>
-        <img src="/images/cat1.png" />
-      </ImgContainer>
-      <InputContainer>
-        <h1>고양이의 이름은 무엇인가요?</h1>
-        <br />
-        <TextField
-          required
-          label="고양이 이름"
-          variant="outlined"
-          value={textFieldValue}
-          onChange={handleTextFieldChange}
-        />
-        <br />
-        <br />
-        <h1>고양이가 당신을 어떻게 불렀는지도 알려주세요.</h1>
-        <br />
-        <TextField
-          required
-          label="당신의 호칭"
-          variant="outlined"
-          value={textFieldValue}
-          onChange={handleTextFieldChange}
-        />
-      </InputContainer>
+      <Container id="firstPersonaSet">
+        <ImgContainer>
+          <img src="/images/cat1.png" />
+        </ImgContainer>
+        <InputContainer>
+          <h3>고양이의 이름은 무엇인가요?</h3>
+          <br />
+          <InputLabel htmlFor="name">이름</InputLabel>
+          <TextField id="name" variant="outlined" />
+          <TextField
+            required
+            label="고양이 이름"
+            helperText="도움말 텍스트"
+            variant="outlined"
+            size="small"
+            value={name}
+            onChange={handleTextFieldChange}
+          />
+          <br />
+          <br />
+          <h3>
+            고양이가 당신을 어떻게 <br />
+            불렀는지도 알려주세요.
+          </h3>
+          <br />
+          <TextField
+            required
+            label="당신의 호칭"
+            variant="outlined"
+            value={textFieldValue}
+            onChange={handleTextFieldChange}
+          />
+        </InputContainer>
+      </Container>
 
-      <InputContainer>
-        <h1>고양이의 성격을 알려주세요.</h1>
-        <br />
+      <Container id="secondPersonaSet">
+        <InputLabel id="demo-select-label">선택하세요</InputLabel>
         <Select
-          label="첫 번째 특성"
-          placeholder="고양이의 성격"
+          labelId="demo-select-label"
+          id="demo-select"
+          label="선택하세요"
           variant="outlined"
-          value={selectValue}
-          onChange={handleSelectChange}
         >
-          <MenuItem value="option1">차분함</MenuItem>
-          <MenuItem value="option2">활발함</MenuItem>
-          <MenuItem value="option3">수다스러움</MenuItem>
-          <MenuItem value="option3">과묵함</MenuItem>
-          <MenuItem value="option3">애교스러움</MenuItem>
-          <MenuItem value="option3">소심함</MenuItem>
-          <MenuItem value="option3">사교적</MenuItem>
-          <MenuItem value="option3">독립적</MenuItem>
-          <MenuItem value="option3">엉뚱함</MenuItem>
-          <MenuItem value="option3">산만함</MenuItem>
+          {/* 옵션들 */}
         </Select>
-        <Select
-          label="두 번째 특성"
-          placeholder="고양이의 성격"
-          variant="outlined"
-          value={selectValue}
-          onChange={handleSelectChange}
-        >
-          <MenuItem value="option1">차분함</MenuItem>
-          <MenuItem value="option2">활발함</MenuItem>
-          <MenuItem value="option3">수다스러움</MenuItem>
-          <MenuItem value="option3">과묵함</MenuItem>
-          <MenuItem value="option3">애교스러움</MenuItem>
-          <MenuItem value="option3">소심함</MenuItem>
-          <MenuItem value="option3">사교적</MenuItem>
-          <MenuItem value="option3">독립적</MenuItem>
-          <MenuItem value="option3">엉뚱함</MenuItem>
-          <MenuItem value="option3">산만함</MenuItem>
-        </Select>
-      </InputContainer>
-      <ImgContainer>
-        <img src="/images/cat2.png" />
-      </ImgContainer>
-
-      <ImgContainer>
-        <img src="/images/cat3.png" />
-      </ImgContainer>
-      <InputContainer>
-        <h1>고양이는 어떤 캐릭터인가요?</h1>
-        <Select
-          label="좋아하는 놀이"
-          variant="outlined"
-          value={selectValue}
-          onChange={handleSelectChange}
-        >
-          <MenuItem value="option1">차분함</MenuItem>
-          <MenuItem value="option2">활발함</MenuItem>
-          <MenuItem value="option3">수다스러움</MenuItem>
-          <MenuItem value="option3">과묵함</MenuItem>
-          <MenuItem value="option3">애교스러움</MenuItem>
-          <MenuItem value="option3">소심함</MenuItem>
-          <MenuItem value="option3">사교적</MenuItem>
-          <MenuItem value="option3">독립적</MenuItem>
-          <MenuItem value="option3">엉뚱함</MenuItem>
-          <MenuItem value="option3">산만함</MenuItem>
-        </Select>
-        <Select
-          label="좋아하는 간식"
-          variant="outlined"
-          value={selectValue}
-          onChange={handleSelectChange}
-        ></Select>
-        <Select
-          label="좋아하는 시간"
-          variant="outlined"
-          value={selectValue}
-          onChange={handleSelectChange}
-        ></Select>
-        <Select
-          label="좋아하는 장소"
-          variant="outlined"
-          value={selectValue}
-          onChange={handleSelectChange}
-        ></Select>
-        <Select
-          label="자주 하던 행동"
-          variant="outlined"
-          value={selectValue}
-          onChange={handleSelectChange}
-        ></Select>
-        <Select
-          label="일상적인 루틴"
-          variant="outlined"
-          value={selectValue}
-          onChange={handleSelectChange}
-        ></Select>
-      </InputContainer>
-
-      <InputContainer>
-        <h1>고양이가 무지개 다리를 건넌 날을 알려주세요.</h1>
-        <p>고양이는 0000년 0월 0일에 무지개별로 떠났어요</p>
-      </InputContainer>
-      <ImgContainer>
-        <img src="/images/cat4.png" />
-      </ImgContainer>
-
-      <ImgContainer>
-        <img src="/images/cat5.png" />
-      </ImgContainer>
-      <InputContainer>
-        <h1>고양이가 어떻게 생겼나요?</h1>
-        <br />
-        <TextField
-          required
-          label="고양이의 종(species)"
-          variant="outlined"
-          value={textFieldValue}
-          onChange={handleTextFieldChange}
-        />
-        <br />
-        <br />
-        <Select
-          label="털 색깔(무늬)"
-          variant="outlined"
-          value={selectValue}
-          onChange={handleSelectChange}
-        ></Select>
-      </InputContainer>
-
-      <InputContainer>
-        <h1>고양이의 사진을 올려주세요.</h1>
-      </InputContainer>
-      <ImgContainer>
-        <img src="/images/cat6.png" />
-      </ImgContainer>
+        <InputContainer>
+          <h1>고양이의 성격을 알려주세요.</h1>
+          <br />
+          <FormControl fullWidth variant="outlined" size="small">
+            <Select
+              value={selectValue}
+              onChange={handleSelectChange}
+              label="Placeholder 텍스트"
+              displayEmpty
+            >
+              <MenuItem value="" disabled>
+                <em>선택하세요</em>
+              </MenuItem>
+              <MenuItem value="option1">옵션 1</MenuItem>
+              <MenuItem value="option2">옵션 2</MenuItem>
+              <MenuItem value="option3">옵션 3</MenuItem>
+            </Select>
+          </FormControl>
+          <Select
+            label="첫 번째 특성"
+            placeholder="고양이의 성격"
+            variant="outlined"
+            value={selectValue}
+            onChange={handleSelectChange}
+          >
+            <MenuItem value="option1">차분함</MenuItem>
+            <MenuItem value="option2">활발함</MenuItem>
+            <MenuItem value="option3">수다스러움</MenuItem>
+            <MenuItem value="option3">과묵함</MenuItem>
+            <MenuItem value="option3">애교스러움</MenuItem>
+            <MenuItem value="option3">소심함</MenuItem>
+            <MenuItem value="option3">사교적</MenuItem>
+            <MenuItem value="option3">독립적</MenuItem>
+            <MenuItem value="option3">엉뚱함</MenuItem>
+            <MenuItem value="option3">산만함</MenuItem>
+          </Select>
+          <Select
+            label="두 번째 특성"
+            placeholder="고양이의 성격"
+            variant="outlined"
+            value={selectValue}
+            onChange={handleSelectChange}
+          >
+            <MenuItem value="option1">차분함</MenuItem>
+            <MenuItem value="option2">활발함</MenuItem>
+            <MenuItem value="option3">수다스러움</MenuItem>
+            <MenuItem value="option3">과묵함</MenuItem>
+            <MenuItem value="option3">애교스러움</MenuItem>
+            <MenuItem value="option3">소심함</MenuItem>
+            <MenuItem value="option3">사교적</MenuItem>
+            <MenuItem value="option3">독립적</MenuItem>
+            <MenuItem value="option3">엉뚱함</MenuItem>
+            <MenuItem value="option3">산만함</MenuItem>
+          </Select>
+        </InputContainer>
+        <ImgContainer>
+          <img src="/images/cat2.png" />
+        </ImgContainer>
+      </Container>
+      <Container id="thirdPersonaSet">
+        <ImgContainer>
+          <img src="/images/cat3.png" />
+        </ImgContainer>
+        <InputContainer>
+          <h1>고양이는 어떤 캐릭터인가요?</h1>
+          <Select
+            label="좋아하는 놀이"
+            variant="outlined"
+            value={selectValue}
+            onChange={handleSelectChange}
+          >
+            <MenuItem value="option1">차분함</MenuItem>
+            <MenuItem value="option2">활발함</MenuItem>
+            <MenuItem value="option3">수다스러움</MenuItem>
+            <MenuItem value="option3">과묵함</MenuItem>
+            <MenuItem value="option3">애교스러움</MenuItem>
+            <MenuItem value="option3">소심함</MenuItem>
+            <MenuItem value="option3">사교적</MenuItem>
+            <MenuItem value="option3">독립적</MenuItem>
+            <MenuItem value="option3">엉뚱함</MenuItem>
+            <MenuItem value="option3">산만함</MenuItem>
+          </Select>
+          <Select
+            label="좋아하는 간식"
+            variant="outlined"
+            value={selectValue}
+            onChange={handleSelectChange}
+          ></Select>
+          <Select
+            label="좋아하는 시간"
+            variant="outlined"
+            value={selectValue}
+            onChange={handleSelectChange}
+          ></Select>
+          <Select
+            label="좋아하는 장소"
+            variant="outlined"
+            value={selectValue}
+            onChange={handleSelectChange}
+          ></Select>
+          <Select
+            label="자주 하던 행동"
+            variant="outlined"
+            value={selectValue}
+            onChange={handleSelectChange}
+          ></Select>
+          <Select
+            label="일상적인 루틴"
+            variant="outlined"
+            value={selectValue}
+            onChange={handleSelectChange}
+          ></Select>
+        </InputContainer>
+      </Container>
+      <Container id="fourthPersonaSet">
+        <InputContainer>
+          <h1>고양이가 무지개 다리를 건넌 날을 알려주세요.</h1>
+          <p>고양이는 0000년 0월 0일에 무지개별로 떠났어요</p>
+        </InputContainer>
+        <ImgContainer>
+          <img src="/images/cat4.png" />
+        </ImgContainer>
+      </Container>
+      <Container id="fifthPersonaSet">
+        <ImgContainer>
+          <img src="/images/cat5.png" />
+        </ImgContainer>
+        <InputContainer>
+          <h1>고양이가 어떻게 생겼나요?</h1>
+          <br />
+          <TextField
+            required
+            label="고양이의 종(species)"
+            variant="outlined"
+            value={textFieldValue}
+            onChange={handleTextFieldChange}
+          />
+          <br />
+          <br />
+          <Select
+            label="털 색깔(무늬)"
+            variant="outlined"
+            value={selectValue}
+            onChange={handleSelectChange}
+          ></Select>
+        </InputContainer>
+      </Container>
+      <Container id="sixthPersonaSet">
+        <InputContainer>
+          <h1>고양이의 사진을 올려주세요.</h1>
+        </InputContainer>
+        <ImgContainer>
+          <img src="/images/cat6.png" />
+        </ImgContainer>
+      </Container>
       <Finished />
     </Wrapper>
   );
@@ -302,18 +341,28 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const Container = styled.div`
+  margin: 100px auto;
+  width: 1000px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
 const ImgContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
   margin: 0;
   width: 400px;
   img {
-    width: 100px;
+    width: 200px;
   }
 `;
 const InputContainer = styled.div`
   margin: 0;
-  width: 400px;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
 `;
 
 export default PersonaCat;
