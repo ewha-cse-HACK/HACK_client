@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-// import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 // import axios from "axios";
 // import "./style.css";
 
 function Finished() {
+  const navigate = useNavigate();
+
   return (
     <Wrapper>
       <img src="/images/finished.png" />
@@ -12,19 +14,48 @@ function Finished() {
       <p>
         당신의 마음이 무지개 별에 닿았어요!
         <br />
-        이제부터 반려동물과 대화하고 일기를 볼 수 있어요.
+        이제 반려동물과 대화해볼까요?
       </p>
-      <button>프로필 보기</button>
+      <button onClick={() => navigate("/pages/Persona")}>프로필 보기</button>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  margin: auto;
-  width: 1000px;
-  height: 800px;
-  font-weight: medium;
-  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 100px;
+  h1 {
+    margin: 30px;
+    margin-bottom: 20px;
+    font-weight: 900;
+    font-size: 40px;
+  }
+  p {
+    font-size: 20px;
+    font-weight: 500px;
+    margin-bottom: 30px;
+  }
+  img {
+    width: 450px;
+  }
+  button {
+    border: none;
+    border-radius: 56px;
+    background: #fc8e8f;
+    color: white;
+    width: 197px;
+    height: 51px;
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: 900;
+    &:hover {
+      background: black;
+    }
+  }
 `;
 
 export default Finished;

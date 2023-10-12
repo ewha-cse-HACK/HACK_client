@@ -10,9 +10,10 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import styled from "styled-components";
 import axios from "axios";
 import "../style.css";
+import Finished from "../../components/Persona/Finished";
 
 function PersonaCat() {
-  const [speciesName, setSpeciesName] = useState("");
+  const speciesName = "고양이";
   const [name, setName] = useState("");
   const [charOne, setCharOne] = useState(null);
   const [charTwo, setCharTwo] = useState(null);
@@ -71,8 +72,8 @@ function PersonaCat() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // 필수 항목이 입력되지 않았을 때 알림 띄우기
-    if (!speciesName || !name || !ownerName) {
-      alert("모든 항목을 입력해주세요.");
+    if (!name || !ownerName) {
+      alert("필수 항목을 꼭 입력해주세요.");
       return;
     }
 
@@ -150,8 +151,9 @@ function PersonaCat() {
           value={textFieldValue}
           onChange={handleTextFieldChange}
         />
-        <br />
-        <br />
+      </InputContainer>
+
+      <InputContainer>
         <h1>고양이의 성격을 알려주세요.</h1>
         <br />
         <Select
@@ -190,6 +192,15 @@ function PersonaCat() {
           <MenuItem value="option3">엉뚱함</MenuItem>
           <MenuItem value="option3">산만함</MenuItem>
         </Select>
+      </InputContainer>
+      <ImgContainer>
+        <img src="/images/cat2.png" />
+      </ImgContainer>
+
+      <ImgContainer>
+        <img src="/images/cat3.png" />
+      </ImgContainer>
+      <InputContainer>
         <h1>고양이는 어떤 캐릭터인가요?</h1>
         <Select
           label="좋아하는 놀이"
@@ -238,18 +249,46 @@ function PersonaCat() {
           value={selectValue}
           onChange={handleSelectChange}
         ></Select>
-        <h1>고양이가 무지개 다리를 건넌 날을 알려주세요.</h1>
-
-        <p>고양이는 000년 0월 0일에 무지개별로 떠났어요</p>
-        <h1>고양이의 사진을 올려주세요.</h1>
-
-        <h2>반려동물 페르소나 생성 완료!</h2>
-        <p>
-          당신의 마음이 몰랑이에게 닿았어요! <br />
-          이제부터 몰랑이와 대화해볼까요?
-        </p>
-        <button>프로필 보기</button>
       </InputContainer>
+
+      <InputContainer>
+        <h1>고양이가 무지개 다리를 건넌 날을 알려주세요.</h1>
+        <p>고양이는 0000년 0월 0일에 무지개별로 떠났어요</p>
+      </InputContainer>
+      <ImgContainer>
+        <img src="/images/cat4.png" />
+      </ImgContainer>
+
+      <ImgContainer>
+        <img src="/images/cat5.png" />
+      </ImgContainer>
+      <InputContainer>
+        <h1>고양이가 어떻게 생겼나요?</h1>
+        <br />
+        <TextField
+          required
+          label="고양이의 종(species)"
+          variant="outlined"
+          value={textFieldValue}
+          onChange={handleTextFieldChange}
+        />
+        <br />
+        <br />
+        <Select
+          label="털 색깔(무늬)"
+          variant="outlined"
+          value={selectValue}
+          onChange={handleSelectChange}
+        ></Select>
+      </InputContainer>
+
+      <InputContainer>
+        <h1>고양이의 사진을 올려주세요.</h1>
+      </InputContainer>
+      <ImgContainer>
+        <img src="/images/cat6.png" />
+      </ImgContainer>
+      <Finished />
     </Wrapper>
   );
 }
@@ -257,9 +296,9 @@ function PersonaCat() {
 const Wrapper = styled.div`
   margin: auto;
   width: 1000px;
-  height: 800px;
+  height: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -269,7 +308,7 @@ const ImgContainer = styled.div`
   margin: 0;
   width: 400px;
   img {
-    width: 300px;
+    width: 100px;
   }
 `;
 const InputContainer = styled.div`
