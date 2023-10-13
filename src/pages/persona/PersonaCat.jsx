@@ -6,11 +6,14 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-// import { ArrowBack, ArrowForward } from "@mui/icons-material";
-//import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-//import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-//import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-//import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import dayjs from "dayjs";
+import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import styled from "styled-components";
 import axios from "axios";
 import "../style.css";
@@ -38,17 +41,6 @@ function PersonaCat() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  const [textFieldValue, setTextFieldValue] = useState("");
-  const [selectValue, setSelectValue] = useState("");
-
-  const handleTextFieldChange = (event) => {
-    setTextFieldValue(event.target.value);
-  };
-
-  const handleSelectChange = (event) => {
-    setSelectValue(event.target.value);
-  };
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -65,6 +57,38 @@ function PersonaCat() {
     };
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
+    }
+  };
+
+  const handleFileChange = (event) => {
+    setPetPhoto(event.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    try {
+      if (!petPhoto) {
+        alert("사진을 선택해주세요.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("petPhoto", petPhoto);
+
+      // 이미지를 업로드할 API 엔드포인트 URL을 입력하세요.
+      const apiUrl = "http://example.com/upload";
+
+      // 이미지를 백엔드 서버로 전송
+      const response = await axios.post(apiUrl, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      // 업로드 성공 시 처리
+      console.log("이미지 업로드 성공!", response.data);
+    } catch (error) {
+      // 업로드 실패 시 처리
+      console.error("이미지 업로드 실패:", error);
     }
   };
 
@@ -114,7 +138,7 @@ function PersonaCat() {
       navigate("/pages/Persona");
 
       const response = await axios.post(
-        "http://13.209.173.241:8080/rainbow-letter/persona/save",
+        "https://api.rainbow-letter.com/persona/save",
         jsonData,
         {
           headers: {
@@ -133,7 +157,7 @@ function PersonaCat() {
     <Wrapper>
       <Container id="firstPersonaSet">
         <ImgContainer>
-          <img src="/images/cat1.png" />
+          <img src="/images/cat3.png" style={{ width: "300px" }} />
         </ImgContainer>
         <InputContainer>
           <h3>고양이의 이름은 무엇인가요?</h3>
@@ -229,147 +253,254 @@ function PersonaCat() {
           </FormControl>
         </InputContainer>
         <ImgContainer>
-          <img src="/images/cat2.png" />
+          <img src="/images/cat2.png" style={{ width: "300px" }} />
         </ImgContainer>
       </Container>
 
       <Container id="thirdPersonaSet">
         <ImgContainer>
-          <img src="/images/cat3.png" />
+          <img src="/images/cat1.png" style={{ width: "300px" }} />
         </ImgContainer>
         <InputContainer>
           <h3>고양이는 어떤 캐릭터인가요?</h3>
           <br />
-          <InputLabel id="secondChar">두 번째 특성</InputLabel>
+          <br />
+          <InputLabel id="favoritePlay">좋아하는 놀이</InputLabel>
           <FormControl fullWidth variant="outlined" size="small">
             <Select
               variant="outlined"
-              value={charTwo}
-              onChange={(e) => setCharTwo(e.target.value)}
+              value={favoritePlay}
+              onChange={(e) => setFavoritePlay(e.target.value)}
               displayEmpty
             >
               <MenuItem value="" disabled>
-                <em>최대 두 개 선택</em>
+                <em>--선택 안함--</em>
               </MenuItem>
-              <MenuItem value="애교가 많음">애교가 많은</MenuItem>
-              <MenuItem value="같이 있는 걸 좋아함">같이 있는 게 좋은</MenuItem>
-              <MenuItem value="다정함">다정한</MenuItem>
-              <MenuItem value="사교적임">사교적인</MenuItem>
-              <MenuItem value="예민함">예민한</MenuItem>
-              <MenuItem value="겁이 많음">겁이 많은</MenuItem>
-              <MenuItem value="호기심이 많음">호기심이 많은</MenuItem>
-              <MenuItem value="장난치는 게 좋음">장난치는 게 좋은</MenuItem>
-              <MenuItem value="외향적">외향적인</MenuItem>
-              <MenuItem value="활동적">활동적인</MenuItem>
-              <MenuItem value="독립적">독립적인</MenuItem>
-              <MenuItem value="바보 같음">바보 같은</MenuItem>
-              <MenuItem value="말이 많음">말이 많은</MenuItem>
-              <MenuItem value="호전적임">호전적인</MenuItem>
-              <MenuItem value="소심함">소심한</MenuItem>
+              <MenuItem value="사냥!">사냥!</MenuItem>
+              <MenuItem value="인형 놀이">인형 놀이</MenuItem>
+              <MenuItem value="창 밖을 보기">창 밖을 보기</MenuItem>
+              <MenuItem value="새 구경하기">새 구경하기</MenuItem>
+              <MenuItem value="낚싯대 쫓기">낚싯대 쫓기</MenuItem>
+              <MenuItem value="영상 보기">영상 보기</MenuItem>
+              <MenuItem value="벌레 잡기">벌레 잡기</MenuItem>
+              <MenuItem value="현관 산책">현관 산책</MenuItem>
+              <MenuItem value="집사 손과 놀기">집사 손과 놀기</MenuItem>
+              <MenuItem value="">(직접입력)</MenuItem>
             </Select>
           </FormControl>
 
-          <Select
-            label="좋아하는 놀이"
-            variant="outlined"
-            value={selectValue}
-            onChange={handleSelectChange}
-          >
-            <MenuItem value="option1">차분함</MenuItem>
-            <MenuItem value="option2">활발함</MenuItem>
-            <MenuItem value="option3">수다스러움</MenuItem>
-            <MenuItem value="option3">과묵함</MenuItem>
-            <MenuItem value="option3">애교스러움</MenuItem>
-            <MenuItem value="option3">소심함</MenuItem>
-            <MenuItem value="option3">사교적</MenuItem>
-            <MenuItem value="option3">독립적</MenuItem>
-            <MenuItem value="option3">엉뚱함</MenuItem>
-            <MenuItem value="option3">산만함</MenuItem>
-          </Select>
-          <Select
-            label="좋아하는 간식"
-            variant="outlined"
-            value={selectValue}
-            onChange={handleSelectChange}
-          ></Select>
-          <Select
-            label="좋아하는 시간"
-            variant="outlined"
-            value={selectValue}
-            onChange={handleSelectChange}
-          ></Select>
-          <Select
-            label="좋아하는 장소"
-            variant="outlined"
-            value={selectValue}
-            onChange={handleSelectChange}
-          ></Select>
-          <Select
-            label="자주 하던 행동"
-            variant="outlined"
-            value={selectValue}
-            onChange={handleSelectChange}
-          ></Select>
-          <Select
-            label="일상적인 루틴"
-            variant="outlined"
-            value={selectValue}
-            onChange={handleSelectChange}
-          ></Select>
+          <br />
+
+          <InputLabel id="favoriteSnack">좋아하는 간식</InputLabel>
+          <FormControl fullWidth variant="outlined" size="small">
+            <Select
+              variant="outlined"
+              value={favoriteSnack}
+              onChange={(e) => setFavoriteSnack(e.target.value)}
+              displayEmpty
+            >
+              <MenuItem value="" disabled>
+                <em>--선택 안함--</em>
+              </MenuItem>
+              <MenuItem value="건조 트릿">건조 트릿</MenuItem>
+              <MenuItem value="습식">습식</MenuItem>
+              <MenuItem value="캣그라스">캣그라스</MenuItem>
+              <MenuItem value="츄르">액체 간식(츄르)</MenuItem>
+              <MenuItem value="건강한 간식">건강한 간식</MenuItem>
+              <MenuItem value="고구마">고구마</MenuItem>
+              <MenuItem value="펫밀크">펫밀크</MenuItem>
+              <MenuItem value="해산물">해산물</MenuItem>
+              <MenuItem value="캣닙">캣닙</MenuItem>
+            </Select>
+          </FormControl>
+
+          <br />
+
+          <InputLabel id="favoriteTime">좋아하는 시간</InputLabel>
+          <FormControl fullWidth variant="outlined" size="small">
+            <Select
+              variant="outlined"
+              value={favoriteTime}
+              onChange={(e) => setFavoriteTime(e.target.value)}
+              displayEmpty
+            >
+              <MenuItem value="" disabled>
+                <em>--선택 안함--</em>
+              </MenuItem>
+              <MenuItem value="새벽">새벽</MenuItem>
+              <MenuItem value="아침">아침</MenuItem>
+              <MenuItem value="오전">오전</MenuItem>
+              <MenuItem value="점심">점심</MenuItem>
+              <MenuItem value="오후">오후</MenuItem>
+              <MenuItem value="저녁">저녁</MenuItem>
+              <MenuItem value="밤">밤</MenuItem>
+            </Select>
+          </FormControl>
+
+          <br />
+
+          <InputLabel id="favoritePlace">좋아하는 장소</InputLabel>
+          <FormControl fullWidth variant="outlined" size="small">
+            <Select
+              variant="outlined"
+              value={favoritePlace}
+              onChange={(e) => setFavoritePlace(e.target.value)}
+              displayEmpty
+            >
+              <MenuItem value="" disabled>
+                <em>--선택 안함--</em>
+              </MenuItem>
+              <MenuItem value="높은 가구 위">높은 가구 위</MenuItem>
+              <MenuItem value="캣타워">캣타워</MenuItem>
+              <MenuItem value="창문 앞">창문 앞</MenuItem>
+              <MenuItem value="침대">침대</MenuItem>
+              <MenuItem value="베란다">베란다</MenuItem>
+              <MenuItem value="집사의 의자">집사의 의자</MenuItem>
+              <MenuItem value="애착 인형 옆">애착 인형 옆</MenuItem>
+              <MenuItem value="소파">소파</MenuItem>
+              <MenuItem value="현관">현관</MenuItem>
+              <MenuItem value="쿠션">쿠션</MenuItem>
+              <MenuItem value="바구니 안">바구니 안</MenuItem>
+              <MenuItem value="집사 곁">집사 곁</MenuItem>
+              <MenuItem value="숨숨집">숨숨집</MenuItem>
+              <MenuItem value="발매트">발매트</MenuItem>
+              <MenuItem value="">(직접입력)</MenuItem>
+            </Select>
+          </FormControl>
+
+          <br />
+
+          <InputLabel id="habit">자주 하던 행동</InputLabel>
+          <FormControl fullWidth variant="outlined" size="small">
+            <Select
+              variant="outlined"
+              value={habit}
+              onChange={(e) => setHabit(e.target.value)}
+              displayEmpty
+            >
+              <MenuItem value="" disabled>
+                <em>--선택 안함--</em>
+              </MenuItem>
+              <MenuItem value="갑자기 뛰어다니기">갑자기 뛰어다니기</MenuItem>
+              <MenuItem value="숨바꼭질">숨바꼭질</MenuItem>
+              <MenuItem value="골골골 노래 부르기">골골골 노래 부르기</MenuItem>
+              <MenuItem value="집사 찾아오기">집사 찾아오기</MenuItem>
+              <MenuItem value="우다다">우다다</MenuItem>
+              <MenuItem value="그루밍">그루밍</MenuItem>
+              <MenuItem value="꾹꾹이">꾹꾹이</MenuItem>
+              <MenuItem value="잠 자기">잠 자기</MenuItem>
+              <MenuItem value="새 구경하기">새 구경하기</MenuItem>
+              <MenuItem value="갑자기 사냥 모드">갑자기 사냥 모드</MenuItem>
+              <MenuItem value="">(직접입력)</MenuItem>
+            </Select>
+          </FormControl>
+
+          <br />
+
+          <InputLabel id="routine">일상적인 루틴</InputLabel>
+          <FormControl fullWidth variant="outlined" size="small">
+            <Select
+              variant="outlined"
+              value={routine}
+              onChange={(e) => setRoutine(e.target.value)}
+              displayEmpty
+            >
+              <MenuItem value="" disabled>
+                <em>--선택 안함--</em>
+              </MenuItem>
+              <MenuItem value="간식 조르기">간식 조르기</MenuItem>
+              <MenuItem value="낮잠">낮잠</MenuItem>
+              <MenuItem value="아침 일찍 집사 깨우기">
+                아침 일찍 집사 깨우기
+              </MenuItem>
+              <MenuItem value="집사 맞이">집사 맞이</MenuItem>
+              <MenuItem value="컨셉 놀이">컨셉 놀이</MenuItem>
+              <MenuItem value="">(직접입력)</MenuItem>
+            </Select>
+          </FormControl>
         </InputContainer>
       </Container>
+
       <Container id="fourthPersonaSet">
         <InputContainer>
-          <h1>고양이가 무지개 다리를 건넌 날을 알려주세요.</h1>
-          {/*
+          <h3>고양이가 무지개 다리를 건넌 날을 알려주세요.</h3>
+          <br />
+          <br />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker"]}>
-              <DatePicker label="Basic date picker" />
+              <DatePicker
+                label="기일 입력"
+                value={passed_date}
+                onChange={(date) => setPassedDate(date)}
+              />
             </DemoContainer>
           </LocalizationProvider>
-          <DemoItem label="Responsive variant">
-            <DatePicker defaultValue={dayjs("2022-04-17")} />
-          </DemoItem>
-          <DemoItem label="Static variant">
-            <StaticDatePicker defaultValue={dayjs("2022-04-17")} />
-          </DemoItem>
-          */}
-          <p>고양이는 0000년 0월 0일에 무지개별로 떠났어요</p>
         </InputContainer>
         <ImgContainer>
-          <img src="/images/cat4.png" />
+          <img src="/images/cat4.png" style={{ width: "250px" }} />
         </ImgContainer>
       </Container>
+
       <Container id="fifthPersonaSet">
         <ImgContainer>
-          <img src="/images/cat5.png" />
+          <img src="/images/cat5.png" style={{ width: "300px" }} />
         </ImgContainer>
         <InputContainer>
-          <h1>고양이가 어떻게 생겼나요?</h1>
+          <h3>고양이가 어떻게 생겼나요?</h3>
+          <br />
           <br />
           <TextField
             required
             label="고양이의 종(species)"
             variant="outlined"
-            value={textFieldValue}
-            onChange={handleTextFieldChange}
+            size="small"
+            value={kind}
+            onChange={(e) => setKind(e.target.value)}
           />
           <br />
-          <br />
-          <Select
-            label="털 색깔(무늬)"
-            variant="outlined"
-            value={selectValue}
-            onChange={handleSelectChange}
-          ></Select>
+
+          <InputLabel id="furColor">털 색깔</InputLabel>
+          <FormControl fullWidth variant="outlined" size="small">
+            <Select
+              variant="outlined"
+              value={furColor}
+              onChange={(e) => setFurColor(e.target.value)}
+              displayEmpty
+            >
+              <MenuItem value="" disabled>
+                <em>--선택 안함--</em>
+              </MenuItem>
+              <MenuItem value="흰색">흰색</MenuItem>
+              <MenuItem value="검은색">검은색</MenuItem>
+              <MenuItem value="노란색">노란색</MenuItem>
+              <MenuItem value="회색">회색</MenuItem>
+              <MenuItem value="고등어">고등어</MenuItem>
+              <MenuItem value="치즈">치즈</MenuItem>
+              <MenuItem value="삼색">삼색</MenuItem>
+              <MenuItem value="턱시도">턱시도</MenuItem>
+              <MenuItem value="스모크">스모크</MenuItem>
+              <MenuItem value="망토">망토</MenuItem>
+              <MenuItem value="포인트">포인트</MenuItem>
+              <MenuItem value="세피아">세피아</MenuItem>
+              <MenuItem value="밍크">밍크</MenuItem>
+              <MenuItem value="바이컬러">바이컬러</MenuItem>
+            </Select>
+          </FormControl>
         </InputContainer>
       </Container>
+
+      <br />
+
       <Container id="sixthPersonaSet">
         <InputContainer>
-          <h1>고양이의 사진을 올려주세요.</h1>
+          <h3>고양이의 사진을 올려주세요.</h3>
+          <br />
+          <br />
+          <input type="file" onChange={handleFileChange} />
+          <button onClick={handleUpload}>이미지 업로드</button>
         </InputContainer>
         <ImgContainer>
-          <img src="/images/cat6.png" />
+          <img src="/images/cat6.png" style={{ width: "200px" }} />
         </ImgContainer>
       </Container>
       <Finished />
@@ -419,5 +550,4 @@ const InputContainer = styled.div`
   font-size: 20px;
   border: 1px solid red;
 `;
-
 export default PersonaCat;

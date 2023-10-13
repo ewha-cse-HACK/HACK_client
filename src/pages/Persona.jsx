@@ -18,7 +18,7 @@ function Persona() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://13.209.173.241:8080/rainbow-letter/persona/list",
+          "https://api.rainbow-letter.com/persona/list",
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,

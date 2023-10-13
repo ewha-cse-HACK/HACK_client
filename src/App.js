@@ -18,6 +18,9 @@ import PersonaSetting from './pages/persona/PersonaSetting';
 import Chat from './pages/Chat';
 import Diary from './pages/Diary';
 import Community from './pages/Community';
+import CommunityPost from './pages/community/CommunityPost';
+import CommunityEdit from './pages/community/CommunityEdit';
+import CommunityView from './pages/community/CommunityView';
 import MyPage from './pages/MyPage';
 import Loading from './pages/Loading'
 
@@ -55,6 +58,9 @@ function App() {
           <Route path="/rainbow-letter/diary/:pet_id" component={Diary} />
           <Route path="/pages/Diary/:petIdString" element={<Diary />} />
           <Route path="/pages/Commnunity" element={<Community />} />
+          <Route path="/pages/community/CommunityPost" element={<CommunityPost />} />
+          <Route path="/pages/community/CommunityEdit" element={<CommunityEdit />} />
+          <Route path="/pages/community/CommunityView" element={<CommunityView />} />
           <Route path="/pages/MyPage" element={<MyPage />} />
           <Route path="/pages/Loading" element={<Loading />} />
         </Routes>

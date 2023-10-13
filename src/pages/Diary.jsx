@@ -28,7 +28,7 @@ function Diary() {
 
     try {
       const response = await axios.post(
-        `http://13.209.173.241:8080/journal/${pet_id}/image`,
+        `https://api.rainbow-letter.com/journal/${pet_id}/image`,
         null, // Request body is null
         {
           headers: {
@@ -52,7 +52,7 @@ function Diary() {
 
     try {
       const response = await axios.get(
-        `http://13.209.173.241:8080/journal/${journalId}`,
+        `https://api.rainbow-letter.com/journal/${journalId}`,
         null,
         {
           headers: {

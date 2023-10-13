@@ -2,25 +2,19 @@ import React, { useState } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import "./style.css";
-import CommunityPost from "./community/CommunityPost";
+import "../style.css";
 
-function Community() {
+function CommunityEdit() {
   const navigate = useNavigate();
 
   return (
     <ComWrapper>
-      <img src="/images/writing.png" alt="글을 적고 있는 고양이" />
-      <h1 id="rainbowPlatform">무지개 광장</h1>
-      <p>자유롭게 글을 쓰고, 사진을 올리고, 공감을 표시해주세요!</p>
-      <button onClick={() => navigate("/pages/community/CommunityPost")}>
-        글 쓰기
-      </button>
+      <h1>포스트 수정</h1>
+      <button>이전</button>
+      <button>완료</button>
     </ComWrapper>
   );
 }
-
-export default Community;
 
 const ComWrapper = styled.div`
   margin: auto;
@@ -33,9 +27,6 @@ const ComWrapper = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
-  img {
-    width: 100px;
-  }
   button {
     display: flex;
     width: 121px;
@@ -55,3 +46,5 @@ const ComWrapper = styled.div`
     }
   }
 `;
+
+export default CommunityEdit;
