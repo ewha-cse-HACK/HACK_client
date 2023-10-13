@@ -24,7 +24,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "https://api.rainbow-letter.com/api/login",
+        "https://api.rainbow-letter.com/login",
         JSON.stringify(data),
         {
           headers: {
