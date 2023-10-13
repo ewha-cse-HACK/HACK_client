@@ -7,6 +7,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 // import { ArrowBack, ArrowForward } from "@mui/icons-material";
+//import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+//import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+//import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+//import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
 import axios from "axios";
 import "../style.css";
@@ -15,9 +19,9 @@ import Finished from "../../components/Persona/Finished";
 function PersonaCat() {
   const speciesName = "고양이";
   const [name, setName] = useState("");
+  const [ownerName, setOwnerName] = useState("");
   const [charOne, setCharOne] = useState(null);
   const [charTwo, setCharTwo] = useState(null);
-  const [ownerName, setOwnerName] = useState("");
   const [favoritePlay, setFavoritePlay] = useState(null);
   const [customPlay, setCustomPlay] = useState(null);
   const [favoriteSnack, setFavoriteSnack] = useState(null);
@@ -134,16 +138,13 @@ function PersonaCat() {
         <InputContainer>
           <h3>고양이의 이름은 무엇인가요?</h3>
           <br />
-          <InputLabel htmlFor="name">이름</InputLabel>
-          <TextField id="name" variant="outlined" />
           <TextField
             required
             label="고양이 이름"
-            helperText="도움말 텍스트"
             variant="outlined"
             size="small"
             value={name}
-            onChange={handleTextFieldChange}
+            onChange={(e) => setName(e.target.value)}
           />
           <br />
           <br />
@@ -156,81 +157,82 @@ function PersonaCat() {
             required
             label="당신의 호칭"
             variant="outlined"
-            value={textFieldValue}
-            onChange={handleTextFieldChange}
+            size="small"
+            helperText="언니, 형아, 엄마 등"
+            value={ownerName}
+            onChange={(e) => setOwnerName(e.target.value)}
           />
         </InputContainer>
       </Container>
 
       <Container id="secondPersonaSet">
-        <InputLabel id="demo-select-label">선택하세요</InputLabel>
-        <Select
-          labelId="demo-select-label"
-          id="demo-select"
-          label="선택하세요"
-          variant="outlined"
-        >
-          {/* 옵션들 */}
-        </Select>
         <InputContainer>
-          <h1>고양이의 성격을 알려주세요.</h1>
+          <h3>고양이의 성격을 알려주세요.</h3>
           <br />
+          <br />
+          <InputLabel id="firstChar">첫 번째 특성</InputLabel>
           <FormControl fullWidth variant="outlined" size="small">
             <Select
-              value={selectValue}
-              onChange={handleSelectChange}
-              label="Placeholder 텍스트"
+              variant="outlined"
+              value={charOne}
+              onChange={(e) => setCharOne(e.target.value)}
               displayEmpty
             >
               <MenuItem value="" disabled>
-                <em>선택하세요</em>
+                <em>최대 두 개 선택</em>
               </MenuItem>
-              <MenuItem value="option1">옵션 1</MenuItem>
-              <MenuItem value="option2">옵션 2</MenuItem>
-              <MenuItem value="option3">옵션 3</MenuItem>
+              <MenuItem value="애교가 많음">애교가 많은</MenuItem>
+              <MenuItem value="같이 있는 걸 좋아함">같이 있는 게 좋은</MenuItem>
+              <MenuItem value="다정함">다정한</MenuItem>
+              <MenuItem value="사교적임">사교적인</MenuItem>
+              <MenuItem value="예민함">예민한</MenuItem>
+              <MenuItem value="겁이 많음">겁이 많은</MenuItem>
+              <MenuItem value="호기심이 많음">호기심이 많은</MenuItem>
+              <MenuItem value="장난치는 게 좋음">장난치는 게 좋은</MenuItem>
+              <MenuItem value="외향적">외향적인</MenuItem>
+              <MenuItem value="활동적">활동적인</MenuItem>
+              <MenuItem value="독립적">독립적인</MenuItem>
+              <MenuItem value="바보 같음">바보 같은</MenuItem>
+              <MenuItem value="말이 많음">말이 많은</MenuItem>
+              <MenuItem value="호전적임">호전적인</MenuItem>
+              <MenuItem value="소심함">소심한</MenuItem>
             </Select>
           </FormControl>
-          <Select
-            label="첫 번째 특성"
-            placeholder="고양이의 성격"
-            variant="outlined"
-            value={selectValue}
-            onChange={handleSelectChange}
-          >
-            <MenuItem value="option1">차분함</MenuItem>
-            <MenuItem value="option2">활발함</MenuItem>
-            <MenuItem value="option3">수다스러움</MenuItem>
-            <MenuItem value="option3">과묵함</MenuItem>
-            <MenuItem value="option3">애교스러움</MenuItem>
-            <MenuItem value="option3">소심함</MenuItem>
-            <MenuItem value="option3">사교적</MenuItem>
-            <MenuItem value="option3">독립적</MenuItem>
-            <MenuItem value="option3">엉뚱함</MenuItem>
-            <MenuItem value="option3">산만함</MenuItem>
-          </Select>
-          <Select
-            label="두 번째 특성"
-            placeholder="고양이의 성격"
-            variant="outlined"
-            value={selectValue}
-            onChange={handleSelectChange}
-          >
-            <MenuItem value="option1">차분함</MenuItem>
-            <MenuItem value="option2">활발함</MenuItem>
-            <MenuItem value="option3">수다스러움</MenuItem>
-            <MenuItem value="option3">과묵함</MenuItem>
-            <MenuItem value="option3">애교스러움</MenuItem>
-            <MenuItem value="option3">소심함</MenuItem>
-            <MenuItem value="option3">사교적</MenuItem>
-            <MenuItem value="option3">독립적</MenuItem>
-            <MenuItem value="option3">엉뚱함</MenuItem>
-            <MenuItem value="option3">산만함</MenuItem>
-          </Select>
+          <br />
+          <InputLabel id="secondChar">두 번째 특성</InputLabel>
+          <FormControl fullWidth variant="outlined" size="small">
+            <Select
+              variant="outlined"
+              value={charTwo}
+              onChange={(e) => setCharTwo(e.target.value)}
+              displayEmpty
+            >
+              <MenuItem value="" disabled>
+                <em>최대 두 개 선택</em>
+              </MenuItem>
+              <MenuItem value="애교가 많음">애교가 많은</MenuItem>
+              <MenuItem value="같이 있는 걸 좋아함">같이 있는 게 좋은</MenuItem>
+              <MenuItem value="다정함">다정한</MenuItem>
+              <MenuItem value="사교적임">사교적인</MenuItem>
+              <MenuItem value="예민함">예민한</MenuItem>
+              <MenuItem value="겁이 많음">겁이 많은</MenuItem>
+              <MenuItem value="호기심이 많음">호기심이 많은</MenuItem>
+              <MenuItem value="장난치는 게 좋음">장난치는 게 좋은</MenuItem>
+              <MenuItem value="외향적">외향적인</MenuItem>
+              <MenuItem value="활동적">활동적인</MenuItem>
+              <MenuItem value="독립적">독립적인</MenuItem>
+              <MenuItem value="바보 같음">바보 같은</MenuItem>
+              <MenuItem value="말이 많음">말이 많은</MenuItem>
+              <MenuItem value="호전적임">호전적인</MenuItem>
+              <MenuItem value="소심함">소심한</MenuItem>
+            </Select>
+          </FormControl>
         </InputContainer>
         <ImgContainer>
           <img src="/images/cat2.png" />
         </ImgContainer>
       </Container>
+
       <Container id="thirdPersonaSet">
         <ImgContainer>
           <img src="/images/cat3.png" />
@@ -289,6 +291,19 @@ function PersonaCat() {
       <Container id="fourthPersonaSet">
         <InputContainer>
           <h1>고양이가 무지개 다리를 건넌 날을 알려주세요.</h1>
+          {/*
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={["DatePicker"]}>
+              <DatePicker label="Basic date picker" />
+            </DemoContainer>
+          </LocalizationProvider>
+          <DemoItem label="Responsive variant">
+            <DatePicker defaultValue={dayjs("2022-04-17")} />
+          </DemoItem>
+          <DemoItem label="Static variant">
+            <StaticDatePicker defaultValue={dayjs("2022-04-17")} />
+          </DemoItem>
+          */}
           <p>고양이는 0000년 0월 0일에 무지개별로 떠났어요</p>
         </InputContainer>
         <ImgContainer>
@@ -328,6 +343,13 @@ function PersonaCat() {
         </ImgContainer>
       </Container>
       <Finished />
+      <div className="scroll-buttons">
+        {showTopButton && (
+          <button className="top-button" onClick={scrollToTop}>
+            Top
+          </button>
+        )}
+      </div>
     </Wrapper>
   );
 }
@@ -349,20 +371,23 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border: 1px solid gray;
 `;
 const ImgContainer = styled.div`
   display: flex;
+  justify-content: flex-end;
   margin: 0;
-  width: 400px;
   img {
     width: 200px;
   }
+  border: 1px solid blue;
 `;
 const InputContainer = styled.div`
   margin: 0;
   display: flex;
   flex-direction: column;
   font-size: 20px;
+  border: 1px solid red;
 `;
 
 export default PersonaCat;

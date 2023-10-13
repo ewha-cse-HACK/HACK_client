@@ -10,6 +10,7 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 // import PhotoUploadForm from "./PhotoUploadForm";
 
 function PersonaBird() {
+  const speciesName = "새";
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
   const [personality1, setPersonality1] = useState("");

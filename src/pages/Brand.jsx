@@ -7,6 +7,7 @@ import Header from "../components/Header/Header";
 function Brand() {
   const navigate = useNavigate();
   const [scrollPercentage, setScrollPercentage] = useState(0);
+  const [showTopButton, setShowTopButton] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +23,13 @@ function Brand() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -112,6 +120,13 @@ function Brand() {
             <img src="/images/landing5.png" />
           </ImgContainer>
         </PageWrapper>
+        <div className="scroll-buttons">
+          {showTopButton && (
+            <button className="top-button" onClick={scrollToTop}>
+              Top
+            </button>
+          )}
+        </div>
       </Wrapper>
     </>
   );

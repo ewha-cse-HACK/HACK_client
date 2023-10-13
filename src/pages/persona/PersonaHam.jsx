@@ -12,6 +12,7 @@ import PetPic from "../../components/Persona/PetPic";
 import Finished from "../../components/Persona/Finished";
 
 function PersonaHam() {
+  const speciesName = "햄스터";
   return (
     <Wrapper>
       <ImgContainer>

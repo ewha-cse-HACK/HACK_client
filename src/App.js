@@ -15,7 +15,6 @@ import PersonaBird from './pages/persona/PersonaBird';
 import PersonaHam from './pages/persona/PersonaHam';
 import PersonaOthers from './pages/persona/PersonaOthers';
 import PersonaSetting from './pages/persona/PersonaSetting';
-import PersonaEdit from './pages/persona/PersonaEdit';
 import Chat from './pages/Chat';
 import Diary from './pages/Diary';
 import Community from './pages/Community';
@@ -49,7 +48,6 @@ function App() {
           <Route path="/pages/persona/PersonaHam" element={<PersonaHam />} />
           <Route path="/pages/persona/PersonaOthers" element={<PersonaOthers />} />
           <Route path="/pages/persona/PersonaSetting" element={<PersonaSetting />} />
-          <Route path="/pages/persona/PersonaEdit" element={<PersonaEdit />} />
           <Route path="/pages/Chat" element={<Chat />} />
           <Route path="/pages/Chat/:petIdString" element={<Chat />} />
           <Route path="/rainbow-letter/chat/:pet_id" component={Chat} />

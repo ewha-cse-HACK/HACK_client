@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import {
+  TextField,
+  Button,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
 import styled from "styled-components";
 import axios from "axios";
 import "../style.css";
 
 function PersonaDog() {
-  const [speciesName, setSpeciesName] = useState("");
+  const speciesName = "강아지";
   const [name, setName] = useState("");
   const [charOne, setCharOne] = useState(null);
   const [charTwo, setCharTwo] = useState(null);
@@ -19,40 +27,12 @@ function PersonaDog() {
   const [routine, setRoutine] = useState(null);
   const [petImage, setPetImage] = useState(null);
   const [passed_date, setPassedDate] = useState(null);
+  const [furColor, setFurColor] = useState(null);
+  const [kind, setKind] = useState(null);
+
   const navigate = useNavigate();
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setShowTopButton(true);
-      } else {
-        setShowTopButton(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // 페이지 맨 위로 스크롤하는 함수
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleScroll = () => {
-    const targetElement = document.getElementById("targetElement");
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]; // 선택한 파일
@@ -73,11 +53,18 @@ function PersonaDog() {
     navigate(-1);
   };
 
+  // 페이지 맨 위로 스크롤하는 함수
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // 필수 항목이 입력되지 않았을 때 알림 띄우기
-    if (!speciesName || !name || !ownerName) {
-      alert("모든 항목을 입력해주세요.");
+    if (!name || !ownerName) {
+      alert("필수 항목을 꼭 입력해주세요.");
       return;
     }
 
@@ -100,6 +87,8 @@ function PersonaDog() {
       formData.append("passed_date", passed_date);
       /*const formattedDate = passed_date.toISOString(); // Date 객체를 ISO 형식의 문자열로 변환
         formData.append("passed_date", formattedDate);*/
+      formData.append("furColor", furColor);
+      formData.append("kind", kind);
 
       const formDataObject = {};
       formData.forEach((value, key) => {
@@ -107,9 +96,6 @@ function PersonaDog() {
       });
       const jsonData = JSON.stringify(formDataObject);
       console.log(jsonData);
-
-      alert("페르소나 생성이 완료되었습니다!");
-      navigate("/pages/Persona");
 
       const response = await axios.post(
         "http://13.209.173.241:8080/rainbow-letter/persona/save",
@@ -121,273 +107,76 @@ function PersonaDog() {
           },
         }
       );
+      //서버에 전송 잘 되면 알림 뜨는 걸로 변경 필요
+      alert("페르소나 생성이 완료되었습니다!");
+      navigate("/pages/Persona");
     } catch (error) {
       console.error("서버 요청 실패:", error);
+      alert("전송에 실패했습니다. 오류를 확인해주세요.");
       // 오류 처리 로직 추가
     }
   };
 
   return (
     <DogWrapper>
-      <div id="startPersona">
-        <h1>지금부터 무지개 다리 너머로 편지를 보내볼까요?</h1>
-        <ImageStyled src="/images/letter1.png" />
-        <h2>편지를 받을 당신의 가족에 대해 알려주세요.</h2>
-        <h5>
-          앞으로 몇 가지 질문을 통해 누구에게 편지를 보낼지 알아볼 거예요.
-        </h5>
-        <h5>반려동물을 다시 만나러 가봅시다! (약 3분 가량 소요 예정)</h5>
-        <button id="goToCreate" onClick={handleScroll}>
-          페르소나 설정 시작!
-        </button>
-      </div>
-      <div id="targetElement">
-        <form onSubmit={handleSubmit}>
-          <div id="species">
-            <h1>당신은 어떤 친구와 함께했나요?</h1>
-            <h4>반려동물의 종을 선택해주세요!</h4>
-            <div className="btn-container">
-              <div className="btn-grid">
-                <div
-                  className="speciesButton"
-                  id="bt1"
-                  onClick={() => setSpeciesName("강아지")}
-                >
-                  <img src="/images/dog.png" alt="강아지" />
-                </div>
-                <div
-                  className="speciesButton"
-                  id="bt2"
-                  onClick={() => setSpeciesName("고양이")}
-                >
-                  <img src="/images/cat.png" alt="고양이" />
-                </div>
-                <div
-                  className="speciesButton"
-                  id="bt3"
-                  onClick={() => setSpeciesName("새")}
-                >
-                  <img src="/images/bird.png" alt="새" />
-                </div>
-                <div
-                  className="speciesButton"
-                  id="bt4"
-                  onClick={() => setSpeciesName("햄스터")}
-                >
-                  <img src="/images/mouse.png" alt="햄스터" />
-                </div>
-              </div>
-              <div
-                className="notHereBtn"
-                onClick={() => setSpeciesName("기타")}
-              >
-                <img src="/images/not_here.png" alt="앗! 여기 없어요" />
-              </div>
-            </div>
-          </div>
-          <div id="name">
-            <h1>반려동물의 이름은 무엇인가요?</h1>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              placeholder="반려동물의 이름"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div id="character">
-            <h4>반려동물이 어떤 성격인가요?</h4>
-            <p>(최대 두 개의 성격을 입력할 수 있습니다.)</p>
-            <select
-              id="charOne"
-              value={charOne}
-              onChange={(e) => setCharOne(e.target.value)}
-            >
-              <option value="null">--선택안함--</option>
-              <option value="차분함">차분함</option>
-              <option value="활발함">활발함</option>
-              <option value="수다스러움">수다스러움</option>
-              <option value="과묵함">과묵함</option>
-              <option value="애교스러움">애교스러움</option>
-              <option value="소심함">소심함</option>
-              <option value="사교적">사교적</option>
-              <option value="독립적">독립적</option>
-              <option value="엉뚱함">엉뚱함</option>
-              <option value="산만함">산만함</option>
-            </select>
-            <select
-              id="charTwo"
-              value={charTwo}
-              onChange={(e) => setCharTwo(e.target.value)}
-            >
-              <option value="null">--선택안함--</option>
-              <option value="차분함">차분함</option>
-              <option value="활발함">활발함</option>
-              <option value="수다스러움">수다스러움</option>
-              <option value="과묵함">과묵함</option>
-              <option value="애교스러움">애교스러움</option>
-              <option value="소심함">소심함</option>
-              <option value="사교적">사교적</option>
-              <option value="독립적">독립적</option>
-              <option value="엉뚱함">엉뚱함</option>
-              <option value="산만함">산만함</option>
-            </select>
-          </div>
-          <div id="ownerName">
-            <h1>보내는 사람을 적어주세요!</h1>
-            <p>
-              반려동물이 알아볼 수 있도록, 당신을 부르던 호칭에 대해 알려주세요.{" "}
-              <br />
-              아니면 당신이 반려동물에게 불리고 싶은 호칭을 적어도 좋아요.
-            </p>
-            <input
-              type="text"
-              id="ownerName"
-              value={ownerName}
-              placeholder="당신의 호칭"
-              onChange={(e) => setOwnerName(e.target.value)}
-            />
-          </div>
-          <div id="textBox">
-            <h4>반려동물에 대한 당신의 기억들을 알려주세요.</h4>
-            <h5>
-              고르지 않아도 되지만, 알려주면 더 자연스럽게 대화할 수 있어요!
-            </h5>
-          </div>
-          <div id="more">
-            <div id="selectGroup">
-              <select
-                id="favoritePlay"
-                value={favoritePlay}
-                onChange={(e) => setFavoritePlay(e.target.value)}
-              >
-                <option value="null">좋아하는 놀이</option>
-                <option value="산책">산책</option>
-                <option value="사냥 놀이">사냥 놀이</option>
-                <option value="숨바꼭질">숨바꼭질</option>
-                <option value="터그">터그</option>
-                <option value="간식 찾기">간식 찾기</option>
-                <option value="직접 입력">직접 입력</option>
-              </select>
-              <select
-                id="favoriteSnack"
-                value={favoriteSnack}
-                onChange={(e) => setFavoriteSnack(e.target.value)}
-              >
-                <option value="null">좋아하는 간식</option>
-                <option value="츄르">츄르</option>
-                <option value="트릿">트릿</option>
-                <option value="닭가슴살">닭가슴살</option>
-                <option value="고구마">고구마</option>
-                <option value="북어포">북어포</option>
-                <option value="직접 입력">직접 입력</option>
-              </select>
-              <select
-                id="favoriteTime"
-                value={favoriteTime}
-                onChange={(e) => setFavoriteTime(e.target.value)}
-              >
-                <option value="null">좋아하는 시간</option>
-                <option value="새벽">새벽</option>
-                <option value="아침">아침</option>
-                <option value="점심">점심</option>
-                <option value="오후">오후</option>
-                <option value="저녁">저녁</option>
-                <option value="밤">밤</option>
-                <option value="직접 입력">직접 입력</option>
-              </select>
-              <select
-                id="habit"
-                value={habit}
-                onChange={(e) => setHabit(e.target.value)}
-              >
-                <option value="null">자주 하던 행동</option>
-                <option value="멍 때리기">멍 때리기</option>
-                <option value="집사 괴롭히기">집사 괴롭히기</option>
-                <option value="놀아달라고 조르기">놀아달라고 조르기</option>
-                <option value="잠 자기">잠 자기</option>
-                <option value="뛰어다니기">뛰어다니기</option>
-                <option value="직접 입력">직접 입력</option>
-              </select>
-              <select
-                id="favoritePlace"
-                value={favoritePlace}
-                onChange={(e) => setFavoritePlace(e.target.value)}
-              >
-                <option value="null">좋아하는 장소</option>
-                <option value="침대">침대</option>
-                <option value="책상 위">책상 위</option>
-                <option value="창문 앞">창문 앞</option>
-                <option value="집사의 발치">집사의 발치</option>
-                <option value="식탁">식탁</option>
-                <option value="현관 앞">현관 앞</option>
-                <option value="직접 입력">직접 입력</option>
-              </select>
-              <select
-                id="routine"
-                value={routine}
-                onChange={(e) => setRoutine(e.target.value)}
-              >
-                <option value="null">일상적인 루틴</option>
-                <option value="밥 달라고 보채기">밥 달라고 보채기</option>
-                <option value="낮잠 자기">낮잠 자기</option>
-                <option value="산책하기">산책하기</option>
-                <option value="밥 먹고 나면 화장실">밥 먹고 나면 화장실</option>
-                <option value="명상">명상</option>
-                <option value="직접 입력">직접 입력</option>
-              </select>
-            </div>
-          </div>
-          <div id="petImage">
-            <h1>반려동물의 사진을 올려주세요.</h1>
-            <input type="file" onChange={handleImageChange} />
-            {petImage && <img src={petImage} alt="반려동물의 사진" />}
-          </div>
-          <div id="passedDate">
-            <h1>반려동물이 무지개별로 떠난 날은 언제인가요?</h1>
-            <input
-              type="date"
-              id="passedDate"
-              value={passed_date}
-              onChange={(e) => setPassedDate(e.target.value)}
-            />
-          </div>
-          <button id="backBtn" onClick={goBack}>
-            이전
-          </button>
-          <button id="doneBtn" type="submit">
-            완료
-          </button>
-        </form>
-      </div>
+      {/** 
+      <form onSubmit={handleSubmit}>
+        <FormControl fullWidth variant="outlined" margin="normal">
 
-      <div className="scroll-buttons">
-        {showTopButton && (
-          <button className="top-button" onClick={scrollToTop}>
-            Top
-          </button>
-        )}
-      </div>
+          <h3>강아지의 이름은 무엇인가요?</h3>
+          <InputLabel htmlFor="favoritePlay">좋아하는 놀이</InputLabel>
+          <Select
+            label="좋아하는 놀이"
+            id="favoritePlay"
+            value={favoritePlay}
+            onChange={(e) => setFavoritePlay(e.target.value)}
+          >
+            <MenuItem value="null">좋아하는 놀이</MenuItem>
+            <MenuItem value="산책">산책</MenuItem>
+            <MenuItem value="사냥 놀이">사냥 놀이</MenuItem>
+            <MenuItem value="숨바꼭질">숨바꼭질</MenuItem>
+          </Select>
+        </FormControl>
+        <Button id="backBtn" variant="outlined" color="blue" onClick={goBack}>
+          이전
+        </Button>
+        <Button id="doneBtn" type="submit" variant="contained" color="red">
+          완료
+        </Button>
+      </form>*/}
     </DogWrapper>
   );
 }
 const DogWrapper = styled.div`
   margin: auto;
-  padding: 20px;
-  width: 1185px;
   display: flex;
-  width: 1000px;
-  height: 800px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  width: 1000px;
 `;
-
-const ImageStyled = styled.img`
-  margin: auto;
-  width: 50%;
+const Container = styled.div`
+  margin: 100px auto;
+  width: 1000px;
   height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+const ImgContainer = styled.div`
+  display: flex;
+  margin: 0;
+  width: 400px;
+  img {
+    width: 200px;
+  }
+`;
+const InputContainer = styled.div`
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
 `;
 
 export default PersonaDog;

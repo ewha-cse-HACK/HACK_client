@@ -23,7 +23,7 @@ function SignUp() {
     if (password === confirmPassword) {
       try {
         const response = await axios.post(
-          "http://13.209.173.241:8080/api/join",
+          "https://api.rainbow-letter.com/api/join",
           {
             email,
             password,
