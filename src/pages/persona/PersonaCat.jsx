@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
+import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
-import dayjs from "dayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import styled from "styled-components";
 import axios from "axios";
 import "../style.css";
-import Finished from "../../components/Persona/Finished";
-import { NULL } from "node-sass";
+// import Finished from "../../components/Persona/Finished";
 
 function PersonaCat() {
   const speciesName = "고양이";
@@ -77,8 +71,8 @@ function PersonaCat() {
     }
   };
 
-  const handleFileChange = (event) => {
-    setPetPhoto(event.target.files[0]);
+  const handleFileChange = (e) => {
+    setPetPhoto(e.target.files[0]);
   };
 
   // 이전 화면으로 이동
@@ -121,9 +115,6 @@ function PersonaCat() {
       const jsonData = JSON.stringify(formDataObject);
       console.log(jsonData);
 
-      alert("페르소나 생성이 완료되었습니다!");
-      navigate("/pages/Persona");
-
       const response = await axios.post(
         "https://api.rainbow-letter.com/persona/save",
         jsonData,
@@ -134,6 +125,8 @@ function PersonaCat() {
           },
         }
       );
+      alert("페르소나 생성이 완료되었습니다!");
+      navigate("/pages/Persona");
       console.log("페르소나 생성 완료!");
     } catch (error) {
       console.error("서버 요청 실패:", error);
@@ -196,7 +189,7 @@ function PersonaCat() {
               <MenuItem value="" disabled>
                 <em>최대 두 개 선택</em>
               </MenuItem>
-              <MenuItem value="">--선택 안함--</MenuItem>
+              <MenuItem value={null}>--선택 안함--</MenuItem>
               <MenuItem value="애교가 많음">애교가 많은</MenuItem>
               <MenuItem value="같이 있는 걸 좋아함">같이 있는 게 좋은</MenuItem>
               <MenuItem value="다정함">다정한</MenuItem>
@@ -226,7 +219,7 @@ function PersonaCat() {
               <MenuItem value="" disabled>
                 <em>최대 두 개 선택</em>
               </MenuItem>
-              <MenuItem value="">--선택 안함--</MenuItem>
+              <MenuItem value={null}>--선택 안함--</MenuItem>
               <MenuItem value="애교가 많음">애교가 많은</MenuItem>
               <MenuItem value="같이 있는 걸 좋아함">같이 있는 게 좋은</MenuItem>
               <MenuItem value="다정함">다정한</MenuItem>
@@ -276,7 +269,7 @@ function PersonaCat() {
               onChange={(e) => setFavoritePlay(e.target.value)}
               displayEmpty
             >
-              <MenuItem value="">--선택 안함--</MenuItem>
+              <MenuItem value={null}>--선택 안함--</MenuItem>
               <MenuItem value="사냥!">사냥!</MenuItem>
               <MenuItem value="인형 놀이">인형 놀이</MenuItem>
               <MenuItem value="창 밖을 보기">창 밖을 보기</MenuItem>
@@ -286,7 +279,7 @@ function PersonaCat() {
               <MenuItem value="벌레 잡기">벌레 잡기</MenuItem>
               <MenuItem value="현관 산책">현관 산책</MenuItem>
               <MenuItem value="집사 손과 놀기">집사 손과 놀기</MenuItem>
-              <MenuItem value="">(직접입력)</MenuItem>
+              <MenuItem value="None">(직접입력)</MenuItem>
             </Select>
           </FormControl>
 
@@ -300,7 +293,7 @@ function PersonaCat() {
               onChange={(e) => setFavoriteSnack(e.target.value)}
               displayEmpty
             >
-              <MenuItem value="">--선택 안함--</MenuItem>
+              <MenuItem value={null}>--선택 안함--</MenuItem>
               <MenuItem value="건조 트릿">건조 트릿</MenuItem>
               <MenuItem value="습식">습식</MenuItem>
               <MenuItem value="캣그라스">캣그라스</MenuItem>
@@ -323,9 +316,7 @@ function PersonaCat() {
               onChange={(e) => setFavoriteTime(e.target.value)}
               displayEmpty
             >
-              <MenuItem value="" disabled>
-                <em>--선택 안함--</em>
-              </MenuItem>
+              <MenuItem value={null}>--선택 안함--</MenuItem>
               <MenuItem value="새벽">새벽</MenuItem>
               <MenuItem value="아침">아침</MenuItem>
               <MenuItem value="오전">오전</MenuItem>
@@ -346,9 +337,7 @@ function PersonaCat() {
               onChange={(e) => setFavoritePlace(e.target.value)}
               displayEmpty
             >
-              <MenuItem value="" disabled>
-                <em>--선택 안함--</em>
-              </MenuItem>
+              <MenuItem value={null}>--선택 안함--</MenuItem>
               <MenuItem value="높은 가구 위">높은 가구 위</MenuItem>
               <MenuItem value="캣타워">캣타워</MenuItem>
               <MenuItem value="창문 앞">창문 앞</MenuItem>
@@ -363,7 +352,7 @@ function PersonaCat() {
               <MenuItem value="집사 곁">집사 곁</MenuItem>
               <MenuItem value="숨숨집">숨숨집</MenuItem>
               <MenuItem value="발매트">발매트</MenuItem>
-              <MenuItem value="">(직접입력)</MenuItem>
+              <MenuItem value="None">(직접입력)</MenuItem>
             </Select>
           </FormControl>
 
@@ -377,9 +366,7 @@ function PersonaCat() {
               onChange={(e) => setHabit(e.target.value)}
               displayEmpty
             >
-              <MenuItem value="" disabled>
-                <em>--선택 안함--</em>
-              </MenuItem>
+              <MenuItem value={null}>--선택 안함--</MenuItem>
               <MenuItem value="갑자기 뛰어다니기">갑자기 뛰어다니기</MenuItem>
               <MenuItem value="숨바꼭질">숨바꼭질</MenuItem>
               <MenuItem value="골골골 노래 부르기">골골골 노래 부르기</MenuItem>
@@ -390,7 +377,7 @@ function PersonaCat() {
               <MenuItem value="잠 자기">잠 자기</MenuItem>
               <MenuItem value="새 구경하기">새 구경하기</MenuItem>
               <MenuItem value="갑자기 사냥 모드">갑자기 사냥 모드</MenuItem>
-              <MenuItem value="">(직접입력)</MenuItem>
+              <MenuItem value="None">(직접입력)</MenuItem>
             </Select>
           </FormControl>
 
@@ -404,9 +391,7 @@ function PersonaCat() {
               onChange={(e) => setRoutine(e.target.value)}
               displayEmpty
             >
-              <MenuItem value="" disabled>
-                <em>--선택 안함--</em>
-              </MenuItem>
+              <MenuItem value={null}>--선택 안함--</MenuItem>
               <MenuItem value="간식 조르기">간식 조르기</MenuItem>
               <MenuItem value="낮잠">낮잠</MenuItem>
               <MenuItem value="아침 일찍 집사 깨우기">
@@ -414,7 +399,7 @@ function PersonaCat() {
               </MenuItem>
               <MenuItem value="집사 맞이">집사 맞이</MenuItem>
               <MenuItem value="컨셉 놀이">컨셉 놀이</MenuItem>
-              <MenuItem value="">(직접입력)</MenuItem>
+              <MenuItem value="None">(직접입력)</MenuItem>
             </Select>
           </FormControl>
         </InputContainer>
@@ -476,9 +461,7 @@ function PersonaCat() {
               onChange={(e) => setFurColor(e.target.value)}
               displayEmpty
             >
-              <MenuItem value="" disabled>
-                <em>--선택 안함--</em>
-              </MenuItem>
+              <MenuItem value={null}>--선택 안함--</MenuItem>
               <MenuItem value="흰색">흰색</MenuItem>
               <MenuItem value="검은색">검은색</MenuItem>
               <MenuItem value="노란색">노란색</MenuItem>
@@ -511,7 +494,7 @@ function PersonaCat() {
           <br />
           <br />
           <ImgUpload>
-            <input type="file" onChange={handleFileChange} />
+            <input type="file" onChange={handleImageChange} />
           </ImgUpload>
         </InputContainer>
         <ImgContainer>
