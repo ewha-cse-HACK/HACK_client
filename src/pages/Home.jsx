@@ -30,7 +30,7 @@ const HomeWrapper = styled.div`
   margin: auto;
   padding: 50px;
   width: 1000px;
-  height: 500px;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

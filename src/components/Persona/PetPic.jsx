@@ -1,24 +1,28 @@
 import React, { useState } from "react";
-// import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-// import axios from "axios";
-// import "./style.css";
 
 function PetPic() {
+  const [petPhoto, setPetPhoto] = useState(null);
+
+  const handleFileChange = (event) => {
+    setPetPhoto(event.target.files[0]);
+  };
+
   return (
-    <Wrapper>
-      <h1>일기 훔쳐보기</h1>
-      <img src="/images/writing.PNG" />
-    </Wrapper>
+    <InputContainer>
+      <h3>반려동물의 사진을 올려주세요.</h3>
+      <br />
+      <br />
+      <input type="file" onChange={handleFileChange} />
+    </InputContainer>
   );
 }
 
-const Wrapper = styled.div`
-  margin: auto;
-  width: 1000px;
-  height: 800px;
-  font-weight: medium;
-  font-size: 15px;
+const InputContainer = styled.div`
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
 `;
 
 export default PetPic;

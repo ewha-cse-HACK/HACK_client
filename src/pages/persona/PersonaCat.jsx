@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -18,28 +18,45 @@ import styled from "styled-components";
 import axios from "axios";
 import "../style.css";
 import Finished from "../../components/Persona/Finished";
+import { NULL } from "node-sass";
 
 function PersonaCat() {
   const speciesName = "고양이";
   const [name, setName] = useState("");
   const [ownerName, setOwnerName] = useState("");
-  const [charOne, setCharOne] = useState(null);
-  const [charTwo, setCharTwo] = useState(null);
-  const [favoritePlay, setFavoritePlay] = useState(null);
-  const [customPlay, setCustomPlay] = useState(null);
-  const [favoriteSnack, setFavoriteSnack] = useState(null);
-  const [favoriteTime, setFavoriteTime] = useState(null);
-  const [habit, setHabit] = useState(null);
-  const [favoritePlace, setFavoritePlace] = useState(null);
-  const [routine, setRoutine] = useState(null);
-  const [petPhoto, setPetPhoto] = useState(null);
-  const [passed_date, setPassedDate] = useState(null);
-  const [furColor, setFurColor] = useState(null);
-  const [kind, setKind] = useState(null);
+  const [charOne, setCharOne] = useState("");
+  const [charTwo, setCharTwo] = useState("");
+  const [favoritePlay, setFavoritePlay] = useState("");
+  const [customPlay, setCustomPlay] = useState("");
+  const [favoriteSnack, setFavoriteSnack] = useState("");
+  const [favoriteTime, setFavoriteTime] = useState("");
+  const [habit, setHabit] = useState("");
+  const [favoritePlace, setFavoritePlace] = useState("");
+  const [routine, setRoutine] = useState("");
+  const [petPhoto, setPetPhoto] = useState("");
+  const [passed_date, setPassedDate] = useState("");
+  const [furColor, setFurColor] = useState("");
+  const [kind, setKind] = useState("");
 
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowTopButton(true);
+      } else {
+        setShowTopButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -62,34 +79,6 @@ function PersonaCat() {
 
   const handleFileChange = (event) => {
     setPetPhoto(event.target.files[0]);
-  };
-
-  const handleUpload = async () => {
-    try {
-      if (!petPhoto) {
-        alert("사진을 선택해주세요.");
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append("petPhoto", petPhoto);
-
-      // 이미지를 업로드할 API 엔드포인트 URL을 입력하세요.
-      const apiUrl = "http://example.com/upload";
-
-      // 이미지를 백엔드 서버로 전송
-      const response = await axios.post(apiUrl, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      // 업로드 성공 시 처리
-      console.log("이미지 업로드 성공!", response.data);
-    } catch (error) {
-      // 업로드 실패 시 처리
-      console.error("이미지 업로드 실패:", error);
-    }
   };
 
   // 이전 화면으로 이동
@@ -118,9 +107,7 @@ function PersonaCat() {
       formData.append("habit", habit);
       formData.append("favoritePlace", favoritePlace);
       formData.append("routine", routine);
-      if (petPhoto) {
-        formData.append("petPhoto", petPhoto);
-      }
+      formData.append("petImage", petPhoto);
       formData.append("passed_date", passed_date);
       /*const formattedDate = passed_date.toISOString(); // Date 객체를 ISO 형식의 문자열로 변환
         formData.append("passed_date", formattedDate);*/
@@ -147,6 +134,7 @@ function PersonaCat() {
           },
         }
       );
+      console.log("페르소나 생성 완료!");
     } catch (error) {
       console.error("서버 요청 실패:", error);
       // 오류 처리 로직 추가
@@ -157,7 +145,10 @@ function PersonaCat() {
     <Wrapper>
       <Container id="firstPersonaSet">
         <ImgContainer>
-          <img src="/images/cat3.png" style={{ width: "300px" }} />
+          <img
+            src="/images/cat3.png"
+            style={{ width: "300px", marginRight: "50px" }}
+          />
         </ImgContainer>
         <InputContainer>
           <h3>고양이의 이름은 무엇인가요?</h3>
@@ -205,6 +196,7 @@ function PersonaCat() {
               <MenuItem value="" disabled>
                 <em>최대 두 개 선택</em>
               </MenuItem>
+              <MenuItem value="">--선택 안함--</MenuItem>
               <MenuItem value="애교가 많음">애교가 많은</MenuItem>
               <MenuItem value="같이 있는 걸 좋아함">같이 있는 게 좋은</MenuItem>
               <MenuItem value="다정함">다정한</MenuItem>
@@ -234,6 +226,7 @@ function PersonaCat() {
               <MenuItem value="" disabled>
                 <em>최대 두 개 선택</em>
               </MenuItem>
+              <MenuItem value="">--선택 안함--</MenuItem>
               <MenuItem value="애교가 많음">애교가 많은</MenuItem>
               <MenuItem value="같이 있는 걸 좋아함">같이 있는 게 좋은</MenuItem>
               <MenuItem value="다정함">다정한</MenuItem>
@@ -253,13 +246,23 @@ function PersonaCat() {
           </FormControl>
         </InputContainer>
         <ImgContainer>
-          <img src="/images/cat2.png" style={{ width: "300px" }} />
+          <img
+            src="/images/cat2.png"
+            style={{ width: "330px", marginLeft: "120px", marginTop: "30px" }}
+          />
         </ImgContainer>
       </Container>
 
       <Container id="thirdPersonaSet">
-        <ImgContainer>
-          <img src="/images/cat1.png" style={{ width: "300px" }} />
+        <ImgContainer id="PersonaImageCat">
+          <img
+            src="/images/cat1.png"
+            style={{
+              width: "300px",
+              marginBottom: "130px",
+              marginRight: "30px",
+            }}
+          />
         </ImgContainer>
         <InputContainer>
           <h3>고양이는 어떤 캐릭터인가요?</h3>
@@ -273,9 +276,7 @@ function PersonaCat() {
               onChange={(e) => setFavoritePlay(e.target.value)}
               displayEmpty
             >
-              <MenuItem value="" disabled>
-                <em>--선택 안함--</em>
-              </MenuItem>
+              <MenuItem value="">--선택 안함--</MenuItem>
               <MenuItem value="사냥!">사냥!</MenuItem>
               <MenuItem value="인형 놀이">인형 놀이</MenuItem>
               <MenuItem value="창 밖을 보기">창 밖을 보기</MenuItem>
@@ -299,9 +300,7 @@ function PersonaCat() {
               onChange={(e) => setFavoriteSnack(e.target.value)}
               displayEmpty
             >
-              <MenuItem value="" disabled>
-                <em>--선택 안함--</em>
-              </MenuItem>
+              <MenuItem value="">--선택 안함--</MenuItem>
               <MenuItem value="건조 트릿">건조 트릿</MenuItem>
               <MenuItem value="습식">습식</MenuItem>
               <MenuItem value="캣그라스">캣그라스</MenuItem>
@@ -423,7 +422,10 @@ function PersonaCat() {
 
       <Container id="fourthPersonaSet">
         <InputContainer>
-          <h3>고양이가 무지개 다리를 건넌 날을 알려주세요.</h3>
+          <h3>
+            고양이가 무지개 다리를 <br />
+            건넌 날을 알려주세요.
+          </h3>
           <br />
           <br />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -435,15 +437,23 @@ function PersonaCat() {
               />
             </DemoContainer>
           </LocalizationProvider>
+          <br />
+          <br />
         </InputContainer>
         <ImgContainer>
-          <img src="/images/cat4.png" style={{ width: "250px" }} />
+          <img
+            src="/images/cat4.png"
+            style={{ width: "250px", marginLeft: "60px" }}
+          />
         </ImgContainer>
       </Container>
 
       <Container id="fifthPersonaSet">
         <ImgContainer>
-          <img src="/images/cat5.png" style={{ width: "300px" }} />
+          <img
+            src="/images/cat5.png"
+            style={{ width: "300px", marginTop: "10px", marginRight: "60px" }}
+          />
         </ImgContainer>
         <InputContainer>
           <h3>고양이가 어떻게 생겼나요?</h3>
@@ -458,7 +468,6 @@ function PersonaCat() {
             onChange={(e) => setKind(e.target.value)}
           />
           <br />
-
           <InputLabel id="furColor">털 색깔</InputLabel>
           <FormControl fullWidth variant="outlined" size="small">
             <Select
@@ -493,17 +502,33 @@ function PersonaCat() {
 
       <Container id="sixthPersonaSet">
         <InputContainer>
-          <h3>고양이의 사진을 올려주세요.</h3>
+          <h3>고양이의 사진을 올려 주세요.</h3>
+          <br />
+          <p>
+            프로필 사진으로 사용될 수 있어요. <br />
+            선택하지 않으면 기본 프로필이 적용됩니다.
+          </p>
           <br />
           <br />
-          <input type="file" onChange={handleFileChange} />
-          <button onClick={handleUpload}>이미지 업로드</button>
+          <ImgUpload>
+            <input type="file" onChange={handleFileChange} />
+          </ImgUpload>
         </InputContainer>
         <ImgContainer>
-          <img src="/images/cat6.png" style={{ width: "200px" }} />
+          <img
+            src="/images/cat6.png"
+            style={{ width: "200px", marginLeft: "100px" }}
+          />
         </ImgContainer>
       </Container>
-      <Finished />
+      <buttonContainer>
+        <CancelButton id="backBtn" onClick={goBack}>
+          취소
+        </CancelButton>
+        <DoneButton id="doneBtn" onClick={handleSubmit}>
+          완료!
+        </DoneButton>
+      </buttonContainer>
       <div className="scroll-buttons">
         {showTopButton && (
           <button className="top-button" onClick={scrollToTop}>
@@ -517,7 +542,7 @@ function PersonaCat() {
 
 const Wrapper = styled.div`
   margin: auto;
-  width: 1000px;
+  width: 900px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -526,28 +551,71 @@ const Wrapper = styled.div`
 `;
 const Container = styled.div`
   margin: 100px auto;
-  width: 1000px;
   height: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid gray;
 `;
 const ImgContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin: 0;
-  img {
-    width: 200px;
-  }
-  border: 1px solid blue;
 `;
 const InputContainer = styled.div`
   margin: 0;
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  border: 1px solid red;
+  p {
+    font-size: 15px;
+  }
+`;
+const ImgUpload = styled.div`
+  display: flex;
+  width: 191px;
+  height: 165px;
+  padding: 0px 26px 0px 27px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 2px dashed var(--Faded, rgba(0, 0, 0, 0.15));
+  background: #fff;
+`;
+const buttonContainer = styled.div``;
+
+const CancelButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  transform: translateX(-110%);
+  margin: 10px;
+  width: 140px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 56px;
+  border: 2px solid var(--Dark-Blue, #0a2640);
+  background: white;
+  cursor: pointer;
+`;
+const DoneButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  transform: translateX(10%);
+  margin: 10px;
+  width: 140px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 56px;
+  color: white;
+  background: rgba(0, 0, 0, 0.83);
+  cursor: pointer;
 `;
 export default PersonaCat;
