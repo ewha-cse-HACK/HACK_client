@@ -3,10 +3,20 @@ import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import "../style.css";
+import TextField from "@mui/material/TextField";
 
 function CommunityPost() {
   const navigate = useNavigate();
-
+  /*
+          <TextField
+            required
+            label="새의 이름"
+            variant="outlined"
+            size="small"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+*/
   return (
     <ComWrapper>
       <h1>포스트 작성</h1>
@@ -16,7 +26,19 @@ function CommunityPost() {
           <p>(10장까지 선택 가능)</p>
           <button>사진 선택</button>
         </PostPic>
-        <Editor />
+        <Editor>
+          <TitleEditor>
+            <TextField
+              required
+              label="제목을 작성해 주세요!"
+              variant="outlined"
+              size="small"
+            />
+          </TitleEditor>
+          <BodyEditor>
+            <TextField required label="본문" variant="outlined" size="small" />
+          </BodyEditor>
+        </Editor>
       </Container>
       <Container>
         <button>취소</button>
@@ -30,7 +52,6 @@ const ComWrapper = styled.div`
   margin: auto;
   max-width: 1000px;
   width: 100%;
-  height: 500px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -58,14 +79,15 @@ const ComWrapper = styled.div`
   }
 `;
 const PostPic = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 383px;
+  height: 394px;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid blue;
+  border-radius: 5px;
+  background: var(--e-9-f-5-ff, #e9f5ff);
   button {
     width: 133px;
     height: 37px;
@@ -80,10 +102,24 @@ const PostPic = styled.div`
   }
 `;
 const Editor = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 383px;
+  height: 394px;
+  border-radius: 5px;
   margin: auto;
   border: 1px solid purple;
+`;
+const TitleEditor = styled.div`
+  width: 383px;
+  height: 41px;
+  border-radius: 3px;
+  border: 0.5px solid var(--4-d-7-e-95, #4d7e95);
+`;
+const BodyEditor = styled.div`
+  width: 383px;
+  height: 345px;
+  border-radius: 3px;
+  border: 0.5px solid var(--4-d-7-e-95, #4d7e95);
+  background: #fff;
 `;
 const Container = styled.div`
   display: flex;
