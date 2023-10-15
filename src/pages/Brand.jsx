@@ -52,7 +52,7 @@ function Brand() {
       <Wallpaper id="targetElement">
         <Wrapper>
           <PageWrapper id="first">
-            <TextContainer>
+            <TextContainer style={{ marginBottom: "80px" }}>
               <h1>
                 우리 아이에게 <br />
                 보내는 무지개 편지
@@ -63,12 +63,18 @@ function Brand() {
               </p>
             </TextContainer>
             <ImgContainer>
-              <img src="/images/landing1.png" />
+              <img
+                src="/images/landing1.png"
+                style={{ width: "250px", marginLeft: "100px" }}
+              />
             </ImgContainer>
           </PageWrapper>
           <PageWrapper id="second">
             <ImgContainer>
-              <img src="/images/landing2.png" />
+              <img
+                src="/images/landing2.png"
+                style={{ width: "280px", marginRight: "100px" }}
+              />
             </ImgContainer>
             <TextContainer>
               <h1>
@@ -98,12 +104,18 @@ function Brand() {
               </p>
             </TextContainer>
             <ImgContainer>
-              <img src="/images/landing3.png" />
+              <img
+                src="/images/landing3.png"
+                style={{ width: "270px", marginLeft: "100px" }}
+              />
             </ImgContainer>
           </PageWrapper>
           <PageWrapper id="fourth">
             <ImgContainer>
-              <img src="/images/landing4.png" />
+              <img
+                src="/images/landing4.png"
+                style={{ width: "280px", marginRight: "100px" }}
+              />
             </ImgContainer>
             <TextContainer>
               <h1>
@@ -136,7 +148,7 @@ function Brand() {
               </button>
             </TextContainer>
             <ImgContainer>
-              <img src="/images/landing5.png" />
+              <img src="/images/landing5.png" style={{ height: "300px" }} />
             </ImgContainer>
           </PageWrapper>
           <div className="scroll-buttons">

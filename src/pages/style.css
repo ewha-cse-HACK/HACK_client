@@ -29,28 +29,9 @@ ul {
 #fifth {
     margin-bottom: 300px;
 }
-#first img {
-    margin-left: 40px;
-    width: 350px;
-}
-#second img {
-    margin-right: 30px;
-    width:400px;
-}
-#third img {
-    margin-left: 30px;
-    width: 350px;
-}
-#fourth img {
-    margin-right: 50px;
-    height: 380px;
-}
 #lastBrand {
     margin-right: -70px;
     margin-bottom: 70px;
-}
-#fifth img {
-    height: 350px;
 }
 #startBrand {
     margin-top: 80px;
