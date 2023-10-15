@@ -16,24 +16,22 @@ function SignUp() {
   const navigate = useNavigate();
 
   // 가입하기 버튼 클릭 시 실행되는 함수
+  // https://api.rainbow-letter.com/join
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // 비밀번호와 비밀번호 확인이 일치하는지 확인
     if (password === confirmPassword) {
       try {
-        const response = await axios.post(
-          "https://api.rainbow-letter.com/join",
-          {
-            email,
-            password,
-            nickname,
-          }
-        );
+        const response = await axios.post("http://13.209.173.241:8080/join", {
+          email,
+          password,
+          nickname,
+        });
 
         // 회원가입 성공 시 서버 응답 출력
         console.log(response.data);
-        console.log("nickname: ", nickname);
+        console.log("ndickname: ", nickname);
         console.log("email: ", email);
         console.log("password: ", password);
 

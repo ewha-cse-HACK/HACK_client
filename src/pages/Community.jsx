@@ -4,6 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 import "./style.css";
 import CommunityPost from "./community/CommunityPost";
+import EachPost from "../components/EachPost";
 
 function Community() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function Community() {
       <button onClick={() => navigate("/pages/community/CommunityPost")}>
         글 쓰기
       </button>
+      <EachPost />
     </ComWrapper>
   );
 }
@@ -26,7 +28,6 @@ const ComWrapper = styled.div`
   margin: auto;
   max-width: 1000px;
   width: 100%;
-  height: 500px;
   display: flex;
   flex-direction: column;
   gap: 20px;

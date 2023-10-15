@@ -35,7 +35,7 @@ function Chat() {
 
     try {
       const response = await axios.post(
-        `https://api.rainbow-letter.com/chat/${pet_id}`,
+        `http://13.209.173.241:8080/chat/${pet_id}`,
         jsonData,
         {
           headers: {

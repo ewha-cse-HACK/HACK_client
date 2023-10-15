@@ -52,7 +52,7 @@ function Diary() {
 
     try {
       const response = await axios.get(
-        `https://api.rainbow-letter.com/journal/${journalId}`,
+        `http://13.209.173.241:8080/journal/${journalId}`,
         null,
         {
           headers: {

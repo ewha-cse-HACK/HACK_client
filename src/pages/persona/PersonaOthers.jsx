@@ -115,8 +115,9 @@ function PersonaOthers() {
       const jsonData = JSON.stringify(formDataObject);
       console.log(jsonData);
 
+      //https://api.rainbow-letter.com/persona/save
       const response = await axios.post(
-        "https://api.rainbow-letter.com/persona/save",
+        "http://13.209.173.241:8080/persona/save",
         jsonData,
         {
           headers: {

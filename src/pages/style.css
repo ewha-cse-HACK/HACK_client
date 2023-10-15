@@ -244,14 +244,14 @@ ul {
 }
 #personaStart p {
     margin: auto;
-    margin-top: 20px;
-    font-size: 25px;
+    margin-top: 30px;
+    font-size: 30px;
     font-weight: 600;
 }
 
 /* 이미지 styledcomponent로 바꿔주기. (나중에) */
 #cardContainer {
-    margin: 100px auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -22,9 +22,10 @@ function Login() {
       password: password,
     };
 
+    //https://api.rainbow-letter.com/login
     try {
       const response = await axios.post(
-        "https://api.rainbow-letter.com/login",
+        "http://13.209.173.241:8080/login",
         JSON.stringify(data),
         {
           headers: {
@@ -41,8 +42,8 @@ function Login() {
       } else {
         setToken(response.data);
         localStorage.setItem("token", response.data);
-
         console.log("로그인 성공!");
+        console.log(response.data);
         navigate("/");
       }
     } catch (error) {

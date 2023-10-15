@@ -13,15 +13,12 @@ function MyPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://api.rainbow-letter.com/mypage/",
-          {
-            headers: {
-              "X-ACCESS-TOKEN": `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await axios.get("http://13.209.173.241:8080/mypage/", {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
         console.log("응답 데이터 잘 받았나요?"); // response data 체크!! 나중에 지우기
         console.log(response.data);
         setNickname(response.data.nickname);
