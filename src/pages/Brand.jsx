@@ -41,7 +41,11 @@ function Brand() {
   return (
     <>
       <ProjectInfo>
-        <img src="/images/postbox2.png" onClick={handleScroll} />
+        <img
+          src="https://raw.githubusercontent.com/ewha-cse-HACK/HACK_client/729a0f2299ff384a26427ba18a4daeb06cce1f40/public/images/postbox2.PNG"
+          alt="Postbox"
+          onClick={handleScroll}
+        />
         <h1>펫로스 증후군 극복 프로젝트, "무지개 편지"</h1>
         <p>우체통을 클릭하세요!</p>
       </ProjectInfo>
