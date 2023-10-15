@@ -3,7 +3,10 @@ import { useParams, Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import "./style.css";
+import Fab from "@mui/material/Fab";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BeatLoader } from "react-spinners";
+import TutorialDiary from "../components/TutorialDiary";
 
 function Diary() {
   const [loading, setLoading] = useState(false);
@@ -71,6 +74,11 @@ function Diary() {
 
   return (
     <Wrapper>
+      <Link to="/pages/Persona">
+        <Fab color="primary" aria-label="back">
+          <ArrowBackIcon />
+        </Fab>
+      </Link>
       <Headtext>
         <img src="/images/writing.PNG" />
         <h1>햄식이의 일기를 훔쳐볼까요?</h1>

@@ -19,25 +19,30 @@ function Persona() {
   useEffect(() => {
     const fetchData = async () => {
       // https://api.rainbow-letter.com/persona/list
-      try {
-        const response = await axios.get(
-          "http://13.209.173.241:8080/persona/list",
-          {
-            headers: {
-              "X-ACCESS-TOKEN": `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        console.log(response.data);
-        setPersonaData(response.data.personaList);
-        setListSize(response.data.listSize);
-      } catch (error) {
-        console.error("API 요청 실패:", error);
+      if (token) {
+        try {
+          const response = await axios.get(
+            "http://13.209.173.241:8080/persona/list",
+            {
+              headers: {
+                "X-ACCESS-TOKEN": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          console.log(response.data);
+          setPersonaData(response.data.personaList);
+          setListSize(response.data.listSize);
+        } catch (error) {
+          console.error("API 요청 실패:", error);
+        }
+      } else {
+        setPersonaData([]);
+        alert("로그인이 필요합니다.");
       }
     };
     fetchData();
-  }, []);
+  }, [token]);
 
   const settings = {
     arrows: true,

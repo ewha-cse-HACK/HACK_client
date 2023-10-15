@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import "./style.css";
+import Fab from "@mui/material/Fab";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function MyPage() {
   const [nickname, setNickname] = useState();
@@ -35,6 +37,11 @@ function MyPage() {
 
   return (
     <Wrapper>
+      <Link to="./">
+        <Fab color="primary" aria-label="back">
+          <ArrowBackIcon />
+        </Fab>
+      </Link>
       <h1>마이페이지</h1>
       <div id="imgContainer">
         <ImageStyled src="/images/myIcon.png" />

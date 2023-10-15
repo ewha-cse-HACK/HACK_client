@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, Routes, Route, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import "./style.css";
+import Fab from "@mui/material/Fab";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BeatLoader } from "react-spinners";
+import TutorialChat from "../components/TutorialChat";
 
 function Chat() {
-  const [messages, setMessages] = useState([]); // 대화 내용을 저장하는 상태
-  const [userInput, setUserInput] = useState(""); // 유저의 입력을 저장하는 상태
+  const [UserMessage, setUserMessage] = useState([]); // 대화 내용
+  const [PetMessage, setPetMessage] = useState([]); // 대화 내용
+  const [messages, setMessages] = useState([]);
+  const [userInput, setUserInput] = useState(""); // 유저 입력
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -30,7 +35,6 @@ function Chat() {
       question: userInput,
     };
     const jsonData = JSON.stringify(inputObj);
-    console.log(userInput);
     console.log(jsonData);
 
     try {
@@ -47,13 +51,15 @@ function Chat() {
       console.log(response);
       console.log(response.data);
 
-      const botResponse = JSON.stringify(response.data.answer);
+      const petMessage = JSON.stringify(response.data.answer);
 
-      setMessages([
+      setUserMessage(userInput);
+      setPetMessage(petMessage);
+      /*setMessages([
         ...messages,
         { text: userInput, type: "user" },
         { text: botResponse, type: "bot" },
-      ]);
+      ]);*/
 
       setUserInput("");
     } catch (error) {
@@ -74,7 +80,11 @@ function Chat() {
 
   return (
     <Wrapper>
-      <GoBackBtn onClick={handleGoBack}>&lt;</GoBackBtn>
+      <Link to="/pages/Persona">
+        <Fab color="#BAE2FA" aria-label="back">
+          <ArrowBackIcon />
+        </Fab>
+      </Link>
       <Space>
         {/* 여기에 넣을 채팅창 목록 등의 공간을 미리 잡아놓았으니 업데이트할 것 */}
         <img src="/images/chatCat.jpg" />
