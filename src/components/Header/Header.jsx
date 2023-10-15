@@ -21,57 +21,59 @@ function Header() {
   };
 
   return (
-    <HeaderWrapper>
-      <div id="menu">
-        <div id="logo">
-          <Link to="/">
-            <h1>Rainbow Letter</h1>
-          </Link>
-        </div>
-        <nav>
-          <ul id="topMenu">
-            <li>
-              <StyledLink to="/pages/Brand">Brand</StyledLink>
-            </li>
-            <li>
-              <StyledLink to="/pages/Persona">Persona</StyledLink>
-            </li>
-            <li>
-              <StyledLink to="/pages/Commnunity">Community</StyledLink>
-            </li>
-            {isLoggedIn ? (
-              <>
-                <li>
-                  <LogoutBtn onClick={handleLogout}>Logout</LogoutBtn>
-                </li>
-                <li>
-                  <button id="goMyPage">
-                    <Link to="/pages/MyPage">
-                      <img src="/images/myPage.png" />
-                    </Link>
-                  </button>
-                </li>
-              </>
-            ) : (
+    <>
+      <HeaderWrapper>
+        <div id="menu">
+          <div id="logo">
+            <Link to="/">
+              <h1>Rainbow Letter</h1>
+            </Link>
+          </div>
+          <nav>
+            <ul id="topMenu">
               <li>
-                <StyledLink to="/pages/Login">Login</StyledLink>
+                <StyledLink to="/pages/Brand">Brand</StyledLink>
               </li>
-            )}
-          </ul>
-        </nav>
-      </div>
+              <li>
+                <StyledLink to="/pages/Persona">Persona</StyledLink>
+              </li>
+              <li>
+                <StyledLink to="/pages/Commnunity">Community</StyledLink>
+              </li>
+              {isLoggedIn ? (
+                <>
+                  <li>
+                    <LogoutBtn onClick={handleLogout}>Logout</LogoutBtn>
+                  </li>
+                  <li>
+                    <button id="goMyPage">
+                      <Link to="/pages/MyPage">
+                        <img src="/images/myPage.png" />
+                      </Link>
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <li>
+                  <StyledLink to="/pages/Login">Login</StyledLink>
+                </li>
+              )}
+            </ul>
+          </nav>
+        </div>
+      </HeaderWrapper>
       <Seperator />
-    </HeaderWrapper>
+    </>
   );
 }
 
 const HeaderWrapper = styled.header`
   margin: auto;
-  padding: 20px 128px 16px;
   display: flex;
   width: 1200px;
-  height: 152px;
+  height: 148px;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 16px;
 `;
@@ -98,7 +100,7 @@ const LogoutBtn = styled.button`
 `;
 
 const Seperator = styled.div`
-  width: 200vw;
+  width: 100vw;
   height: 1px;
   background-color: #e7eaee;
   margin: auto 0;

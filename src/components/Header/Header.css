@@ -41,7 +41,7 @@ ul {
 }
 #logo h1 {
     font-family: UhBeeSe_hyun;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 36px;
     color: black;
 }
@@ -54,10 +54,10 @@ ul {
     font-size: 18px;
 }
 #topMenu > li {
-    margin-right: 30px;
+    margin-right: 50px;
 }
 #topMenu > li:last-child {
-    margin-right: 0;
+    margin-right: 10px;
 }
 #goMyPage {
   border: none;
