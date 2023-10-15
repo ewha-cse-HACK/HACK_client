@@ -504,14 +504,14 @@ function PersonaCat() {
           />
         </ImgContainer>
       </Container>
-      <buttonContainer>
+      <ButtonContainer>
         <CancelButton id="backBtn" onClick={goBack}>
           취소
         </CancelButton>
         <DoneButton id="doneBtn" onClick={handleSubmit}>
           완료!
         </DoneButton>
-      </buttonContainer>
+      </ButtonContainer>
       <div className="scroll-buttons">
         {showTopButton && (
           <button className="top-button" onClick={scrollToTop}>
@@ -564,7 +564,7 @@ const ImgUpload = styled.div`
   border: 2px dashed var(--Faded, rgba(0, 0, 0, 0.15));
   background: #fff;
 `;
-const buttonContainer = styled.div``;
+const ButtonContainer = styled.div``;
 
 const CancelButton = styled.button`
   position: fixed;

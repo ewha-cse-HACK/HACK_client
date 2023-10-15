@@ -1,37 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import axios from "axios";
 import "../pages/style.css";
 
 function Profile({ name, petProfile, petId }) {
-  const token = localStorage.getItem("token");
-  /* 이미지 불러오기 */
-
   return (
-    <div id="profileCard">
-      <div id="profileImage">
-        <img src="/images/hamsik.jpg" />
-      </div>
-      <div id="profileInfo">
-        <h3>{name}</h3>
-        <p>{petProfile}</p>
-        <StyledLink to="/pages/PersonaEdit">페르소나 편집 &gt;</StyledLink>
-        <div id="buttonContainer">
-          <Link to={`/pages/Chat/${petId}`}>
-            <button id="chat" type="submit">
-              chat
-            </button>
-          </Link>
-          <Link to={`/pages/Diary/${petId}`}>
-            <button id="diary" type="submit">
-              diary
-            </button>
-          </Link>
-        </div>
-      </div>
-    </div>
+    <ProfileCard>
+      <ProfileBox>
+        <ProfileImage>
+          <img src="/images/cm_back_green.png" alt="반려동물 프로필 사진" />
+        </ProfileImage>
+        <ProfileInfo>
+          <h3>{name}</h3>
+          <p>{petProfile}</p>
+          <StyledLink to="/">페르소나 삭제</StyledLink>
+        </ProfileInfo>
+      </ProfileBox>
+      <ButtonContainer>
+        <Link to={`/pages/Chat/${petId}`}>
+          <button id="chat" type="submit">
+            <img src="/images/talkingcat.png" style={{ width: "90px" }} />
+          </button>
+        </Link>
+        <Link to={`/pages/Diary/${petId}`}>
+          <button id="diary" type="submit">
+            <img src="/images/diary_paw.png" style={{ width: "70px" }} />
+          </button>
+        </Link>
+      </ButtonContainer>
+    </ProfileCard>
   );
 }
 
@@ -40,27 +38,81 @@ Profile.propTypes = {
   petProfile: PropTypes.string.isRequired,
   petId: PropTypes.number.isRequired,
 };
-
-const StyledLink = styled(Link)`
+const ProfileCard = styled.div`
+  padding: 5px;
+  width: 260px;
+  height: 436px;
+  display: flex;
+  flex-direction: column;
+`;
+const ProfileBox = styled.div`
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid lightgray;
+  border-radius: 20px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+`;
+const ProfileImage = styled.div`
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+`;
+const ProfileInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  justify-content: space-between;
+  h3 {
+    margin: 0;
+    margin-top: 30px;
+    font-size: 22px;
+    font-style: normal;
+    color: #333;
+  }
+`;
+const ButtonContainer = styled.div`
   margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  button {
+    margin: 12px;
+    width: 100px;
+    height: 90px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    &:hover {
+      background: gray;
+    }
+  }
+`;
+const StyledLink = styled(Link)`
+  margin: 20px;
+  margin-bottom: 30px;
   text-decoration: none;
-  color: #0f2f36;
+  color: #1f434e;
   border: none;
   font-size: 16px;
-  font-weight: bold;
   cursor: pointer;
   &:hover {
     color: black;
     font-weight: 600;
   }
 `;
-
-/*
-const ImageStyled = styled.img`
-  width: 180px;
-  height: 190px;
-  overflow: hidden;
-`;
-*/
 
 export default Profile;

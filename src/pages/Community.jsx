@@ -11,7 +11,10 @@ function Community() {
 
   return (
     <ComWrapper>
-      <img src="/images/writing.png" alt="글을 적고 있는 고양이" />
+      <img
+        src="https://github.com/ewha-cse-HACK/HACK_client/blob/76182d96902b703f123e5d282dfd2c96d73954e7/public/images/writing.PNG"
+        alt="글을 적고 있는 고양이"
+      />
       <h1 id="rainbowPlatform">무지개 광장</h1>
       <p>자유롭게 글을 쓰고, 사진을 올리고, 공감을 표시해주세요!</p>
       <button onClick={() => navigate("/pages/community/CommunityPost")}>

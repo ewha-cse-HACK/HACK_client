@@ -48,7 +48,10 @@ function Header() {
                   <li>
                     <button id="goMyPage">
                       <Link to="/pages/MyPage">
-                        <img src="/images/myPage.png" />
+                        <img
+                          src="/images/pf_human.png"
+                          style={{ width: "43px" }}
+                        />
                       </Link>
                     </button>
                   </li>

@@ -5,13 +5,15 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
 import "./style.css";
-import Loading from "./Loading";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Profile from "../components/Profile";
+import TutorialPersona from "../components/TutorialPersona";
 
 function Persona() {
   const [personaData, setPersonaData] = useState([]);
   const [listSize, setListSize] = useState(0);
-  const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -27,23 +29,42 @@ function Persona() {
             },
           }
         );
-        console.log("응답 데이터 잘 받았나요?"); // response data 체크!! 나중에 지우기
         console.log(response.data);
         setPersonaData(response.data.personaList);
         setListSize(response.data.listSize);
       } catch (error) {
         console.error("API 요청 실패:", error);
-      } finally {
-        setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
+  const settings = {
+    arrows: true,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    cssEase: "linear",
+    // autoplay: true, // 슬라이드를 자동으로 넘길지 여부
+    // autoplaySpeed: 3000, // 자동으로 넘길 시 시간 간격
+  };
+
   return (
     <ViewWrapper>
-      {/*<Loading loading={loading.toString()} />*/}
+      <TutorialPersona />
+      {/*
+      <Slider {...settings}>
+        {personaData.map((persona) => (
+          <Profile
+            key={persona.petId}
+            name={persona.name}
+            petProfile={persona.petProfile}
+            petId={persona.petId}
+          />
+        ))}
+      </Slider>*/}
       <ProfilesContainer>
         {personaData.map((persona) => (
           <Profile
@@ -54,13 +75,13 @@ function Persona() {
           />
         ))}
       </ProfilesContainer>
-      <div id="addContainer">
+      <AddContainer>
         <Link to="/pages/persona/PersonaSetting">
           <Fab color="black" aria-label="add">
             <AddIcon />
           </Fab>
         </Link>
-      </div>
+      </AddContainer>
     </ViewWrapper>
   );
 }
@@ -68,16 +89,29 @@ function Persona() {
 /* height 나중에 브라우저 크기로 변경, 화살표로 넘기는 액션 추가 */
 const ViewWrapper = styled.div`
   margin: 70px auto;
-  width: 1000px;
+  width: 1400px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 80px;
 `;
+/*
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+  justify-content: center;
+*/
 const ProfilesContainer = styled.div`
-  display: flex;
-  gap: 80px; /* Profile 컴포넌트 사이의 간격 조절 */
+  gap: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
-
+const AddContainer = styled.div`
+  margin: 0 50px;
+`;
+const SlideItem = styled.div`
+  width: 200px;
+  heigth: 300px;
+  background: blue;
+`;
 export default Persona;
