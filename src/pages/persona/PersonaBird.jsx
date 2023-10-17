@@ -27,7 +27,7 @@ function PersonaBird() {
   const [habit, setHabit] = useState("");
   const [favoritePlace, setFavoritePlace] = useState("");
   const [routine, setRoutine] = useState("");
-  const [petPhoto, setPetPhoto] = useState("");
+  const [petPhoto, setPetPhoto] = useState();
   const [passed_date, setPassedDate] = useState("");
   const [furColor, setFurColor] = useState("");
   const [kind, setKind] = useState("");
@@ -37,8 +37,12 @@ function PersonaBird() {
 
   const [uploadUrl, setUploadUrl] = useState(null);
   const [fileId, setFileId] = useState("");
-  const [rootUrl, setRootUrl] = useState("");
-  const [sendingUrl, setSendingUrl] = useState("");
+  const [rootUrl, setRootUrl] = useState(
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/"
+  );
+  const [sendingUrl, setSendingUrl] = useState(
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/pf_bird.png"
+  );
 
   useEffect(() => {
     const fetchUploadUrl = async () => {
@@ -53,12 +57,6 @@ function PersonaBird() {
           }
         );
         setUploadUrl(response.data);
-        setSendingUrl(
-          "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/pf_bird.png"
-        );
-        setRootUrl(
-          "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/"
-        );
         console.log("이미지 업로드 URL:", response.data);
         console.log("백엔드에 보낼 주소(기본):", sendingUrl);
         console.log("백엔드에 보낼 주소(root): ", rootUrl);
@@ -543,14 +541,14 @@ function PersonaBird() {
           />
         </ImgContainer>
       </Container>
-      <buttonContainer>
+      <ButtonContainer>
         <CancelButton id="backBtn" onClick={goBack}>
           취소
         </CancelButton>
         <DoneButton id="doneBtn" onClick={handleSubmit}>
           완료!
         </DoneButton>
-      </buttonContainer>
+      </ButtonContainer>
       <div className="scroll-buttons">
         {showTopButton && (
           <button className="top-button" onClick={scrollToTop}>
@@ -603,7 +601,7 @@ const ImgUpload = styled.div`
   border: 2px dashed var(--Faded, rgba(0, 0, 0, 0.15));
   background: #fff;
 `;
-const buttonContainer = styled.div``;
+const ButtonContainer = styled.div``;
 
 const CancelButton = styled.button`
   position: fixed;

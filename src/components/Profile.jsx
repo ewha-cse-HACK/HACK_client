@@ -9,11 +9,10 @@ function Profile({ name, petProfile, petId }) {
     <ProfileCard>
       <ProfileBox>
         <ProfileImage>
-          <img src="/images/cm_back_green.png" alt="반려동물 프로필 사진" />
+          <img src={petProfile} alt="반려동물 프로필 사진" />
         </ProfileImage>
         <ProfileInfo>
           <h3>{name}</h3>
-          <p>{petProfile}</p>
           <StyledLink to="/">페르소나 삭제</StyledLink>
         </ProfileInfo>
       </ProfileBox>
