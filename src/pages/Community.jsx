@@ -7,7 +7,36 @@ import CommunityPost from "./community/CommunityPost";
 import EachPost from "../components/EachPost";
 
 function Community() {
+  const [postList, setPostList] = useState([]);
+  const [currentPage, setCurrentPage] = useState();
+  const [totalPage, setTotalPage] = useState();
+  const [page, setPage] = useState(1);
+
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://13.209.173.241:8080/community?page=${page}",
+          {
+            headers: {
+              "X-ACCESS-TOKEN": `Bearer ${token}`,
+            },
+          }
+        );
+        console.log("포스트 리스트 전체 띄우기 완료");
+        console.log(response.data);
+        setPostList(response.data.postList);
+        setCurrentPage(response.data.currentpage);
+        setTotalPage(response.data.totalpage);
+      } catch (error) {
+        console.error("커뮤니티 포스트 전체 불러오기 API 요청 실패", error);
+      }
+    };
+    fetchData();
+  }, [token]);
 
   return (
     <ComWrapper>
