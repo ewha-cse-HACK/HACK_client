@@ -42,12 +42,12 @@ function Brand() {
     <>
       <ProjectInfo>
         <img
-          src="https://raw.githubusercontent.com/ewha-cse-HACK/HACK_client/729a0f2299ff384a26427ba18a4daeb06cce1f40/public/images/postbox2.PNG"
+          src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/logo.png"
           alt="Postbox"
           onClick={handleScroll}
         />
         <h1>펫로스 증후군 극복 프로젝트, "무지개 편지"</h1>
-        <p>우체통을 클릭하세요!</p>
+        <p>로고를 클릭하세요!</p>
       </ProjectInfo>
       <GradientBackground />
       <Content>
@@ -193,16 +193,18 @@ const ProjectInfo = styled.div`
   align-items: center;
   h1 {
     color: black;
-    margin: 30px;
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
   p {
     color: #000027;
-    font-size: 15px;
+    font-size: 18px;
   }
   img {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: auto;
     border-radius: 10px;
+    cursor: pointer;
     filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
   }
 `;

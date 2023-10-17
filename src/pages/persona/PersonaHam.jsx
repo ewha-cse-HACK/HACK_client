@@ -31,10 +31,14 @@ function PersonaHam() {
   const [passed_date, setPassedDate] = useState("");
   const [furColor, setFurColor] = useState("");
   const [kind, setKind] = useState("");
-  const [uploadUrl, setUploadUrl] = useState(null);
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  const [uploadUrl, setUploadUrl] = useState(null);
+  const [sendingUrl, setSendingUrl] = useState(
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/pf_mouse.png"
+  );
 
   useEffect(() => {
     const fetchUploadUrl = async () => {

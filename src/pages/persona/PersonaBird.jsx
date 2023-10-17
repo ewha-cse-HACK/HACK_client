@@ -31,10 +31,14 @@ function PersonaBird() {
   const [passed_date, setPassedDate] = useState("");
   const [furColor, setFurColor] = useState("");
   const [kind, setKind] = useState("");
-  const [uploadUrl, setUploadUrl] = useState(null);
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  const [uploadUrl, setUploadUrl] = useState(null);
+  const [fileId, setFileId] = useState("");
+  const [rootUrl, setRootUrl] = useState("");
+  const [sendingUrl, setSendingUrl] = useState("");
 
   useEffect(() => {
     const fetchUploadUrl = async () => {
@@ -49,7 +53,15 @@ function PersonaBird() {
           }
         );
         setUploadUrl(response.data);
-        console.log("이미지 업로드 URL", response.data);
+        setSendingUrl(
+          "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/pf_bird.png"
+        );
+        setRootUrl(
+          "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/"
+        );
+        console.log("이미지 업로드 URL:", response.data);
+        console.log("백엔드에 보낼 주소(기본):", sendingUrl);
+        console.log("백엔드에 보낼 주소(root): ", rootUrl);
       } catch (error) {
         console.error("이미지 업로드 URL 요청 실패", error);
       }
@@ -87,15 +99,26 @@ function PersonaBird() {
     reader.onloadend = () => {
       // 파일을 읽고 이미지 URL을 상태에 저장
       setPetPhoto(reader.result);
+      setFileId(reader.result.substring(0, 10));
+      setSendingUrl(rootUrl + fileId);
+      console.log("이미지 업로드 후 root+fileId: ", sendingUrl);
     };
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
+      uploadImageToS3(uploadUrl, file);
     }
   };
 
-  const handleFileChange = (e) => {
-    setPetPhoto(e.target.files[0]);
-  };
+  function uploadImageToS3(uploadUrl, file) {
+    axios
+      .put(uploadUrl, file, {
+        headers: {
+          "Content-Type": "image/png",
+        },
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
+  }
 
   // 이전 화면으로 이동
   const goBack = () => {
@@ -123,7 +146,7 @@ function PersonaBird() {
       formData.append("habit", habit);
       formData.append("favoritePlace", favoritePlace);
       formData.append("routine", routine);
-      formData.append("petImage", petPhoto);
+      formData.append("petImage", sendingUrl);
       formData.append("passed_date", passed_date);
       /*const formattedDate = passed_date.toISOString(); // Date 객체를 ISO 형식의 문자열로 변환
         formData.append("passed_date", formattedDate);*/
