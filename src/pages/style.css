@@ -227,7 +227,12 @@ ul {
     margin: 10px;
     align-items:start;
 }
-
+#diaryHead h1 {
+    font-family: UhBeeSe_hyun;
+}
+#diaryHead p {
+    font-family: UhBeeSe_hyun;
+}
 
 /*  Community  */
 #rainbowPlatform {

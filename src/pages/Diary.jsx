@@ -284,13 +284,13 @@ function Diary() {
         <br />
         <NoteLayout>
           <PetSide>
-            <PetProfile>
+            <PetProfile id="diaryHead">
               <img src={petProfile} alt="반려동물의 프로필 사진" />
               <h1>{petName}의 일기</h1>
             </PetProfile>
-            <Weather>
+            <Weather id="diaryHead">
               <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/diary_weather.png" />
-              <p>무지개별은 언제나 맑음!</p>
+              <p>무지개별은 오늘도 맑음!</p>
             </Weather>
             <PictureContainer>
               {loading ? (
@@ -465,13 +465,13 @@ const PetProfile = styled.div`
   justify-content: flex-start;
   align-items: center;
   img {
-    margin: 20px;
-    margin-right: 15px;
+    margin: 15px;
+    margin-bottom: 10px;
     width: 40px;
     border-radius: 50%;
   }
   h1 {
-    font-size: 28px;
+    font-size: 26px;
   }
 `;
 const Weather = styled.div`
@@ -486,8 +486,7 @@ const Weather = styled.div`
     margin-right: 5px;
   }
   p {
-    font-weight: bold;
-    font-size: 15px;
+    font-size: 12px;
   }
 `;
 const UserSide = styled.div`
