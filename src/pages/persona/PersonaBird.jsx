@@ -31,10 +31,32 @@ function PersonaBird() {
   const [passed_date, setPassedDate] = useState("");
   const [furColor, setFurColor] = useState("");
   const [kind, setKind] = useState("");
-
+  const [uploadUrl, setUploadUrl] = useState(null);
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUploadUrl = async () => {
+      try {
+        // 이미지 업로드를 위한 URL을 받아옴
+        const response = await axios.get(
+          `http://13.209.173.241:8080/rainbow-letter/image?dirname=petprofile`,
+          {
+            headers: {
+              "X-ACCESS-TOKEN": `Bearer ${token}`,
+            },
+          }
+        );
+        setUploadUrl(response.data);
+        console.log("이미지 업로드 URL", response.data);
+      } catch (error) {
+        console.error("이미지 업로드 URL 요청 실패", error);
+      }
+    };
+
+    fetchUploadUrl();
+  }, [token]);
 
   useEffect(() => {
     const handleScroll = () => {

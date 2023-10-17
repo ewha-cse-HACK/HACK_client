@@ -6,60 +6,45 @@ import "../pages/style.css";
 function TutorialChat() {
   return (
     <TutorialCard>
-      <h4>페르소나란?</h4>
-      <p>
-        '가상의 인물'로, 무지개 편지에서는 '가상의 반려동물'을 만들 수 있습니다.
-        + 버튼을 눌러 내 반려동물의 페르소나를 생성해 보세요!
-      </p>
-      <br />
-      <h4>페르소나를 만들면, 채팅과 일기 훔쳐보기 기능을 사용할 수 있어요!</h4>
-      <p>프로필 하단의 버튼을 눌러보세요.</p>
-      <br />
-      <br />
+      <h3>페르소나와 채팅하기</h3>
       <Explanation>
-        <img src="/images/talkingcat.png" style={{ width: "90px" }} />
+        <img src="/images/talkingcat.png" />
         <p>
-          내가 만든 반려동물 페르소나와 대화할 수 있어요. 반려동물에게 하고
-          싶었던 말을 전해보세요!
+          채팅을 전송해보세요. 무지개 별에 편지가 도착하고, 반려동물이 편지를
+          보내는 데 시간이 좀 걸릴 수 있어요!
         </p>
-      </Explanation>
-      <br />
-      <Explanation>
-        <p>
-          반려동물이 무지개별에서 잘 지내고 있을지 궁금할 때는, 오늘은 뭘 했는지
-          반려동물의 일기를 슬쩍 볼까요?
-        </p>
-        <img src="/images/diary_paw.png" style={{ width: "70px" }} />
       </Explanation>
     </TutorialCard>
   );
 }
 
 const TutorialCard = styled.div`
+  margin-right: 40px;
   padding: 20px;
-  width: 300px;
-  height: 436px;
-  border-radius: 10px;
+  width: 400px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 0.5px solid gray;
+  align-items: center;
+  border: 3px solid #e9f5ff;
   color: black;
-  h4 {
-    margin-bottom: 5px;
-  }
-  p {
-    font-size: 15px;
+  h3 {
+    margin: 30px;
+    font-size: 25px;
+    color: #1f434e;
   }
 `;
 const Explanation = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   img {
     margin: 10px;
+    width: 300px;
   }
   p {
-    font-size: 15px;
+    margin: 20px;
+    font-size: 18px;
   }
 `;
 

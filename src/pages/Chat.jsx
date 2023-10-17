@@ -9,8 +9,8 @@ import { BeatLoader } from "react-spinners";
 import TutorialChat from "../components/TutorialChat";
 
 function Chat() {
-  const [UserMessage, setUserMessage] = useState([]); // 대화 내용
-  const [PetMessage, setPetMessage] = useState([]); // 대화 내용
+  const [userMessage, setUserMessage] = useState([]); // 대화 내용
+  const [petMessage, setPetMessage] = useState([]); // 대화 내용
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState(""); // 유저 입력
   const [loading, setLoading] = useState(false);
@@ -51,15 +51,11 @@ function Chat() {
       console.log(response);
       console.log(response.data);
 
-      const petMessage = JSON.stringify(response.data.answer);
-
       setUserMessage(userInput);
-      setPetMessage(petMessage);
-      /*setMessages([
-        ...messages,
-        { text: userInput, type: "user" },
-        { text: botResponse, type: "bot" },
-      ]);*/
+      setPetMessage(response.data.answer);
+
+      const newMessages = response.data.messages; // 엑시오스 요청으로 받아온 메시지 데이터
+      //setMessages([...messages, ...newMessages]); // 이전 메시지와 새로 받아온 메시지를 합쳐 업데이트
 
       setUserInput("");
     } catch (error) {
@@ -79,68 +75,69 @@ function Chat() {
   */
 
   return (
-    <Wrapper>
-      <Link to="/pages/Persona">
-        <Fab color="#BAE2FA" aria-label="back">
-          <ArrowBackIcon />
-        </Fab>
-      </Link>
-      <Space>
-        {/* 여기에 넣을 채팅창 목록 등의 공간을 미리 잡아놓았으니 업데이트할 것 */}
-        <img src="/images/chatCat.jpg" />
-      </Space>
-      <ChatWrapper>
-        <ChatContainer>
-          <div className="profile-image">
-            <ProfileImage
-              src="/images/pf_dog_space.png"
-              alt="반려동물 프로필 이미지"
+    <>
+      {/*
+        <div>
+        {messages.map((message, index) => (
+        <div key={index}>{message.text}</div>
+      ))}
+    </div>
+    */}
+      <BackButton>
+        <Link to="/pages/Persona">
+          <Fab color="gray" aria-label="back">
+            <ArrowBackIcon />
+          </Fab>
+        </Link>
+      </BackButton>
+      <Wrapper>
+        <TutorialChat />
+
+        <ChatWrapper>
+          <ChatContainer>
+            <ReceiverSide>
+              <ProfileImage
+                src="/images/pf_dog.png"
+                alt="반려동물 프로필 이미지"
+              />
+              <PetBubble>{petMessage}</PetBubble>
+            </ReceiverSide>
+            <SenderSide>
+              <UserBubble>ddd</UserBubble>
+            </SenderSide>
+            <ReceiverSide>
+              <ProfileImage
+                src="/images/pf_dog.png"
+                alt="반려동물 프로필 이미지"
+              />
+              <PetBubble>{petMessage}</PetBubble>
+            </ReceiverSide>
+            <SenderSide>
+              <UserBubble>ddd</UserBubble>
+            </SenderSide>
+          </ChatContainer>
+          <InputContainer>
+            <input
+              id="inputField"
+              value={userInput}
+              onChange={handleInputChange}
+              placeholder="메세지를 입력하세요"
             />
-          </div>
-          <div className="chat-messages">
-            {loading ? (
-              <BeatLoader color="#7CBADC" size={15} />
-            ) : (
-              messages.map((message, index) => (
-                <MessageBubble key={index} className={message.type}>
-                  {message.text}
-                </MessageBubble>
-              ))
-            )}
-          </div>
-        </ChatContainer>
-        <InputContainer>
-          <input
-            id="inputField"
-            value={userInput}
-            onChange={handleInputChange}
-            placeholder="메세지를 입력하세요"
-          />
-          <button id="sendBtn" onClick={handleSubmit}>
-            Send
-          </button>
-        </InputContainer>
-      </ChatWrapper>
-    </Wrapper>
+            <button id="sendBtn" onClick={handleSubmit}>
+              Send
+            </button>
+          </InputContainer>
+        </ChatWrapper>
+      </Wrapper>
+    </>
   );
 }
-
 const Wrapper = styled.div`
   margin: 50px auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 1080px;
-`;
-const Space = styled.div`
-  display: flex;
-  width: 250px;
-  height: 450px;
-  justify-content: flex-end;
-  align-items: center;
-  img {
-    height: 200px;
-  }
 `;
 const ChatWrapper = styled.div`
   margin: 0;
@@ -150,42 +147,75 @@ const ChatContainer = styled.div`
   width: 400px;
   height: 500px;
 `;
-const InputContainer = styled.div`
-  width: 400px;
+const ReceiverSide = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+`;
+const SenderSide = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+const MessageBubble = styled.div`
+  background-color: ${(props) =>
+    props.type === "user" ? "#4CAF50" : "#008CBA"};
+  align-self: ${(props) => (props.type === "user" ? "flex-end" : "flex-start")};
 `;
 const ProfileImage = styled.img`
   margin: 10px;
-  width: 50px;
+  width: 70px;
   height: auto;
-  /* border-radius: 50%; */
+  border-radius: 50%;
   overflow: hidden;
 `;
-const MessageBubble = styled.div`
+const PetBubble = styled.div`
   margin: 10px;
-  padding: 10px;
-  max-width: 70%; /* 최대 너비 설정 */
-  font-size: 14px; /* 글자 크기 */
-  word-wrap: break-word; /* 긴 단어 자동 줄바꿈 */
-  background-color: ${(props) =>
-    props.type === "user" ? "#4CAF50" : "#008CBA"};
-  color: white;
-  padding: 10px;
   border-radius: 10px;
-  align-self: ${(props) => (props.type === "user" ? "flex-end" : "flex-start")};
+  max-width: 70%;
+  font-size: 14px;
+  word-wrap: break-word;
+  padding: 20px;
+  background: #bae2fa;
 `;
-const GoBackBtn = styled.button`
-  position: fixed;
-  z-index: 1000;
-  top: 150px;
-  left: 30px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: #8bcef4;
-  color: white;
-  font-size: 25px;
-  border: none;
-  cursor: pointer;
+const UserBubble = styled.div`
+  margin: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+  font-size: 14px;
+  word-wrap: break-word;
+  padding: 20px;
+  background: white;
+`;
+const InputContainer = styled.div`
+  height: 100px;
+  justify-content: bottom;
+  input {
+    margin: 5px;
+    padding-left: 16px;
+    border: none;
+    width: 300px;
+    height: 45px;
+    font-size: 17px;
+    outline: none;
+  }
+  button {
+    margin: 5px;
+    width: 80px;
+    height: 43px;
+    border-radius: 10px;
+    border: none;
+    background: #8bcef4;
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+    &:hover {
+      background: #7cbadc;
+    }
+  }
+`;
+
+const BackButton = styled.div`
+  margin: 30px;
 `;
 
 export default Chat;
