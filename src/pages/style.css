@@ -221,6 +221,14 @@ ul {
 
 
 
+/*  Diary  */
+#diaryButton {
+    display: flex;
+    margin: 10px;
+    align-items:start;
+}
+
+
 /*  Community  */
 #rainbowPlatform {
     font-family: UhBeeSe_hyun;

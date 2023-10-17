@@ -18,10 +18,47 @@ function Chat() {
   const token = localStorage.getItem("token");
   const { petIdString } = useParams();
   const pet_id = parseInt(petIdString, 10);
+  const [petName, setPetName] = useState();
+  const [petProfile, setPetProfile] = useState();
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      // https://api.rainbow-letter.com/persona/list
+      if (token) {
+        try {
+          const response = await axios.get(
+            "http://13.209.173.241:8080/persona/list",
+            {
+              headers: {
+                "X-ACCESS-TOKEN": `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          console.log(response.data);
+
+          const matchingPersona = response.data.personaList.find(
+            (persona) => persona.petId === pet_id
+          );
+
+          if (matchingPersona) {
+            const { name, petProfile } = matchingPersona;
+            console.log(name, petProfile);
+            setPetName(name); // petName 변수 업데이트
+            setPetProfile(petProfile);
+          } else {
+            // 일치하는 petId를 찾지 못한 경우에 대한 처리
+            console.log("일치하는 petId를 찾을 수 없습니다.");
+          }
+        } catch (error) {
+          console.error("API 요청 실패:", error);
+        }
+      } else {
+        alert("로그인이 필요합니다.");
+      }
+    };
+    fetchData();
+  }, [token]);
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value); // 입력 값 업데이트

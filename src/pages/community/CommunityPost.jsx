@@ -47,6 +47,7 @@ function CommunityPost() {
       <h1>포스트 작성</h1>
       <Container>
         <PostPic>
+          <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/camera.png" />
           <h5>사진 업로드</h5>
           <p>(10장까지 선택 가능)</p>
           <button>사진 선택</button>
@@ -113,6 +114,9 @@ const PostPic = styled.div`
   align-items: center;
   border-radius: 5px;
   background: var(--e-9-f-5-ff, #e9f5ff);
+  img {
+    width: 25px;
+  }
   button {
     width: 133px;
     height: 37px;

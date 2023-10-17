@@ -12,7 +12,7 @@ function Community() {
   return (
     <ComWrapper>
       <img
-        src="https://github.com/ewha-cse-HACK/HACK_client/blob/76182d96902b703f123e5d282dfd2c96d73954e7/public/images/writing.PNG"
+        src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/writing.PNG"
         alt="글을 적고 있는 고양이"
       />
       <h1 id="rainbowPlatform">무지개 광장</h1>
