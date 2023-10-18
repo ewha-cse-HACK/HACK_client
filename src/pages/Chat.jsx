@@ -17,6 +17,7 @@ function Chat() {
   const token = localStorage.getItem("token");
   const { petIdString } = useParams();
   const pet_id = parseInt(petIdString, 10);
+  const [petName, setPetName] = useState();
   const [petProfile, setPetProfile] = useState();
   const chatContainerRef = useRef(null);
 
@@ -49,6 +50,7 @@ function Chat() {
           if (matchingPersona) {
             const { name, petProfile } = matchingPersona;
             console.log(name, petProfile);
+            setPetName(name);
             setPetProfile(petProfile);
           } else {
             // 일치하는 petId를 찾지 못한 경우에 대한 처리
@@ -116,6 +118,9 @@ function Chat() {
 
   return (
     <Wrapper>
+      <HeadText>
+        <h1>{petName}하고 채팅하기</h1>
+      </HeadText>
       <BackButton>
         <Link to="/pages/Persona">
           <Fab color="gray" aria-label="back">
@@ -172,6 +177,15 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 1080px;
+`;
+const HeadText = styled.div`
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  width: 500px;
+  font-family: UhBeeSe_hyun;
+  font-weight: normal;
+  font-size: 40px;
 `;
 const ChatWrapper = styled.div`
   margin: 0;
