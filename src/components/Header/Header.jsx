@@ -18,7 +18,7 @@ function Header() {
     // 로그아웃 API 호출?
     setIsLoggedIn(false); // 로그아웃 상태로 변경
     localStorage.removeItem("token"); // 로컬 스토리지에서 토큰 제거
-    navigate("/pages/Home");
+    navigate("/");
   };
 
   return (

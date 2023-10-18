@@ -201,7 +201,11 @@ ul {
 
 
 /*  Chat  */
-
+#chatHeadText {
+    font-family: UhBeeSe_hyun;
+    font-weight: normal;
+    font-size: 40px;
+}
 
 
 /*  Diary  */

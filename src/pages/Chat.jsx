@@ -119,7 +119,7 @@ function Chat() {
   return (
     <Wrapper>
       <HeadText>
-        <h1>{petName}하고 채팅하기</h1>
+        <h1 id="chatHeadText">{petName}하고 채팅하기</h1>
       </HeadText>
       <BackButton>
         <Link to="/pages/Persona">
@@ -182,10 +182,8 @@ const HeadText = styled.div`
   margin: auto;
   margin-top: 50px;
   margin-bottom: 20px;
+  display: block;
   width: 500px;
-  font-family: UhBeeSe_hyun;
-  font-weight: normal;
-  font-size: 40px;
 `;
 const ChatWrapper = styled.div`
   margin: 0;
