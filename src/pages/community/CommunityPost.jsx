@@ -2,13 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import PropTypes from "prop-types";
 import "../style.css";
 import TextField from "@mui/material/TextField";
 
 function CommunityPost() {
   const [uploadUrl, setUploadUrl] = useState(null);
+  const [photoList, setPhotoList] = useState("");
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  const [fileId, setFileId] = useState("");
+  const [rootUrl, setRootUrl] = useState(
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/"
+  );
+  const [sendingUrl, setSendingUrl] = useState(null);
 
   useEffect(() => {
     const fetchUploadUrl = async () => {
@@ -24,6 +32,8 @@ function CommunityPost() {
         );
         setUploadUrl(response.data);
         console.log("이미지 업로드 URL", response.data);
+        console.log("백엔드에 보낼 주소(기본):", sendingUrl);
+        console.log("백엔드에 보낼 주소(root): ", rootUrl);
       } catch (error) {
         console.error("이미지 업로드 URL 요청 실패", error);
       }
@@ -31,6 +41,38 @@ function CommunityPost() {
 
     fetchUploadUrl();
   }, [token]);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]; // 선택한 파일
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      // 파일을 읽고 이미지 URL을 상태에 저장
+      setPhotoList(reader.result);
+      setFileId(reader.result.substring(0, 10));
+      setSendingUrl(rootUrl + fileId);
+      console.log("이미지 업로드 후 root+fileId: ", sendingUrl);
+    };
+    if (file) {
+      reader.readAsDataURL(file); // 파일을 data URL로 읽기
+      uploadImageToS3(uploadUrl, file);
+    }
+  };
+
+  function uploadImageToS3(uploadUrl, file) {
+    axios
+      .put(uploadUrl, file, {
+        headers: {
+          "Content-Type": "image/png",
+        },
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
+  }
+
+  // 이전 화면으로 이동
+  const goBack = () => {
+    navigate(-1);
+  };
 
   /*
           <TextField
@@ -55,14 +97,13 @@ function CommunityPost() {
         <Editor>
           <TitleEditor>
             <TextField
-              required
               label="제목을 작성해 주세요!"
               variant="outlined"
               size="small"
             />
           </TitleEditor>
           <BodyEditor>
-            <TextField required label="본문" variant="outlined" size="small" />
+            <TextField label="본문" variant="outlined" size="small" />
           </BodyEditor>
         </Editor>
       </Container>

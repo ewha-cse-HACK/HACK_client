@@ -5,7 +5,7 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
 import "./style.css";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Profile from "../components/Profile";
@@ -110,6 +110,7 @@ const ProfilesContainer = styled.div`
   gap: 80px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /*max-width: 400px;*/
 `;
 const AddContainer = styled.div`
   margin: 0 50px;

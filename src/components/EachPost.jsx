@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-// import PropTypes from "prop-types";
-// import axios from "axios";
+import PropTypes from "prop-types";
+import axios from "axios";
 import "../pages/style.css";
 import { getRandomColor } from "./utils";
 
-function EachPost() {
+function EachPost(props) {
+  const { postId, title, likecount, viewcount, writer, createddate, thumnail } =
+    props;
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   const randomColor = getRandomColor();
 
   const CmPost = {
@@ -21,11 +25,16 @@ function EachPost() {
     <Container>
       <ContentBox></ContentBox>
       <TextContent>
-        <h5>게시글 제목</h5>
-        <p>작성자 이름</p>
-        <p>조회수 - 좋아요</p>
+        <div>
+          <h2>{title}</h2>
+          <p>Post ID: {postId}</p>
+          <p>Like Count: {likecount}</p>
+          <p>View Count: {viewcount}</p>
+          <p>Writer: {writer}</p>
+          <p>Created Date: {createddate}</p>
+          <img src={thumnail} alt="Post Thumbnail" />
+        </div>
       </TextContent>
-      <LikeContent />
     </Container>
   );
 }
@@ -44,11 +53,13 @@ const StyledLink = styled(Link)`
   }
 `;
 const Container = styled.div`
+  border: 1px solid gray;
   width: 250px;
   height: 247px;
 `;
 const ContentBox = styled.div`
-  width: 250px;
+  border: 0.5px solid red;
+  width: 100%;
   height: 180px;
   border-radius: 10px;
   background: #c9e2d6;
@@ -62,9 +73,12 @@ const ContentBoxTwo = styled.div`
   height: 100px;
 `;
 const TextContent = styled.div`
+  border: 0.1px solid blue;
   margin: 0;
+  font-size: 10px;
 `;
 const LikeContent = styled.button`
+  background: url("/images/like_gray.png");
   cursor: pointer;
 `;
 

@@ -18,7 +18,7 @@ function Diary() {
   const pet_id = parseInt(petIdString, 10);
   const [petName, setPetName] = useState();
   const [petProfile, setPetProfile] = useState();
-  const [journalId, setJournalId] = useState(1); // 초기 journalId 설정
+  const [journalId, setJournalId] = useState(); // 초기 journalId 설정
   const [createdTime, setCreatedTime] = useState();
   const [content, setContent] = useState();
   const [imageUrl, setImageUrl] = useState();
@@ -92,12 +92,12 @@ function Diary() {
         } else {
           // journalCommentResponseDto가 없는 경우에 대한 처리
           console.log("댓글 데이터가 없습니다.");
-          setCreatedTime(new Date(response.data.createdTime));
-          setJournalId(response.data.id);
-          setContent(response.data.content);
-          setImageUrl(response.data.imageUrl);
           setCommentContent("");
         }
+        setCreatedTime(new Date(response.data.createdTime));
+        setJournalId(response.data.id);
+        setContent(response.data.content);
+        setImageUrl(response.data.imageUrl);
       } catch (error) {
         console.error("1개 조회 API 요청 실패:", error);
       }
@@ -193,12 +193,12 @@ function Diary() {
       } else {
         // journalCommentResponseDto가 없는 경우에 대한 처리
         console.log("댓글 데이터가 없습니다.");
-        setCreatedTime(new Date(response.data.createdTime));
-        setContent(response.data.content);
-        setJournalId(response.data.id);
-        setImageUrl(response.data.imageUrl);
         setCommentContent("");
       }
+      setCreatedTime(new Date(response.data.createdTime));
+      setContent(response.data.content);
+      setJournalId(response.data.id);
+      setImageUrl(response.data.imageUrl);
     } catch (error) {
       console.error("API Get 요청 (오늘 일기 불러오기) 실패:", error);
       // 오류 처리 로직 추가
@@ -300,7 +300,7 @@ function Diary() {
               )}
             </PictureContainer>
             <TextContainer>
-              <h3>{content}</h3>
+              {content ? <h3>{content}</h3> : <p>아직 일기가 없어요.</p>}
               {isStampedVisible && (
                 <Stamped>
                   <img src={selectedStamp} alt="도장 이미지" />
@@ -555,10 +555,10 @@ const PictureContainer = styled.div`
   width: 200px;
   height: 180px;
   overflow: hidden;
+  border: none;
   img {
     width: 100%;
     height: 100%;
-    border: 0.2px solid black;
     object-fit: cover;
   }
 `;
@@ -570,6 +570,11 @@ const TextContainer = styled.div`
   h3 {
     margin: 0 10px;
     font-size: 18px;
+  }
+  p {
+    display: flex;
+    margin: 20px;
+    align-items: center;
   }
 `;
 const CommentContainer = styled.div`

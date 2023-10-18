@@ -1,10 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 import PropTypes from "prop-types";
 import "../pages/style.css";
 
 function Profile({ name, petProfile, petId }) {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(
+        `http://13.209.173.241:8080/persona/delete/${petId}`,
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        alert("페르소나가 삭제되었습니다.");
+        console.log("페르소나 삭제: ", name);
+        navigate("/pages/Persona");
+      }
+    } catch (error) {
+      console.error("페르소나 삭제 오류:", error);
+    }
+  };
+
   return (
     <ProfileCard>
       <ProfileBox>
@@ -13,7 +37,7 @@ function Profile({ name, petProfile, petId }) {
         </ProfileImage>
         <ProfileInfo>
           <h3>{name}</h3>
-          <StyledLink to="/">페르소나 삭제</StyledLink>
+          <DeletePersona onClick={handleDelete}>페르소나 삭제</DeletePersona>
         </ProfileInfo>
       </ProfileBox>
       <ButtonContainer>
@@ -100,7 +124,7 @@ const ButtonContainer = styled.div`
     }
   }
 `;
-const StyledLink = styled(Link)`
+const DeletePersona = styled.div`
   margin: 20px;
   margin-bottom: 30px;
   text-decoration: none;

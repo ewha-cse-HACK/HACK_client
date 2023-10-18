@@ -7,7 +7,7 @@ import CommunityPost from "./community/CommunityPost";
 import EachPost from "../components/EachPost";
 
 function Community() {
-  const [postList, setPostList] = useState([]);
+  const [postData, setPostData] = useState([]);
   const [currentPage, setCurrentPage] = useState();
   const [totalPage, setTotalPage] = useState();
   const [page, setPage] = useState(1);
@@ -19,7 +19,7 @@ function Community() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://13.209.173.241:8080/community?page=${page}",
+          "http://13.209.173.241:8080/community?page=1",
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -28,7 +28,7 @@ function Community() {
         );
         console.log("포스트 리스트 전체 띄우기 완료");
         console.log(response.data);
-        setPostList(response.data.postList);
+        setPostData(response.data.postList);
         setCurrentPage(response.data.currentpage);
         setTotalPage(response.data.totalpage);
       } catch (error) {
@@ -40,16 +40,33 @@ function Community() {
 
   return (
     <ComWrapper>
-      <img
-        src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/writing.PNG"
-        alt="글을 적고 있는 고양이"
-      />
-      <h1 id="rainbowPlatform">무지개 광장</h1>
-      <p>자유롭게 글을 쓰고, 사진을 올리고, 공감을 표시해주세요!</p>
-      <button onClick={() => navigate("/pages/community/CommunityPost")}>
-        글 쓰기
-      </button>
+      <HeaderTitle>
+        <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/table.png" />
+        <h1 id="rainbowPlatform">무지개 광장</h1>
+      </HeaderTitle>
+
+      <br />
+
+      <br />
+      <PostContainer>
+        {postData.map((posts) => (
+          <EachPost
+            key={posts.id}
+            postId={posts.id}
+            title={posts.title}
+            likecount={posts.likecount}
+            viewcount={posts.viewcount}
+            writer={posts.writer}
+            createddate={posts.createddate}
+            thumnail={posts.thumnail}
+          />
+        ))}
+      </PostContainer>
+
       <EachPost />
+      <WriteBtn onClick={() => navigate("/pages/community/CommunityPost")}>
+        글 쓰기
+      </WriteBtn>
     </ComWrapper>
   );
 }
@@ -66,25 +83,37 @@ const ComWrapper = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
+`;
+const HeaderTitle = styled.div`
+  margin: 30px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   img {
-    width: 100px;
+    width: 90px;
   }
-  button {
-    display: flex;
-    width: 121px;
-    height: 37px;
-    justify-content: center;
-    align-items: center;
-    font-size: 17px;
-    font-weight: bold;
-    gap: 8px;
-    border-radius: 56px;
-    border: none;
-    color: #fff;
-    background: #8bcef4;
-    cursor: pointer;
-    &:hover {
-      background: #bae2fa;
-    }
+`;
+const PostContainer = styled.div`
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+`;
+const WriteBtn = styled.button`
+  display: flex;
+  width: 121px;
+  height: 37px;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 56px;
+  border: none;
+  color: #fff;
+  background: #8bcef4;
+  cursor: pointer;
+  &:hover {
+    background: #7cbadc;
   }
 `;
