@@ -2,16 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import PropTypes from "prop-types";
 import "../style.css";
-import TextField from "@mui/material/TextField";
 
 function CommunityPost() {
   const [uploadUrl, setUploadUrl] = useState(null);
-  const [photoList, setPhotoList] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [photoList, setPhotoList] = useState([]);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-
+  const urls = [
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_green.PNG",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_red.PNG",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_purple.PNG",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_pink.PNG",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_blue.PNG",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_yellow.PNG",
+  ];
+  const randomIndex = Math.floor(Math.random() * urls.length);
+  const basicUrl = urls[randomIndex];
   const [fileId, setFileId] = useState("");
   const [rootUrl, setRootUrl] = useState(
     "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/"
@@ -43,7 +52,8 @@ function CommunityPost() {
   }, [token]);
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]; // 선택한 파일
+    const file = e.target.files;
+
     const reader = new FileReader();
     reader.onloadend = () => {
       // 파일을 읽고 이미지 URL을 상태에 저장
@@ -74,16 +84,55 @@ function CommunityPost() {
     navigate(-1);
   };
 
-  /*
-          <TextField
-            required
-            label="새의 이름"
-            variant="outlined"
-            size="small"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-*/
+  const handleComplete = async () => {
+    try {
+      // 각 이미지의 fileId를 추출하여 imageList에 추가
+      /*let imageList = [];
+      if (photoList.length > 0) {
+        const imageList = await Promise.all(
+          photoList.map(async (photo) => {
+            const response = await axios.put(uploadUrl, photo, {
+              headers: {
+                "Content-Type": "image/png",
+              },
+            });
+            return response.data.fileId;
+          })
+        );
+      }*/
+
+      // 포스트 요청 보내기 (JSON 형식으로 변환)
+      const jsonData = JSON.stringify({
+        title: title,
+        content: content,
+        imageList: [
+          {
+            imageUrl: basicUrl,
+          },
+        ],
+      });
+      const response = await axios.post(
+        "http://13.209.173.241:8080/community/save-post",
+        jsonData,
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.status === 201) {
+        alert("포스트가 저장되었습니다.");
+        navigate("/pages/Community");
+      } else {
+        alert("포스트 작성에 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("포스트 작성 실패", error);
+      alert("포스트 작성 오류");
+    }
+  };
+
   return (
     <ComWrapper>
       <h1>포스트 작성</h1>
@@ -92,24 +141,32 @@ function CommunityPost() {
           <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/camera.png" />
           <h5>사진 업로드</h5>
           <p>(10장까지 선택 가능)</p>
-          <button>사진 선택</button>
+          <button onClick={handleImageChange}>사진 선택</button>
         </PostPic>
         <Editor>
-          <TitleEditor>
-            <TextField
-              label="제목을 작성해 주세요!"
-              variant="outlined"
-              size="small"
-            />
-          </TitleEditor>
-          <BodyEditor>
-            <TextField label="본문" variant="outlined" size="small" />
-          </BodyEditor>
+          <input
+            id="cmTitle"
+            placeholder="제목을 작성해 주세요!"
+            autoComplete="off"
+            value={title}
+            required
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            rows="4"
+            cols="50"
+            id="cmBody"
+            placeholder="본문 입력"
+            autoComplete="off"
+            value={content}
+            required
+            onChange={(e) => setContent(e.target.value)}
+          />
         </Editor>
       </Container>
       <Container>
-        <button>취소</button>
-        <button>완료</button>
+        <BeforeBtn onClick={goBack}>취소</BeforeBtn>
+        <DoneBtn onClick={handleComplete}>완료</DoneBtn>
       </Container>
     </ComWrapper>
   );
@@ -125,25 +182,6 @@ const ComWrapper = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
-  button {
-    display: flex;
-    margin: 10px;
-    width: 121px;
-    height: 37px;
-    justify-content: center;
-    align-items: center;
-    font-size: 17px;
-    font-weight: bold;
-    gap: 8px;
-    border-radius: 56px;
-    border: none;
-    color: #fff;
-    background: #8bcef4;
-    cursor: pointer;
-    &:hover {
-      background: #bae2fa;
-    }
-  }
 `;
 const PostPic = styled.div`
   width: 383px;
@@ -155,16 +193,32 @@ const PostPic = styled.div`
   align-items: center;
   border-radius: 5px;
   background: var(--e-9-f-5-ff, #e9f5ff);
+  gap: 5px;
   img {
     width: 25px;
+    margin-bottom: 15px;
+  }
+  h5 {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  p {
+    color: gray;
+    font-weight: bold;
+    font-size: 15px;
   }
   button {
     width: 133px;
     height: 37px;
+    margin: 10px;
     justify-content: center;
     align-items: center;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
     border-radius: 10px;
     cursor: pointer;
+    color: #fff;
     background: #8bcef4;
     &:hover {
       background: #bae2fa;
@@ -176,26 +230,50 @@ const Editor = styled.div`
   height: 394px;
   border-radius: 5px;
   margin: auto;
-  border: 1px solid purple;
-`;
-const TitleEditor = styled.div`
-  width: 383px;
-  height: 41px;
-  border-radius: 3px;
-  border: 0.5px solid var(--4-d-7-e-95, #4d7e95);
-`;
-const BodyEditor = styled.div`
-  width: 383px;
-  height: 345px;
-  border-radius: 3px;
-  border: 0.5px solid var(--4-d-7-e-95, #4d7e95);
-  background: #fff;
+  margin-left: 10px;
 `;
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   margin: 10px;
-  border: 1px solid black;
+`;
+const BeforeBtn = styled.button`
+  display: flex;
+  margin: 10px;
+  width: 120px;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: bold;
+  gap: 8px;
+  border-radius: 56px;
+  border: 2px solid #0f2f36;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  &:hover {
+    background: #e0e0e2;
+  }
+`;
+const DoneBtn = styled.button`
+  display: flex;
+  margin: 10px;
+  width: 120px;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: bold;
+  gap: 8px;
+  border-radius: 56px;
+  border: none;
+  color: #fff;
+  background: #0f2f36;
+  cursor: pointer;
+  &:hover {
+    background: #e0e0e2;
+  }
 `;
 
 export default CommunityPost;

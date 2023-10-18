@@ -4,90 +4,99 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import axios from "axios";
 import "../pages/style.css";
-import { getRandomColor } from "./utils";
 
 function EachPost(props) {
-  const { postId, title, likecount, viewcount, writer, createddate, thumnail } =
-    props;
-  const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-  const randomColor = getRandomColor();
-
-  const CmPost = {
-    backgroundColor: randomColor,
-    width: "250px",
-    height: "180px",
-    borderRadius: "10px",
-  };
-  // <div style={componentStyle}>내 컴포넌트</div>;
+  const {
+    postId,
+    title,
+    likecount,
+    viewcount,
+    writer,
+    createddate,
+    thumbnail,
+  } = props;
 
   return (
     <Container>
-      <ContentBox></ContentBox>
-      <TextContent>
-        <div>
-          <h2>{title}</h2>
-          <p>Post ID: {postId}</p>
-          <p>Like Count: {likecount}</p>
-          <p>View Count: {viewcount}</p>
-          <p>Writer: {writer}</p>
-          <p>Created Date: {createddate}</p>
-          <img src={thumnail} alt="Post Thumbnail" />
-        </div>
-      </TextContent>
+      <ContentBox>
+        <img src={thumbnail} alt="Post Thumbnail" />
+      </ContentBox>
+      <DivBottom>
+        <TextContent>
+          <div>
+            <RowContainer>
+              <h2>{title}</h2>
+            </RowContainer>
+            <RowContainer>
+              <p>작성자 : {writer}</p>
+            </RowContainer>
+            <RowContainer>
+              <p>{postId}. </p>
+              <p>조회수 {viewcount} </p>
+              <p>좋아요 {likecount} </p>
+              {/*<p>작성일 {createddate}</p>*/}
+            </RowContainer>
+          </div>
+        </TextContent>
+        <LikeContent>
+          <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/like_gray.png" />
+        </LikeContent>
+      </DivBottom>
     </Container>
   );
 }
-
-const StyledLink = styled(Link)`
-  margin: 10px;
-  text-decoration: none;
-  color: #0f2f36;
-  border: none;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    color: black;
-    font-weight: 600;
-  }
-`;
+/*
+EachPost.propTypes = {
+  postId: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  likecount: PropTypes.string.isRequired,
+  viewcount: PropTypes.string.isRequired,
+  writer: PropTypes.string.isRequired,
+  createddate: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+};*/
 const Container = styled.div`
-  border: 1px solid gray;
   width: 250px;
   height: 247px;
 `;
 const ContentBox = styled.div`
-  border: 0.5px solid red;
   width: 100%;
   height: 180px;
   border-radius: 10px;
-  background: #c9e2d6;
-  background: #e1f8f8;
-  background: #fce6e3;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /*box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);*/
 `;
-//<ContentBoxTwo bgColor={randomColor}></ContentBoxTwo>
-const ContentBoxTwo = styled.div`
-  background-color: ${(props) => props.bgColor};
-  width: 100px;
-  height: 100px;
+const DivBottom = styled.div`
+  display: flex;
 `;
 const TextContent = styled.div`
-  border: 0.1px solid blue;
-  margin: 0;
-  font-size: 10px;
+  margin: 5px;
+  width: 200px;
+  margin-top: 10px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  p {
+    font-size: 14px;
+    color: #574d4d;
+    margin-right: 5px;
+  }
 `;
-const LikeContent = styled.button`
-  background: url("/images/like_gray.png");
-  cursor: pointer;
+const RowContainer = styled.div`
+  margin-top: 2px;
+  display: flex;
+  flex-direction: row;
 `;
-
-/*
-const ImageStyled = styled.img`
-  width: 180px;
-  height: 190px;
-  overflow: hidden;
+const LikeContent = styled.div`
+  margin-top: 15px;
+  img {
+    width: 28px;
+  }
 `;
-*/
 
 export default EachPost;

@@ -57,7 +57,7 @@ function App() {
           <Route path="/pages/Diary" element={<Diary />} />
           <Route path="/rainbow-letter/diary/:pet_id" component={Diary} />
           <Route path="/pages/Diary/:petIdString" element={<Diary />} />
-          <Route path="/pages/Commnunity" element={<Community />} />
+          <Route path="/pages/Community" element={<Community />} />
           <Route path="/pages/community/CommunityPost" element={<CommunityPost />} />
           <Route path="/pages/community/CommunityEdit" element={<CommunityEdit />} />
           <Route path="/pages/community/CommunityView" element={<CommunityView />} />

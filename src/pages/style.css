@@ -240,3 +240,43 @@ ul {
     font-size: 35px;
     text-align: center;
 }
+
+
+/*  CommunityPost  */
+#cmTitle {
+    padding: 15px;
+    margin-bottom: 8px;
+    width: 383px;
+    height: 41px;
+    border-radius: 3px;
+    border: 0.5px solid var(--4-d-7-e-95, #4D7E95);
+}
+#cmTitle:focus {
+    outline: none;
+}
+#cmBody {
+    margin: auto;
+    padding: 15px;
+    width: 383px;
+    height: 345px;
+    border-radius: 3px;
+    border: 0.5px solid var(--4-d-7-e-95, #4D7E95);
+}
+#cmBody:focus {
+    outline: none;
+}
+
+/*
+const TitleEditor = styled.div`
+  width: 383px;
+  height: 41px;
+  border-radius: 3px;
+  border: 0.5px solid var(--4-d-7-e-95, #4d7e95);
+`;
+const BodyEditor = styled.div`
+  width: 383px;
+  height: 345px;
+  border-radius: 3px;
+  border: 0.5px solid var(--4-d-7-e-95, #4d7e95);
+  background: #fff;
+`;*/

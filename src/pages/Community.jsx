@@ -11,7 +11,7 @@ function Community() {
   const [currentPage, setCurrentPage] = useState();
   const [totalPage, setTotalPage] = useState();
   const [page, setPage] = useState(1);
-
+  const [formattedDate, setFormattedDate] = useState();
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -26,8 +26,8 @@ function Community() {
             },
           }
         );
-        console.log("포스트 리스트 전체 띄우기 완료");
         console.log(response.data);
+        console.log("포스트 리스트 전체 띄우기 완료");
         setPostData(response.data.postList);
         setCurrentPage(response.data.currentpage);
         setTotalPage(response.data.totalpage);
@@ -44,10 +44,11 @@ function Community() {
         <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/table.png" />
         <h1 id="rainbowPlatform">무지개 광장</h1>
       </HeaderTitle>
-
-      <br />
-
-      <br />
+      <ButtonArea>
+        <WriteBtn onClick={() => navigate("/pages/community/CommunityPost")}>
+          글 쓰기
+        </WriteBtn>
+      </ButtonArea>
       <PostContainer>
         {postData.map((posts) => (
           <EachPost
@@ -56,17 +57,12 @@ function Community() {
             title={posts.title}
             likecount={posts.likecount}
             viewcount={posts.viewcount}
-            writer={posts.writer}
+            writer={posts.nickname}
             createddate={posts.createddate}
-            thumnail={posts.thumnail}
+            thumbnail={posts.thumbnail}
           />
         ))}
       </PostContainer>
-
-      <EachPost />
-      <WriteBtn onClick={() => navigate("/pages/community/CommunityPost")}>
-        글 쓰기
-      </WriteBtn>
     </ComWrapper>
   );
 }
@@ -97,8 +93,14 @@ const HeaderTitle = styled.div`
 `;
 const PostContainer = styled.div`
   display: grid;
-  gap: 10px;
-  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+`;
+const ButtonArea = styled.div`
+  display: flex;
+  width: 1200px;
+  height: 60px;
+  justify-content: flex-end;
 `;
 const WriteBtn = styled.button`
   display: flex;
@@ -111,7 +113,7 @@ const WriteBtn = styled.button`
   border-radius: 56px;
   border: none;
   color: #fff;
-  background: #8bcef4;
+  background: #000027;
   cursor: pointer;
   &:hover {
     background: #7cbadc;

@@ -38,7 +38,7 @@ function Header() {
                 <StyledLink to="/pages/Persona">Persona</StyledLink>
               </li>
               <li>
-                <StyledLink to="/pages/Commnunity">Community</StyledLink>
+                <StyledLink to="/pages/Community">Community</StyledLink>
               </li>
               {isLoggedIn ? (
                 <>

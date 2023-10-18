@@ -108,9 +108,10 @@ const ViewWrapper = styled.div`
 */
 const ProfilesContainer = styled.div`
   gap: 80px;
-  display: grid;
+  display: flex;
+  /*  display: grid;
   grid-template-columns: 1fr 1fr;
-  /*max-width: 400px;*/
+  min-width: 300px;*/
 `;
 const AddContainer = styled.div`
   margin: 0 50px;
