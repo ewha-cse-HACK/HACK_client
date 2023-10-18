@@ -49,7 +49,7 @@ function Header() {
                     <button id="goMyPage">
                       <Link to="/pages/MyPage">
                         <img
-                          src="/images/pf_human.png"
+                          src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
                           style={{ width: "43px" }}
                         />
                       </Link>
@@ -94,7 +94,7 @@ const LogoutBtn = styled.button`
   outline: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 22px;
   font-weight: bold;
   color: #343b6e;
   &:hover {

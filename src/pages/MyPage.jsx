@@ -166,7 +166,10 @@ function MyPage() {
       <p>내 정보를 확인하고 수정할 수 있습니다.</p>
       <div id="imgContainer">
         <ImageStyled
-          src={profileImage || "/images/pf_human.png"}
+          src={
+            profileImage ||
+            "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
+          }
           alt="프로필 이미지"
         />
       </div>
@@ -182,7 +185,8 @@ function MyPage() {
         <img
           src={
             imageUrl === null
-              ? profileImage || "/images/pf_human.png"
+              ? profileImage ||
+                "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
               : imageUrl
           }
           alt="프로필 이미지"
