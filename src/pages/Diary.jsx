@@ -95,6 +95,7 @@ function Diary() {
           setCommentContent("");
         }
         setCreatedTime(new Date(response.data.createdTime));
+        console.log("생성 일시", createdTime);
         setJournalId(response.data.id);
         setContent(response.data.content);
         setImageUrl(response.data.imageUrl);

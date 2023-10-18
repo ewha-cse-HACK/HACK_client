@@ -61,6 +61,7 @@ function App() {
           <Route path="/pages/community/CommunityPost" element={<CommunityPost />} />
           <Route path="/pages/community/CommunityEdit" element={<CommunityEdit />} />
           <Route path="/pages/community/CommunityView" element={<CommunityView />} />
+          <Route path="/pages/community/CommunityView/:id" element={<CommunityView />} />
           <Route path="/pages/MyPage" element={<MyPage />} />
           <Route path="/pages/Loading" element={<Loading />} />
         </Routes>

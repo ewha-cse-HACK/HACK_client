@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import "./style.css";
@@ -51,16 +51,21 @@ function Community() {
       </ButtonArea>
       <PostContainer>
         {postData.map((posts) => (
-          <EachPost
+          <Link
+            to={`/pages/community/CommunityView/${posts.id}`}
             key={posts.id}
-            postId={posts.id}
-            title={posts.title}
-            likecount={posts.likecount}
-            viewcount={posts.viewcount}
-            writer={posts.nickname}
-            createddate={posts.createddate}
-            thumbnail={posts.thumbnail}
-          />
+          >
+            <EachPost
+              key={posts.id}
+              postId={posts.id}
+              title={posts.title}
+              likecount={posts.likecount}
+              viewcount={posts.viewcount}
+              writer={posts.nickname}
+              createddate={posts.createddate}
+              thumbnail={posts.thumbnail}
+            />
+          </Link>
         ))}
       </PostContainer>
     </ComWrapper>

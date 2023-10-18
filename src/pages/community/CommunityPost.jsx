@@ -135,7 +135,7 @@ function CommunityPost() {
 
   return (
     <ComWrapper>
-      <h1>포스트 작성</h1>
+      <h1 id="cmPostHead">포스트 작성</h1>
       <Container>
         <PostPic>
           <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/camera.png" />

@@ -265,7 +265,25 @@ ul {
 #cmBody:focus {
     outline: none;
 }
-
+#cmPostHead {
+    font-family: UhBeeSe_hyun;
+    font-size: 35px;
+    text-align: center;
+    margin: 30px;
+}
+#cmViewHead {
+    font-family: UhBeeSe_hyun;
+    font-size: 30px;
+    text-align: left;
+    margin-left: 25px;
+}
+#cmViewHeadComment {
+    font-family: UhBeeSe_hyun;
+    font-size: 20px;
+    text-align: left; 
+    margin-left: 20px;
+    margin-top: 15px;
+}
 /*
 const TitleEditor = styled.div`
   width: 383px;

@@ -81,6 +81,9 @@ const TextContent = styled.div`
   font-size: 12px;
   display: flex;
   flex-direction: column;
+  h2 {
+    color: black;
+  }
   p {
     font-size: 14px;
     color: #574d4d;
