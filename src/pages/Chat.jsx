@@ -44,7 +44,7 @@ function Chat() {
           if (matchingPersona) {
             const { name, petProfile } = matchingPersona;
             console.log(name, petProfile);
-            setPetName(name); // petName 변수 업데이트
+            setPetName(name);
             setPetProfile(petProfile);
           } else {
             // 일치하는 petId를 찾지 못한 경우에 대한 처리
@@ -59,10 +59,6 @@ function Chat() {
     };
     fetchData();
   }, [token]);
-
-  const handleInputChange = (e) => {
-    setUserInput(e.target.value); // 입력 값 업데이트
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,10 +86,6 @@ function Chat() {
 
       setUserMessage(userInput);
       setPetMessage(response.data.answer);
-
-      const newMessages = response.data.messages; // 엑시오스 요청으로 받아온 메시지 데이터
-      //setMessages([...messages, ...newMessages]); // 이전 메시지와 새로 받아온 메시지를 합쳐 업데이트
-
       setUserInput("");
     } catch (error) {
       console.error("API 요청 실패:", error);
@@ -112,14 +104,7 @@ function Chat() {
   */
 
   return (
-    <>
-      {/*
-        <div>
-        {messages.map((message, index) => (
-        <div key={index}>{message.text}</div>
-      ))}
-    </div>
-    */}
+    <Wrapper>
       <BackButton>
         <Link to="/pages/Persona">
           <Fab color="gray" aria-label="back">
@@ -127,51 +112,35 @@ function Chat() {
           </Fab>
         </Link>
       </BackButton>
-      <Wrapper>
-        <TutorialChat />
-
-        <ChatWrapper>
-          <ChatContainer>
-            <ReceiverSide>
-              <ProfileImage
-                src="/images/pf_dog.png"
-                alt="반려동물 프로필 이미지"
-              />
-              <PetBubble>{petMessage}</PetBubble>
-            </ReceiverSide>
-            <SenderSide>
-              <UserBubble>ddd</UserBubble>
-            </SenderSide>
-            <ReceiverSide>
-              <ProfileImage
-                src="/images/pf_dog.png"
-                alt="반려동물 프로필 이미지"
-              />
-              <PetBubble>{petMessage}</PetBubble>
-            </ReceiverSide>
-            <SenderSide>
-              <UserBubble>ddd</UserBubble>
-            </SenderSide>
-          </ChatContainer>
-          <InputContainer>
-            <input
-              id="inputField"
-              value={userInput}
-              onChange={handleInputChange}
-              autoComplete="off"
-              placeholder="메세지를 입력하세요"
-            />
-            <button id="sendBtn" onClick={handleSubmit}>
-              Send
-            </button>
-          </InputContainer>
-        </ChatWrapper>
-      </Wrapper>
-    </>
+      <TutorialChat />
+      <ChatWrapper>
+        <ChatContainer>
+          <SenderSide>
+            <UserBubble>ddd</UserBubble>
+          </SenderSide>
+          <ReceiverSide>
+            <ProfileImage src={petProfile} alt="반려동물 프로필 이미지" />
+            <PetBubble>{loading ? <BeatLoader /> : { petMessage }}</PetBubble>
+          </ReceiverSide>
+        </ChatContainer>
+        <InputContainer>
+          <input
+            id="inputField"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            autoComplete="off"
+            placeholder="메세지를 입력하세요"
+          />
+          <button id="sendBtn" onSubmit={handleSubmit}>
+            Send
+          </button>
+        </InputContainer>
+      </ChatWrapper>
+    </Wrapper>
   );
 }
 const Wrapper = styled.div`
-  margin: 50px auto;
+  margin: 100px auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -179,11 +148,14 @@ const Wrapper = styled.div`
 `;
 const ChatWrapper = styled.div`
   margin: 0;
+  width: 400px;
+  height: 600px;
   background-color: #e9f5ff;
 `;
 const ChatContainer = styled.div`
-  width: 400px;
-  height: 500px;
+  width: 100%;
+  height: 543px;
+  overflow-y: auto;
 `;
 const ReceiverSide = styled.div`
   display: flex;
@@ -194,14 +166,9 @@ const SenderSide = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-const MessageBubble = styled.div`
-  background-color: ${(props) =>
-    props.type === "user" ? "#4CAF50" : "#008CBA"};
-  align-self: ${(props) => (props.type === "user" ? "flex-end" : "flex-start")};
-`;
 const ProfileImage = styled.img`
   margin: 10px;
-  width: 70px;
+  width: 60px;
   height: auto;
   border-radius: 50%;
   overflow: hidden;
@@ -225,8 +192,7 @@ const UserBubble = styled.div`
   background: white;
 `;
 const InputContainer = styled.div`
-  height: 100px;
-  justify-content: bottom;
+  background: #bae2fa;
   input {
     margin: 5px;
     padding-left: 16px;
@@ -253,7 +219,7 @@ const InputContainer = styled.div`
 `;
 
 const BackButton = styled.div`
-  margin: 30px;
+  margin: 20px;
 `;
 
 export default Chat;

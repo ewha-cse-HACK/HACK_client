@@ -298,3 +298,9 @@ const BodyEditor = styled.div`
   border: 0.5px solid var(--4-d-7-e-95, #4d7e95);
   background: #fff;
 `;*/
+
+/*  Tutorial (Chat)  */
+#tutorialChat {
+    font-family: UhBeeSe_hyun;
+    font-size: 30px;
+}

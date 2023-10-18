@@ -6,7 +6,7 @@ import "../pages/style.css";
 function TutorialChat() {
   return (
     <TutorialCard>
-      <h3>페르소나와 채팅하기</h3>
+      <h3 id="tutorialChat">페르소나와 채팅하기</h3>
       <Explanation>
         <img src="/images/talkingcat.png" />
         <p>
@@ -22,7 +22,7 @@ const TutorialCard = styled.div`
   margin-right: 40px;
   padding: 20px;
   width: 400px;
-  height: 500px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
