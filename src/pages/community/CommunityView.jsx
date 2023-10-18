@@ -9,21 +9,20 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 function CommunityView() {
   const { id } = useParams();
   const postId = parseInt(id, 10);
-  const [userId, setUserId] = useState(2);
-  const [writerId, setWriterId] = useState(2);
+  const [userId, setUserId] = useState(0);
+  const [writerId, setWriterId] = useState(0);
   const [nickname, setNickname] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [content, setContent] = useState("");
   const [photoList, setPhotoList] = useState([]);
-  const [createdDate, setCreatedDate] = useState();
+  const [createdDate, setCreatedDate] = useState("");
   const [title, setTitle] = useState("");
   const [likecount, setLikecount] = useState(0);
   const [viewcount, setViewcount] = useState(0);
-  const [islike, setIslike] = useState(true);
-  const [commentListLength, setCommentListLength] = useState(0);
+  const [islike, setIslike] = useState(0);
+  const [commentListLength, setCommentListLength] = useState();
 
   const token = localStorage.getItem("token");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,10 +54,7 @@ function CommunityView() {
     };
 
     fetchData();
-  }, [postId, token]);
-  console.log(userId);
-  console.log(writerId);
-  console.log(profileImage);
+  }, [token]);
   return (
     <ComWrapper>
       <BackButton>
@@ -74,15 +70,9 @@ function CommunityView() {
             <h1 id="cmViewHead">{title}</h1>
             <LikeContent>
               {islike ? (
-                <img
-                  onClick={setIslike(false)}
-                  src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/like_blue.png"
-                />
+                <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/like_blue.png" />
               ) : (
-                <img
-                  onClick={setIslike(true)}
-                  src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/like_gray.png"
-                />
+                <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/like_gray.png" />
               )}
             </LikeContent>
           </Container>
@@ -95,7 +85,11 @@ function CommunityView() {
             </p>
           </MetaContent>
           <PictureBox>
-            <img src={photoList[0].imageUrl} />
+            <PictureBox>
+              {photoList.length > 0 && photoList[0].imageUrl && (
+                <img src={photoList[0].imageUrl} alt="Post Image" />
+              )}
+            </PictureBox>
           </PictureBox>
           <BodyContent>
             <p>{content}</p>
