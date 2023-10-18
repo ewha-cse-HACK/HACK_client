@@ -196,6 +196,7 @@ function PersonaDog() {
             size="small"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            autoComplete="off"
           />
           <br />
           <br />
@@ -212,6 +213,7 @@ function PersonaDog() {
             helperText="언니, 형아, 엄마 등"
             value={ownerName}
             onChange={(e) => setOwnerName(e.target.value)}
+            autoComplete="off"
           />
         </InputContainer>
       </Container>
@@ -494,6 +496,7 @@ function PersonaDog() {
             size="small"
             value={kind}
             onChange={(e) => setKind(e.target.value)}
+            autoComplete="off"
           />
           <br />
           <TextField
@@ -502,6 +505,7 @@ function PersonaDog() {
             size="small"
             value={furColor}
             onChange={(e) => setFurColor(e.target.value)}
+            autoComplete="off"
           />
         </InputContainer>
       </Container>

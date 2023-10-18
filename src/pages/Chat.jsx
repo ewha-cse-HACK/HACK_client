@@ -158,6 +158,7 @@ function Chat() {
               id="inputField"
               value={userInput}
               onChange={handleInputChange}
+              autoComplete="off"
               placeholder="메세지를 입력하세요"
             />
             <button id="sendBtn" onClick={handleSubmit}>

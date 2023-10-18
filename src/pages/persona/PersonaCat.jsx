@@ -195,6 +195,7 @@ function PersonaCat() {
             variant="outlined"
             size="small"
             value={name}
+            autoComplete="off"
             onChange={(e) => setName(e.target.value)}
           />
           <br />
@@ -212,6 +213,7 @@ function PersonaCat() {
             helperText="언니, 형아, 엄마 등"
             value={ownerName}
             onChange={(e) => setOwnerName(e.target.value)}
+            autoComplete="off"
           />
         </InputContainer>
       </Container>
@@ -494,6 +496,7 @@ function PersonaCat() {
             size="small"
             value={kind}
             onChange={(e) => setKind(e.target.value)}
+            autoComplete="off"
           />
           <br />
           <InputLabel id="furColor">털 색깔</InputLabel>

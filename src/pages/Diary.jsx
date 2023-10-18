@@ -352,6 +352,7 @@ function Diary() {
                   id="inputField"
                   value={userInput}
                   onChange={handleInputChange}
+                  autoComplete="off"
                   placeholder="코멘트를 입력하세요"
                 />
                 <button id="sendBtn" onClick={handleComment}>

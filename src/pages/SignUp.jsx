@@ -64,6 +64,7 @@ function SignUp() {
             value={nickname}
             placeholder="닉네임"
             onChange={(e) => setNickname(e.target.value)}
+            autoComplete="off"
             required
           />
         </SignInput>
@@ -74,6 +75,7 @@ function SignUp() {
             value={email}
             placeholder="이메일"
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="off"
             required
           />
         </SignInput>
@@ -84,6 +86,7 @@ function SignUp() {
             value={password}
             placeholder="비밀번호"
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="off"
             required
           />
         </SignInput>
@@ -94,6 +97,7 @@ function SignUp() {
             value={confirmPassword}
             placeholder="비밀번호 확인"
             onChange={(e) => setConfirmPassword(e.target.value)}
+            autoComplete="off"
             required
           />
         </SignInput>

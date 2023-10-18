@@ -192,6 +192,7 @@ function PersonaOthers() {
             size="small"
             value={speciesName}
             onChange={(e) => setSpeciesName(e.target.value)}
+            autoComplete="off"
           />
         </InputContainer>
       </Container>
@@ -212,6 +213,7 @@ function PersonaOthers() {
             size="small"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            autoComplete="off"
           />
           <br />
           <br />
@@ -228,6 +230,7 @@ function PersonaOthers() {
             helperText="언니, 형아, 엄마 등"
             value={ownerName}
             onChange={(e) => setOwnerName(e.target.value)}
+            autoComplete="off"
           />
         </InputContainer>
       </Container>
@@ -326,6 +329,7 @@ function PersonaOthers() {
             size="small"
             value={favoritePlay}
             onChange={(e) => setFavoritePlay(e.target.value)}
+            autoComplete="off"
           />
           <br />
           <InputLabel id="favoriteSnack">좋아하는 간식</InputLabel>
@@ -334,6 +338,7 @@ function PersonaOthers() {
             size="small"
             value={favoriteSnack}
             onChange={(e) => setFavoriteSnack(e.target.value)}
+            autoComplete="off"
           />
           <br />
           <InputLabel id="favoriteTime">좋아하는 시간</InputLabel>
@@ -361,6 +366,7 @@ function PersonaOthers() {
             size="small"
             value={favoritePlace}
             onChange={(e) => setFavoritePlace(e.target.value)}
+            autoComplete="off"
           />
           <br />
           <InputLabel id="habit">자주 하던 행동</InputLabel>
@@ -369,6 +375,7 @@ function PersonaOthers() {
             size="small"
             value={habit}
             onChange={(e) => setHabit(e.target.value)}
+            autoComplete="off"
           />
           <br />
           <InputLabel id="routine">일상적인 루틴</InputLabel>
@@ -377,6 +384,7 @@ function PersonaOthers() {
             size="small"
             value={routine}
             onChange={(e) => setRoutine(e.target.value)}
+            autoComplete="off"
           />
         </InputContainer>
       </Container>
@@ -426,6 +434,7 @@ function PersonaOthers() {
             size="small"
             value={kind}
             onChange={(e) => setKind(e.target.value)}
+            autoComplete="off"
           />
           <br />
           <TextField
@@ -434,6 +443,7 @@ function PersonaOthers() {
             size="small"
             value={furColor}
             onChange={(e) => setFurColor(e.target.value)}
+            autoComplete="off"
           />
         </InputContainer>
       </Container>
