@@ -77,12 +77,16 @@ function CommunityView() {
             </LikeContent>
           </Container>
           <MetaContent>
-            <p>
-              작성자: {nickname} 작성 일자: {createdDate}
-            </p>
-            <p>
-              No.{id} 조회수 {viewcount} - 좋아요 {likecount}
-            </p>
+            <Container>
+              <p>작성자: {nickname}</p>
+              <p>작성 일자: {createdDate}</p>
+            </Container>
+            <Container>
+              <p>No.{id}</p>
+              <p>
+                조회수 : {viewcount} 좋아요 : {likecount}
+              </p>
+            </Container>
           </MetaContent>
           <PictureBox>
             <PictureBox>
@@ -94,7 +98,6 @@ function CommunityView() {
           <BodyContent>
             <p>{content}</p>
           </BodyContent>
-          {userId === writerId && <button>수정</button>}
         </ContentBox>
         <ContentBox>
           <h1 id="cmViewHeadComment">댓글 {commentListLength}개</h1>
@@ -122,6 +125,7 @@ const BackButton = styled.div`
 `;
 const ContentBox = styled.div`
   margin: 10px;
+  margin-bottom: 50px;
   padding: 20px;
   width: 383px;
   height: 484px;
@@ -134,9 +138,9 @@ const ContentBox = styled.div`
   }
 `;
 const PictureBox = styled.div`
-  width: 280px;
-  height: 168px;
-  margin: 20px;
+  width: 300px;
+  height: 200px;
+  margin: auto;
   overflow: hidden;
   img {
     width: 100%;
@@ -147,33 +151,31 @@ const PictureBox = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  display: flex;
   justify-content: space-between;
-  margin: 10px;
 `;
 const MetaContent = styled.div`
   width: 300px;
+  margin: 10px auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-
   p {
-    margin-right: 10px;
     color: #2e5765;
     font-size: 14px;
   }
 `;
-const BodyContent = styled.div`
-  margin: 10px;
-  width: 300px;
-  display: flex;
 
-  border: 1px solid black;
+const BodyContent = styled.div`
+  margin: 20px auto;
+  width: 300px;
+  height: 100px;
+  display: flex;
+  overflow-y: auto;
 `;
 const LikeContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 10px;
   img {
     width: 28px;
     height: auto;
