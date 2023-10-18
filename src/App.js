@@ -40,7 +40,8 @@ function App() {
     <Router>
         <Header />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<Brand />} />
+          <Route path="/pages/Home" element={<Home />} />
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/SignUp" element={<SignUp />} />
           <Route path="/pages/Brand" element={<Brand />} />

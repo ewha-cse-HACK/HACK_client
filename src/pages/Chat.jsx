@@ -117,57 +117,59 @@ function Chat() {
   };
 
   return (
-    <Wrapper>
+    <>
       <HeadText>
         <h1 id="chatHeadText">{petName}하고 채팅하기</h1>
       </HeadText>
-      <BackButton>
-        <Link to="/pages/Persona">
-          <Fab color="gray" aria-label="back">
-            <ArrowBackIcon />
-          </Fab>
-        </Link>
-      </BackButton>
-      <TutorialChat />
-      <ChatWrapper>
-        <ChatContainer ref={chatContainerRef}>
-          <div className="chat-messages">
-            {messages.map((message, index) => (
-              <MessageContainer key={index} isUser={message.isUser}>
-                {!message.isUser && (
-                  <ProfileImage src={petProfile} alt="Pet Profile" />
-                )}
-                <MessageText isUser={message.isUser}>
-                  {message.text}
-                </MessageText>
-              </MessageContainer>
-            ))}
-            {loading && (
-              <div className="message-bot">
-                <LoadingDesign>
-                  <BeatLoader size={15} color="#8BCEF4" />
-                </LoadingDesign>
-              </div>
-            )}
-          </div>
-        </ChatContainer>
-        <InputContainer>
-          <form className="chat-input-form" onSubmit={handleSubmit}>
-            <input
-              id="inputField"
-              type="text"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              autoComplete="off"
-              placeholder="메세지를 입력하세요"
-            />
-            <button id="sendBtn" type="submit">
-              Send
-            </button>
-          </form>
-        </InputContainer>
-      </ChatWrapper>
-    </Wrapper>
+      <Wrapper>
+        <BackButton>
+          <Link to="/pages/Persona">
+            <Fab color="gray" aria-label="back">
+              <ArrowBackIcon />
+            </Fab>
+          </Link>
+        </BackButton>
+        <TutorialChat />
+        <ChatWrapper>
+          <ChatContainer ref={chatContainerRef}>
+            <div className="chat-messages">
+              {messages.map((message, index) => (
+                <MessageContainer key={index} isUser={message.isUser}>
+                  {!message.isUser && (
+                    <ProfileImage src={petProfile} alt="Pet Profile" />
+                  )}
+                  <MessageText isUser={message.isUser}>
+                    {message.text}
+                  </MessageText>
+                </MessageContainer>
+              ))}
+              {loading && (
+                <div className="message-bot">
+                  <LoadingDesign>
+                    <BeatLoader size={15} color="#8BCEF4" />
+                  </LoadingDesign>
+                </div>
+              )}
+            </div>
+          </ChatContainer>
+          <InputContainer>
+            <form className="chat-input-form" onSubmit={handleSubmit}>
+              <input
+                id="inputField"
+                type="text"
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                autoComplete="off"
+                placeholder="메세지를 입력하세요"
+              />
+              <button id="sendBtn" type="submit">
+                Send
+              </button>
+            </form>
+          </InputContainer>
+        </ChatWrapper>
+      </Wrapper>
+    </>
   );
 }
 
@@ -182,7 +184,6 @@ const HeadText = styled.div`
   margin: auto;
   margin-top: 50px;
   margin-bottom: 20px;
-  display: block;
   width: 500px;
 `;
 const ChatWrapper = styled.div`
