@@ -18,11 +18,10 @@ function Persona() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // https://api.rainbow-letter.com/persona/list
       if (token) {
         try {
           const response = await axios.get(
-            "http://13.209.173.241:8080/persona/list",
+            "https://api.rainbow-letter.com/persona/list",
             {
               headers: {
                 "X-ACCESS-TOKEN": `Bearer ${token}`,

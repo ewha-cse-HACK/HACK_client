@@ -28,7 +28,7 @@ function CommunityView() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://13.209.173.241:8080/community/${postId}`,
+          `https://api.rainbow-letter.com/community/${postId}`,
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,

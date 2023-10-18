@@ -32,7 +32,7 @@ function CommunityPost() {
       try {
         // 이미지 업로드를 위한 URL을 받아옴
         const response = await axios.get(
-          `http://13.209.173.241:8080/rainbow-letter/image?dirname=community`,
+          `https://api.rainbow-letter.com/rainbow-letter/image?dirname=community`,
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -112,7 +112,7 @@ function CommunityPost() {
         ],
       });
       const response = await axios.post(
-        "http://13.209.173.241:8080/community/save-post",
+        "https://api.rainbow-letter.com/community/save-post",
         jsonData,
         {
           headers: {

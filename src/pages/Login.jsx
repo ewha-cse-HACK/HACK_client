@@ -22,10 +22,9 @@ function Login() {
       password: password,
     };
 
-    //https://api.rainbow-letter.com/login
     try {
       const response = await axios.post(
-        "http://13.209.173.241:8080/api/login",
+        "https://api.rainbow-letter.com/api/login",
         JSON.stringify(data),
         {
           headers: {

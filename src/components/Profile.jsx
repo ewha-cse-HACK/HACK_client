@@ -12,7 +12,7 @@ function Profile({ name, petProfile, petId }) {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `http://13.209.173.241:8080/persona/delete/${petId}`,
+        `https://api.rainbow-letter.com/persona/delete/${petId}`,
         {
           headers: {
             "X-ACCESS-TOKEN": `Bearer ${token}`,

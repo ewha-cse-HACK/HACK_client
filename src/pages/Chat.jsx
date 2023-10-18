@@ -29,11 +29,10 @@ function Chat() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // https://api.rainbow-letter.com/persona/list
       if (token) {
         try {
           const response = await axios.get(
-            "http://13.209.173.241:8080/persona/list",
+            "https://api.rainbow-letter.com/persona/list",
             {
               headers: {
                 "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -82,7 +81,7 @@ function Chat() {
     console.log(jsonData);
     try {
       const response = await axios.post(
-        `http://13.209.173.241:8080/chat/${pet_id}`,
+        `https://api.rainbow-letter.com/chat/${pet_id}`,
         jsonData,
         {
           headers: {

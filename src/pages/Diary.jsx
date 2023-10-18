@@ -31,11 +31,10 @@ function Diary() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // https://api.rainbow-letter.com/persona/list
       if (token) {
         try {
           const response = await axios.get(
-            "http://13.209.173.241:8080/persona/list",
+            "https://api.rainbow-letter.com/persona/list",
             {
               headers: {
                 "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -73,7 +72,7 @@ function Diary() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://13.209.173.241:8080/journal/${journalId}`,
+          `https://api.rainbow-letter.com/journal/${journalId}`,
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -128,7 +127,7 @@ function Diary() {
   const handleListClick = async () => {
     try {
       const response = await axios.get(
-        `http://13.209.173.241:8080/journal/${pet_id}/list`,
+        `https://api.rainbow-letter.com/journal/${pet_id}/list`,
         null,
         {
           headers: {
@@ -149,7 +148,7 @@ function Diary() {
 
     try {
       const response = await axios.post(
-        `http://13.209.173.241:8080/journal/${pet_id}/image`,
+        `https://api.rainbow-letter.com/journal/${pet_id}/image`,
         null, // Request body is null
         {
           headers: {
@@ -175,7 +174,7 @@ function Diary() {
 
     try {
       const response = await axios.get(
-        `http://13.209.173.241:8080/journal/${journalId}`,
+        `https://api.rainbow-letter.com/journal/${journalId}`,
         {
           headers: {
             "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -223,7 +222,7 @@ function Diary() {
 
     try {
       const response = await axios.post(
-        `http://13.209.173.241:8080/journal/comment/${journalId}`,
+        `https://api.rainbow-letter.com/journal/comment/${journalId}`,
         jsonData,
         {
           headers: {

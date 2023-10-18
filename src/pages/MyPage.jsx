@@ -19,11 +19,14 @@ function MyPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://13.209.173.241:8080/mypage", {
-          headers: {
-            "X-ACCESS-TOKEN": `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://api.rainbow-letter.com/mypage",
+          {
+            headers: {
+              "X-ACCESS-TOKEN": `Bearer ${token}`,
+            },
+          }
+        );
 
         console.log(response.data);
         setNickname(response.data.nickname);
@@ -42,7 +45,7 @@ function MyPage() {
       try {
         // 이미지 업로드를 위한 URL을 받아옴
         const response = await axios.get(
-          `http://13.209.173.241:8080/rainbow-letter/image?dirname=profile`,
+          `https://api.rainbow-letter.com/rainbow-letter/image?dirname=profile`,
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -62,7 +65,7 @@ function MyPage() {
   const handleImageChange = async () => {
     try {
       const response = await axios.put(
-        "http://13.209.173.241:8080/mypage/profile-image/modify",
+        "https://api.rainbow-letter.com/mypage/profile-image/modify",
         {
           profileImage: "새 이미지 URL", // 새로운 프로필 이미지 URL을 넣어주세요.
         },
@@ -86,7 +89,7 @@ function MyPage() {
   const handleImageDelete = async () => {
     try {
       const response = await axios.put(
-        "http://13.209.173.241:8080/mypage/profile-image/delete",
+        "https://api.rainbow-letter.com/mypage/profile-image/delete",
         {
           headers: {
             "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -116,7 +119,6 @@ function MyPage() {
     };
     reader.readAsDataURL(file);
 
-    //`http://13.209.173.241:8080/mypage/profile-image/modify`
     if (e.target.files) {
       // 이미지 업로드 API 호출
       const formData = new FormData();
@@ -124,7 +126,7 @@ function MyPage() {
 
       axios
         .put(
-          `http://13.209.173.241:8080/mypage/profile-image/modify`,
+          `https://api.rainbow-letter.com/mypage/profile-image/modify`,
           formData,
           {
             headers: {

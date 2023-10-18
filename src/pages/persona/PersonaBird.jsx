@@ -51,7 +51,7 @@ function PersonaBird() {
       try {
         // 이미지 업로드를 위한 URL을 받아옴
         const response = await axios.get(
-          `http://13.209.173.241:8080/rainbow-letter/image?dirname=petprofile`,
+          `https://api.rainbow-letter.com/rainbow-letter/image?dirname=petprofile`,
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -160,9 +160,8 @@ function PersonaBird() {
       const jsonData = JSON.stringify(formDataObject);
       console.log(jsonData);
 
-      // https://api.rainbow-letter.com/persona/save
       const response = await axios.post(
-        "http://13.209.173.241:8080/persona/save",
+        "https://api.rainbow-letter.com/persona/save",
         jsonData,
         {
           headers: {
