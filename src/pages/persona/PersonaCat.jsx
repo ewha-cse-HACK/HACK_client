@@ -5,6 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import dayjs from "dayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -34,6 +35,7 @@ function PersonaCat() {
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const [value, setValue] = useState(dayjs("2023-10-20"));
 
   const [uploadUrl, setUploadUrl] = useState(null);
   const [fileId, setFileId] = useState("");
@@ -462,8 +464,8 @@ function PersonaCat() {
             <DemoContainer components={["DatePicker"]}>
               <DatePicker
                 label="기일 입력"
-                value={passed_date}
-                onChange={(date) => setPassedDate(date)}
+                value={value}
+                onChange={(passed_date) => setPassedDate(passed_date)}
               />
             </DemoContainer>
           </LocalizationProvider>
@@ -473,7 +475,7 @@ function PersonaCat() {
         <ImgContainer>
           <img
             src="/images/cat4.png"
-            style={{ width: "250px", marginLeft: "60px" }}
+            style={{ width: "250px", marginLeft: "100px" }}
           />
         </ImgContainer>
       </Container>

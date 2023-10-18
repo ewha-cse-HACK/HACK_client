@@ -5,6 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import dayjs from "dayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -34,6 +35,7 @@ function PersonaHam() {
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const [value, setValue] = useState(dayjs("2023-10-20"));
 
   const [uploadUrl, setUploadUrl] = useState(null);
   const [fileId, setFileId] = useState("");
@@ -181,8 +183,8 @@ function PersonaHam() {
       <Container id="firstPersonaSet">
         <ImgContainer>
           <img
-            src="/images/cat3.png"
-            style={{ width: "300px", marginRight: "50px" }}
+            src="/images/mouse1.png"
+            style={{ width: "250px", marginRight: "70px" }}
           />
         </ImgContainer>
         <InputContainer>
@@ -284,8 +286,8 @@ function PersonaHam() {
         </InputContainer>
         <ImgContainer>
           <img
-            src="/images/cat2.png"
-            style={{ width: "330px", marginLeft: "120px", marginTop: "30px" }}
+            src="/images/ham2.png"
+            style={{ width: "330px", marginLeft: "40px", marginTop: "30px" }}
           />
         </ImgContainer>
       </Container>
@@ -293,11 +295,11 @@ function PersonaHam() {
       <Container id="thirdPersonaSet">
         <ImgContainer id="PersonaImageCat">
           <img
-            src="/images/cat1.png"
+            src="/images/cat7.png"
             style={{
               width: "300px",
               marginBottom: "130px",
-              marginRight: "30px",
+              marginRight: "50px",
             }}
           />
         </ImgContainer>
@@ -441,8 +443,8 @@ function PersonaHam() {
             <DemoContainer components={["DatePicker"]}>
               <DatePicker
                 label="기일 입력"
-                value={passed_date}
-                onChange={(date) => setPassedDate(date)}
+                value={value}
+                onChange={(passed_date) => setPassedDate(passed_date)}
               />
             </DemoContainer>
           </LocalizationProvider>
@@ -451,8 +453,8 @@ function PersonaHam() {
         </InputContainer>
         <ImgContainer>
           <img
-            src="/images/cat4.png"
-            style={{ width: "250px", marginLeft: "60px" }}
+            src="/images/ham1.png"
+            style={{ width: "180px", marginLeft: "120px" }}
           />
         </ImgContainer>
       </Container>
@@ -460,8 +462,8 @@ function PersonaHam() {
       <Container id="fifthPersonaSet">
         <ImgContainer>
           <img
-            src="/images/cat5.png"
-            style={{ width: "300px", marginTop: "10px", marginRight: "60px" }}
+            src="/images/ham3.png"
+            style={{ width: "250px", marginTop: "60px", marginRight: "90px" }}
           />
         </ImgContainer>
         <InputContainer>

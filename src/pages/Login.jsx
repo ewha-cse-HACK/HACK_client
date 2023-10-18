@@ -53,7 +53,7 @@ function Login() {
   };
 
   return (
-    <div id="LoginWrapper">
+    <LoginWrapper>
       <ImageStyled src="/images/login.png" />
       <h2>무지개 편지</h2>
       <form onSubmit={handleLogin}>
@@ -86,10 +86,25 @@ function Login() {
         </button>
       </form>
       <StyledLink to="/pages/SignUp">무지개 편지 회원이 아니신가요?</StyledLink>
-    </div>
+    </LoginWrapper>
   );
 }
-
+const LoginWrapper = styled.div`
+  margin: auto;
+  padding: 50px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  h2 {
+    font-family: UhBeeSe_hyun;
+    font-weight: bold;
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
+`;
 const Input = styled.input`
   padding: 20px;
   width: 300px;

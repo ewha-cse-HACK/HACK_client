@@ -5,6 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import dayjs from "dayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -34,6 +35,7 @@ function PersonaBird() {
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const [value, setValue] = useState(dayjs("2023-10-20"));
 
   const [uploadUrl, setUploadUrl] = useState(null);
   const [fileId, setFileId] = useState("");
@@ -183,8 +185,8 @@ function PersonaBird() {
       <Container id="firstPersonaSet">
         <ImgContainer>
           <img
-            src="/images/cat3.png"
-            style={{ width: "300px", marginRight: "50px" }}
+            src="/images/bird1.png"
+            style={{ width: "250px", marginRight: "70px" }}
           />
         </ImgContainer>
         <InputContainer>
@@ -286,8 +288,8 @@ function PersonaBird() {
         </InputContainer>
         <ImgContainer>
           <img
-            src="/images/cat2.png"
-            style={{ width: "330px", marginLeft: "120px", marginTop: "30px" }}
+            src="/images/bird2.png"
+            style={{ width: "250px", marginLeft: "100px", marginTop: "30px" }}
           />
         </ImgContainer>
       </Container>
@@ -295,11 +297,10 @@ function PersonaBird() {
       <Container id="thirdPersonaSet">
         <ImgContainer id="PersonaImageCat">
           <img
-            src="/images/cat1.png"
+            src="/images/bird3.png"
             style={{
-              width: "300px",
+              width: "400px",
               marginBottom: "130px",
-              marginRight: "30px",
             }}
           />
         </ImgContainer>
@@ -327,7 +328,7 @@ function PersonaBird() {
               <MenuItem value="나무와 놀기">나무와 놀기</MenuItem>
               <MenuItem value="볏짚과 놀기">볏짚과 놀기</MenuItem>
               <MenuItem value="야자잎과 놀기">야자잎과 놀기</MenuItem>
-              <MenuItem value="">(직접입력)</MenuItem>
+              <MenuItem value="None">(직접입력)</MenuItem>
             </Select>
           </FormControl>
 
@@ -350,7 +351,7 @@ function PersonaBird() {
               <MenuItem value="무염 국수">무염 국수</MenuItem>
               <MenuItem value="해바라기 씨">해바라기 씨</MenuItem>
               <MenuItem value="밀렛">밀렛</MenuItem>
-              <MenuItem value="">(직접입력)</MenuItem>
+              <MenuItem value="None">(직접입력)</MenuItem>
             </Select>
           </FormControl>
 
@@ -456,8 +457,8 @@ function PersonaBird() {
             <DemoContainer components={["DatePicker"]}>
               <DatePicker
                 label="기일 입력"
-                value={passed_date}
-                onChange={(date) => setPassedDate(date)}
+                value={value}
+                onChange={(passed_date) => setPassedDate(passed_date)}
               />
             </DemoContainer>
           </LocalizationProvider>
@@ -467,7 +468,7 @@ function PersonaBird() {
         <ImgContainer>
           <img
             src="/images/cat4.png"
-            style={{ width: "250px", marginLeft: "60px" }}
+            style={{ width: "250px", marginLeft: "80px" }}
           />
         </ImgContainer>
       </Container>
@@ -475,8 +476,8 @@ function PersonaBird() {
       <Container id="fifthPersonaSet">
         <ImgContainer>
           <img
-            src="/images/cat5.png"
-            style={{ width: "300px", marginTop: "10px", marginRight: "60px" }}
+            src="/images/bird4.png"
+            style={{ width: "300px", marginTop: "10px", marginRight: "30px" }}
           />
         </ImgContainer>
         <InputContainer>

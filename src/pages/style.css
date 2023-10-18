@@ -95,23 +95,6 @@ ul {
 
 
 /*  Login  */
-#LoginWrapper {
-    margin: auto;
-    padding: 50px;
-    width: 1000px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-#LoginWrapper h2 {
-    font-family: UhBeeSe_hyun;
-    font-weight: normal;
-    font-size: 35px;
-    /*margin-top: 5%;
-    margin-bottom: 10px;*/
-}
 #LoginSubmit {
     display: flex;
     justify-content: center;
