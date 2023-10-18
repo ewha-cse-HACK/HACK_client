@@ -94,7 +94,7 @@ const LogoutBtn = styled.button`
   outline: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
   color: #343b6e;
   &:hover {
