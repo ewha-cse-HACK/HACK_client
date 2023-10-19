@@ -117,18 +117,18 @@ function Chat() {
   };
 
   return (
-    <>
+    <Wrapper>
+      <BackButton>
+        <Link to="/pages/Persona">
+          <Fab color="gray" aria-label="back">
+            <ArrowBackIcon />
+          </Fab>
+        </Link>
+      </BackButton>
       <HeadText>
         <h1 id="chatHeadText">{petName}하고 채팅하기</h1>
       </HeadText>
-      <Wrapper>
-        <BackButton>
-          <Link to="/pages/Persona">
-            <Fab color="gray" aria-label="back">
-              <ArrowBackIcon />
-            </Fab>
-          </Link>
-        </BackButton>
+      <NextWrapper>
         <TutorialChat />
         <ChatWrapper>
           <ChatContainer ref={chatContainerRef}>
@@ -168,23 +168,34 @@ function Chat() {
             </form>
           </InputContainer>
         </ChatWrapper>
-      </Wrapper>
-    </>
+      </NextWrapper>
+    </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  margin: 100px auto;
+  margin: 20px auto;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1080px;
+`;
+const NextWrapper = styled.div`
+  margin: 30px auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 1080px;
+  gap: 50px;
 `;
 const HeadText = styled.div`
-  margin: auto;
-  margin-top: 50px;
-  margin-bottom: 20px;
-  width: 500px;
+  margin: 30px;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1080px;
 `;
 const ChatWrapper = styled.div`
   margin: 0;
@@ -252,8 +263,8 @@ const InputContainer = styled.div`
 `;
 
 const BackButton = styled.div`
-  margin: 50px;
-  margin-top: -20px;
+  margin: 30px;
+  margin-bottom: 0;
 `;
 
 export default Chat;

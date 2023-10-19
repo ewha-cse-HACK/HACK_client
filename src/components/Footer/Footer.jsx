@@ -24,7 +24,6 @@ const FooterWrapper = styled.footer`
   width: 100vw;
   height: 200px;
   margin: auto;
-  margin-top: 50px;
   /* border-top: 1px solid #e7eaee; */
   display: flex;
   flex-direction: column;

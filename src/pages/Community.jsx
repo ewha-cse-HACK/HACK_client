@@ -76,7 +76,8 @@ export default Community;
 
 const ComWrapper = styled.div`
   margin: auto;
-  max-width: 1000px;
+  margin-bottom: 150px;
+  max-width: 1200px;
   width: 100%;
   display: flex;
   flex-direction: column;

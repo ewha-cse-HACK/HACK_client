@@ -82,6 +82,8 @@ const TextContent = styled.div`
   display: flex;
   flex-direction: column;
   h2 {
+    word-wrap: break-word;
+    text-align: left;
     color: black;
   }
   p {

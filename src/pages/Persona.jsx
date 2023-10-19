@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
@@ -15,6 +15,7 @@ function Persona() {
   const [personaData, setPersonaData] = useState([]);
   const [listSize, setListSize] = useState(0);
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +39,7 @@ function Persona() {
       } else {
         setPersonaData([]);
         alert("로그인이 필요합니다.");
+        navigate("/pages/Login");
       }
     };
     fetchData();
@@ -94,6 +96,7 @@ function Persona() {
 const ViewWrapper = styled.div`
   margin: 70px auto;
   width: 1400px;
+  min-height: 70vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -107,10 +110,8 @@ const ViewWrapper = styled.div`
 */
 const ProfilesContainer = styled.div`
   gap: 80px;
-  display: flex;
-  /*  display: grid;
+  display: grid;
   grid-template-columns: 1fr 1fr;
-  min-width: 300px;*/
 `;
 const AddContainer = styled.div`
   margin: 0 50px;

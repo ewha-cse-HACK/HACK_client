@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import { Link, useNavigate } from "react-router-dom";
+import Fab from "@mui/material/Fab";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { BeatLoader } from "react-spinners";
+import TutorialChat from "../components/TutorialChat";
 function Home() {
   return (
     <HomeWrapper>
@@ -30,7 +34,7 @@ const HomeWrapper = styled.div`
   margin: auto;
   padding: 50px;
   width: 1000px;
-  height: 60vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -50,30 +50,13 @@ ul {
 }
 
 /*  SignUp  */
-#SignupWrapper {
-    margin: auto;
-    padding: 50px;
-    width: 1000px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-#SignupWrapper img {
-    width: 180px;
-}
-#SignupWrapper h1 {
+#signupHeadText {
     font-family: UhBeeSe_hyun;
     font-weight: normal;
     font-size: 35px;
     /*margin-top: 5%;
     margin-bottom: 10px;*/
-}
-#SignupWrapper h3 {
-    color: #1F434E;
-    /*margin-bottom: 50px;*/
-}
+  }
 #SignButton {
     display: flex;
     justify-content: center;

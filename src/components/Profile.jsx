@@ -22,7 +22,7 @@ function Profile({ name, petProfile, petId }) {
       if (response.status === 200) {
         alert("페르소나가 삭제되었습니다.");
         console.log("페르소나 삭제: ", name);
-        navigate("/pages/Persona");
+        navigate("/");
       }
     } catch (error) {
       console.error("페르소나 삭제 오류:", error);

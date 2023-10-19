@@ -11,7 +11,8 @@ function TutorialChat() {
         <img src="/images/talkingcat.png" />
         <p>
           채팅을 전송해보세요. 무지개 별에 편지가 도착하고, 반려동물이 편지를
-          보내는 데 시간이 좀 걸릴 수 있어요!
+          보내는 데 시간이 좀 걸릴 수 있어요. 열심히 편지를 배달 중이니 조금만
+          기다려 주세요!
         </p>
       </Explanation>
     </TutorialCard>
@@ -19,8 +20,7 @@ function TutorialChat() {
 }
 
 const TutorialCard = styled.div`
-  margin-right: 40px;
-  padding: 20px;
+  padding: 40px;
   width: 400px;
   height: 600px;
   display: flex;

@@ -26,7 +26,7 @@ function Header() {
       <HeaderWrapper>
         <div id="menu">
           <div id="logo">
-            <Link to="/">
+            <Link to="/pages/Home">
               <h1>Rainbow Letter</h1>
             </Link>
           </div>

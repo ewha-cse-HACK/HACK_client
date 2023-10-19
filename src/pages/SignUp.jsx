@@ -53,9 +53,9 @@ function SignUp() {
   };
 
   return (
-    <div id="SignupWrapper">
+    <SignupWrapper>
       <img src="/images/signup.png" />
-      <h1>회원가입</h1>
+      <h1 id="signupHeadText">회원가입</h1>
       <h3>무지개 편지에 오신 걸 환영합니다!</h3>
       <form onSubmit={handleSubmit}>
         <SignInput>
@@ -110,10 +110,27 @@ function SignUp() {
         </button>
       </form>
       <StyledLink to="/pages/Login">이미 계정이 있으신가요?</StyledLink>
-    </div>
+    </SignupWrapper>
   );
 }
-
+const SignupWrapper = styled.div`
+  margin: auto;
+  padding: 50px;
+  width: 1000px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  img {
+    width: 180px;
+  }
+  h3 {
+    color: #1f434e;
+    /*margin-bottom: 50px;*/
+  }
+`;
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: #0f2f36;

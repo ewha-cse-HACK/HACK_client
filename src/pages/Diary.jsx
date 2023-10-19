@@ -448,6 +448,7 @@ const HeadContent = styled.div`
 `;
 const NoteLayout = styled.div`
   margin: 40px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
