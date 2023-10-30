@@ -36,12 +36,8 @@ function PersonaBird() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const [value, setValue] = useState(dayjs("2023-10-20"));
-
+  const [objUrl, setObjUrl] = useState(null);
   const [uploadUrl, setUploadUrl] = useState(null);
-  const [fileId, setFileId] = useState("");
-  const [rootUrl, setRootUrl] = useState(
-    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/"
-  );
   const [sendingUrl, setSendingUrl] = useState(
     "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/pf_bird.png"
   );
@@ -96,9 +92,7 @@ function PersonaBird() {
     const file = e.target.files[0]; // 선택한 파일
     const reader = new FileReader();
     reader.onloadend = () => {
-      // 파일을 읽고 이미지 URL을 상태에 저장
       setPetPhoto(reader.result);
-      console.log("이미지 업로드 후 root+fileId: ", sendingUrl);
     };
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
@@ -115,7 +109,7 @@ function PersonaBird() {
       })
       .then((response) => {
         console.log("S3에 업로드 후 response: ", response);
-        const objUrl = response.config.url;
+        setObjUrl(response.config.url);
         console.log("응답 결과 객체 URL 생성", objUrl);
         setSendingUrl(objUrl.split("?")[0]);
         console.log("추출된 URL:", sendingUrl);
