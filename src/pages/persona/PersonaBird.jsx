@@ -99,13 +99,12 @@ function PersonaBird() {
     reader.onloadend = () => {
       // 파일을 읽고 이미지 URL을 상태에 저장
       setPetPhoto(reader.result);
-      setFileId(reader.result.substring(0, 10));
-      setSendingUrl(rootUrl + fileId);
-      console.log("이미지 업로드 후 root+fileId: ", sendingUrl);
+      console.log("현재 file id 삭제", sendingUrl);
     };
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
       uploadImageToS3(uploadUrl, file);
+      //setSendingUrl("");
     }
   };
 
@@ -116,8 +115,11 @@ function PersonaBird() {
           "Content-Type": "image/png",
         },
       })
-      .then((response) => console.log(response))
-      .catch((error) => console.error(error));
+      .then((response) => {
+        console.log("S3에 업로드 후 response: ", response);
+        setSendingUrl(""); //서버에 보낼 S3에 업로드된 이미지의 URL
+      })
+      .catch((error) => console.error("S3 업로드 에러", error));
   }
 
   // 이전 화면으로 이동
