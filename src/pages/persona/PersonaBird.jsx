@@ -36,11 +36,13 @@ function PersonaBird() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const [value, setValue] = useState(dayjs("2023-10-20"));
-  const [objUrl, setObjUrl] = useState(null);
-  const [uploadUrl, setUploadUrl] = useState(null);
+
+  const [objUrl, setObjUrl] = useState(null); //객체 URL fully
+  const [uploadUrl, setUploadUrl] = useState(null); //presigned URL - 업로드할 url
   const [sendingUrl, setSendingUrl] = useState(
     "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/pf_bird.png"
   );
+  const [desiredUrl, setDesiredUrl] = useState(null); //추출된 url
 
   useEffect(() => {
     const fetchUploadUrl = async () => {
@@ -97,6 +99,9 @@ function PersonaBird() {
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
       uploadImageToS3(uploadUrl, file);
+      console.log("추출된 URL:", desiredUrl);
+      sendingUrl = desiredUrl;
+      console.log("sendingUrl 업데이트: ", sendingUrl);
     }
   };
 
@@ -111,8 +116,9 @@ function PersonaBird() {
         console.log("S3에 업로드 후 response: ", response);
         setObjUrl(response.config.url);
         console.log("응답 결과 객체 URL 생성", objUrl);
-        setSendingUrl(objUrl.split("?")[0]);
-        console.log("추출된 URL:", sendingUrl);
+        setDesiredUrl(objUrl.split("?")[0]);
+        //setSendingUrl(objUrl.split("?")[0]);
+        //console.log("추출된 URL:", sendingUrl);
       })
       .catch((error) => console.error("S3 업로드 에러", error));
   }
