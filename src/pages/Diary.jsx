@@ -470,6 +470,8 @@ const PetProfile = styled.div`
     margin: 15px;
     margin-bottom: 10px;
     width: 40px;
+    height: 40px;
+    overflow: hidden;
     border-radius: 50%;
   }
   h1 {

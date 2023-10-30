@@ -42,7 +42,6 @@ function PersonaBird() {
   const [sendingUrl, setSendingUrl] = useState(
     "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/pf_bird.png"
   );
-  // const [desiredUrl, setDesiredUrl] = useState(null); //추출된 url
 
   useEffect(() => {
     const fetchUploadUrl = async () => {
@@ -63,7 +62,6 @@ function PersonaBird() {
         console.error("이미지 업로드 URL 요청 실패", error);
       }
     };
-
     fetchUploadUrl();
   }, [token]);
 
@@ -72,7 +70,6 @@ function PersonaBird() {
       const desiredUrl = objUrl.split("?")[0];
       console.log("추출된 URL:", desiredUrl);
       setSendingUrl(desiredUrl);
-      console.log("sendingUrl 업데이트(프로필 추가): ", sendingUrl);
     }
   }, [objUrl]);
 
@@ -121,7 +118,6 @@ function PersonaBird() {
       .then((response) => {
         console.log("S3에 업로드 후 response: ", response);
         setObjUrl(response.config.url);
-        console.log("응답 결과 객체 URL 풀 버전 생성", objUrl);
       })
       .catch((error) => console.error("S3 업로드 에러", error));
   }
@@ -152,6 +148,12 @@ function PersonaBird() {
       formData.append("habit", habit);
       formData.append("favoritePlace", favoritePlace);
       formData.append("routine", routine);
+      /*
+      if (desriedUrl) {
+        formData.append("petImage", desiredUrl);
+      } else {
+        formData.append("petImage", sendingUrl);
+      }*/
       formData.append("petImage", sendingUrl);
       formData.append("passed_date", passed_date);
       /*const formattedDate = passed_date.toISOString(); // Date 객체를 ISO 형식의 문자열로 변환

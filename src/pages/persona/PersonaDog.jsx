@@ -37,11 +37,8 @@ function PersonaDog() {
   const navigate = useNavigate();
   const [value, setValue] = useState(dayjs("2023-10-20"));
 
-  const [uploadUrl, setUploadUrl] = useState(null);
-  const [fileId, setFileId] = useState("");
-  const [rootUrl, setRootUrl] = useState(
-    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/"
-  );
+  const [objUrl, setObjUrl] = useState(null); //객체 URL 풀 버전
+  const [uploadUrl, setUploadUrl] = useState(null); //presigned URL - 업로드할 url
   const [sendingUrl, setSendingUrl] = useState(
     "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/pf_dog.png"
   );
@@ -61,14 +58,20 @@ function PersonaDog() {
         setUploadUrl(response.data);
         console.log("이미지 업로드 URL:", response.data);
         console.log("백엔드에 보낼 주소(기본):", sendingUrl);
-        console.log("백엔드에 보낼 주소(root): ", rootUrl);
       } catch (error) {
         console.error("이미지 업로드 URL 요청 실패", error);
       }
     };
-
     fetchUploadUrl();
   }, [token]);
+
+  useEffect(() => {
+    if (objUrl) {
+      const desiredUrl = objUrl.split("?")[0];
+      console.log("추출된 URL:", desiredUrl);
+      setSendingUrl(desiredUrl);
+    }
+  }, [objUrl]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,11 +100,7 @@ function PersonaDog() {
     const file = e.target.files[0]; // 선택한 파일
     const reader = new FileReader();
     reader.onloadend = () => {
-      // 파일을 읽고 이미지 URL을 상태에 저장
       setPetPhoto(reader.result);
-      setFileId(reader.result.substring(0, 10));
-      setSendingUrl(rootUrl + fileId);
-      console.log("이미지 업로드 후 root+fileId: ", sendingUrl);
     };
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
@@ -116,8 +115,11 @@ function PersonaDog() {
           "Content-Type": "image/png",
         },
       })
-      .then((response) => console.log(response))
-      .catch((error) => console.error(error));
+      .then((response) => {
+        console.log("S3에 업로드 후 response: ", response);
+        setObjUrl(response.config.url);
+      })
+      .catch((error) => console.error("S3 업로드 에러", error));
   }
 
   // 이전 화면으로 이동
@@ -146,6 +148,12 @@ function PersonaDog() {
       formData.append("habit", habit);
       formData.append("favoritePlace", favoritePlace);
       formData.append("routine", routine);
+      /*
+      if (desriedUrl) {
+        formData.append("petImage", desiredUrl);
+      } else {
+        formData.append("petImage", sendingUrl);
+      }*/
       formData.append("petImage", sendingUrl);
       formData.append("passed_date", passed_date);
       /*const formattedDate = passed_date.toISOString(); // Date 객체를 ISO 형식의 문자열로 변환

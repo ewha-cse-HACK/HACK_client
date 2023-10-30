@@ -215,7 +215,7 @@ const LoadingDesign = styled.div`
 const ProfileImage = styled.img`
   margin: 10px;
   width: 60px;
-  height: auto;
+  height: 60px;
   border-radius: 50%;
   overflow: hidden;
 `;
