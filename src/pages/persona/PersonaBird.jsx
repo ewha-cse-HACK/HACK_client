@@ -112,10 +112,13 @@ function PersonaBird() {
       .then((response) => {
         console.log("S3에 업로드 후 response: ", response);
 
-        setObjUrl(response.config.url);
-        console.log("응답 결과 객체 URL 생성", objUrl);
+        // setObjUrl(response.config.url);
+        // console.log("응답 결과 객체 URL 생성", objUrl);
 
-        setDesiredUrl(objUrl.split("?")[0]);
+        const originalUrl = response.config.url;
+        console.log("업로드된 파일의 URL: ", originalUrl);
+
+        setDesiredUrl(originalUrl.split("?")[0]);
         console.log("추출된 URL:", desiredUrl);
 
         setSendingUrl(desiredUrl);
