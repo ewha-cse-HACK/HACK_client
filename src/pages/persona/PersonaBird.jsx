@@ -61,7 +61,6 @@ function PersonaBird() {
         setUploadUrl(response.data);
         console.log("이미지 업로드 URL:", response.data);
         console.log("백엔드에 보낼 주소(기본):", sendingUrl);
-        console.log("백엔드에 보낼 주소(root): ", rootUrl);
       } catch (error) {
         console.error("이미지 업로드 URL 요청 실패", error);
       }
@@ -99,7 +98,9 @@ function PersonaBird() {
     reader.onloadend = () => {
       // 파일을 읽고 이미지 URL을 상태에 저장
       setPetPhoto(reader.result);
-      console.log("현재 file id 삭제", sendingUrl);
+      setFileId(reader.result.substring(0, 10));
+      setSendingUrl(rootUrl + fileId);
+      console.log("이미지 업로드 후 root+fileId: ", sendingUrl);
     };
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
@@ -117,7 +118,6 @@ function PersonaBird() {
       })
       .then((response) => {
         console.log("S3에 업로드 후 response: ", response);
-        setSendingUrl(""); //서버에 보낼 S3에 업로드된 이미지의 URL
       })
       .catch((error) => console.error("S3 업로드 에러", error));
   }
