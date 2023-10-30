@@ -99,9 +99,6 @@ function PersonaBird() {
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
       uploadImageToS3(uploadUrl, file);
-      console.log("추출된 URL:", desiredUrl);
-      setSendingUrl(desiredUrl);
-      console.log("sendingUrl 업데이트: ", sendingUrl);
     }
   };
 
@@ -114,9 +111,15 @@ function PersonaBird() {
       })
       .then((response) => {
         console.log("S3에 업로드 후 response: ", response);
+
         setObjUrl(response.config.url);
         console.log("응답 결과 객체 URL 생성", objUrl);
+
         setDesiredUrl(objUrl.split("?")[0]);
+        console.log("추출된 URL:", desiredUrl);
+
+        setSendingUrl(desiredUrl);
+        console.log("sendingUrl 업데이트: ", sendingUrl);
         //setSendingUrl(objUrl.split("?")[0]);
         //console.log("추출된 URL:", sendingUrl);
       })
