@@ -100,7 +100,7 @@ function PersonaBird() {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
       uploadImageToS3(uploadUrl, file);
       console.log("추출된 URL:", desiredUrl);
-      sendingUrl = desiredUrl;
+      setSendingUrl(desiredUrl);
       console.log("sendingUrl 업데이트: ", sendingUrl);
     }
   };
