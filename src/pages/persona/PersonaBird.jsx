@@ -98,14 +98,11 @@ function PersonaBird() {
     reader.onloadend = () => {
       // 파일을 읽고 이미지 URL을 상태에 저장
       setPetPhoto(reader.result);
-      setFileId(reader.result.substring(0, 10));
-      setSendingUrl(rootUrl + fileId);
       console.log("이미지 업로드 후 root+fileId: ", sendingUrl);
     };
     if (file) {
       reader.readAsDataURL(file); // 파일을 data URL로 읽기
       uploadImageToS3(uploadUrl, file);
-      //setSendingUrl("");
     }
   };
 
