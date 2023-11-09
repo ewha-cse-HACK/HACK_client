@@ -6,7 +6,6 @@ import "./style.css";
 import Fab from "@mui/material/Fab";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BounceLoader } from "react-spinners";
-import TutorialDiary from "../components/TutorialDiary";
 
 function Diary() {
   const [loading, setLoading] = useState(false);

@@ -51,7 +51,7 @@ function Brand() {
       </ProjectInfo>
       <GradientBackground />
       <Content>
-        <h1>Welcome to Rainbow Letter!</h1>
+        <h1>무지개편지를 소개합니다!</h1>
       </Content>
       <Wallpaper id="targetElement">
         <Wrapper>

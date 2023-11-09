@@ -41,7 +41,7 @@ function Community() {
   return (
     <ComWrapper>
       <HeaderTitle>
-        <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/table.png" />
+        <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_title.png" />
         <h1 id="rainbowPlatform">무지개 광장</h1>
       </HeaderTitle>
       <ButtonArea>
@@ -90,11 +90,12 @@ const HeaderTitle = styled.div`
   margin: 30px;
   margin-top: 60px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   img {
     width: 90px;
+    margin: 20px;
   }
 `;
 const PostContainer = styled.div`
