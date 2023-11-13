@@ -40,7 +40,7 @@ function PersonaCat() {
   const [objUrl, setObjUrl] = useState(null); //객체 URL 풀 버전
   const [uploadUrl, setUploadUrl] = useState(null); //presigned URL - 업로드할 url
   const [sendingUrl, setSendingUrl] = useState(
-    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/petprofile/pf_cat.png"
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/pf_cat2.png"
   );
 
   useEffect(() => {

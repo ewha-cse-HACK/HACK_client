@@ -28,6 +28,15 @@ function Diary() {
   const [isSelectStampedVisible, setIsSelectStampedVisible] = useState(false);
   const [selectedStamp, setSelectedStamp] = useState("");
 
+  const dogStamp =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/stamp_dog.jpg";
+  const catStamp =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/stamp_cat.jpg";
+  const birdStamp =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/stamp_bird.jpg";
+  const hamStamp =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/stamp_ham.jpg";
+
   useEffect(() => {
     const fetchData = async () => {
       if (token) {
@@ -311,20 +320,20 @@ function Diary() {
             <StampContainer>
               <StampLayout>
                 <img
-                  src="/images/stamp_dog.jpg"
-                  onClick={() => handleStampClick("/images/stamp_dog.jpg")}
+                  src={dogStamp}
+                  onClick={() => handleStampClick(dogStamp)}
                 />
                 <img
-                  src="/images/stamp_cat.jpg"
-                  onClick={() => handleStampClick("/images/stamp_cat.jpg")}
+                  src={catStamp}
+                  onClick={() => handleStampClick(catStamp)}
                 />
                 <img
-                  src="/images/stamp_bird.jpg"
-                  onClick={() => handleStampClick("/images/stamp_bird.jpg")}
+                  src={birdStamp}
+                  onClick={() => handleStampClick(birdStamp)}
                 />
                 <img
-                  src="/images/stamp_ham.jpg"
-                  onClick={() => handleStampClick("/images/stamp_ham.jpg")}
+                  src={hamStamp}
+                  onClick={() => handleStampClick(hamStamp)}
                 />
               </StampLayout>
               <InStamp>

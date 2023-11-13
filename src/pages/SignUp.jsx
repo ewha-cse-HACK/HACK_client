@@ -117,7 +117,7 @@ const SignupWrapper = styled.div`
   margin: auto;
   padding: 50px;
   width: 1000px;
-  height: 70vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

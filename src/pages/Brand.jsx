@@ -42,16 +42,16 @@ function Brand() {
     <>
       <ProjectInfo>
         <img
-          src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/logo.png"
-          alt="Postbox"
+          src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/logo.png"
+          alt="Rainbow letter Logo"
           onClick={handleScroll}
         />
-        <h1>펫로스 증후군 극복 프로젝트, "무지개 편지"</h1>
+        <h1>펫로스 증후군 극복 프로젝트, 무지개편지</h1>
         <p>로고를 클릭하세요!</p>
       </ProjectInfo>
       <GradientBackground />
       <Content>
-        <h1>무지개편지를 소개합니다!</h1>
+        <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/rocket.png" />
       </Content>
       <Wallpaper id="targetElement">
         <Wrapper>
@@ -230,6 +230,9 @@ const Content = styled.div`
   color: white;
   background-color: #000027;
   margin-bottom: -22px;
+  img {
+    width: 350px;
+  }
 `;
 const Wrapper = styled.div`
   margin: 20px;
