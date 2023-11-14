@@ -7,6 +7,18 @@ function Brand() {
   const navigate = useNavigate();
   const [scrollPercentage, setScrollPercentage] = useState(0);
   const [showTopButton, setShowTopButton] = useState(false);
+  const firstPic =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/landing1.png";
+  const secondPic =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/landing2.png";
+  const thirdPic =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/landing3.png";
+  const fourthPic =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/landing4.png";
+  const fifthPic =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/landing5.png";
+  const landingWallpaper =
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/landingback.png";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,7 +80,7 @@ function Brand() {
             </TextContainer>
             <ImgContainer>
               <img
-                src="/images/landing1.png"
+                src={firstPic}
                 style={{ width: "250px", marginLeft: "100px" }}
               />
             </ImgContainer>
@@ -76,7 +88,7 @@ function Brand() {
           <PageWrapper id="second">
             <ImgContainer>
               <img
-                src="/images/landing2.png"
+                src={secondPic}
                 style={{ width: "280px", marginRight: "100px" }}
               />
             </ImgContainer>
@@ -109,7 +121,7 @@ function Brand() {
             </TextContainer>
             <ImgContainer>
               <img
-                src="/images/landing3.png"
+                src={thirdPic}
                 style={{ width: "270px", marginLeft: "100px" }}
               />
             </ImgContainer>
@@ -117,7 +129,7 @@ function Brand() {
           <PageWrapper id="fourth">
             <ImgContainer>
               <img
-                src="/images/landing4.png"
+                src={fourthPic}
                 style={{ width: "280px", marginRight: "100px" }}
               />
             </ImgContainer>
@@ -152,7 +164,7 @@ function Brand() {
               </button>
             </TextContainer>
             <ImgContainer>
-              <img src="/images/landing5.png" style={{ height: "300px" }} />
+              <img src={fifthPic} style={{ height: "300px" }} />
             </ImgContainer>
           </PageWrapper>
           <div className="scroll-buttons">

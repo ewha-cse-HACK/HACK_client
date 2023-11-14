@@ -53,7 +53,7 @@ function Login() {
 
   return (
     <LoginWrapper>
-      <ImageStyled src="/images/login.png" />
+      <ImageStyled src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/login.png" />
       <h2>무지개 편지</h2>
       <form onSubmit={handleLogin}>
         <LoginInput>

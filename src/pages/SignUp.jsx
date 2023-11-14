@@ -54,7 +54,7 @@ function SignUp() {
 
   return (
     <SignupWrapper>
-      <img src="/images/signup.png" />
+      <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/signup.png" />
       <h1 id="signupHeadText">회원가입</h1>
       <h3>무지개 편지에 오신 걸 환영합니다!</h3>
       <form onSubmit={handleSubmit}>
