@@ -1,0 +1,36 @@
+/*  Brand  */
+#first {
+    margin-top: 100px;
+}
+#second {
+    font-family: Pretendard;
+}
+#third {
+    font-family: Pretendard;
+}
+#fourth {
+    font-family: Pretendard;
+}
+#fifth {
+    font-family: Pretendard;
+    margin-bottom: 300px;
+}
+#lastBrand {
+    margin-right: -70px;
+    margin-bottom: 70px;
+}
+#startBrand {
+    margin-top: 80px;
+    display: flex;
+    width: 169px;
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    gap: 8px;
+    border-radius: 56px;
+    border: none;
+    color: #fff;
+    background: #4d74ff;
+    cursor: pointer;
+}

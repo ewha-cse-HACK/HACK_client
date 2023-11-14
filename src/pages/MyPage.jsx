@@ -10,9 +10,12 @@ function MyPage() {
   const [nickname, setNickname] = useState(null);
   const [email, setEmail] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
+  const [objUrl, setObjUrl] = useState(null); //객체 URL 풀 버전
   const [uploadUrl, setUploadUrl] = useState(null);
+  const [sendingUrl, setSendingUrl] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+
   const imgRef = useRef(null);
   const token = localStorage.getItem("token");
 
@@ -61,6 +64,41 @@ function MyPage() {
 
     fetchUploadUrl();
   }, [token]);
+
+  useEffect(() => {
+    if (objUrl) {
+      const desiredUrl = objUrl.split("?")[0];
+      console.log("추출된 URL:", desiredUrl);
+      setSendingUrl(desiredUrl);
+    }
+  }, [objUrl]);
+
+  /*
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]; // 선택한 파일
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPetPhoto(reader.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file); // 파일을 data URL로 읽기
+      uploadImageToS3(uploadUrl, file);
+    }
+  };
+
+  function uploadImageToS3(uploadUrl, file) {
+    axios
+      .put(uploadUrl, file, {
+        headers: {
+          "Content-Type": "image/png",
+        },
+      })
+      .then((response) => {
+        console.log("S3에 업로드 후 response: ", response);
+        setObjUrl(response.config.url);
+      })
+      .catch((error) => console.error("S3 업로드 에러", error));
+  }*/
 
   const handleImageChange = async () => {
     try {

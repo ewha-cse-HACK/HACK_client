@@ -46,6 +46,19 @@ ul {
     color: black;
 }
 
+@media (max-width: 768px) {
+  #menu {
+    width: 100%;
+    margin: 0; 
+    gap: 0; 
+  }
+  #logo {
+    height: 30px; 
+  }
+  #logo h1 {
+    font-size: 20px; 
+  }
+}
 #topMenu {
     display: flex;
     align-items: center;

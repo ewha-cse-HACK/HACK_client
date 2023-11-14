@@ -80,6 +80,9 @@ const HeaderWrapper = styled.header`
   justify-content: center;
   align-items: center;
   gap: 16px;
+  @media (max-width: 768px) {
+    width: 768px;
+  }
 `;
 
 const StyledLink = styled(Link)`
