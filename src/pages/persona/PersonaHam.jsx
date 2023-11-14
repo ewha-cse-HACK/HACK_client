@@ -48,7 +48,7 @@ function PersonaHam() {
       try {
         // 이미지 업로드를 위한 URL을 받아옴
         const response = await axios.get(
-          `https://api.rainbow-letter.com/rainbow-letter/image?dirname=petprofile`,
+          `https://api.rainbow-letter.com/image?dirname=petprofile`,
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -562,14 +562,14 @@ function PersonaHam() {
           />
         </ImgContainer>
       </Container>
-      <buttonContainer>
+      <ButtonContainer>
         <CancelButton id="backBtn" onClick={goBack}>
           취소
         </CancelButton>
         <DoneButton id="doneBtn" onClick={handleSubmit}>
           완료!
         </DoneButton>
-      </buttonContainer>
+      </ButtonContainer>
       <div className="scroll-buttons">
         {showTopButton && (
           <button className="top-button" onClick={scrollToTop}>
@@ -622,7 +622,7 @@ const ImgUpload = styled.div`
   border: 2px dashed var(--Faded, rgba(0, 0, 0, 0.15));
   background: #fff;
 `;
-const buttonContainer = styled.div``;
+const ButtonContainer = styled.div``;
 
 const CancelButton = styled.button`
   position: fixed;

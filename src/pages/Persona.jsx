@@ -45,33 +45,10 @@ function Persona() {
     fetchData();
   }, [token]);
 
-  const settings = {
-    arrows: true,
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    cssEase: "linear",
-    // autoplay: true, // 슬라이드를 자동으로 넘길지 여부
-    // autoplaySpeed: 3000, // 자동으로 넘길 시 시간 간격
-  };
-
   return (
     <ViewWrapper>
       <TutorialPersona />
-      {/*
-      <Slider {...settings}>
-        {personaData.map((persona) => (
-          <Profile
-            key={persona.petId}
-            name={persona.name}
-            petProfile={persona.petProfile}
-            petId={persona.petId}
-          />
-        ))}
-      </Slider>*/}
-      <ProfilesContainer>
+      <ProfilesContainer single={listSize === 1}>
         {personaData.map((persona) => (
           <Profile
             key={persona.petId}
@@ -105,20 +82,69 @@ const ViewWrapper = styled.div`
 `;
 /*
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-content: center;
 */
 const ProfilesContainer = styled.div`
+  margin-left: 40px;
   gap: 80px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: ${({ single }) => (single ? "1fr" : "repeat(2, 1fr)")};
+  justify-content: center;
 `;
 const AddContainer = styled.div`
   margin: 0 50px;
 `;
-const SlideItem = styled.div`
-  width: 200px;
-  heigth: 300px;
-  background: blue;
-`;
 export default Persona;
+
+/*
+
+ProfilesContainer의 레이아웃을 동적으로 변경하려면 JavaScript를 사용하여 조건부 스타일을 적용할 수 있습니다. 이를 위해 personaData 배열의 길이를 확인하고 그에 따라 스타일을 지정할 수 있습니다.
+
+아래는 이에 대한 예시 코드입니다:
+
+jsx
+Copy code
+const Persona = () => {
+  // ... 이전 코드
+
+  const isGrid = personaData.length >= 3;
+
+  return (
+    <ViewWrapper>
+
+      <ProfilesContainer isGrid={isGrid}>
+        {personaData.map((persona) => (
+          <Profile
+            key={persona.petId}
+            name={persona.name}
+            petProfile={persona.petProfile}
+            petId={persona.petId}
+          />
+        ))}
+      </ProfilesContainer>
+
+    </ViewWrapper>
+  );
+};
+
+const ProfilesContainer = styled.div`
+  gap: 80px;
+  ${({ isGrid }) =>
+    isGrid
+      ? `
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      `
+      : `
+        display: flex;
+        justify-content: center;
+      `}
+`;
+
+export default Persona;
+이 예시에서는 isGrid라는 변수를 설정하여 personaData의 길이에 따라 ProfilesContainer의 레이아웃이 동적으로 변경되도록 했습니다. isGrid가 true이면 grid 레이아웃이, false이면 flex 레이아웃이 적용됩니다.
+
+
+*/

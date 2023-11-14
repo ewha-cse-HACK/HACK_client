@@ -48,7 +48,7 @@ function MyPage() {
       try {
         // 이미지 업로드를 위한 URL을 받아옴
         const response = await axios.get(
-          `https://api.rainbow-letter.com/rainbow-letter/image?dirname=profile`,
+          `https://api.rainbow-letter.com/image?dirname=profile`,
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -194,63 +194,68 @@ function MyPage() {
   }
 
   return (
-    <Wrapper>
-      <Link to="./">
-        <Fab color="gray" aria-label="back">
-          <ArrowBackIcon />
-        </Fab>
-      </Link>
-      <h1>마이페이지</h1>
-      <p>내 정보를 확인하고 수정할 수 있습니다.</p>
-      <div id="imgContainer">
-        <ImageStyled
-          src={
-            profileImage ||
-            "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
-          }
-          alt="프로필 이미지"
-        />
+    <MyWrapper>
+      <BackButton>
+        <Link to="./">
+          <Fab color="gray" aria-label="back">
+            <ArrowBackIcon />
+          </Fab>
+        </Link>
+      </BackButton>
+      <div id="my-content">
+        <h1>마이페이지</h1>
+        <p>내 정보를 확인하고 수정할 수 있습니다.</p>
+        <div id="imgContainer">
+          <ImageStyled
+            src={
+              profileImage ||
+              "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
+            }
+            alt="프로필 이미지"
+          />
+        </div>
+        <div>
+          <h2>{nickname}</h2>
+          <p>Email: {email}</p>
+        </div>
+        <div>
+          <button onClick={handleImageChange}>이미지 변경</button>
+          <button onClick={handleImageDelete}>이미지 삭제</button>
+        </div>
+        <div>
+          <img
+            src={
+              imageUrl === null
+                ? profileImage ||
+                  "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
+                : imageUrl
+            }
+            alt="프로필 이미지"
+            style={{ width: "40%", borderRadius: "20px" }}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            name="profileImage"
+            onChange={submitImage}
+            ref={imgRef}
+          />
+        </div>
       </div>
-      <div>
-        <h2>{nickname}</h2>
-        <p>Email: {email}</p>
-      </div>
-      <div>
-        <button onClick={handleImageChange}>이미지 변경</button>
-        <button onClick={handleImageDelete}>이미지 삭제</button>
-      </div>
-      <div>
-        <img
-          src={
-            imageUrl === null
-              ? profileImage ||
-                "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
-              : imageUrl
-          }
-          alt="프로필 이미지"
-          style={{ width: "40%", borderRadius: "20px" }}
-        />
-        <input
-          type="file"
-          accept="image/*"
-          name="profileImage"
-          onChange={submitImage}
-          ref={imgRef}
-        />
-      </div>
-    </Wrapper>
+    </MyWrapper>
   );
 }
-
-const Wrapper = styled.div`
-  margin: auto;
-  width: 800px;
-  height: 800px;
-  font-size: 15px;
-  h1 {
-    margin: auto;
-    padding: 30px;
-  }
+const MyWrapper = styled.div`
+  margin: 20px auto;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1080px;
+`;
+const BackButton = styled.div`
+  margin: 30px;
+  margin-bottom: 0;
 `;
 const ImageStyled = styled.img`
   width: 50px;

@@ -284,3 +284,25 @@ const BodyEditor = styled.div`
     font-family: UhBeeSe_hyun;
     font-size: 30px;
 }
+
+
+/*  My Page  */
+#my-content {
+    margin: auto; 
+    padding: 30px;
+    width: 800px;
+    height: 800px;
+    font-size: 15px;
+    h1 {
+        font-family: Uhbee-Sehyun;
+    }
+}
+
+/*
+
+
+
+
+
+
+*/
