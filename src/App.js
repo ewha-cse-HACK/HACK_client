@@ -17,6 +17,7 @@ import PersonaOthers from './pages/persona/PersonaOthers';
 import PersonaSetting from './pages/persona/PersonaSetting';
 import Chat from './pages/Chat';
 import Diary from './pages/Diary';
+import DiaryList from './pages/DiaryList'
 import Community from './pages/Community';
 import CommunityPost from './pages/community/CommunityPost';
 import CommunityEdit from './pages/community/CommunityEdit';
@@ -58,6 +59,9 @@ function App() {
           <Route path="/pages/Diary" element={<Diary />} />
           <Route path="/rainbow-letter/diary/:pet_id" component={Diary} />
           <Route path="/pages/Diary/:petIdString" element={<Diary />} />
+          <Route path="/pages/DiaryList" element={<DiaryList />} />
+          {/*<Route path="/rainbow-letter/diarylist/:pet_id" component={DiaryList} />*/}
+          <Route path="/pages/DiaryList/:petIdString" element={<DiaryList />} />
           <Route path="/pages/Community" element={<Community />} />
           <Route path="/pages/community/CommunityPost" element={<CommunityPost />} />
           <Route path="/pages/community/CommunityEdit" element={<CommunityEdit />} />

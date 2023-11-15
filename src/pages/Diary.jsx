@@ -258,7 +258,7 @@ function Diary() {
 
   return (
     <>
-      <MenuBar>
+      {/*<MenuBar>
         <p>메뉴 바</p>
         <div id="diaryButton">
           <PrevDiary onClick={handlePreviousClick}>&lt; 이전</PrevDiary>
@@ -268,10 +268,9 @@ function Diary() {
         <DiaryButtonBox>
           <TodayDiary onClick={handleSubmit}>일기 생성하기</TodayDiary>
         </DiaryButtonBox>
-        {/*<TodayDiary onClick={handleGet}>오늘 일기 불러오기</TodayDiary>*/}
-      </MenuBar>
+      </MenuBar>*/}
       <Wrapper>
-        <Link to="/pages/Persona">
+        <Link to="/pages/DiaryList">
           <Fab color="gray" aria-label="back">
             <ArrowBackIcon />
           </Fab>

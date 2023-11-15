@@ -46,7 +46,7 @@ function Profile({ name, petProfile, petId }) {
             <img src="/images/talkingcat.png" style={{ width: "90px" }} />
           </button>
         </Link>
-        <Link to={`/pages/Diary/${petId}`}>
+        <Link to={`/pages/DiaryList/${petId}`}>
           <button id="diary" type="submit">
             <img src="/images/diary_paw.png" style={{ width: "70px" }} />
           </button>

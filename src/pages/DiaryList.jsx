@@ -8,7 +8,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BounceLoader } from "react-spinners";
 import TutorialDiary from "../components/TutorialDiary";
 
-function Diary() {
+function DiaryList() {
   return (
     <Wrapper>
       <TutorialDiary />
@@ -21,3 +21,5 @@ const Wrapper = styled.div`
   width: 1200px;
   height: 100vh;
 `;
+
+export default DiaryList;
