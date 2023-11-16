@@ -20,13 +20,10 @@ function DiaryList() {
   const [petProfile, setPetProfile] = useState();
   const [journalId, setJournalId] = useState(); // 초기 journalId 설정
   const [createdTime, setCreatedTime] = useState();
+  const [diaryArray, setDiaryArray] = useState([]);
 
-  const currentDate = dayjs();
-  console.log(currentDate.format("YYYY-MM-DD"));
   const currentMonth = dayjs().month() + 1; // month()는 0부터 시작하므로 +1을 해줌
-  console.log(currentMonth); // 현재 월을 나타내는 숫자 출력
-
-  const [selectedMonth, setSelectedMonth] = useState();
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
 
   useEffect(() => {
     console.log("useEffect is triggered");
@@ -72,7 +69,7 @@ function DiaryList() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.rainbow-letter.com/journal/${pet_id}/list/${currentMonth}`,
+          `https://api.rainbow-letter.com/journal/${pet_id}/list/${selectedMonth}`,
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -98,6 +95,54 @@ function DiaryList() {
     setSelectedMonth(month);
   };
 
+  const handleDiaryClick = async (diary) => {
+    try {
+      // 여기서 해당 일기의 정보를 불러오는 API 호출
+      const diaryDetailResponse = await axios.get(
+        `https://api.rainbow-letter.com/journal/${pet_id}/${diary.id}`,
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Diary 페이지로 이동하면서 pet_id와 일기 정보를 전달
+      navigate(`/pages/Diary/${pet_id}/${diary.id}`, {
+        state: {
+          pet_id: pet_id,
+          journal_id: diary.id,
+          diaryDetail: diaryDetailResponse.data, // 일기의 상세 정보를 전달할 수 있음
+        },
+      });
+    } catch (error) {
+      console.error("일기 상세 정보 조회 API 요청 실패:", error);
+    }
+  };
+
+  const handleCreateDiary = async () => {
+    try {
+      const response = await axios.post(
+        `https://api.rainbow-letter.com/journal/${pet_id}/image`,
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(response);
+      const newDiary = {
+        id: response.data.journal_id,
+        // 기타 원하는 정보 추가
+      };
+
+      setDiaryArray((prevStack) => [...prevStack, newDiary]);
+    } catch (error) {
+      console.error("그림일기 생성 API 요청 실패:", error);
+    }
+  };
+
   return (
     <Wrapper>
       <Link to="/pages/Persona">
@@ -119,17 +164,46 @@ function DiaryList() {
         </p>
       </Headtext>
       <br />
-      <div>
+      <BodyContent>
         <TutorialDiary />
-      </div>
-      <h2>Selected Month: {selectedMonth}</h2>
-      <div>
-        {Array.from({ length: 12 }, (_, index) => index + 1).map((month) => (
-          <button key={month} onClick={() => handleMonthClick(month)}>
-            {month}월
-          </button>
-        ))}
-      </div>
+        <StackedDiary>
+          {diaryArray.length === 0 ? (
+            <p>
+              {petName}의 일기가 아직 없어요.
+              <br />
+              아래 버튼을 눌러 새로 만들어볼까요?
+            </p>
+          ) : (
+            <>
+              <img src="images/mouse_withcat.png" />
+              {diaryArray.map((diary) => (
+                <DiaryMarker
+                  key={diary.id}
+                  onClick={() => handleDiaryClick(diary)}
+                >
+                  {/* 도형의 디자인 및 위치 조정은 필요에 따라 수정하세요 */}
+                  <DiaryShape />
+                </DiaryMarker>
+              ))}
+            </>
+          )}
+          <CreateDiary onClick={handleCreateDiary}>
+            오늘의 일기 생성하기
+          </CreateDiary>
+        </StackedDiary>
+      </BodyContent>
+
+      <br />
+      <SelectMonthWrapper>
+        <h2>Month: {selectedMonth}</h2>
+        <div>
+          {Array.from({ length: 12 }, (_, index) => index + 1).map((month) => (
+            <button key={month} onClick={() => handleMonthClick(month)}>
+              {month}월
+            </button>
+          ))}
+        </div>
+      </SelectMonthWrapper>
     </Wrapper>
   );
 }
@@ -154,6 +228,55 @@ const HeadContent = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
+`;
+const BodyContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+const StackedDiary = styled.div`
+  border: 1px solid black;
+  width: 400px;
+  min-height: 460px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin: auto;
+    text-align: center;
+  }
+`;
+const CreateDiary = styled.button`
+  width: 261px;
+  height: 47px;
+  border: none;
+  border-radius: 10px;
+  background: var(--ffa-4-a-1, #ffa4a1);
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+`;
+const DiaryMarker = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+`;
+
+const DiaryShape = styled.div`
+  width: 20px;
+  height: 20px;
+  background-color: #4caf50; /* 원하는 배경색으로 변경 */
+  border-radius: 50%;
+`;
+
+const SelectMonthWrapper = styled.div`
+  margin: auto;
 `;
 
 export default DiaryList;

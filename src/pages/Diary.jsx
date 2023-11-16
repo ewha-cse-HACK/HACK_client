@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, Routes, Route, useNavigate } from "react-router-dom";
+import {
+  useParams,
+  Link,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import "./style.css";
@@ -8,6 +15,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BounceLoader } from "react-spinners";
 
 function Diary() {
+  //const { pet_id, journal_id, diaryDetail } = location.state;
+  console.log(typeof pet_id);
   const [loading, setLoading] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [stamp, setStamp] = useState("");
