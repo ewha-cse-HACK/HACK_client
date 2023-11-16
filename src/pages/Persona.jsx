@@ -99,7 +99,6 @@ const AddContainer = styled.div`
 export default Persona;
 
 /*
-
 ProfilesContainer의 레이아웃을 동적으로 변경하려면 JavaScript를 사용하여 조건부 스타일을 적용할 수 있습니다. 이를 위해 personaData 배열의 길이를 확인하고 그에 따라 스타일을 지정할 수 있습니다.
 
 아래는 이에 대한 예시 코드입니다:
@@ -145,6 +144,4 @@ const ProfilesContainer = styled.div`
 
 export default Persona;
 이 예시에서는 isGrid라는 변수를 설정하여 personaData의 길이에 따라 ProfilesContainer의 레이아웃이 동적으로 변경되도록 했습니다. isGrid가 true이면 grid 레이아웃이, false이면 flex 레이아웃이 적용됩니다.
-
-
 */

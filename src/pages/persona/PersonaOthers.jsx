@@ -29,13 +29,12 @@ function PersonaOthers() {
   const [favoritePlace, setFavoritePlace] = useState("");
   const [routine, setRoutine] = useState("");
   const [petPhoto, setPetPhoto] = useState("");
-  const [passed_date, setPassedDate] = useState("");
+  const [passed_date, setPassedDate] = useState(dayjs());
   const [furColor, setFurColor] = useState("");
   const [kind, setKind] = useState("");
   const [showTopButton, setShowTopButton] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const [value, setValue] = useState(dayjs("2023-10-20"));
 
   const [objUrl, setObjUrl] = useState(null); //객체 URL 풀 버전
   const [uploadUrl, setUploadUrl] = useState(null); //presigned URL - 업로드할 url
@@ -412,7 +411,7 @@ function PersonaOthers() {
             <DemoContainer components={["DatePicker"]}>
               <DatePicker
                 label="기일 입력"
-                value={value}
+                value={passed_date}
                 onChange={(passed_date) => setPassedDate(passed_date)}
               />
             </DemoContainer>

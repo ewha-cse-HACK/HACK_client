@@ -214,8 +214,8 @@ const LoadingDesign = styled.div`
 `;
 const ProfileImage = styled.img`
   margin: 10px;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
 `;
