@@ -94,17 +94,66 @@ function DiaryList() {
     fetchData();
   }, [journalId]); // journalId가 변경될 때마다 API 요청
 
+  const handleMonthClick = (month) => {
+    setSelectedMonth(month);
+  };
+
   return (
     <Wrapper>
-      <TutorialDiary />
-      <h1>책장</h1>
+      <Link to="/pages/Persona">
+        <Fab color="gray" aria-label="back">
+          <ArrowBackIcon />
+        </Fab>
+      </Link>
+      <Headtext>
+        <HeadContent>
+          <img
+            src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/writing.PNG"
+            style={{ width: "40px" }}
+          />
+          <h1>{petName}의 일기를 훔쳐볼까요?</h1>
+        </HeadContent>
+        <p>
+          내 반려동물은 무지개 별에서 무얼 하고 있을까요? 일상을 기록하는
+          반려동물의 일기장을 슬쩍 엿볼 수 있어요!
+        </p>
+      </Headtext>
+      <br />
+      <div>
+        <TutorialDiary />
+      </div>
+      <h2>Selected Month: {selectedMonth}</h2>
+      <div>
+        {Array.from({ length: 12 }, (_, index) => index + 1).map((month) => (
+          <button key={month} onClick={() => handleMonthClick(month)}>
+            {month}월
+          </button>
+        ))}
+      </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  width: 1200px;
-  height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  /*
+  height: 100vh;*/
+`;
+const Headtext = styled.div`
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+`;
+const HeadContent = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
 `;
 
 export default DiaryList;

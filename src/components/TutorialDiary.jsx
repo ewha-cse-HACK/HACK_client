@@ -6,59 +6,75 @@ import "../pages/style.css";
 function TutorialDiary() {
   return (
     <TutorialCard>
-      <h4>페르소나란?</h4>
+      <h4>반려동물의 일기</h4>
       <p>
-        '가상의 인물'로, 무지개 편지에서는 '가상의 반려동물'을 만들 수 있습니다.
-        + 버튼을 눌러 내 반려동물의 페르소나를 생성해 보세요!
+        무지개별에서 일기를 꾸준히 썼대요!
+        <br />
+        쌓여있는 책 중 하나를 클릭해서
+        <br />
+        어떤 내용인지 볼 수 있어요.
       </p>
       <br />
-      <h4>페르소나를 만들면, 채팅과 일기 훔쳐보기 기능을 사용할 수 있어요!</h4>
-      <p>프로필 하단의 버튼을 눌러보세요.</p>
-      <br />
-      <br />
       <Explanation>
-        <img src="/images/talkingcat.png" style={{ width: "90px" }} />
-        <p>
-          내가 만든 반려동물 페르소나와 대화할 수 있어요. 반려동물에게 하고
-          싶었던 말을 전해보세요!
-        </p>
-      </Explanation>
-      <br />
-      <Explanation>
-        <p>
-          반려동물이 무지개별에서 잘 지내고 있을지 궁금할 때는, 오늘은 뭘 했는지
-          반려동물의 일기를 슬쩍 볼까요?
-        </p>
-        <img src="/images/diary_paw.png" style={{ width: "70px" }} />
+        <img src="/images/books.png" />
+        <TextExplanation>
+          <h5>💌일기 훔쳐보기 사용 방법📚</h5>
+          <p>
+            1. 일기는 날짜별로 쌓여 있어요. <br />
+            2. 같은 날 여러 개 생성되면 번호가
+            <br />
+            붙어요. <br />
+            3. ‘오늘의 일기 가져오기’ 버튼을 누<br />
+            르면 오늘 날짜의 일기가 생성돼요. <br />
+            4. 무지개 다리를 건너 가져오기 때<br />
+            문에 일기를 가져오는 데 시간이 걸릴
+            <br /> 수도 있어요. 조금만 기다려주세요! <br />
+            5. 날짜를 클릭해서 그림일기를 읽고,
+            <br /> 도장을 찍어 검사해주세요! <br />
+            6. 코멘트를 저장할 수 있어요. <br />
+            칭찬을 적어 보내주세요! <br />
+          </p>
+        </TextExplanation>
       </Explanation>
     </TutorialCard>
   );
 }
 
 const TutorialCard = styled.div`
-  padding: 20px;
-  width: 300px;
-  height: 436px;
-  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  width: 370px;
+  height: 460px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 0.5px solid gray;
+  border: 3px solid var(--secondary-color, #ffa4a1);
   color: black;
   h4 {
+    margin: 0 auto;
     margin-bottom: 5px;
+    font-size: 25px;
   }
   p {
+    margin: 0 auto;
     font-size: 15px;
   }
 `;
 const Explanation = styled.div`
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   img {
-    margin: 10px;
+    margin-top: 80px;
+    width: 120px;
+    height: 144.38px;
   }
-  p {
+`;
+const TextExplanation = styled.div`
+  display: flex;
+  flex-direction: column;
+  h5 {
     font-size: 15px;
   }
 `;

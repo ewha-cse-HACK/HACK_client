@@ -132,24 +132,6 @@ function Diary() {
     setSelectedStamp(stampPath);
   };
 
-  const handleListClick = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.rainbow-letter.com/journal/${pet_id}/list`,
-        null,
-        {
-          headers: {
-            "X-ACCESS-TOKEN": `Bearer ${token}`,
-          },
-        }
-      );
-      // 리스트 데이터를 어떻게 활용할지 처리
-      console.log("일기 리스트 조회 성공");
-    } catch (error) {
-      console.error("일기 리스트 조회 API 요청 실패:", error);
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -289,6 +271,7 @@ function Diary() {
           </p>
         </Headtext>
         <br />
+
         <NoteLayout>
           <PetSide>
             <PetProfile id="diaryHead">
