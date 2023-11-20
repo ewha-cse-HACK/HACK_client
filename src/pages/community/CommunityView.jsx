@@ -21,7 +21,7 @@ function CommunityView() {
   const [title, setTitle] = useState("");
   const [likecount, setLikecount] = useState(0);
   const [viewcount, setViewcount] = useState(0);
-  const [islike, setIslike] = useState(0);
+  const [liked, setLiked] = useState(false);
   const [commentListLength, setCommentListLength] = useState();
 
   const token = localStorage.getItem("token");
@@ -47,7 +47,7 @@ function CommunityView() {
         setProfileImage(response.data.profileImage);
         setLikecount(response.data.likecount);
         setViewcount(response.data.viewcount);
-        setIslike(response.data.islike);
+        // setIslike(response.data.islike);
         setPhotoList(response.data.imageList);
         setCommentListLength(response.data.commentList.length);
       } catch (error) {
@@ -99,6 +99,10 @@ function CommunityView() {
     }
   };
 
+  const handleClick = () => {
+    setLiked(!liked);
+  };
+
   return (
     <ComWrapper>
       <BackButton>
@@ -113,11 +117,19 @@ function CommunityView() {
           <Container>
             <h1 id="cmViewHead">{title}</h1>
             <LikeContent>
-              {islike ? (
-                <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/like_blue.png" />
-              ) : (
-                <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/like_gray.png" />
-              )}
+              <button onClick={handleClick}>
+                {liked ? (
+                  <img
+                    src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/like_gray.png"
+                    alt="Gray Like"
+                  />
+                ) : (
+                  <img
+                    src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/like_blue.png"
+                    alt="Blue Like"
+                  />
+                )}
+              </button>
             </LikeContent>
           </Container>
           <MetaContent>
@@ -222,6 +234,7 @@ const MetaContent = styled.div`
 
 const BodyContent = styled.div`
   margin: 20px auto;
+  text-align: left;
   width: 300px;
   height: 100px;
   display: flex;
@@ -232,10 +245,14 @@ const LikeContent = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  img {
-    width: 28px;
+  button {
+    border: none;
+    background: none;
     height: auto;
     cursor: pointer;
+    img {
+      width: 38px;
+    }
   }
 `;
 const InputContainer = styled.div`
