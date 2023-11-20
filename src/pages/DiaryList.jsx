@@ -18,7 +18,7 @@ function DiaryList() {
   const [personaData, setPersonaData] = useState([]);
   const [petName, setPetName] = useState();
   const [petProfile, setPetProfile] = useState();
-  const [journalId, setJournalId] = useState(); // 초기 journalId 설정
+  const [journalId, setJournalId] = useState();
   const [createdTime, setCreatedTime] = useState();
   const [diaryArray, setDiaryArray] = useState([]);
 
@@ -196,13 +196,13 @@ function DiaryList() {
       <br />
       <SelectMonthWrapper>
         <h2>Month: {selectedMonth}</h2>
-        <div>
+        <MonthButton>
           {Array.from({ length: 12 }, (_, index) => index + 1).map((month) => (
             <button key={month} onClick={() => handleMonthClick(month)}>
               {month}월
             </button>
           ))}
-        </div>
+        </MonthButton>
       </SelectMonthWrapper>
     </Wrapper>
   );
@@ -276,7 +276,23 @@ const DiaryShape = styled.div`
 `;
 
 const SelectMonthWrapper = styled.div`
-  margin: auto;
+  margin: 30px 0;
+  text-align: center;
+  border: 1px solid red;
+`;
+const MonthButton = styled.div`
+  border: 1px solid black;
+  margin: 20px 0;
+  width: 850px;
+  button {
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+  }
+  margin-bottom: 100px;
 `;
 
 export default DiaryList;

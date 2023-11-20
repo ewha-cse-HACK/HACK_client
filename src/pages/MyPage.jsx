@@ -196,52 +196,46 @@ function MyPage() {
   return (
     <MyWrapper>
       <BackButton>
-        <Link to="./">
+        <Link to="../pages/Brand">
           <Fab color="gray" aria-label="back">
             <ArrowBackIcon />
           </Fab>
         </Link>
       </BackButton>
-      <div id="my-content">
-        <h1>마이페이지</h1>
-        <p>내 정보를 확인하고 수정할 수 있습니다.</p>
-        <div id="imgContainer">
-          <ImageStyled
-            src={
-              profileImage ||
-              "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
-            }
-            alt="프로필 이미지"
-          />
-        </div>
-        <div>
-          <h2>{nickname}</h2>
-          <p>Email: {email}</p>
-        </div>
-        <div>
-          <button onClick={handleImageChange}>이미지 변경</button>
-          <button onClick={handleImageDelete}>이미지 삭제</button>
-        </div>
-        <div>
-          <img
-            src={
-              imageUrl === null
-                ? profileImage ||
-                  "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
-                : imageUrl
-            }
-            alt="프로필 이미지"
-            style={{ width: "40%", borderRadius: "20px" }}
-          />
-          <input
-            type="file"
-            accept="image/*"
-            name="profileImage"
-            onChange={submitImage}
-            ref={imgRef}
-          />
-        </div>
-      </div>
+      <MyPageWrapper>
+        <MyPageHeader>
+          <h1>마이페이지</h1>
+          <p>내 정보를 확인하고 수정할 수 있습니다.</p>
+        </MyPageHeader>
+        <MyPageContent>
+          <RowDesign>
+            <ImageStyled
+              src={
+                profileImage ||
+                "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
+              }
+              alt="프로필 이미지"
+            />
+            <UserInfo>
+              <h2>{nickname}</h2>
+              <p>Email: {email}</p>
+            </UserInfo>
+          </RowDesign>
+          <ButtonContainer>
+            <button onClick={handleImageChange}>이미지 변경</button>
+            <button onClick={handleImageDelete}>이미지 삭제</button>
+          </ButtonContainer>
+          <div>
+            <input
+              type="file"
+              accept="image/*"
+              name="profileImage"
+              onChange={submitImage}
+              ref={imgRef}
+            />
+          </div>
+        </MyPageContent>
+      </MyPageWrapper>
     </MyWrapper>
   );
 }
@@ -251,15 +245,52 @@ const MyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 1080px;
+  width: 900px;
+`;
+const MyPageWrapper = styled.div`
+  margin: 20px auto;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
 `;
 const BackButton = styled.div`
   margin: 30px;
   margin-bottom: 0;
 `;
+const MyPageHeader = styled.div`
+  margin: 20px;
+  h1 {
+    margin-bottom: 10px;
+  }
+`;
+const MyPageContent = styled.div`
+  margin: 20px;
+`;
+const RowDesign = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+const UserInfo = styled.div`
+  margin: 20px 0;
+  margin-top: 30px;
+`;
 const ImageStyled = styled.img`
-  width: 50px;
+  margin: 20px;
+  width: 70px;
   height: auto;
 `;
-
+const ButtonContainer = styled.div`
+  margin: 20px 0;
+  button {
+    margin-right: 20px;
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 30px;
+    background-color: #000027;
+    color: white;
+  }
+`;
 export default MyPage;
