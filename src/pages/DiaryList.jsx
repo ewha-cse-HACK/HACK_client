@@ -4,7 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./style.css";
-// import "./global.css";
+import "./font.css";
 import dayjs from "dayjs";
 import Fab from "@mui/material/Fab";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -22,8 +22,9 @@ function DiaryList() {
   const [petName, setPetName] = useState();
   const [petProfile, setPetProfile] = useState();
   const [journalId, setJournalId] = useState();
-  const [createdTime, setCreatedTime] = useState();
   const [diaryArray, setDiaryArray] = useState([]);
+  const [journalArray, setJournalArray] = useState([]);
+  const [createdDate, setCreatedDate] = useState();
 
   const currentMonth = dayjs().month() + 1; // month()는 0부터 시작하므로 +1을 해줌
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
@@ -80,20 +81,74 @@ function DiaryList() {
           }
         );
         console.log("그림일기 월별 목록 조회 응답 성공");
-        console.log(response.data);
-        //setDiaryArray(response.journalList);
-        /*
-        setCreatedTime(new Date(response.data.createdTime));
-        console.log("생성 일시", createdTime);
-        setJournalId(response.data.id);
-        */
+        console.log(response.data); //Object
+        console.log(response.data.journalList); //Just Array
+        console.log(response.data.journalList.id); //undefined
+        console.log(response.data.journalList.length); //6
+
+        const processedData = response.data.journalList.reduce(
+          (result, entry) => {
+            const date = entry.createdTime.split("T")[0]; // '2023-11-14'
+            const createdMonth = date.split("-")[1]; // 월 정보 추출
+
+            // 중복된 날짜에 대한 인덱스 처리
+            let index = 1;
+            let uniqueDate = date;
+
+            while (result[uniqueDate]) {
+              uniqueDate = `${date} (${index})`;
+              index += 1;
+            }
+
+            if (result[uniqueDate]) {
+              result[uniqueDate].count += 1;
+              result[uniqueDate].entries.push({
+                id: `${entry.id} (${index})`, // id에 중복 인덱스 추가
+                createdTime: uniqueDate,
+                createdMonth,
+              });
+            } else {
+              result[uniqueDate] = {
+                count: 1,
+                entries: [
+                  {
+                    id: `${entry.id} (${index})`,
+                    createdTime: uniqueDate,
+                    createdMonth,
+                  },
+                ],
+              };
+            }
+
+            /*
+            if (result[date]) {
+              result[date].count += 1;
+              result[date].entries.push({
+                id: entry.id,
+                createdTime: `${date} (${result[date].count})`,
+                createdMonth,
+              });
+            } else {
+              result[date] = {
+                count: 1,
+                entries: [{ id: entry.id, createdTime: date, createdMonth }],
+              };
+            }
+            */
+
+            return result;
+          },
+          {}
+        );
+        setJournalArray(processedData);
+        console.log(processedData);
       } catch (error) {
         console.error("그림일기 월별 목록 조회 API 요청 실패:", error);
       }
     };
 
     fetchData();
-  }, [journalId]); // journalId가 변경될 때마다 API 요청
+  }, [journalId, selectedMonth, pet_id, token]); // journalId가 변경될 때마다 API 요청
 
   const handleMonthClick = (month) => {
     setSelectedMonth(month);
@@ -181,7 +236,7 @@ function DiaryList() {
         <StackedDiary>
           {loading && <BounceLoader color="#FFA4A1" />}
 
-          {diaryArray.length === 0 ? (
+          {journalArray.length === 0 ? (
             <p>
               {petName}의 일기가 아직 없어요.
               <br />
@@ -189,15 +244,18 @@ function DiaryList() {
             </p>
           ) : (
             <>
-              <img src="images/mouse_withcat.png" />
-              {diaryArray.map((diaryArray) => (
-                <DiaryMarker
-                  key={diaryArray.id}
-                  onClick={() => handleDiaryClick(diaryArray)}
-                >
-                  {/* 도형의 디자인 및 위치 조정은 필요에 따라 수정하세요 */}
-                  <DiaryShape />
-                </DiaryMarker>
+              {Object.entries(journalArray).map(([date, data]) => (
+                <DiaryShape key={date}>
+                  <h5>{date}</h5>
+                  {data.entries
+                    .filter((entry) => entry.createdMonth === selectedMonth)
+                    .map((entry) => (
+                      <div key={entry.id}>
+                        <p>{entry.createdTime}</p>
+                        {/* 기타 원하는 정보 표시 */}
+                      </div>
+                    ))}
+                </DiaryShape>
               ))}
             </>
           )}
@@ -266,7 +324,6 @@ const StackedDiary = styled.div`
     margin-bottom: 30px;
     text-align: center;
   }
-  border: 1px solid black;
 `;
 const CreateDiary = styled.button`
   width: 261px;
@@ -289,11 +346,18 @@ const DiaryMarker = styled.div`
 `;
 
 const DiaryShape = styled.div`
-  width: 20px;
-  height: 20px;
-  background-color: #4caf50; /* 원하는 배경색으로 변경 */
-  border-radius: 50%;
-  border: 1px solid black;
+  width: 250px;
+  height: 40px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  h5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+  }
 `;
 
 const SelectMonthWrapper = styled.div`
@@ -310,7 +374,7 @@ const MonthButton = styled.div`
     font-size: 15px;
     border: none;
     border-radius: 20px;
-    margin: 10px;
+    margin: 5px;
   }
   margin-bottom: 100px;
 `;

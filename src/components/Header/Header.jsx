@@ -35,12 +35,13 @@ function Header() {
               <h1>Rainbow Letter</h1>
             </Link>
           </div>
-          <MenuToggle onClick={handleMenuToggle}>
+          {/*<MenuToggle onClick={handleMenuToggle}>
             <div />
             <div />
             <div />
           </MenuToggle>
-          <nav className={menuOpen ? "open" : ""}>
+          <MenuToggle onClick={handleMenuToggle}>*/}
+          <nav>
             <ul id="topMenu">
               <li>
                 <StyledLink to="/pages/Brand">Brand</StyledLink>
@@ -90,12 +91,9 @@ const HeaderWrapper = styled.header`
   justify-content: center;
   align-items: center;
   gap: 16px;
-  nav {
-    display: none;
-  }
   @media (max-width: 768px) {
     width: 768px;
-    background-color: #f1f1f1;
+    height: 90px;
     padding: 5px;
     nav {
       display: block;
@@ -127,6 +125,9 @@ const StyledLink = styled(Link)`
   &:hover {
     color: gray;
   }
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const LogoutBtn = styled.button`
@@ -139,6 +140,9 @@ const LogoutBtn = styled.button`
   color: #343b6e;
   &:hover {
     color: #6d719b;
+  }
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 

@@ -195,6 +195,10 @@ const Wallpaper = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  @media (max-width: 768px) {
+    width: 768px;
+    heihgt: 1933.45px;
+  }
 `;
 const ProjectInfo = styled.div`
   height: 100vh;
@@ -219,6 +223,9 @@ const ProjectInfo = styled.div`
     cursor: pointer;
     filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
   }
+  @media (max-width: 768px) {
+    width: 768px;
+  }
 `;
 const GradientBackground = styled.div`
   height: 600px;
@@ -233,6 +240,9 @@ const GradientBackground = styled.div`
     ),
     #fff;
   margin-bottom: -1px;
+  @media (max-width: 768px) {
+    width: 768px;
+  }
 `;
 const Content = styled.div`
   padding: 50px 0;
@@ -245,6 +255,9 @@ const Content = styled.div`
   img {
     width: 350px;
   }
+  @media (max-width: 768px) {
+    width: 768px;
+  }
 `;
 const Wrapper = styled.div`
   margin: 20px;
@@ -253,6 +266,9 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   color: #fff;
+  @media (max-width: 768px) {
+    width: 768px;
+  }
 `;
 const PageWrapper = styled.div`
   display: flex;
@@ -260,10 +276,16 @@ const PageWrapper = styled.div`
   height: 700px;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 768px;
+  }
 `;
 const ImgContainer = styled.div`
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 768px;
+  }
 `;
 const TextContainer = styled.div`
   width: auto;
@@ -277,6 +299,14 @@ const TextContainer = styled.div`
   p {
     font-size: 18px;
     font-weight: 400;
+  }
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
   }
 `;
 /* 
