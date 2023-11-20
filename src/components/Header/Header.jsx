@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import "./Header.css";
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
@@ -21,6 +22,10 @@ function Header() {
     navigate("/");
   };
 
+  const handleMenuToggle = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <>
       <HeaderWrapper>
@@ -30,7 +35,12 @@ function Header() {
               <h1>Rainbow Letter</h1>
             </Link>
           </div>
-          <nav>
+          <MenuToggle onClick={handleMenuToggle}>
+            <div />
+            <div />
+            <div />
+          </MenuToggle>
+          <nav className={menuOpen ? "open" : ""}>
             <ul id="topMenu">
               <li>
                 <StyledLink to="/pages/Brand">Brand</StyledLink>
@@ -80,8 +90,34 @@ const HeaderWrapper = styled.header`
   justify-content: center;
   align-items: center;
   gap: 16px;
+  nav {
+    display: none;
+  }
   @media (max-width: 768px) {
     width: 768px;
+    background-color: #f1f1f1;
+    padding: 5px;
+    nav {
+      display: block;
+    }
+  }
+`;
+
+const MenuToggle = styled.div`
+  width: 30px;
+  height: 30px;
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block; // 모바일 화면에서는 햄버거 메뉴를 보여줌
+    cursor: pointer;
+  }
+
+  div {
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    margin: 6px 0;
   }
 `;
 

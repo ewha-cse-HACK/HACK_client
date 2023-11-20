@@ -4,7 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./style.css";
-import "./global.css";
+// import "./global.css";
 import dayjs from "dayjs";
 import Fab from "@mui/material/Fab";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
