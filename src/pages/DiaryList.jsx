@@ -208,7 +208,7 @@ function DiaryList() {
             </p>
           ) : (
             <>
-              {Object.entries(journalArray).map(([date, data], index) => (
+              {Object.entries(journalArray || {}).map(([date, data], index) => (
                 <DiaryShape
                   key={date}
                   index={index}
