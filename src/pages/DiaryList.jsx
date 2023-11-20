@@ -24,7 +24,7 @@ function DiaryList() {
   const [journalId, setJournalId] = useState();
   const [diaryArray, setDiaryArray] = useState([]);
   const [journalArray, setJournalArray] = useState([]);
-  const [createdDate, setCreatedDate] = useState();
+  const [diaryCount, setDiaryCount] = useState();
 
   const currentMonth = dayjs().month() + 1; // month()는 0부터 시작하므로 +1을 해줌
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
@@ -85,6 +85,7 @@ function DiaryList() {
         console.log(response.data.journalList); //Just Array
         console.log(response.data.journalList.id); //undefined
         console.log(response.data.journalList.length); //6
+        setDiaryCount(response.data.journalList.length);
 
         const processedData = response.data.journalList.reduce(
           (result, entry) => {
@@ -101,23 +102,19 @@ function DiaryList() {
             }
 
             if (result[uniqueDate]) {
-              result[uniqueDate].count += 1;
-              result[uniqueDate].entries.push({
-                id: `${entry.id} (${index})`, // id에 중복 인덱스 추가
+              result[uniqueDate].push({
+                id: `${entry.id}`, // id에 중복 인덱스 추가
                 createdTime: uniqueDate,
                 createdMonth,
               });
             } else {
-              result[uniqueDate] = {
-                count: 1,
-                entries: [
-                  {
-                    id: `${entry.id} (${index})`,
-                    createdTime: uniqueDate,
-                    createdMonth,
-                  },
-                ],
-              };
+              result[uniqueDate] = [
+                {
+                  id: `${entry.id}`,
+                  createdTime: uniqueDate,
+                  createdMonth,
+                },
+              ];
             }
 
             /*
@@ -236,7 +233,7 @@ function DiaryList() {
         <StackedDiary>
           {loading && <BounceLoader color="#FFA4A1" />}
 
-          {journalArray.length === 0 ? (
+          {diaryCount === 0 ? (
             <p>
               {petName}의 일기가 아직 없어요.
               <br />
@@ -244,17 +241,19 @@ function DiaryList() {
             </p>
           ) : (
             <>
-              {Object.entries(journalArray).map(([date, data]) => (
-                <DiaryShape key={date}>
+              {Object.entries(journalArray).map(([date, data], index) => (
+                <DiaryShape key={date} index={index}>
                   <h5>{date}</h5>
-                  {data.entries
-                    .filter((entry) => entry.createdMonth === selectedMonth)
-                    .map((entry) => (
-                      <div key={entry.id}>
-                        <p>{entry.createdTime}</p>
-                        {/* 기타 원하는 정보 표시 */}
-                      </div>
-                    ))}
+                  {data[0].createdMonth === selectedMonth && (
+                    <>
+                      {data.map((entry) => (
+                        <div key={entry.id}>
+                          <p>{entry.createdTime}</p>
+                          {/* 기타 원하는 정보 표시 */}
+                        </div>
+                      ))}
+                    </>
+                  )}
                 </DiaryShape>
               ))}
             </>
@@ -310,15 +309,16 @@ const BodyContent = styled.div`
   align-items: center;
 `;
 const StackedDiary = styled.div`
-  border: 1px solid black;
   width: 400px;
-  min-height: 460px;
+  min-height: 440px;
   margin: 0;
   margin-left: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  justify-content: flex-end; /* Align items to the bottom */
   align-items: center;
+  margin-top: auto;
   p {
     margin: auto;
     margin-bottom: 30px;
@@ -346,16 +346,27 @@ const DiaryMarker = styled.div`
 `;
 
 const DiaryShape = styled.div`
-  width: 250px;
-  height: 40px;
-  background-color: #000;
+  width: 260px;
+  height: 50px;
+  margin-left: 30px;
+  margin-left: 50px;
+  margin-left: -50px;
+  margin-left: -20px;
+  margin-left: ${() => {
+    const marginLeft = ["-40px", "-30px", "-20px", "20px", "30px", "40px"];
+    const randomIndex = Math.floor(Math.random() * marginLeft.length);
+    return marginLeft[randomIndex];
+  }};
+  background-color: ${(props) =>
+    props.index % 2 === 0 ? "#FFD7D5" : "#FFBEBB"};
   color: white;
   border: none;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   h5 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 18px;
   }
 `;
