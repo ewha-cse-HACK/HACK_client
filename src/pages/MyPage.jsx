@@ -8,6 +8,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function MyPage() {
   const [nickname, setNickname] = useState(null);
+  const [newName, setNewName] = useState(null);
   const [email, setEmail] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
   const [objUrl, setObjUrl] = useState(null); //객체 URL 풀 버전
@@ -19,6 +20,9 @@ function MyPage() {
   const imgRef = useRef(null);
   const token = localStorage.getItem("token");
 
+  const fileInputRef = useRef(null);
+
+  //마이페이지 정보 로드
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,10 +47,10 @@ function MyPage() {
     fetchData();
   }, [token]);
 
+  //이미지 업로드 URL GET
   useEffect(() => {
     const fetchUploadUrl = async () => {
       try {
-        // 이미지 업로드를 위한 URL을 받아옴
         const response = await axios.get(
           `https://api.rainbow-letter.com/image?dirname=profile`,
           {
@@ -56,12 +60,11 @@ function MyPage() {
           }
         );
         setUploadUrl(response.data);
-        console.log("이미지 업로드 URL: ", response.data);
+        console.log("이미지 업로드 URL 가져오기: ", response.data);
       } catch (error) {
         console.error("이미지 업로드 URL 요청 실패", error);
       }
     };
-
     fetchUploadUrl();
   }, [token]);
 
@@ -145,6 +148,29 @@ function MyPage() {
     }
   };
 
+  const handleNicknameChange = async () => {
+    try {
+      const response = await axios.put(
+        "https://api.rainbow-letter.com/mypage/nickname/modify",
+        {
+          nickname: newName,
+        },
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        alert("닉네임이 변경되었습니다.");
+      }
+    } catch (error) {
+      console.error("닉네임 변경 실패", error);
+      alert("닉네임 변경 실패! 다시 시도해 주세요.");
+    }
+  };
+
   const submitImage = (e) => {
     e.preventDefault();
     const file = e.target.files[0];
@@ -193,6 +219,16 @@ function MyPage() {
       .catch((error) => console.error(error));
   }
 
+  const handleFileInputChange = (event) => {
+    const selectedFile = event.target.files[0];
+    console.log("Selected file:", selectedFile);
+    // 여기에서 파일 처리 로직을 추가하세요.
+  };
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
   return (
     <MyWrapper>
       <BackButton>
@@ -211,8 +247,8 @@ function MyPage() {
           <RowDesign>
             <ImageStyled
               src={
-                profileImage ||
-                "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/profile/pf_human.PNG"
+                "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/pf_human.PNG" ||
+                profileImage
               }
               alt="프로필 이미지"
             />
@@ -222,18 +258,16 @@ function MyPage() {
             </UserInfo>
           </RowDesign>
           <ButtonContainer>
-            <button onClick={handleImageChange}>이미지 변경</button>
-            <button onClick={handleImageDelete}>이미지 삭제</button>
-          </ButtonContainer>
-          <div>
+            <button onClick={handleButtonClick}>이미지 변경</button>
             <input
               type="file"
               accept="image/*"
-              name="profileImage"
-              onChange={submitImage}
-              ref={imgRef}
+              style={{ display: "none" }}
+              ref={fileInputRef}
+              onChange={handleFileInputChange}
             />
-          </div>
+            <button onClick={handleImageDelete}>이미지 삭제</button>
+          </ButtonContainer>
         </MyPageContent>
       </MyPageWrapper>
     </MyWrapper>
@@ -283,12 +317,13 @@ const ImageStyled = styled.img`
 `;
 const ButtonContainer = styled.div`
   margin: 20px 0;
+  margin-left: 10px;
   button {
-    margin-right: 20px;
+    margin-right: 15px;
     width: 120px;
     height: 40px;
     border: none;
-    border-radius: 30px;
+    border-radius: 25px;
     background-color: #000027;
     color: white;
   }

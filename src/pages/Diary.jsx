@@ -141,31 +141,6 @@ function Diary() {
     setSelectedStamp(stampPath);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const response = await axios.post(
-        `https://api.rainbow-letter.com/journal/${pet_id}/image`,
-        null, // Request body is null
-        {
-          headers: {
-            "X-ACCESS-TOKEN": `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("일기 생성 API 호출 성공");
-      console.log(response.data);
-      setJournalId(response.data);
-    } catch (error) {
-      console.error("API 요청 실패:", error);
-      // 오류 처리 로직 추가
-    } finally {
-      setLoading(false);
-    }
-  };
-
   //오늘 일기 불러오기
   const handleGet = async (e) => {
     e.preventDefault();

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, Routes, Route, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import { toast } from "react-toastify";
 import "./style.css";
+import "./global.css";
 import dayjs from "dayjs";
 import Fab from "@mui/material/Fab";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -10,6 +12,7 @@ import { BounceLoader } from "react-spinners";
 import TutorialDiary from "../components/TutorialDiary";
 
 function DiaryList() {
+  const [loading, setLoading] = useState(false);
   const bookColor = ["#FFF1EF", "#FFD7D5", "#FFBEBB"];
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -78,6 +81,7 @@ function DiaryList() {
         );
         console.log("그림일기 월별 목록 조회 응답 성공");
         console.log(response.data);
+        //setDiaryArray(response.journalList);
         /*
         setCreatedTime(new Date(response.data.createdTime));
         console.log("생성 일시", createdTime);
@@ -121,6 +125,8 @@ function DiaryList() {
   };
 
   const handleCreateDiary = async () => {
+    setLoading(true);
+
     try {
       const response = await axios.post(
         `https://api.rainbow-letter.com/journal/${pet_id}/image`,
@@ -130,8 +136,10 @@ function DiaryList() {
           },
         }
       );
-
+      console.log("일기 생성 API 호출 성공");
       console.log(response);
+      setJournalId(response.data);
+      console.log("저널 id: ", journalId);
       const newDiary = {
         id: response.data.journal_id,
         // 기타 원하는 정보 추가
@@ -140,16 +148,20 @@ function DiaryList() {
       setDiaryArray((prevStack) => [...prevStack, newDiary]);
     } catch (error) {
       console.error("그림일기 생성 API 요청 실패:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <Wrapper>
-      <Link to="/pages/Persona">
-        <Fab color="gray" aria-label="back">
-          <ArrowBackIcon />
-        </Fab>
-      </Link>
+      <BackButton>
+        <Link to="/pages/Persona">
+          <Fab color="gray" aria-label="back">
+            <ArrowBackIcon />
+          </Fab>
+        </Link>
+      </BackButton>
       <Headtext>
         <HeadContent>
           <img
@@ -167,6 +179,8 @@ function DiaryList() {
       <BodyContent>
         <TutorialDiary />
         <StackedDiary>
+          {loading && <BounceLoader color="#FFA4A1" />}
+
           {diaryArray.length === 0 ? (
             <p>
               {petName}의 일기가 아직 없어요.
@@ -176,10 +190,10 @@ function DiaryList() {
           ) : (
             <>
               <img src="images/mouse_withcat.png" />
-              {diaryArray.map((diary) => (
+              {diaryArray.map((diaryArray) => (
                 <DiaryMarker
-                  key={diary.id}
-                  onClick={() => handleDiaryClick(diary)}
+                  key={diaryArray.id}
+                  onClick={() => handleDiaryClick(diaryArray)}
                 >
                   {/* 도형의 디자인 및 위치 조정은 필요에 따라 수정하세요 */}
                   <DiaryShape />
@@ -218,6 +232,7 @@ const Wrapper = styled.div`
 `;
 const Headtext = styled.div`
   margin: auto;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -230,6 +245,7 @@ const HeadContent = styled.div`
   gap: 20px;
 `;
 const BodyContent = styled.div`
+  margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -239,15 +255,18 @@ const StackedDiary = styled.div`
   border: 1px solid black;
   width: 400px;
   min-height: 460px;
-  margin: auto;
+  margin: 0;
+  margin-left: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   p {
     margin: auto;
+    margin-bottom: 30px;
     text-align: center;
   }
+  border: 1px solid black;
 `;
 const CreateDiary = styled.button`
   width: 261px;
@@ -266,6 +285,7 @@ const DiaryMarker = styled.div`
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
+  border: 1px solid black;
 `;
 
 const DiaryShape = styled.div`
@@ -273,15 +293,15 @@ const DiaryShape = styled.div`
   height: 20px;
   background-color: #4caf50; /* 원하는 배경색으로 변경 */
   border-radius: 50%;
+  border: 1px solid black;
 `;
 
 const SelectMonthWrapper = styled.div`
-  margin: 30px 0;
+  margin: auto;
+  margin-top: 30px;
   text-align: center;
-  border: 1px solid red;
 `;
 const MonthButton = styled.div`
-  border: 1px solid black;
   margin: 20px 0;
   width: 850px;
   button {
@@ -293,6 +313,10 @@ const MonthButton = styled.div`
     margin: 10px;
   }
   margin-bottom: 100px;
+`;
+const BackButton = styled.div`
+  margin: 20px;
+  margin-bottom: 0;
 `;
 
 export default DiaryList;

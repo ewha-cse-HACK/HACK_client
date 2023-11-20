@@ -14,7 +14,7 @@ function TutorialDiary() {
         <br />
         어떤 내용인지 볼 수 있어요.
       </p>
-      <br />
+      <br /> <br />
       <Explanation>
         <img src="/images/books.png" />
         <TextExplanation>
