@@ -8,7 +8,7 @@ import "./font.css";
 import dayjs from "dayjs";
 import Fab from "@mui/material/Fab";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { BounceLoader } from "react-spinners";
+import { BounceLoader, BarLoader } from "react-spinners";
 import TutorialDiary from "../components/TutorialDiary";
 
 function DiaryList() {
@@ -82,9 +82,6 @@ function DiaryList() {
         );
         console.log("그림일기 월별 목록 조회 응답 성공");
         console.log(response.data); //Object
-        console.log(response.data.journalList); //Just Array
-        console.log(response.data.journalList.id); //undefined
-        console.log(response.data.journalList.length); //6
         setDiaryCount(response.data.journalList.length);
 
         const processedData = response.data.journalList.reduce(
@@ -116,23 +113,6 @@ function DiaryList() {
                 },
               ];
             }
-
-            /*
-            if (result[date]) {
-              result[date].count += 1;
-              result[date].entries.push({
-                id: entry.id,
-                createdTime: `${date} (${result[date].count})`,
-                createdMonth,
-              });
-            } else {
-              result[date] = {
-                count: 1,
-                entries: [{ id: entry.id, createdTime: date, createdMonth }],
-              };
-            }
-            */
-
             return result;
           },
           {}
@@ -145,7 +125,7 @@ function DiaryList() {
     };
 
     fetchData();
-  }, [journalId, selectedMonth, pet_id, token]); // journalId가 변경될 때마다 API 요청
+  }, [journalId, selectedMonth]); // journalId가 변경될 때마다 API 요청
 
   const handleMonthClick = (month) => {
     setSelectedMonth(month);
@@ -231,7 +211,7 @@ function DiaryList() {
       <BodyContent>
         <TutorialDiary />
         <StackedDiary>
-          {loading && <BounceLoader color="#FFA4A1" />}
+          <Loader>{loading && <BounceLoader color="#FFA4A1" />}</Loader>
 
           {diaryCount === 0 ? (
             <p>
@@ -308,6 +288,11 @@ const BodyContent = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const Loader = styled.div`
+  margin: 20px;
+  position: relative;
+  z-index: 1;
+`;
 const StackedDiary = styled.div`
   width: 400px;
   min-height: 440px;
@@ -352,10 +337,9 @@ const DiaryShape = styled.div`
   margin-left: 50px;
   margin-left: -50px;
   margin-left: -20px;
-  margin-left: ${() => {
+  margin-left: ${(props) => {
     const marginLeft = ["-40px", "-30px", "-20px", "20px", "30px", "40px"];
-    const randomIndex = Math.floor(Math.random() * marginLeft.length);
-    return marginLeft[randomIndex];
+    return marginLeft[props.index % marginLeft.length];
   }};
   background-color: ${(props) =>
     props.index % 2 === 0 ? "#FFD7D5" : "#FFBEBB"};
