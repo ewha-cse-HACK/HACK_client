@@ -11,6 +11,8 @@ function CommunityView() {
   const postId = parseInt(id, 10);
   const [userId, setUserId] = useState(0);
   const [writerId, setWriterId] = useState(0);
+  const [userInput, setUserInput] = useState("");
+  const [commentContent, setCommentContent] = useState();
   const [nickname, setNickname] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [content, setContent] = useState("");
@@ -55,6 +57,48 @@ function CommunityView() {
 
     fetchData();
   }, [token]);
+
+  const handleInputChange = (e) => {
+    setUserInput(e.target.value); // 입력 값 업데이트
+  };
+
+  const handleComment = async (e) => {
+    e.preventDefault();
+
+    const inputObj = {
+      comment: userInput,
+    };
+    const jsonData = JSON.stringify(inputObj);
+    console.log(jsonData);
+
+    try {
+      const response = await axios.post(
+        `https://api.rainbow-letter/community/${postId}/save-comment`,
+        jsonData,
+        {
+          headers: {
+            "X-ACCESS-TOKEN": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response);
+      console.log(response.data);
+      if (response.data === 201) {
+        alert("코멘트가 등록되었습니다.");
+        setCommentContent(userInput);
+        setUserInput("");
+      } else {
+        console.log("어랏 왜 안 되지");
+        console.log(response);
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.error("API 요청 실패:", error);
+      // 오류 처리 로직 추가
+    }
+  };
+
   return (
     <ComWrapper>
       <BackButton>
@@ -101,6 +145,18 @@ function CommunityView() {
         </ContentBox>
         <ContentBox>
           <h1 id="cmViewHeadComment">댓글 {commentListLength}개</h1>
+          <InputContainer>
+            <input
+              id="inputField"
+              value={userInput}
+              onChange={handleInputChange}
+              autoComplete="off"
+              placeholder="코멘트를 입력하세요"
+            />
+            <button id="sendBtn" onClick={handleComment}>
+              Send
+            </button>
+          </InputContainer>
         </ContentBox>
       </Container>
     </ComWrapper>
@@ -180,6 +236,45 @@ const LikeContent = styled.div`
     width: 28px;
     height: auto;
     cursor: pointer;
+  }
+`;
+const InputContainer = styled.div`
+  margin: 5px;
+  margin-left: 10px;
+  margin-top: 340px;
+  width: 318px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  input {
+    margin-right: 4px;
+    padding-left: 16px;
+    border: none;
+    border-radius: 5px;
+    width: 230px;
+    height: 45px;
+    font-size: 17px;
+    outline: none;
+  }
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    width: 80px;
+    height: 43px;
+    border-radius: 10px;
+    border: none;
+    background: #8bcef4;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    &:hover {
+      background: #bae2fa;
+    }
   }
 `;
 export default CommunityView;

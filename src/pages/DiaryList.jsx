@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./style.css";
@@ -13,16 +13,15 @@ import TutorialDiary from "../components/TutorialDiary";
 
 function DiaryList() {
   const [loading, setLoading] = useState(false);
-  const bookColor = ["#FFF1EF", "#FFD7D5", "#FFBEBB"];
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const { petIdString } = useParams();
   const pet_id = parseInt(petIdString, 10);
+  const [petProfile, setPetProfile] = useState();
+  const [diaryArray, setDiaryArray] = useState();
   const [personaData, setPersonaData] = useState([]);
   const [petName, setPetName] = useState();
-  const [petProfile, setPetProfile] = useState();
   const [journalId, setJournalId] = useState();
-  const [diaryArray, setDiaryArray] = useState([]);
   const [journalArray, setJournalArray] = useState([]);
   const [diaryCount, setDiaryCount] = useState();
 
@@ -133,22 +132,10 @@ function DiaryList() {
 
   const handleDiaryClick = async (diary) => {
     try {
-      // 여기서 해당 일기의 정보를 불러오는 API 호출
-      const diaryDetailResponse = await axios.get(
-        `https://api.rainbow-letter.com/journal/${pet_id}/${diary.id}`,
-        {
-          headers: {
-            "X-ACCESS-TOKEN": `Bearer ${token}`,
-          },
-        }
-      );
-
-      // Diary 페이지로 이동하면서 pet_id와 일기 정보를 전달
       navigate(`/pages/Diary/${pet_id}/${diary.id}`, {
         state: {
           pet_id: pet_id,
           journal_id: diary.id,
-          diaryDetail: diaryDetailResponse.data, // 일기의 상세 정보를 전달할 수 있음
         },
       });
     } catch (error) {
@@ -222,7 +209,11 @@ function DiaryList() {
           ) : (
             <>
               {Object.entries(journalArray).map(([date, data], index) => (
-                <DiaryShape key={date} index={index}>
+                <DiaryShape
+                  key={date}
+                  index={index}
+                  onClick={() => handleDiaryClick(data[0])}
+                >
                   <h5>{date}</h5>
                   {data[0].createdMonth === selectedMonth && (
                     <>
@@ -248,11 +239,21 @@ function DiaryList() {
       <SelectMonthWrapper>
         <h2>Month: {selectedMonth}</h2>
         <MonthButton>
-          {Array.from({ length: 12 }, (_, index) => index + 1).map((month) => (
-            <button key={month} onClick={() => handleMonthClick(month)}>
-              {month}월
-            </button>
-          ))}
+          {Array.from({ length: 12 }, (_, index) => index + 1).map((month) => {
+            const isActiveMonth = Object.values(journalArray).some((entries) =>
+              entries.some((entry) => entry.createdMonth === month.toString())
+            );
+
+            return (
+              <button
+                key={month}
+                onClick={() => handleMonthClick(month)}
+                active={isActiveMonth}
+              >
+                {month}월
+              </button>
+            );
+          })}
         </MonthButton>
       </SelectMonthWrapper>
     </Wrapper>
@@ -321,14 +322,6 @@ const CreateDiary = styled.button`
   cursor: pointer;
   font-weight: 700;
 `;
-const DiaryMarker = styled.div`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  cursor: pointer;
-  border: 1px solid black;
-`;
 
 const DiaryShape = styled.div`
   width: 260px;
@@ -350,6 +343,7 @@ const DiaryShape = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   h5 {
     font-size: 18px;
   }
@@ -370,6 +364,11 @@ const MonthButton = styled.div`
     border: none;
     border-radius: 20px;
     margin: 5px;
+    ${(props) =>
+      props.active &&
+      css`
+        background-color: #ffd7d5;
+      `}
   }
   margin-bottom: 100px;
 `;

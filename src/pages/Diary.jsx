@@ -15,28 +15,28 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BounceLoader } from "react-spinners";
 
 function Diary() {
-  //const { pet_id, journal_id, diaryDetail } = location.state;
-  console.log(typeof pet_id);
   const [loading, setLoading] = useState(false);
   const [userInput, setUserInput] = useState("");
-  const [stamp, setStamp] = useState("");
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const { petIdString } = useParams();
-  const pet_id = parseInt(petIdString, 10);
-  const [petName, setPetName] = useState();
-  const [petProfile, setPetProfile] = useState();
-  const [journalId, setJournalId] = useState(); // 초기 journalId 설정
+
+  const { petId, journalId } = useParams();
+  const pet_id = parseInt(petId, 10);
+  const journal_id = parseInt(journalId, 10);
+
+  const [diaryId, setDiaryId] = useState(); //다시 반환된 저널 아이디
   const [createdTime, setCreatedTime] = useState();
   const [content, setContent] = useState();
   const [imageUrl, setImageUrl] = useState();
   const [commentContent, setCommentContent] = useState();
   const [commentCreatedTime, setCommentCreatedTime] = useState();
+  const [petName, setPetName] = useState();
+  const [petProfile, setPetProfile] = useState();
   const [personaData, setPersonaData] = useState([]);
+
   const [isStampedVisible, setIsStampedVisible] = useState(false);
   const [isSelectStampedVisible, setIsSelectStampedVisible] = useState(false);
   const [selectedStamp, setSelectedStamp] = useState("");
-
   const dogStamp =
     "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/stamp_dog.jpg";
   const catStamp =
@@ -89,7 +89,7 @@ function Diary() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.rainbow-letter.com/journal/${journalId}`,
+          `https://api.rainbow-letter.com/journal/${journal_id}`,
           {
             headers: {
               "X-ACCESS-TOKEN": `Bearer ${token}`,
@@ -112,7 +112,7 @@ function Diary() {
         }
         setCreatedTime(new Date(response.data.createdTime));
         console.log("생성 일시", createdTime);
-        setJournalId(response.data.id);
+        setDiaryId(response.data.id);
         setContent(response.data.content);
         setImageUrl(response.data.imageUrl);
       } catch (error) {
@@ -123,6 +123,7 @@ function Diary() {
     fetchData();
   }, [journalId]); // journalId가 변경될 때마다 API 요청
 
+  /*
   const handlePreviousClick = () => {
     setJournalId((prevId) => prevId - 1);
   };
@@ -130,6 +131,7 @@ function Diary() {
   const handleNextClick = () => {
     setJournalId((prevId) => prevId + 1);
   };
+  */
 
   const handleStampButtonClick = () => {
     setIsStampedVisible(true);
@@ -139,46 +141,6 @@ function Diary() {
   const handleStampClick = (stampPath) => {
     setIsSelectStampedVisible(true);
     setSelectedStamp(stampPath);
-  };
-
-  //오늘 일기 불러오기
-  const handleGet = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const response = await axios.get(
-        `https://api.rainbow-letter.com/journal/${journalId}`,
-        {
-          headers: {
-            "X-ACCESS-TOKEN": `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("오늘 일기 불러오기: ", response.data);
-
-      // API 응답에서 journalCommentResponseDto가 있는지 확인 후 값을 설정
-      if (response.data.journalCommentResponseDto?.content) {
-        setCommentContent(response.data.journalCommentResponseDto.content);
-        setCommentCreatedTime(
-          new Date(response.data.journalCommentResponseDto.createdTime)
-        );
-      } else {
-        // journalCommentResponseDto가 없는 경우에 대한 처리
-        console.log("댓글 데이터가 없습니다.");
-        setCommentContent("");
-      }
-      setCreatedTime(new Date(response.data.createdTime));
-      setContent(response.data.content);
-      setJournalId(response.data.id);
-      setImageUrl(response.data.imageUrl);
-    } catch (error) {
-      console.error("API Get 요청 (오늘 일기 불러오기) 실패:", error);
-      // 오류 처리 로직 추가
-    } finally {
-      setLoading(false);
-    }
   };
 
   const handleInputChange = (e) => {
@@ -196,7 +158,7 @@ function Diary() {
 
     try {
       const response = await axios.post(
-        `https://api.rainbow-letter.com/journal/comment/${journalId}`,
+        `https://api.rainbow-letter.com/journal/comment/${journal_id}`,
         jsonData,
         {
           headers: {
@@ -255,7 +217,6 @@ function Diary() {
           </p>
         </Headtext>
         <br />
-
         <NoteLayout>
           <PetSide>
             <PetProfile id="diaryHead">
@@ -595,7 +556,7 @@ const InputContainer = styled.div`
   button {
     margin: 5px;
     width: 80px;
-    height: 45px;
+    height: 43px;
     border-radius: 10px;
     border: none;
     background: #ffa4a1;

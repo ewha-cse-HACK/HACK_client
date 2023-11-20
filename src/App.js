@@ -56,12 +56,12 @@ function App() {
           <Route path="/pages/Chat" element={<Chat />} />
           <Route path="/pages/Chat/:petIdString" element={<Chat />} />
           <Route path="/rainbow-letter/chat/:pet_id" component={Chat} />
+          <Route path="/pages/DiaryList" element={<DiaryList />} />
+          <Route path="/pages/DiaryList/:petIdString" element={<DiaryList />} />
           <Route path="/pages/Diary" element={<Diary />} />
           <Route path="/rainbow-letter/diary/:pet_id" component={Diary} />
           <Route path="/pages/Diary/:petIdString" element={<Diary />} />
-          <Route path="/pages/DiaryList" element={<DiaryList />} />
-          {/*<Route path="/rainbow-letter/diarylist/:pet_id" component={DiaryList} />*/}
-          <Route path="/pages/DiaryList/:petIdString" element={<DiaryList />} />
+          <Route path="/pages/Diary/:petId/:journalId" element={<Diary />} />
           <Route path="/pages/Community" element={<Community />} />
           <Route path="/pages/community/CommunityPost" element={<CommunityPost />} />
           <Route path="/pages/community/CommunityEdit" element={<CommunityEdit />} />
