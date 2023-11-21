@@ -18,12 +18,12 @@ function DiaryList() {
   const { petIdString } = useParams();
   const pet_id = parseInt(petIdString, 10);
   const [petProfile, setPetProfile] = useState();
-  const [diaryArray, setDiaryArray] = useState();
+  const [diaryArray, setDiaryArray] = useState([]);
   const [personaData, setPersonaData] = useState([]);
   const [petName, setPetName] = useState();
-  const [journalId, setJournalId] = useState();
+  const [journalId, setJournalId] = useState(0);
   const [journalArray, setJournalArray] = useState([]);
-  const [diaryCount, setDiaryCount] = useState();
+  const [diaryCount, setDiaryCount] = useState(0);
 
   const currentMonth = dayjs().month() + 1; // month()는 0부터 시작하므로 +1을 해줌
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
@@ -215,7 +215,7 @@ function DiaryList() {
                   onClick={() => handleDiaryClick(data[0])}
                 >
                   <h5>{date}</h5>
-                  {data[0].createdMonth === selectedMonth && (
+                  {data[0]?.createdMonth === selectedMonth && (
                     <>
                       {data.map((entry) => (
                         <div key={entry.id}>
