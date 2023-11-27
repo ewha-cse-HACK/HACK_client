@@ -31,7 +31,7 @@ function Header() {
       <HeaderWrapper>
         <div id="menu">
           <div id="logo">
-            <Link to="/pages/Home">
+            <Link to="/.">
               <h1>Rainbow Letter</h1>
             </Link>
           </div>
@@ -44,7 +44,7 @@ function Header() {
           <nav>
             <ul id="topMenu">
               <li>
-                <StyledLink to="/pages/Brand">Brand</StyledLink>
+                <StyledLink to="/pages/Brand">Guide</StyledLink>
               </li>
               <li>
                 <StyledLink to="/pages/Persona">Persona</StyledLink>
