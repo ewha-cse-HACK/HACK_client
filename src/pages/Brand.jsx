@@ -189,8 +189,9 @@ function Brand() {
 
 const Wallpaper = styled.div`
   margin: 0;
-  width: 100vw;
+  width: 100%;
   height: 4833px;
+  overflow: x-hidden;
   background-image: url("https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/landingback.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -277,7 +278,7 @@ const PageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 768px) {
-    width: 768px;
+    width: 100%;
   }
 `;
 const ImgContainer = styled.div`
@@ -288,7 +289,6 @@ const ImgContainer = styled.div`
   }
 `;
 const TextContainer = styled.div`
-  width: auto;
   justify-content: center;
   align-items: center;
   h1 {

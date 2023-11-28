@@ -147,7 +147,7 @@ const LogoutBtn = styled.button`
 `;
 
 const Seperator = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 1px;
   background-color: #e7eaee;
   margin: auto 0;

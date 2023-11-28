@@ -41,7 +41,7 @@ function Community() {
   return (
     <ComWrapper>
       <HeaderTitle>
-        <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_title.png" />
+        <img src="https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/cm_title.png" />
         <h1 id="rainbowPlatform">무지개 광장</h1>
       </HeaderTitle>
       <ButtonArea>

@@ -58,10 +58,10 @@ function Footer() {
 
 const FooterWrapper = styled.footer`
   @media (max-width: 768px) {
-    width: 768px;
-    height: 100px;
+    width: 100%;
+    height: 200px;
   }
-  width: 100vw;
+  width: 100%;
   height: 200px;
   margin: auto;
   /* border-top: 1px solid #e7eaee; */
