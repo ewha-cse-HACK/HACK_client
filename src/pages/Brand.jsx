@@ -192,6 +192,7 @@ const Wallpaper = styled.div`
   width: 100%;
   height: 4833px;
   overflow: x-hidden;
+  /*overflow-x: hidden*/
   background-image: url("https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/frontend/landingback.png");
   background-repeat: no-repeat;
   background-position: center;

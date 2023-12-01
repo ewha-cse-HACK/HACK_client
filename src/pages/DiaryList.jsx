@@ -230,7 +230,7 @@ function DiaryList() {
             </>
           )}
           <CreateDiary onClick={handleCreateDiary}>
-            오늘의 일기 생성하기
+            오늘의 일기 가져오기
           </CreateDiary>
         </StackedDiary>
       </BodyContent>
