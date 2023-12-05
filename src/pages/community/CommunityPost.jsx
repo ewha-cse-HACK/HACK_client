@@ -12,12 +12,31 @@ function CommunityPost() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const urls = [
-    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_green.PNG",
-    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_red.PNG",
-    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_purple.PNG",
-    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_pink.PNG",
-    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_blue.PNG",
-    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/cm_back_yellow.PNG",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community1.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community2.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community3.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community4.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community5.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community6.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community7.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community8.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community9.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community10.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community11.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community12.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community13.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community14.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community15.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community16.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community17.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community18.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community19.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community20.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community21.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community22.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community23.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community24.png",
+    "https://hack-s3bucket.s3.ap-northeast-2.amazonaws.com/community/defaultImage/community25.png",
   ];
   const randomIndex = Math.floor(Math.random() * urls.length);
   const basicUrl = urls[randomIndex];
