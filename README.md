@@ -22,6 +22,7 @@ Vercel을 이용해 배포<br>
 <img src="https://github.com/ewha-cse-HACK/HACK_client/assets/79117648/f1240f60-d42b-4653-aaa7-396e96180860" alt="front" width="60%">
 <br>
 <br>
+<br>
 
 ## 🖼️ Project Architecture
 ![image](https://github.com/ewha-cse-HACK/HACK_Server/assets/67634926/99676a61-6f99-48af-8b07-4c52f4c09ec5)
@@ -127,13 +128,10 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
  ┃ ┣ 📜TutorialDiary.jsx
  ┃ ┣ 📜TutorialPersona.jsx
  ┣ 📂pages
- ┃ ┣ 📂chat
  ┃ ┣ 📂community
  ┃ ┃ ┣ 📜CommunityEdit.jsx
  ┃ ┃ ┣ 📜CommunityPost.jsx
  ┃ ┃ ┗ 📜CommunityView.jsx
- ┃ ┣ 📂diary
- ┃ ┣ 📂mypage
  ┃ ┣ 📂persona
  ┃ ┃ ┣ 📜PersonaBird.jsx
  ┃ ┃ ┣ 📜PersonaCat.jsx
@@ -146,10 +144,6 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
  ┃ ┣ 📜Community.jsx
  ┃ ┣ 📜Diary.jsx
  ┃ ┣ 📜DiaryList.jsx
- ┃ ┣ 📜diaryplugin.jsx
- ┃ ┣ 📜font.css
- ┃ ┣ 📜Home.jsx
- ┃ ┣ 📜Loading.jsx
  ┃ ┣ 📜Login.jsx
  ┃ ┣ 📜MyPage.jsx
  ┃ ┣ 📜Persona.jsx
@@ -157,18 +151,31 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
  ┃ ┗ 📜style.css
  ┣ 📜App.css
  ┣ 📜App.js
- ┣ 📜App.test.js
  ┣ 📜index.css
  ┣ 📜index.js
  ┣ 📜logo.png
- ┣ 📜reportWebVitals.js
- ┗ 📜setupTests.js
 ~~~
 <br>
-### Source Code
-<b>components</b>
 
+## Source Code
+<b>components</b>
+- Header : 헤더
+- Footer : 푸터
+- EachPost : 커뮤니티 게시물
+- Profile : 페르소나 프로필 컴포넌트
+- TutorialChat/TutorialDiary/TutorialPersona : 튜토리얼 (각각 채팅/일기/페르소나 메뉴)
+<br>
 <b>pages</b>
+- community/Community : 커뮤니티
+- persona : 종별 페르소나 설정 
+- Brand : 랜딩 페이지
+- Chat : 채팅
+- Diary/DiaryList : 일기 훔쳐보기 그림일기 화면/일기 목록
+- Login : 로그인
+- MyPage : 마이페이지
+- Persona : 페르소나 메뉴 (프로필 확인) 
+- Signup : 회원가입
+- 그 외 스타일 코드 및 App (라우팅) 
 <br>
 <br>
 
