@@ -5,6 +5,11 @@
 <br>
 <br>
 
+## 🖥️ Demo video
+[youtube] https://youtu.be/NFmeN01eHdY
+<br>
+<br>
+
 ## 🚀 Version
 동작환경: chrome 119.0.6045.105
 <br> 개발환경: react 18.2.0
@@ -13,19 +18,21 @@
 Vercel
 ![front](https://github.com/ewha-cse-HACK/HACK_client/assets/79117648/f1240f60-d42b-4653-aaa7-396e96180860)
 
-
-<br>
-
-
-## 🖥️ Demo video
-[youtube] https://youtu.be/NFmeN01eHdY
-<br>
-<br>
-
-
-
 ## 🖼️ Project Architecture
 ![image](https://github.com/ewha-cse-HACK/HACK_Server/assets/67634926/99676a61-6f99-48af-8b07-4c52f4c09ec5)
+<br>
+
+<br>
+
+## 💪 Teck stack
+<b>Client</b> <br>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/></a> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"/></a>
+<br>
 <br>
 
 ## ✨ Client 구성요소
@@ -44,17 +51,6 @@ Vercel
 - dayjs (1.11.10) : Javascript의 날짜를 사용하기 위한 라이브러리
 - react-toastify (9.1.3) : 리액트에서 알림을 이용하기 위한 라이브러리
 - react-spinners (0.13.8) : 대기 중 스피너를 이용하기 위한 라이브러리
-
-## 💪 Teck stack
-<b>Client</b> <br>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/></a> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"/></a>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/></a>
-<img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"/></a>
-<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white"/></a>
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"/></a>
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white"/></a>
-<br>
-<br>
 
 ## 🧩 사용한 오픈소스
 
@@ -75,7 +71,6 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
 ~~~
 
 ~~~
-
 
 
 ## 👍 Developers
