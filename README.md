@@ -44,7 +44,8 @@ Vercel
 - React (18.2.0) : 클라이언트 개발에서 사용한 프레임워크 
 - Axios ^1.5.0 : Promise 기반의 HTTP 통신 라이브러리로 백엔드에 api 요청을 보낼 때 사용
 - styled-component ^6.0.8 : React 컴포넌트를 스타일링하기 위한 CSS-in-JS 라이브러리
-<br><br>
+<br>
+<br>
 
 ## 🧩 사용한 오픈소스
 - mui-Material UI ^5.14.12 : 스타일을 사용하기 위한 CSS 패키지
@@ -83,12 +84,15 @@ npm install react-toastify@9.1.3
 5. 프로젝트 Settings > Domains 메뉴에서 도메인 (rainbow-letter.com) 추가
 6. Route53에서 주어진 값대로 레코드 생성
 7. 프로젝트 Deployments > Promote to Production 
-
+<br>
+<br>
 
 ## 🌤️ How to build
 ~~~
 git clone https://github.com/ewha-cse-HACK/HACK_client.git
 ~~~
+<br>
+<br>
 
 ## 🎮 How to test
   1. 리액트 앱이 있는 폴더에서 프롬프트를 열어 리액트 앱 구동
@@ -96,7 +100,8 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
   npm start 
   ~~~
   2. 오류가 없을 경우 localhost:3000으로 연결되어 앱 로딩
-
+<br>
+<br>
 
 ## 👍 Developers
 <table>
