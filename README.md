@@ -121,24 +121,12 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
  ┃ ┃ ┣ 📜Header.css
  ┃ ┃ ┗ 📜Header.jsx
  ┃ ┣ 📂Persona
- ┃ ┃ ┣ 📜Finished.jsx
- ┃ ┃ ┣ 📜PetChar.jsx
- ┃ ┃ ┣ 📜PetDate.jsx
- ┃ ┃ ┣ 📜PetLike.jsx
- ┃ ┃ ┣ 📜PetLook.jsx
- ┃ ┃ ┣ 📜PetName.jsx
- ┃ ┃ ┗ 📜PetPic.jsx
- ┃ ┣ 📂Tutorials
  ┃ ┣ 📜EachPost.jsx
  ┃ ┣ 📜Profile.jsx
  ┃ ┣ 📜TutorialChat.jsx
  ┃ ┣ 📜TutorialDiary.jsx
  ┃ ┣ 📜TutorialPersona.jsx
- ┃ ┗ 📜utils.js
  ┣ 📂pages
- ┃ ┣ 📂brand
- ┃ ┃ ┣ 📜Brand.jsx
- ┃ ┃ ┗ 📜style.css
  ┃ ┣ 📂chat
  ┃ ┣ 📂community
  ┃ ┃ ┣ 📜CommunityEdit.jsx
@@ -176,6 +164,11 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
  ┣ 📜reportWebVitals.js
  ┗ 📜setupTests.js
 ~~~
+<br>
+### Source Code
+<b>components</b>
+
+<b>pages</b>
 <br>
 <br>
 
