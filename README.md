@@ -19,6 +19,7 @@
 ## 💥 Deployment
 Vercel
 <img src="https://github.com/ewha-cse-HACK/HACK_client/assets/79117648/f1240f60-d42b-4653-aaa7-396e96180860" alt="front" width="50%">
+왜 안돼
 <br>
 <br>
 
