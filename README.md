@@ -13,15 +13,16 @@
 ## 🚀 Version
 동작환경: chrome 119.0.6045.105
 <br> 개발환경: react 18.2.0
+<br>
 
 ## 💥 Deployment
 Vercel
 ![front](https://github.com/ewha-cse-HACK/HACK_client/assets/79117648/f1240f60-d42b-4653-aaa7-396e96180860)
+<br>
 
 ## 🖼️ Project Architecture
 ![image](https://github.com/ewha-cse-HACK/HACK_Server/assets/67634926/99676a61-6f99-48af-8b07-4c52f4c09ec5)
 <br>
-
 <br>
 
 ## 💪 Teck stack
