@@ -18,7 +18,7 @@
 
 ## 💥 Deployment
 Vercel
-![front](https://github.com/ewha-cse-HACK/HACK_client/assets/79117648/f1240f60-d42b-4653-aaa7-396e96180860){width=50%}
+![front](https://github.com/ewha-cse-HACK/HACK_client/assets/79117648/f1240f60-d42b-4653-aaa7-396e96180860) {width=50%}
 <br>
 <br>
 
