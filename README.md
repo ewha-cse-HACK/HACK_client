@@ -41,19 +41,26 @@ Vercel
 <br>
 
 ## ✨ Client 구성요소
+- React (18.2.0) : 클라이언트 개발에서 사용한 프레임워크 
 - Axios ^1.5.0 : Promise 기반의 HTTP 통신 라이브러리로 백엔드에 api 요청을 보낼 때 사용
 - styled-component ^6.0.8 : React 컴포넌트를 스타일링하기 위한 CSS-in-JS 라이브러리
+<br><br>
+
+## 🧩 사용한 오픈소스
 - mui-Material UI ^5.14.12 : 스타일을 사용하기 위한 CSS 패키지
 - mui/x-date-pickers ^6.16.2 : 달력 요소를 위한 mui 라이브러리
 - dayjs ^1.11.10 : Javascript 날짜 라이브러리
 - react-spinners 0.13.8 : 리액트 스피너 라이브러리 (채팅, 일기 훔쳐보기에 사용)
 - react-toastify ^9.1.3 : 알림을 띄우기 위한 리액트 라이브러리
+  <br>
+  ```bash
+  npm install @mui/material@5.14.12
+  npm install @mui/x-date-pickers@6.16.2
+  npm install dayjs@1.11.10
+  npm install react-spinners@0.13.8
+  npm install react-toastify@9.1.3
 
 <br><br>
-
-## 🧩 사용한 오픈소스
-
-<br>
 
 
 ## 🌟 How to Install
