@@ -155,7 +155,7 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
  ┣ 📜index.js
  ┣ 📜logo.png
 ~~~
-<br>
+<br><br>
 
 ## Source Code
 <b>components</b>
@@ -164,18 +164,28 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
 - EachPost : 커뮤니티 게시물
 - Profile : 페르소나 프로필 컴포넌트
 - TutorialChat/TutorialDiary/TutorialPersona : 튜토리얼 (각각 채팅/일기/페르소나 메뉴)
-<br>
+<br><br>
 <b>pages</b>
 - community/Community : 커뮤니티
+  
 - persona : 종별 페르소나 설정 
+
 - Brand : 랜딩 페이지
+
 - Chat : 채팅
+
 - Diary/DiaryList : 일기 훔쳐보기 그림일기 화면/일기 목록
+
 - Login : 로그인
+
 - MyPage : 마이페이지
+
 - Persona : 페르소나 메뉴 (프로필 확인) 
+
 - Signup : 회원가입
+
 - 그 외 스타일 코드 및 App (라우팅) 
+
 <br>
 <br>
 
