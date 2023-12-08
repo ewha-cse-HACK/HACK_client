@@ -102,6 +102,83 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
 <br>
 <br>
 
+## 🌳 Source Code tree
+~~~
+📦public
+ ┣ 📂images
+ ┣ 📜favicon.ico
+ ┣ 📜index.html
+ ┣ 📜logo.png
+ ┣ 📜logo_favi.ico
+ ┣ 📜manifest.json
+ ┗ 📜robots.txt
+📦src
+ ┣ 📂components
+ ┃ ┣ 📂Footer
+ ┃ ┃ ┣ 📜Footer.css
+ ┃ ┃ ┗ 📜Footer.jsx
+ ┃ ┣ 📂Header
+ ┃ ┃ ┣ 📜Header.css
+ ┃ ┃ ┗ 📜Header.jsx
+ ┃ ┣ 📂Persona
+ ┃ ┃ ┣ 📜Finished.jsx
+ ┃ ┃ ┣ 📜PetChar.jsx
+ ┃ ┃ ┣ 📜PetDate.jsx
+ ┃ ┃ ┣ 📜PetLike.jsx
+ ┃ ┃ ┣ 📜PetLook.jsx
+ ┃ ┃ ┣ 📜PetName.jsx
+ ┃ ┃ ┗ 📜PetPic.jsx
+ ┃ ┣ 📂Tutorials
+ ┃ ┣ 📜EachPost.jsx
+ ┃ ┣ 📜Profile.jsx
+ ┃ ┣ 📜TutorialChat.jsx
+ ┃ ┣ 📜TutorialDiary.jsx
+ ┃ ┣ 📜TutorialPersona.jsx
+ ┃ ┗ 📜utils.js
+ ┣ 📂pages
+ ┃ ┣ 📂brand
+ ┃ ┃ ┣ 📜Brand.jsx
+ ┃ ┃ ┗ 📜style.css
+ ┃ ┣ 📂chat
+ ┃ ┣ 📂community
+ ┃ ┃ ┣ 📜CommunityEdit.jsx
+ ┃ ┃ ┣ 📜CommunityPost.jsx
+ ┃ ┃ ┗ 📜CommunityView.jsx
+ ┃ ┣ 📂diary
+ ┃ ┣ 📂mypage
+ ┃ ┣ 📂persona
+ ┃ ┃ ┣ 📜PersonaBird.jsx
+ ┃ ┃ ┣ 📜PersonaCat.jsx
+ ┃ ┃ ┣ 📜PersonaDog.jsx
+ ┃ ┃ ┣ 📜PersonaHam.jsx
+ ┃ ┃ ┣ 📜PersonaOthers.jsx
+ ┃ ┃ ┗ 📜PersonaSetting.jsx
+ ┃ ┣ 📜Brand.jsx
+ ┃ ┣ 📜Chat.jsx
+ ┃ ┣ 📜Community.jsx
+ ┃ ┣ 📜Diary.jsx
+ ┃ ┣ 📜DiaryList.jsx
+ ┃ ┣ 📜diaryplugin.jsx
+ ┃ ┣ 📜font.css
+ ┃ ┣ 📜Home.jsx
+ ┃ ┣ 📜Loading.jsx
+ ┃ ┣ 📜Login.jsx
+ ┃ ┣ 📜MyPage.jsx
+ ┃ ┣ 📜Persona.jsx
+ ┃ ┣ 📜SignUp.jsx
+ ┃ ┗ 📜style.css
+ ┣ 📜App.css
+ ┣ 📜App.js
+ ┣ 📜App.test.js
+ ┣ 📜index.css
+ ┣ 📜index.js
+ ┣ 📜logo.png
+ ┣ 📜reportWebVitals.js
+ ┗ 📜setupTests.js
+~~~
+<br>
+<br>
+
 ## 👍 Developers
 <table>
   <thead>
