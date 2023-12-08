@@ -184,6 +184,11 @@ function Diary() {
     }
   };
 
+  // 뒤로 가기 기능
+  const goBack = () => {
+    navigate(-1); // -1은 뒤로 가기를 의미
+  };
+
   return (
     <>
       {/*<MenuBar>
@@ -198,11 +203,9 @@ function Diary() {
         </DiaryButtonBox>
       </MenuBar>*/}
       <Wrapper>
-        <Link to="/pages/DiaryList">
-          <Fab color="gray" aria-label="back">
-            <ArrowBackIcon />
-          </Fab>
-        </Link>
+        <Fab color="gray" aria-label="back" onClick={goBack}>
+          <ArrowBackIcon />
+        </Fab>
         <Headtext>
           <HeadContent>
             <img
