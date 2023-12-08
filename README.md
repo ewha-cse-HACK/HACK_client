@@ -14,10 +14,12 @@
 동작환경: chrome 119.0.6045.105
 <br> 개발환경: react 18.2.0
 <br>
+<br>
 
 ## 💥 Deployment
 Vercel
 ![front](https://github.com/ewha-cse-HACK/HACK_client/assets/79117648/f1240f60-d42b-4653-aaa7-396e96180860)
+<br>
 <br>
 
 ## 🖼️ Project Architecture
@@ -52,6 +54,8 @@ Vercel
 - dayjs (1.11.10) : Javascript의 날짜를 사용하기 위한 라이브러리
 - react-toastify (9.1.3) : 리액트에서 알림을 이용하기 위한 라이브러리
 - react-spinners (0.13.8) : 대기 중 스피너를 이용하기 위한 라이브러리
+
+<br>
 
 ## 🧩 사용한 오픈소스
 
