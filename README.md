@@ -17,9 +17,8 @@
 <br>
 
 ## 💥 Deployment
-Vercel
-<img src="https://github.com/ewha-cse-HACK/HACK_client/assets/79117648/f1240f60-d42b-4653-aaa7-396e96180860" alt="front" width="50%">
-왜 안돼
+Vercel을 이용해 배포<br>
+<img src="https://github.com/ewha-cse-HACK/HACK_client/assets/79117648/f1240f60-d42b-4653-aaa7-396e96180860" alt="front" width="60%">
 <br>
 <br>
 
