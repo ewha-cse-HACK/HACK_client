@@ -52,21 +52,38 @@ Vercel
 - dayjs ^1.11.10 : Javascript 날짜 라이브러리
 - react-spinners 0.13.8 : 리액트 스피너 라이브러리 (채팅, 일기 훔쳐보기에 사용)
 - react-toastify ^9.1.3 : 알림을 띄우기 위한 리액트 라이브러리
-  <br>
-  ```bash
-  npm install @mui/material@5.14.12
-  npm install @mui/x-date-pickers@6.16.2
-  npm install dayjs@1.11.10
-  npm install react-spinners@0.13.8
-  npm install react-toastify@9.1.3
+<br>
 
+~~~
+npm install @mui/material@5.14.12
+npm install @mui/x-date-pickers@6.16.2
+npm install dayjs@1.11.10
+npm install react-spinners@0.13.8
+npm install react-toastify@9.1.3
+~~~
 <br><br>
 
 
 ## 🌟 How to Install
-~~~
+1. package.json 파일에 vercel-deploy 추가
+  ~~~
+  "scripts": {
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "next dev",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "lint": "next lint",
+    "vercel-deploy": "next build && next export"
+  }
+  ~~~
+2. Vercel에 회원가입 후 깃허브 연동
+3. 연동된 깃허브 계정에서 배포할 레포지토리 (HACK-client) 등록 
+4. 해당 레포지토리 import 후 Deploy 
+5. 프로젝트 Settings > Domains 메뉴에서 도메인 (rainbow-letter.com) 추가
+6. Route53에서 주어진 값대로 레코드 생성
+7. 프로젝트 Deployments > Promote to Production 
 
-~~~
 
 ## 🌤️ How to build
 ~~~
@@ -74,9 +91,11 @@ git clone https://github.com/ewha-cse-HACK/HACK_client.git
 ~~~
 
 ## 🎮 How to test
-~~~
-
-~~~
+  1. 리액트 앱이 있는 폴더에서 프롬프트를 열어 리액트 앱 구동
+  ~~~
+  npm start 
+  ~~~
+  2. 오류가 없을 경우 localhost:3000으로 연결되어 앱 로딩
 
 
 ## 👍 Developers
