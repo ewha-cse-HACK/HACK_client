@@ -7,6 +7,10 @@
 
 ## 🖥️ Demo video
 [youtube] https://youtu.be/8pW3X7zxmLs
+
+[![Video Label](http://img.youtube.com/vi/8pW3X7zxmLs/0.jpg)](https://youtu.be/8pW3X7zxmLs)
+
+
 <br>
 <br>
 
